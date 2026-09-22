@@ -1,0 +1,16 @@
+<svg width="280" height="42" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="50%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+  <!-- خلفية زجاجية أنيقة -->
+  <rect x="2" y="2" width="276" height="38" rx="19" fill="#080c15" fill-opacity="0.92" stroke="url(#goldGrad)" stroke-width="2"/>
+  <!-- أيقونة فيسبوك دائرية زرقاء -->
+  <circle cx="25" cy="21" r="12" fill="#1877f2"/>
+  <path d="M28 17h-2.2c-.7 0-1 .4-1 1v1.6H28l-.3 2.4h-2.5V28H22v-6H20v-2.4h2V18c0-2 1.2-3 3-3h3v2z" fill="#ffffff"/>
+  <!-- نص اسم الصفحة المباركة -->
+  <text x="150" y="27" font-family="'Cairo', 'Segoe UI', Tahoma, sans-serif" font-size="16" font-weight="bold" fill="#fbbf24" text-anchor="middle" direction="rtl">بَلِّغُوا عَنِّي وَلَوْ آيَة</text>
+</svg>

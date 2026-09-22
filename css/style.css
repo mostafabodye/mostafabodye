@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary-navy: #080c15;
+  --secondary-navy: #0d1527;
+  --card-bg: rgba(15, 23, 42, 0.75);
+  --card-border: rgba(56, 189, 248, 0.15);
+  --accent-blue: #2563eb;
+  --accent-cyan: #06b6d4;
+  --accent-gold: #f59e0b;
+  --accent-amber: #d97706;
+  --text-muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: var(--primary-navy);
+  color: #f8fafc;
+  overflow-x: hidden;
+  direction: rtl;
+  text-align: right;
+}
+
+.font-num {
+  font-family: 'Inter', sans-serif;
+  direction: ltr;
+  display: inline-block;
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -10px rgba(14, 165, 233, 0.15);
+}
+
+.glass-nav {
+  background: rgba(8, 12, 21, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Glowing Elements */
+.glow-gold {
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.35);
+}
+
+.glow-blue {
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.35);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 50%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-white {
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Background Gradients */
+.hero-glow-bg {
+  position: absolute;
+  top: -150px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, rgba(245, 158, 11, 0.08) 40%, rgba(8, 12, 21, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-glow {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(8, 12, 21, 0) 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080c15;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Animated Pulse Badge */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.05); }
+}
+.pulse-badge {
+  animation: subtle-pulse 2.5s infinite ease-in-out;
+}
+
+/* Modal Transitions */
+.modal-backdrop {
+  background: rgba(4, 7, 13, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+/* Custom Checkbox and Radio */
+input[type="range"] {
+  accent-color: #f59e0b;
+}
+
+/* Floating WhatsApp Button Pulse */
+@keyframes whatsapp-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.floating-whatsapp {
+  animation: whatsapp-bounce 3s infinite ease-in-out;
+}

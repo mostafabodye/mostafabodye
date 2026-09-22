@@ -1,0 +1,13 @@
+# Google Drive raw archives (keep local only)
+New folder (2)/
+*.zip
+*.rar
+
+# Raw heavy video archives (keep 4K master files local)
+assets/videos/archive_raw/
+*.tmp
+
+# System files
+Thumbs.db
+Desktop.ini
+.DS_Store
