@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mostafabodye.github.io/mostafabodye/sitemap.xml
+Sitemap: https://am-marketing.agency/sitemap.xml
