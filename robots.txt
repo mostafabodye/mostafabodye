@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://am-marketing.agency/sitemap.xml
+Sitemap: https://abdelsalam-marketing.com/sitemap.xml

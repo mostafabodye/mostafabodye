@@ -12,7 +12,7 @@
 
 ### رابط الموقع الرسمي المعتمد:
 ```text
-https://am-marketing.agency/
+https://abdelsalam-marketing.com/
 ```
 *(أو عبر الرابط التلقائي المجاني: https://mostafabodye.github.io/mostafabodye/)*
 
@@ -20,7 +20,7 @@ https://am-marketing.agency/
 1. افتح صفحة إعدادات المستودع: `Settings > Pages`
 2. في قسم **Build and deployment > Source**: اختر **Deploy from a branch**
 3. اختر الفرع **`main`** والمسار **`/ (root)`** ثم اضغط **Save**.
-4. في حقل **Custom domain**: أضف `am-marketing.agency` ثم فعّل خيار **Enforce HTTPS**.
+4. في حقل **Custom domain**: أضف `abdelsalam-marketing.com` ثم فعّل خيار **Enforce HTTPS**.
 5. سيعمل الموقع مباشرة مع شهادة حماية مجانية SSL (HTTPS).
 
 ---
