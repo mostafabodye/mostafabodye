@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -26,9 +26,11 @@
   <meta name="twitter:description" content="وكالة التسويق الرقمي والحلول الإبداعية - هاتف/واتساب 01098174992" />
   <meta name="twitter:image" content="assets/images/abdel-salam-flyer.jpg" />
 </head>
-<body class="bg-[#080c15] text-slate-100 min-h-screen relative selection:bg-amber-500 selection:text-black">
+<body class="bg-[#080c15] text-slate-100 min-h-screen relative selection:bg-amber-500 selection:text-black pb-20 md:pb-0 overflow-x-hidden">
 
-  <div class="hero-glow-bg"></div>
+  <div class="overflow-hidden absolute inset-0 pointer-events-none z-0">
+    <div class="hero-glow-bg"></div>
+  </div>
 
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
@@ -56,7 +58,7 @@
         <a href="contact.html" class="text-amber-400 font-bold border-b-2 border-amber-400 pb-1">تواصل معنا</a>
       </nav>
 
-      <a href="tel:01098174992" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm font-num">
+      <a href="tel:01098174992" class="hidden sm:inline-flex bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm font-num">
         📞 01098174992
       </a>
                 <!-- زر قائمة الموبايل -->
@@ -216,12 +218,36 @@
   </script>
 
   <!-- Floating WhatsApp -->
-  <div class="fixed bottom-6 left-6 z-40">
+  <div class="fixed bottom-20 sm:bottom-6 left-4 sm:left-6 z-40">
     <a href="https://wa.me/201098174992?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%8A%D8%A7%20%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83" target="_blank" class="floating-whatsapp flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-bold px-4 py-3 rounded-full shadow-2xl shadow-emerald-500/40 border border-emerald-400/50">
       <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 2.016.822 3.125.822 3.18 0 5.765-2.586 5.765-5.766.001-3.18-2.583-5.766-5.764-5.766zm4.187 7.747c-.173.488-.868.892-1.378.948-.35.038-.807.059-2.316-.566-1.929-.798-3.177-2.766-3.272-2.894-.097-.128-.778-1.036-.778-1.974 0-.939.492-1.401.666-1.593.174-.192.38-.24.507-.24.126 0 .253.002.363.007.116.006.27-.044.423.323.159.381.542 1.32.59 1.417.048.096.079.208.016.335-.063.128-.095.207-.19.319-.095.112-.2.25-.286.335-.095.096-.194.2-.083.391.111.191.494.815 1.059 1.319.728.649 1.341.85 1.532.946.19.096.302.08.413-.048.111-.128.476-.557.603-.748.127-.191.254-.159.428-.095.175.063 1.11.524 1.301.619.19.095.317.143.365.222.047.079.047.46-.126.948zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176L2 22l4.957-1.399C8.384 21.493 10.144 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"></path></svg>
-      <span class="hidden sm:inline text-xs font-black">ظˆط§طھط³ط§ط¨ ظ…ط¨ط§ط´ط±</span>
+      <span class="hidden sm:inline text-xs font-black">واتساب مباشر</span>
     </a>
   </div>
+
+  <!-- شريط تنقل سفلي ذكي لتطبيق الهاتف (Mobile Bottom App Bar) -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800/80 px-2 py-2 flex items-center justify-around shadow-2xl mobile-bottom-nav">
+    <a href="index.html" class="flex flex-col items-center gap-1 text-[11px] font-bold text-slate-400 hover:text-amber-400 transition-colors py-1">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+      <span>الرئيسية</span>
+    </a>
+    <a href="portfolio.html" class="flex flex-col items-center gap-1 text-[11px] font-bold text-slate-400 hover:text-amber-400 transition-colors py-1">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+      <span>الأعمال</span>
+    </a>
+    <a href="services-marketing.html" class="flex flex-col items-center gap-1 text-[11px] font-bold text-slate-400 hover:text-amber-400 transition-colors py-1">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+      <span>الخدمات</span>
+    </a>
+    <a href="about.html" class="flex flex-col items-center gap-1 text-[11px] font-bold text-slate-400 hover:text-amber-400 transition-colors py-1">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+      <span>عن الوكالة</span>
+    </a>
+    <a href="https://wa.me/201098174992?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%8A%D8%A7%20%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85" target="_blank" class="flex flex-col items-center gap-1 text-[11px] font-bold text-emerald-400 hover:text-emerald-300 transition-colors py-1">
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 2.016.822 3.125.822 3.18 0 5.765-2.586 5.765-5.766.001-3.18-2.583-5.766-5.764-5.766zm4.187 7.747c-.173.488-.868.892-1.378.948-.35.038-.807.059-2.316-.566-1.929-.798-3.177-2.766-3.272-2.894-.097-.128-.778-1.036-.778-1.974 0-.939.492-1.401.666-1.593.174-.192.38-.24.507-.24.126 0 .253.002.363.007.116.006.27-.044.423.323.159.381.542 1.32.59 1.417.048.096.079.208.016.335-.063.128-.095.207-.19.319-.095.112-.2.25-.286.335-.095.096-.194.2-.083.391.111.191.494.815 1.059 1.319.728.649 1.341.85 1.532.946.19.096.302.08.413-.048.111-.128.476-.557.603-.748.127-.191.254-.159.428-.095.175.063 1.11.524 1.301.619.19.095.317.143.365.222.047.079.047.46-.126.948zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176L2 22l4.957-1.399C8.384 21.493 10.144 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"></path></svg>
+      <span>واتساب</span>
+    </a>
+  </nav>
 
   <script src="js/common.js"></script>
 </body>

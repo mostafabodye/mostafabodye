@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Main Application Script - AM Marketing (عبد السلام)
  * إدارة معرض الأعمال، النوافذ المنبثقة، والقائمة الجانبية
  */
@@ -346,15 +346,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectModal = document.getElementById('project-modal');
   const modalClose = document.getElementById('modal-close');
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  // تبديل قائمة الموبايل
-  if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
 
   // تحميل بيانات المشاريع
   fetch('assets/data/projects.json')
