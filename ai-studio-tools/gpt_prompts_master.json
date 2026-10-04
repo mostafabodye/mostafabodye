@@ -1,0 +1,66 @@
+{
+  "project_author": "Abdel Salam (AM Marketing)",
+  "version": "2.0.0",
+  "workflows": {
+    "workflow_1_viral_reel_script": {
+      "name": "مؤلف سكريبتات الريلز الفيروسية (Viral Reel Scriptwriter)",
+      "target_tool": "ChatGPT Plus / GPT-4o",
+      "purpose": "كتابة سكريبت فيديو ريلز/تيك توك احترافي مدته 20-30 ثانية عالي التفاعل والتحويل",
+      "prompt": "أنت خبير مونتاج وتسويق بالمحتوى وصناعة الريلز الفيروسية لبراند AM Marketing (بإدارة عبد السلام). أريدك أن تكتب سكريبت ريلز احترافي وقصير (20 إلى 30 ثانية) عن موضوع: [اكتب موضوعك هنا، مثلاً: كيف تحمي منشأتك من الحرائق بأحدث أنظمة الذكاء الاصطناعي / أو إطلاق متجر إلكتروني احترافي].\n\nيجب أن يتضمن السكريبت بدقة الجدول التالي:\n1. الثانية 0-3 (The Hook): جملة صادمة أو سؤال مستفز يجذب الانتباه فوراً بدون مقدمات مملة.\n2. المشاهد البصرية (Visual B-Rolls): وصف دقيق لكل مشهد بصري باللغة الإنجليزية لأقوم بتوليده في Midjourney/Runway.\n3. التعليق الصوتي (Voiceover VO): نص التعليق الصوتي باللهجة [السعودية / المصرية / الفصحى الحديثة] مع علامات الوقف.\n4. النصوص على الشاشة (On-Screen Captions): كلمات مفتاحية تظهر بحركات تريند (Kinetic Typography).\n5. النداء للفعل (CTA): دعوة للتواصل مع عبد السلام AM Marketing عبر الواتساب أو الرابط في البايو."
+    },
+    "workflow_2_midjourney_photorealism": {
+      "name": "مهندس برومبتات Midjourney v6 و Flux (Photorealism Prompts)",
+      "target_tool": "ChatGPT -> Midjourney v6 / Flux.1",
+      "purpose": "توليد تصاميم ثلاثية الأبعاد ومشاهد واقعية 8K سينمائية لتستخدم كخلفيات ومشاريع في البرتفوليو",
+      "prompts_catalog": [
+        {
+          "title": "تصميم هيدر وأنظمة السلامة ومكافحة الحريق (المجال الآمن)",
+          "prompt": "Ultra-realistic 8k cinematic shot of a futuristic fire safety and protection system engineering room, industrial gleaming red fire pump valves, high-pressure pipes, digital pressure gauges with glowing green and blue LED telemetry screens, cinematic volumetric lighting, shallow depth of field, dramatic shadows, shot on ARRI Alexa Mini, 35mm lens, photorealistic, Unreal Engine 5 render style --ar 16:9 --v 6.0 --q 2 --style raw"
+        },
+        {
+          "title": "تصميم ريلز عمودي 9:16 - استوديو تسويق ذكي (AM Marketing AI Studio)",
+          "prompt": "Sleek modern cyberpunk marketing agency command desk, holographic neon blue and purple analytics dashboard floating in the air, glowing 3D growth charts, modern mechanical keyboard, high-end studio lighting, moody atmosphere, photorealistic 8k, ray tracing, octane render --ar 9:16 --v 6.0"
+        },
+        {
+          "title": "منتج فاخر وثلاثي الأبعاد (Luxury 3D Branding)",
+          "prompt": "Luxury minimalist perfume bottle floating weightlessly in mid-air, dark slate studio background, golden liquid refraction, dramatic rim lighting, soft caustics, macro 85mm lens, commercial luxury advertising photography --ar 9:16 --v 6.0 --q 2"
+        },
+        {
+          "title": "برومبت عام لتوليد مشاهد واقعية عبر ChatGPT",
+          "chatgpt_prompt": "حول الفكرة التالية: [اكتب فكرتك هنا] إلى برومبت Midjourney v6 إنجليزي فائق الاحترافية. يجب أن يحتوي على: نوع الإضاءة (Cinematic Lighting, Octane Render, 8K), زاوية الكاميرا (Wide angle, Macro 50mm, FPV drone), نوع الخامة (Matte, Metallic, Carbon Fiber), وأبعاد --ar 9:16 أو --ar 16:9 بدون كتابة نصوص مشوهة."
+        }
+      ]
+    },
+    "workflow_3_ai_video_runway_kling": {
+      "name": "مخرج حركة الفيديو الذكي (Runway Gen-3 / Kling AI / Luma)",
+      "target_tool": "Runway Gen-3 Alpha / Kling AI / Luma Dream Machine",
+      "purpose": "تحريك الصور الثابتة إلى لقطات كاميرا سينمائية هوليوودية",
+      "camera_motion_prompts": [
+        {
+          "motion": "FPV Drone Push-in (اندفاع در درون سريع)",
+          "directive": "FPV cinematic drone camera rapidly zooming forward towards the subject, passing through soft smoke, maintaining crisp focus, smooth acceleration, 4k cinematic."
+        },
+        {
+          "motion": "Orbital Pan 360 (دوران سينمائي حول الهدف)",
+          "directive": "Slow 360-degree continuous orbital camera movement around the central product, gorgeous dynamic rim lighting glinting off edges, 60fps buttery smooth."
+        },
+        {
+          "motion": "Macro Pull-back (سحب الكاميرا للخلف)",
+          "directive": "Extreme macro close-up on glowing metallic detail, smooth continuous pull-back revealing the full grand engineering structure, volumetric fog, ultra-realistic."
+        }
+      ]
+    },
+    "workflow_4_elevenlabs_arabic_voice": {
+      "name": "مخرج التعليق الصوتي العربي (ElevenLabs Studio Directing)",
+      "target_tool": "ElevenLabs / OpenAI TTS",
+      "purpose": "توليد فويس أوفر عربي ناطق بحماس وثقة بدون نبرة روبوتية",
+      "guidelines": "1. استخدم موديل Multilingual v2\n2. اجعل مؤشر Stability عند 45% و Clarity عند 85% للحصول على نبرة بشرية معبرة\n3. أضف علامات الوقف (...) للتنفس الطبيعي\n4. ضع علامة التعجب (!) لرفع نبرة الحماس في الكلمات الهامة"
+    },
+    "workflow_5_portfolio_project_builder": {
+      "name": "مولد كود المشروع للبرتفوليو (Portfolio Project Card Generator)",
+      "target_tool": "ChatGPT",
+      "purpose": "توليد كود JavaScript فوري يوضع في src/data/projectsData.js لظهور المشروع في الموقع مباشرة",
+      "chatgpt_prompt": "أريدك أن تأخذ تفاصيل مشروعي الجديد وتحوله لكود JavaScript متوافق مع البرتفوليو الخاص بي. التفاصيل هي:\n- اسم المشروع: [اكتب اسم المشروع بالعربي والإنجليزي]\n- تصنيفه: [web / ads / ai / security]\n- الرابط أو الفيديو: [ضع اسم الفيديو أو رابط المعاينة]\n\nأخرج الكود بالصيغة التالية تماماً:\n{\n  id: 'معرف-المشروع',\n  title: { ar: 'الاسم بالعربي', en: 'English Title' },\n  category: 'ai',\n  categories: ['ai', 'ads'],\n  featured: true,\n  image: '/assets/images/اسم_الصورة.jpg',\n  video: '/assets/videos/اسم_الفيديو.mp4',\n  description: {\n    ar: 'وصف جذاب يوضح كيف تم حل المشكلة والنتائج المحققة',\n    en: 'High impact description highlighting tools, AI stack, and conversion metrics.'\n  },\n  challenge: {\n    ar: 'التحدي الذي واجه العميل',\n    en: 'The core challenge solved.'\n  },\n  solution: {\n    ar: 'كيف قام عبد السلام وفريق AM Marketing بحله',\n    en: 'Innovative AI & engineering solution implemented by Abdel Salam.'\n  },\n  metrics: [\n    { label: { ar: 'معدل المشاهدات', en: 'Views' }, value: '+250K' },\n    { label: { ar: 'العائد ROAS', en: 'ROAS' }, value: '5.2x' }\n  ],\n  tags: ['AI Reels', 'Runway Gen-3', 'ElevenLabs', 'Premiere Pro'],\n  link: '#'\n}"
+    }
+  }
+}

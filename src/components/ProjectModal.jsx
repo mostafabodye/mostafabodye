@@ -70,17 +70,30 @@ export default function ProjectModal({ project, isOpen, onClose, t, lang }) {
 
           {/* Modal Body */}
           <div className="overflow-y-auto p-6 space-y-6">
-            {/* Project Image Banner */}
-            <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-              <img
-                src={project.image}
-                alt={title}
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <h2 className="text-xl sm:text-2xl font-black text-white">{title}</h2>
-                <p className="text-slate-300 text-xs sm:text-sm mt-1">{subtitle}</p>
+            {/* Project Media Banner (Image or Video) */}
+            <div className="relative h-72 sm:h-96 rounded-xl overflow-hidden border border-slate-800 bg-black flex items-center justify-center">
+              {project.video ? (
+                <video
+                  src={project.video}
+                  poster={project.image}
+                  controls
+                  playsInline
+                  autoPlay
+                  muted
+                  loop
+                  className="max-h-full max-w-full object-contain"
+                />
+              ) : (
+                <img
+                  src={project.image}
+                  alt={title}
+                  className="w-full h-full object-cover object-center"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
+                <h2 className="text-xl sm:text-2xl font-black text-white drop-shadow-md">{title}</h2>
+                <p className="text-slate-300 text-xs sm:text-sm mt-1 drop-shadow">{subtitle}</p>
               </div>
             </div>
 

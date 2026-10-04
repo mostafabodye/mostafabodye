@@ -217,7 +217,67 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/balligho_quran_gold_coin.jpg",
+    video: "/assets/videos/quran_reel_balligho.mp4",
     demoUrl: "https://www.facebook.com/profile.php?id=61579408292383",
+    isFeatured: true
+  },
+  {
+    id: "ai-studio-reels-engine",
+    category: "ai",
+    categories: ["ai", "ads"],
+    title: {
+      ar: "منظومة إنتاج الريلز والمونتاج السينمائي بالـ AI",
+      en: "Automated 9:16 AI Reel & Montage Studio"
+    },
+    subtitle: {
+      ar: "إنتاج ومونتاج تلقائي لريلز 1080x1920 بمؤثرات سينمائية وهندسة صوتية متكاملة",
+      en: "Automated 9:16 vertical reel synthesis with cinematic Ken Burns & audio mastering"
+    },
+    badge: {
+      ar: "استوديو ريلز ومونتاج AI",
+      en: "AI Studio & Reel Engine"
+    },
+    client: {
+      ar: "استوديو AM Marketing (عبد السلام)",
+      en: "AM Marketing Studio (Abdel Salam)"
+    },
+    website: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    tags: ["AI Reels 9:16", "Ken Burns Zoom", "FFmpeg Automation", "60 FPS", "ChatGPT Prompts"],
+    gradient: "from-fuchsia-600 via-purple-600 to-indigo-600",
+    summary: {
+      ar: "بناء استوديو مونتاج برمجى يعتمد على خوارزميات الذكاء الاصطناعي لتحويل المشاهد والتصاميم إلى فيديوهات ريلز وتيك توك عمودية 9:16 ببلور سينمائي وانتقالات بصرية احترافية وصوت ستوديو عالي النقاء.",
+      en: "Developed an automated media synthesis engine converting raw AI concept art into viral 9:16 vertical reels with cinematic depth blur, fluid camera motion, and studio-grade audio ducking."
+    },
+    challenge: {
+      ar: "الوقت الطويل المستغرق في المونتاج اليدوي التقليدي وتقطيع وتحويل أبعاد الصور والفيديوهات للريلز وتيك توك.",
+      en: "High latency and repetitive friction of manual aspect-ratio editing and motion framing for short-form video platforms."
+    },
+    solution: {
+      ar: "برمجة أدوات تشغيل فورية (One-Click) تجمع بين ChatGPT في كتابة السيناريو وFFmpeg في التقطيع والبلور والمونتاج السريع بدقة 1080x1920 وبمعدل 60fps.",
+      en: "Architected a zero-click workflow pairing ChatGPT generative scriptwriting with automated FFmpeg split-screen blur and kinetic zoom."
+    },
+    results: [
+      { label: { ar: "سرعة الإخراج", en: "Export Velocity" }, value: "3 ثوانٍ" },
+      { label: { ar: "أبعاد الفيديو", en: "Aspect Ratio" }, value: "9:16 UHD" },
+      { label: { ar: "سلاسة الحركة", en: "Smoothness" }, value: "60 FPS" }
+    ],
+    features: {
+      ar: [
+        "تحويل فوري لأي فيديو أو تصميم إلى ريلز عمودي 9:16",
+        "خلفية بلور سينمائية تمنع ظهور الحواف السوداء المزعجة",
+        "تأثير حركة الكاميرا السينمائية Ken Burns Zoom",
+        "مكتبة برومبتات ذكاء اصطناعي مخصصة للمحتوى الإعلاني"
+      ],
+      en: [
+        "Instant landscape-to-9:16 reel transformation pipeline",
+        "Cinematic split-screen blur background elimination",
+        "Dynamic Ken Burns procedural camera zooms",
+        "Tailored AI advertising prompt repository"
+      ]
+    },
+    image: "/assets/images/am-marketing-poster.jpg",
+    video: "/assets/videos/motion_am-marketing-poster.mp4",
+    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
     isFeatured: true
   },
   {
@@ -380,6 +440,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/poster_haduta_1.jpg",
+    video: "/assets/videos/haduta-1-branded.mp4",
     demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
     isFeatured: true
   },
