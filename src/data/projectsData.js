@@ -1,56 +1,59 @@
 export const projectsData = [
   {
     id: "gads-almajal",
-    category: "ads",
+    category: "web",
+    categories: ["web", "ads"],
     title: {
-      ar: "شركة المجال للسلامة وأنظمة الإطفاء",
-      en: "Almajal Safety & Fire Fighting Systems"
+      ar: "مؤسسة المجال الأمن لأجهزة السلامة ومكافحة الحريق",
+      en: "Al-Majal Al-Amn Fire Safety & Protection Systems"
     },
     subtitle: {
-      ar: "إدارة حملات بحث جوجل وإعلانات الخرائط لخدمات الأمن والسلامة",
-      en: "Google Search & Maps Ads for industrial safety and fire networks"
+      ar: "تصميم وتطوير الموقع الإلكتروني بالكامل (almajal-safety.com) + إدارة حملات جوجل ادز والخرائط",
+      en: "Full Web Architecture & Development (almajal-safety.com) + Google Ads & Maps Campaigns"
     },
     badge: {
-      ar: "حملة حقيقية - Google Ads",
-      en: "Live Campaign - Google Ads"
+      ar: "تطوير موقع + إعلانات جوجل",
+      en: "Web Development + Google Ads"
     },
     client: {
-      ar: "شركة المجال للسلامة المعتمدة",
-      en: "Almajal Safety Corp"
+      ar: "مؤسسة المجال الأمن لأجهزة السلامة (جدة - السعودية)",
+      en: "Al-Majal Al-Amn Safety Systems (Jeddah, KSA)"
     },
     website: "https://almajal-safety.com/",
-    tags: ["Google Ads", "أنظمة إطفاء B2B", "Google Maps", "Lead Gen"],
+    tags: ["تطوير وبرمجة موقع", "Google Ads", "أنظمة مكافحة الحريق", "SEO", "ثنائي اللغة"],
     gradient: "from-blue-600 to-cyan-500",
     summary: {
-      ar: "إدارة متكاملة لحملات بحث جوجل لشركة المجال للسلامة الرائدة في توريد وتركيب وصيانة شبكات الإطفاء ومعدات السلامة للمصانع والشركات.",
-      en: "Comprehensive Google Search campaign management for Almajal Safety, a market leader in certified fire fighting systems and industrial maintenance."
+      ar: "تصميم وبرمجة موقع إلكتروني متكامل ثنائي اللغة (عربي / إنجليزي) لمؤسسة المجال الأمن الرائدة بجدة في أنظمة مكافحة وإنذار الحريق ومعدات السلامة المعتمدة من الدفاع المدني السعودي، بالتوازي مع بناء وإدارة حملات بحث جوجل وإعلانات الخرائط المستهدفة للشركات والمصانع.",
+      en: "Engineered a high-performance bilingual (Arabic / English) web platform for Al-Majal Al-Amn in Jeddah, specialized in certified fire protection and industrial safety, coupled with technical SEO, Google Tag Manager integration, and targeted Google Ads search campaigns."
     },
     challenge: {
-      ar: "المنافسة الشديدة وارتفاع تكلفة النقرة في قطاع الدفاع المدني والسلامة وصعوبة الوصول للشركات والمصانع مباشرة.",
-      en: "High CPC and fierce competition in civil defense and industrial safety, requiring direct B2B corporate targeting."
+      ar: "الحاجة لبناء واجهة رقمية احترافية وسريعة تثبت اعتماد المؤسسة لدى الدفاع المدني وتصل للمصانع والشركات الكبرى، في ظل منافسة شرسة في سوق السلامة وإطفاء الحريق بالمملكة.",
+      en: "Needed an authoritative, ultra-fast bilingual platform reflecting official Civil Defense accreditation and reaching industrial enterprises amidst fierce market competition in KSA."
     },
     solution: {
-      ar: "بناء حملات إعلانية متخصصة بنية شراء عالية للشركات، تحسين كلمات التوريد والتركيب، وتفعيل إعلانات خرائط جوجل للوصول المباشر.",
-      en: "Built high-intent B2B search funnels, refined negative keywords, and deployed Google Maps local extension ads."
+      ar: "تطوير موقع متجاوب بأحدث معايير الويب وسرعة تحميل فائقة، مدعوم ببيانات Schema.org للأنشطة المحلية، وتفعيل حملات بحث جوجل وحملات اتصال مباشر وإعلانات خرائط لمدينة جدة والمناطق المحيطة.",
+      en: "Architected an ultra-fast responsive web architecture with LocalBusiness Schema, paired with Google Search, Call-Only ads, and Google Maps local dominance in Jeddah."
     },
     results: [
-      { label: { ar: "ارتفاع المكالمات", en: "Inbound Calls" }, value: "+240%" },
-      { label: { ar: "نسبة النقر CTR", en: "Click-Through CTR" }, value: "11.4%" },
+      { label: { ar: "ارتفاع المكالمات والطلبات", en: "Inbound Inquiries" }, value: "+240%" },
+      { label: { ar: "سرعة وأداء الموقع", en: "PageSpeed & UX" }, value: "98/100" },
       { label: { ar: "خفض تكلفة النقرة", en: "CPC Reduction" }, value: "-28%" }
     ],
     features: {
       ar: [
-        "استهداف B2B مباشر للمصانع والمؤسسات",
-        "تفعيل إعلانات الخرائط والاتصال الفوري",
-        "تتبع دقيق للتحويلات والمكالمات الواردة"
+        "تصميم وبرمجة موقع ثنائي اللغة (عربي / إنجليزي) متجاوب 100%",
+        "تهيئة محركات البحث Technical SEO وربط Schema.org",
+        "تثبيت وتكامل Google Tag Manager وGoogle Analytics 4",
+        "إدارة حملات إعلانات جوجل والاتصال الفوري بنسبة نجاح استثنائية"
       ],
       en: [
-        "Direct B2B corporate & industrial targeting",
-        "Google Maps & instant call-ad integration",
-        "End-to-end conversion tracking"
+        "100% responsive bilingual (Arabic / English) web platform",
+        "Technical SEO optimization with Schema.org LocalBusiness data",
+        "Integrated GTM, GA4, and Google Ads conversion telemetry",
+        "High-yield Google Search & Click-to-Call campaigns"
       ]
     },
-    image: "https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=1000&q=80",
+    image: "/assets/images/almajal_hero.webp",
     demoUrl: "https://almajal-safety.com/",
     isFeatured: true
   },

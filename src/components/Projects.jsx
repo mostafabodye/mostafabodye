@@ -18,7 +18,7 @@ export default function Projects({ t, lang }) {
 
   const filteredProjects = activeFilter === 'all'
     ? projectsData
-    : projectsData.filter((p) => p.category === activeFilter);
+    : projectsData.filter((p) => p.category === activeFilter || p.categories?.includes(activeFilter));
 
   return (
     <section id="projects" className="py-20 relative">
