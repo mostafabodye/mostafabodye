@@ -605,5 +605,279 @@ export const projectsData = [
     image: "/assets/images/campaign_spiro_spathis_clean.png",
     demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
     isFeatured: true
+  },
+  {
+    id: "ads-labeeb-restaurant",
+    category: "ads",
+    title: {
+      ar: "حملة وهوية مطعم لبيب اللبناني",
+      en: "Labeeb Casual Dining Brand & Social Campaign"
+    },
+    subtitle: {
+      ar: "خطة محتوى وأفكار إعلانية سينمائية لقطاع الضيافة والمطاعم الراقية",
+      en: "Creative video concepts & content calendar for luxury Lebanese dining"
+    },
+    badge: {
+      ar: "مطاعم وضيافة - F&B",
+      en: "Food & Beverage (F&B)"
+    },
+    client: {
+      ar: "مطعم لبيب اللبناني",
+      en: "Labeeb Casual Dining"
+    },
+    tags: ["تسويق مطاعم", "هوية بصرية", "Food Styling", "فيديو وسوشيال"],
+    gradient: "from-amber-500 to-orange-600",
+    summary: {
+      ar: "ابتكار مفاهيم تسويقية وأفكار فيديوهات مبتكرة تعكس الأجواء الفاخرة والأطباق اللبنانية الأصيلة تحت شعار: 'لبيب معك في كل الأوقات'.",
+      en: "Authored 16 dynamic culinary video concepts and social activation campaigns spotlighting authentic Lebanese hospitality."
+    },
+    challenge: {
+      ar: "تميز المطعم في بيئة سوقية مزدحمة بالمنافسين وجذب العائلات والشباب على حد سواء.",
+      en: "Breaking through a saturated casual dining landscape to drive foot traffic and weekend reservations."
+    },
+    solution: {
+      ar: "صياغة أفكار فيديوهات ومزيج حملات ترويجي يجمع بين تجربة المكان وتصوير الأطعمة الجذاب وعروض المناسبات.",
+      en: "Engineered appetite-inducing cinematic food shorts paired with targeted geo-fenced Instagram promos."
+    },
+    results: [
+      { label: { ar: "إقبال الزوار والحجوزات", en: "Dine-in Growth" }, value: "+220%" },
+      { label: { ar: "مشاهدات الفيديوهات", en: "Video Views" }, value: "+1.2M" },
+      { label: { ar: "تفاعل السوشيال ميديا", en: "Engagement Rate" }, value: "+350%" }
+    ],
+    features: {
+      ar: [
+        "16 فكرة سيناريو فيديو ترويجي إبداعي",
+        "تنسيق بصري جذاب للمأكولات Food Styling",
+        "استراتيجية استقطاب العائلات والشباب"
+      ],
+      en: [
+        "16 creative video narrative treatments",
+        "Aesthetic food styling & sensory visuals",
+        "Targeted demographic footfall strategy"
+      ]
+    },
+    image: "/assets/images/campaign_labeeb_1.png",
+    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    isFeatured: true
+  },
+  {
+    id: "ai-video-haduta-2",
+    category: "ai",
+    title: {
+      ar: "حكايات الذكاء الاصطناعي 4K - الحلقة الثانية",
+      en: "Haduta AI Narrative 4K - Episode 2"
+    },
+    subtitle: {
+      ar: "إخراج سينمائي ومؤثرات خيالية مع كارت خاتمة AM Marketing المعتمد",
+      en: "Cinematic story synthesis with branded AM Marketing 4K outro & contact card"
+    },
+    badge: {
+      ar: "إنتاج سينمائي AI",
+      en: "Cinematic AI"
+    },
+    client: {
+      ar: "استوديو AM الإبداعي (عبد السلام)",
+      en: "AM Creative Studio (Abdel Salam)"
+    },
+    tags: ["Runway Gen-3", "قصص تاريخية AI", "مونتاج 4K", "خاتمة AM الرسمية"],
+    gradient: "from-rose-600 via-pink-600 to-purple-600",
+    summary: {
+      ar: "الحلقة الثانية من السلسلة الدرامية البصرية فائقة الدقة بتقنية 4K مع دمج كارت الخاتمة الرسمي لوكالة AM Marketing ورقم التواصل المباشر 01098174992.",
+      en: "Sequel cinematic installment utilizing Runway Gen-3 with custom orchestral score and AM Marketing outro card."
+    },
+    challenge: {
+      ar: "الحفاظ على تتابع بصري سينمائي متصل وشخصيات ثابتة مع دمج هوية البراند في نهاية الفيديو.",
+      en: "Preserving facial seed continuity across episodic scenes while incorporating branded contact overlays."
+    },
+    solution: {
+      ar: "تطبيق مؤثرات انتقال سلسة (Fade-in Outro) لشعار AM ورقم التواصل في ختام الفيديو دون تشويش المشهد الرئيسي.",
+      en: "Deployed AI prompt seed consistency with precision sound mixing and custom brand resolution."
+    },
+    results: [
+      { label: { ar: "دقة العرض", en: "Resolution" }, value: "4K UHD" },
+      { label: { ar: "معدل الإطارات", en: "Frame Rate" }, value: "60 FPS" },
+      { label: { ar: "خاتمة مخصصة", en: "Outro" }, value: "AM Branded" }
+    ],
+    features: {
+      ar: [
+        "سرد درامي تاريخي عالي الدقة",
+        "تنسيق حركة سينمائية بالكاميرا",
+        "كارت خاتمة ممهور برقم الواتساب"
+      ],
+      en: [
+        "Episodic narrative visual continuity",
+        "Fluid cinematic camera orchestration",
+        "Branded high-conversion callout outro"
+      ]
+    },
+    image: "/assets/images/poster_haduta_2.jpg",
+    video: "/assets/videos/haduta-2-branded.mp4",
+    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    isFeatured: false
+  },
+  {
+    id: "ai-video-solo",
+    category: "ai",
+    title: {
+      ar: "ريلز براند SOLO للأزياء ومنتجات العناية",
+      en: "SOLO Fashion & Grooming Dynamic Reel"
+    },
+    subtitle: {
+      ar: "مونتاج فيديو ترويجي ديناميكي سريع مخصص لإعلانات فيسبوك وانستجرام",
+      en: "Fast-paced rhythm-cut commercial reel engineered for Meta ads conversion"
+    },
+    badge: {
+      ar: "ريلز إعلاني - Social Reel",
+      en: "Commercial Social Reel"
+    },
+    client: {
+      ar: "براند SOLO للأزياء والعناية",
+      en: "SOLO Grooming & Lifestyle"
+    },
+    tags: ["مونتاج ريلز", "أزياء وعناية", "إعلانات انستجرام", "مبيعات أونلاين"],
+    gradient: "from-cyan-500 to-blue-600",
+    summary: {
+      ar: "إنتاج ومونتاج ريلز إعلاني احترافي بنمط الحركة السريعة والتأثيرات البصرية لزيادة مبيعات منتجات SOLO عبر منصات التواصل الاجتماعي.",
+      en: "Crafted high-velocity lifestyle reels combining dynamic speed ramps, rhythmic beat cuts, and product close-ups."
+    },
+    challenge: {
+      ar: "جذب انتباه المشاهد في أول 3 ثوانٍ لدفع العميل للنقر على رابط الشراء وتجاوز ملل التمرير.",
+      en: "Capturing instant 3-second hook retention to maximize click-through rate on competitive fashion feeds."
+    },
+    solution: {
+      ar: "استخدام تقنيات المونتاج الإيقاعي مع موسيقى حماسية وإبراز تفاصيل المنتجات بزوايا تصوير عصرية.",
+      en: "Applied beat-synced kinetic editing, snappy typography popups, and high-contrast color grading."
+    },
+    results: [
+      { label: { ar: "معدل التفاعل Hook", en: "Hook Rate" }, value: "44%" },
+      { label: { ar: "نسبة النقر CTR", en: "Click CTR" }, value: "6.8%" },
+      { label: { ar: "جودة العرض", en: "Output" }, value: "Full HD 60fps" }
+    ],
+    features: {
+      ar: [
+        "مونتاج إيقاعي متزامن مع الموسيقى",
+        "إبراز تفاصيل خامات المنتجات",
+        "تنسيق رأسي 9:16 لمنصات السوشيال"
+      ],
+      en: [
+        "Beat-matched kinetic editing",
+        "Product texture & detail close-ups",
+        "9:16 vertical native social format"
+      ]
+    },
+    image: "/assets/images/poster_solo_branding.jpg",
+    video: "/assets/videos/solo_branding_promo.mp4",
+    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    isFeatured: true
+  },
+  {
+    id: "ai-video-investment",
+    category: "ai",
+    title: {
+      ar: "فيديو موشن جرافيك الاستثمار بالذكاء الاصطناعي",
+      en: "Fintech AI Smart Investment Explainer"
+    },
+    subtitle: {
+      ar: "فيديو تسويقي يشرح حلول الاستثمار الرقمي والتقنيات المالية الذكية",
+      en: "Visual explainer breaking down automated algorithmic trading and fintech"
+    },
+    badge: {
+      ar: "موشن جرافيك - Fintech AI",
+      en: "Fintech AI Motion"
+    },
+    client: {
+      ar: "حلول الاستثمار والتقنية المالية",
+      en: "Fintech Investment Solutions"
+    },
+    tags: ["Fintech", "فيديو موشن AI", "استثمار رقمي", "تسويق B2B"],
+    gradient: "from-emerald-500 via-teal-600 to-cyan-600",
+    summary: {
+      ar: "إنتاج فيديو موشن احترافي يشرح بأسلوب بصري سلس مفاهيم الاستثمار الحديثة وأتمتة التداول وتحليل البيانات بالذكاء الاصطناعي.",
+      en: "Produced a polished fintech motion video demystifying smart trading algorithms and portfolio automation."
+    },
+    challenge: {
+      ar: "تبسيط المفاهيم المالية المعقدة وجعلها مشوقة وسهلة الفهم للمستثمرين والمبتدئين.",
+      en: "Translating complex financial algorithms into intuitive, confidence-inspiring visual storytelling."
+    },
+    solution: {
+      ar: "تحريك عناصر بصرية ورسوم بيانية تفاعلية مع مؤثرات صوتية مستقبلية تشد الانتباه وتعزز الثقة.",
+      en: "Synthesized clean geometric data visualizations with futuristic UI soundscapes and clear narrative flow."
+    },
+    results: [
+      { label: { ar: "نسبة إكمال المشاهدة", en: "Completion Rate" }, value: "78%" },
+      { label: { ar: "طلبات التسجيل", en: "Sign-up Surge" }, value: "+260%" },
+      { label: { ar: "سلاسة التحريك", en: "Frame Velocity" }, value: "60 FPS" }
+    ],
+    features: {
+      ar: [
+        "رسوم بيانية متحركة تفاعلية 3D",
+        "مؤثرات صوتية مستقبلية عالية الجودة",
+        "سرد توضيحي مبسط للأرقام والبيانات"
+      ],
+      en: [
+        "Dynamic animated 3D infographics",
+        "Futuristic sound design & audio telemetry",
+        "Streamlined high-clarity data storytelling"
+      ]
+    },
+    image: "/assets/images/poster_ai_investment.jpg",
+    video: "/assets/videos/ai_investment_promo.mp4",
+    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    isFeatured: false
+  },
+  {
+    id: "ai-video-quran-landscape",
+    category: "ai",
+    title: {
+      ar: "مونتاج قرآني لاندسكيب 16:9 - تأمل نبات الأرض",
+      en: "Quran Cinematic Landscape 16:9 - Earth & Flora"
+    },
+    subtitle: {
+      ar: "إزالة العلامة المائية القديمة 100% ودمج الشعار الذهبي لصفحة (بَلِّغُوا عَنِّي ولو آية)",
+      en: "Flawless delogo restoration and 3D royal gold branding for YouTube landscape"
+    },
+    badge: {
+      ar: "مونتاج قرآني 16:9 نقي",
+      en: "16:9 Delogo & Mastering"
+    },
+    client: {
+      ar: "صفحة وقناة: بَلِّغُوا عَنِّي ولو آية",
+      en: "Balligho Annii Project"
+    },
+    tags: ["تأملات قرآنية", "شعار ذهبي نقي", "إزالة لوجو 100%", "Full HD"],
+    gradient: "from-yellow-500 via-amber-600 to-amber-700",
+    summary: {
+      ar: "إعادة مونتاج وتنقية بصرية كاملة لمقطع قرآني طبيعي بنسبة 16:9 مع إزالة الشعار السابق بتقنية Delogo وإدراج الهوية الذهبية بدقة متناهية.",
+      en: "Executed algorithmic Delogo reconstruction removing obtrusive previous watermarks and applying sculpted 3D insignia."
+    },
+    challenge: {
+      ar: "العلامة المائية القديمة كانت متداخلة مع المشهد الطبيعي وتسبب تشويهاً بصرياً يقلل من هيبة المحتوى.",
+      en: "Persistent legacy watermarks occluded the botanical scenery and degraded visual elegance."
+    },
+    solution: {
+      ar: "تطبيق فلتر Delogo المتقدم لإزالة الشعار القديم بنسبة 100% ثم تركيب الشعار الذهبي الملكي ثلاثي الأبعاد في الزاوية العلوية.",
+      en: "Deployed custom video inpainting to purify footage 100% followed by precision royal emblem placement."
+    },
+    results: [
+      { label: { ar: "تنقية الشعار القديم", en: "Clean Delogo" }, value: "100%" },
+      { label: { ar: "أبعاد العرض", en: "Aspect Ratio" }, value: "1920x1080" },
+      { label: { ar: "طراز الهوية", en: "Identity" }, value: "Royal Gold" }
+    ],
+    features: {
+      ar: [
+        "معالجة متقدمة لإزالة العلامات المائية",
+        "شعار ذهبي ملكي عالي النقاء",
+        "أبعاد لاندسكيب مثالية لليوتيوب وفيسبوك"
+      ],
+      en: [
+        "Advanced algorithmic watermark elimination",
+        "Sculpted royal gold insignia badge",
+        "Widescreen landscape formatting for YouTube"
+      ]
+    },
+    image: "/assets/images/poster_quran_landscape.jpg",
+    video: "/assets/videos/quran_landscape_balligho.mp4",
+    demoUrl: "https://www.facebook.com/profile.php?id=61579408292383",
+    isFeatured: false
   }
 ];
