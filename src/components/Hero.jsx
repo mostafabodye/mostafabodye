@@ -113,7 +113,7 @@ export default function Hero({ t, lang }) {
 
             {/* Bottom mini-badge on photo */}
             <div className="absolute bottom-3 left-3 right-3 text-center px-3 py-1.5 rounded-xl bg-slate-950/85 backdrop-blur-md border border-slate-700/60 text-xs font-bold text-slate-200">
-              <span className="text-amber-400">AM Marketing</span> • مصطفى عبد السلام
+              <span className="text-amber-400">AM Marketing</span> • {t.hero.name}
             </div>
           </div>
         </motion.div>

@@ -18,20 +18,20 @@ export const translations = {
     },
     hero: {
       greeting: "أنا",
-      name: "مصطفى عبد السلام",
+      name: "عبد السلام",
       role: "مطوّر ويب متكامل & خبير نمو رقمي وإعلانات جوجل",
       viewWork: "شاهد أعمالي",
       contactMe: "تواصل معي",
       helloBadge: "أهلاً بك! شريكك الرقمي ⭐",
       projectsBtn: "المشاريع",
       hireMeBtn: "وظّفني / استشارة",
-      altProfile: "صورة مصطفى عبد السلام - AM Marketing",
+      altProfile: "صورة عبد السلام - AM Marketing",
       tagline: "أبني حلولاً رقمية تجمع بين قوة تطوير البرمجيات والواجهات السريعة (BUILD)، وحملات إعلانات جوجل المربحة (GROW)، واستوديو الذكاء الاصطناعي (AI STUDIO)، والأمن السيبراني (PROTECT)."
     },
     about: {
       title: "نبذة عني",
       subtitle: "رؤية تجمع بين هندسة البرمجيات واستراتيجيات التسويق الرقمي",
-      paragraph1: "أنا مصطفى عبد السلام، مطوّر ويب متكامل ومؤسس وكالة AM Marketing. أجمع بين شغف بناء التطبيقات البرمجية الحديثة فائقة السرعة، وخبرة إدارة وإطلاق الحملات الإعلانية المربحة على جوجل ادز وفيسبوك لتحقيق أعلى عائد استثماري.",
+      paragraph1: "أنا عبد السلام، مطوّر ويب متكامل ومؤسس وكالة AM Marketing. أجمع بين شغف بناء التطبيقات البرمجية الحديثة فائقة السرعة، وخبرة إدارة وإطلاق الحملات الإعلانية المربحة على جوجل ادز وفيسبوك لتحقيق أعلى عائد استثماري.",
       paragraph2: "أركز على بناء وتطوير منصات وتطبيقات الويب المتجاوبة والقابلة للتوسع باستخدام أحدث التقنيات مثل React وNext.js وTailwind CSS وNode.js، مع دمج تقنيات الذكاء الاصطناعي الحديثة في إنتاج المحتوى البصري والفيديو.",
       paragraph3: "لا أصمم مجرد واجهات أو أطلق مجرد إعلانات؛ بل أهندس رحلة مستخدم متكاملة تبدأ من النقرة الأولى، مروراً بتجربة استخدام سلسة وسريعة، وحتى التحويل الفعلي للعميل وزيادة المبيعات.",
       highlights: {
@@ -297,11 +297,11 @@ export const translations = {
     },
     footer: {
       brand: {
-        name: "مصطفى عبد السلام",
+        name: "عبد السلام",
         badge: "AM Marketing",
         desc1: "مطوّر ويب متكامل وخبير نمو رقمي وإعلانات جوجل،",
         desc2: "أبني حلولاً رقمية استثنائية تدمج بين كود متقن وتصميم متميز وأعلى عائد استثماري.",
-        copyright: "© 2026 جميع الحقوق محفوظة — مصطفى عبد السلام (AM Marketing)."
+        copyright: "© 2026 جميع الحقوق محفوظة — عبد السلام (AM Marketing)."
       },
       links: {
         navigation: "أقسام الموقع",
@@ -340,20 +340,20 @@ export const translations = {
     },
     hero: {
       greeting: "I'm",
-      name: "Mostafa Abdelsalam",
+      name: "Abdel Salam",
       role: "Full Stack Developer & Digital Growth Strategist",
       viewWork: "View My Work",
       contactMe: "Contact Me",
       helloBadge: "Welcome! Your Digital Partner ⭐",
       projectsBtn: "Projects",
       hireMeBtn: "Hire Me / Consult",
-      altProfile: "Mostafa Abdelsalam Photo - AM Marketing",
+      altProfile: "Abdel Salam Photo - AM Marketing",
       tagline: "Building high-performance web experiences (BUILD), high-ROI Google Ads campaigns (GROW), cinematic AI video production (AI STUDIO), and cyber protection (PROTECT)."
     },
     about: {
       title: "About Me",
       subtitle: "Bridging the gap between software engineering and digital marketing ROI",
-      paragraph1: "I'm Mostafa Abdelsalam, Full Stack Web Developer and founder of AM Marketing agency. I combine deep technical expertise in modern web technologies with proven mastery in high-converting Google Ads and performance marketing.",
+      paragraph1: "I'm Abdel Salam, Full Stack Web Developer and founder of AM Marketing agency. I combine deep technical expertise in modern web technologies with proven mastery in high-converting Google Ads and performance marketing.",
       paragraph2: "I focus on crafting fast, scalable, and responsive web applications using React, Next.js, Tailwind CSS, and Node.js, alongside cutting-edge generative AI workflows for cinematic video and content production.",
       paragraph3: "I don't just build interfaces or run generic ads; I engineer the entire conversion pipeline—from the first impression to an intuitive user experience and measurable business growth.",
       highlights: {
@@ -619,11 +619,11 @@ export const translations = {
     },
     footer: {
       brand: {
-        name: "Mostafa Abdelsalam",
+        name: "Abdel Salam",
         badge: "AM Marketing",
         desc1: "Full Stack Web Developer & Digital Growth Strategist,",
         desc2: "Crafting exceptional digital experiences that combine clean code, striking design, and tangible business ROI.",
-        copyright: "© 2026 All rights reserved — Mostafa Abdelsalam (AM Marketing)."
+        copyright: "© 2026 All rights reserved — Abdel Salam (AM Marketing)."
       },
       links: {
         navigation: "Navigation",

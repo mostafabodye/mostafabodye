@@ -18,7 +18,7 @@ export default function Contact({ t, lang }) {
     if (!formData.name || !formData.phone || !formData.message) return;
 
     const text = encodeURIComponent(
-      `مرحباً يا مصطفى (عبد السلام)،\nأنا: ${formData.name}\nرقم الهاتف: ${formData.phone}\n${formData.email ? `البريد: ${formData.email}\n` : ''}الخدمة المطلوبة: ${formData.service}\nالتفاصيل: ${formData.message}`
+      `مرحباً يا عبد السلام،\nأنا: ${formData.name}\nرقم الهاتف: ${formData.phone}\n${formData.email ? `البريد: ${formData.email}\n` : ''}الخدمة المطلوبة: ${formData.service}\nالتفاصيل: ${formData.message}`
     );
 
     window.open(`https://wa.me/201098174992?text=${text}`, '_blank');
