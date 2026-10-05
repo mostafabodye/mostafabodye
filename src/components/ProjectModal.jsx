@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, CheckCircle, TrendingUp, AlertCircle, Lightbulb } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export default function ProjectModal({ project, isOpen, onClose, t, lang }) {
   const isRtl = lang === 'ar';
@@ -74,8 +75,8 @@ export default function ProjectModal({ project, isOpen, onClose, t, lang }) {
             <div className="relative h-72 sm:h-96 rounded-xl overflow-hidden border border-slate-800 bg-black flex items-center justify-center">
               {project.video ? (
                 <video
-                  src={project.video}
-                  poster={project.image}
+                  src={getAssetUrl(project.video)}
+                  poster={getAssetUrl(project.image)}
                   controls
                   playsInline
                   autoPlay
@@ -85,8 +86,12 @@ export default function ProjectModal({ project, isOpen, onClose, t, lang }) {
                 />
               ) : (
                 <img
-                  src={project.image}
+                  src={getAssetUrl(project.image)}
                   alt={title}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80';
+                  }}
                   className="w-full h-full object-cover object-center"
                 />
               )}

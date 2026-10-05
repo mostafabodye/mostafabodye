@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Search, Github, ArrowUpRight, Check, Eye } from 'lucide-react';
 import { projectsData } from '../data/projectsData';
 import ProjectModal from './ProjectModal';
+import { getAssetUrl } from '../utils/assets';
 
 export default function Projects({ t, lang }) {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -88,9 +89,13 @@ export default function Projects({ t, lang }) {
 
                     {/* Image with zoom */}
                     <img
-                      src={project.image}
+                      src={getAssetUrl(project.image)}
                       alt={title}
                       loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80';
+                      }}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
 

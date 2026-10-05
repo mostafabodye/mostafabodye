@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Sparkles, Send, ShieldCheck, Flame, Cpu } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export default function Hero({ t, lang }) {
   const [activeTab, setActiveTab] = useState('projects');
@@ -104,7 +105,7 @@ export default function Hero({ t, lang }) {
         >
           <div className="w-full h-full relative rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-2xl shadow-black/80 bg-slate-900 group-hover:border-amber-400 transition-colors">
             <img
-              src="/profile.jpg"
+              src={getAssetUrl('/profile.jpg')}
               alt={t.hero.altProfile}
               className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
