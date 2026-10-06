@@ -1,5 +1,63 @@
 export const projectsData = [
   {
+    id: "am-systems-hub",
+    category: "web",
+    categories: ["web", "ai", "ads"],
+    title: {
+      ar: "منصة الأنظمة والمواقع السحابية الجاهزة (AM Systems Hub)",
+      en: "AM Cloud Business Systems & Turnkey Web Hub"
+    },
+    subtitle: {
+      ar: "بناء وتشغيل 6 أنظمة سحابية (كاشير، مطاعم، عيادات، مخازن، HR) مع محاكي ديمو تفاعلي مباشر",
+      en: "Architected 6 turnkey cloud systems (POS, Restaurant, Clinic, Inventory, HR) with live interactive demo sandbox"
+    },
+    badge: {
+      ar: "منظومة أنظمة سحابية + ديمو حي",
+      en: "Cloud Systems + Live Demo"
+    },
+    client: {
+      ar: "وكالة AM Marketing (عبد السلام)",
+      en: "AM Marketing Systems (Abdel Salam)"
+    },
+    website: "#systems-hub",
+    tags: ["Cloud ERP", "POS كاشير", "إدارة مطاعم", "إدارة عيادات", "مواقع جاهزة", "Interactive Sandbox"],
+    gradient: "from-blue-600 via-indigo-600 to-purple-600",
+    summary: {
+      ar: "تطوير منظومة سحابية متكاملة لخدمة الأنشطة التجارية والشركات، تشمل 6 أنظمة تشغيلية (نقاط بيع، مطاعم، عيادات، مخازن، موارد بشرية، ولوحة تحكم CMS) بالإضافة إلى 6 مواقع جاهزة للتسليم الفوري مع محاكي تجربة حي يتيح للعملاء اختبار النظام باسم محالهم وللوجو الخاص بهم قبل الشراء.",
+      en: "Engineered a production-ready turnkey cloud ecosystem featuring 6 enterprise modules (POS, Restaurant OS, Medical Clinic EMR, Inventory, HR & Payroll, Master CMS) and 6 responsive industry portals with live in-browser sandboxing and dynamic brand personalization."
+    },
+    challenge: {
+      ar: "تردد أصحاب الأنشطة التجارية في شراء البرامج والأنظمة قبل تجربتها عملياً وصعوبة إقناعهم بدون ديمو واقعي يحمل هوية نشاطهم.",
+      en: "Overcoming commercial buyer hesitation by providing instantaneous, friction-free interactive sandbox simulations branded with their own business identity."
+    },
+    solution: {
+      ar: "برمجة مركز ديمو تفاعلي يتيح للعميل كتابة اسم نشاطه واختبار إصدار الفواتير، وإدارة الترابيزات، وطباعة الروشتات مباشرة بضغطة زر مع أزرار طلب مباشر عبر الواتساب.",
+      en: "Developed an interactive client personalization engine with real-time receipt printing, table dispatch, and automated WhatsApp inquiry pipelines."
+    },
+    results: [
+      { label: { ar: "أنظمة تشغيلية", en: "Ready Systems" }, value: "+6 أنظمة" },
+      { label: { ar: "سرعة التسليم", en: "Deployment Time" }, value: "24 ساعة" },
+      { label: { ar: "تجربة بدون نت أو سحابي", en: "Deployment Mode" }, value: "100% مرن" }
+    ],
+    features: {
+      ar: [
+        "نظام كاشير POS سريع يدعم الباركود وطباعة الإيصالات",
+        "نظام إدارة مطاعم مع خريطة صالة حية وشاشة مطبخ",
+        "نظام عيادات طبية مع ملف مريض وطباعة روشتات Rx",
+        "ميزة تخصيص العرض التفاعلي باسم وللوجو العميل لحظياً"
+      ],
+      en: [
+        "High-velocity POS with barcode & thermal receipt printer support",
+        "Restaurant hospitality floor plan with live Kitchen Display System",
+        "Clinical EMR workflow with automated branded prescription print",
+        "Instant live brand personalization & WhatsApp lead routing"
+      ]
+    },
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
+    demoUrl: "#systems-hub",
+    isFeatured: true
+  },
+  {
     id: "gads-almajal",
     category: "web",
     categories: ["web", "ads"],

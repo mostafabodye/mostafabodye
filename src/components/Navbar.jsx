@@ -18,6 +18,7 @@ export default function Navbar({ lang, setLang, t }) {
     { href: '#about', label: t.nav.about },
     { href: '#skills', label: t.nav.skills },
     { href: '#projects', label: t.nav.projects },
+    { href: '#systems-hub', label: lang === 'ar' ? 'أنظمة جاهزة' : 'Ready Demos', isBadge: true },
     { href: '#experience', label: t.nav.experience },
     { href: '#contact', label: t.nav.contact },
   ];
@@ -60,14 +61,21 @@ export default function Navbar({ lang, setLang, t }) {
         </div>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex gap-7 items-center glass backdrop-blur-md px-6 py-2 rounded-full border border-slate-700/50 shadow-xl shadow-black/40">
+        <div className="hidden md:flex gap-6 items-center glass backdrop-blur-md px-6 py-2 rounded-full border border-slate-700/50 shadow-xl shadow-black/40">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-slate-300 hover:text-blue-400 transition-colors duration-300 relative group font-medium text-sm py-1"
+              className={`transition-colors duration-300 relative group font-medium text-sm py-1 flex items-center gap-1.5 ${
+                link.isBadge ? 'text-amber-400 font-bold' : 'text-slate-300 hover:text-blue-400'
+              }`}
             >
-              {link.label}
+              <span>{link.label}</span>
+              {link.isBadge && (
+                <span className="px-1.5 py-0.2 rounded-full text-[9px] font-black bg-amber-500/20 border border-amber-500/50 text-amber-300 animate-pulse">
+                  DEMO
+                </span>
+              )}
               <span className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 group-hover:w-full transition-all duration-300 w-0 rounded-full" />
             </a>
           ))}
