@@ -4,16 +4,35 @@ import {
   Sparkles, Monitor, Smartphone, CheckCircle, ExternalLink,
   ShoppingCart, Utensils, Stethoscope, Dumbbell, Building2,
   Store, Shirt, Laptop, Printer, Plus, Minus, Trash2, X,
-  Search, ShieldCheck, ArrowRight, ArrowLeft, RefreshCw, Eye
+  Search, ShieldCheck, ArrowRight, ArrowLeft, RefreshCw, Eye,
+  Play, Wrench, Flame, HelpCircle
 } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export default function SystemsHub({ lang = 'ar' }) {
   const isRtl = lang === 'ar';
 
-  // Customization State
-  const [businessName, setBusinessName] = useState(isRtl ? 'مطعم و كافيه السلطان' : 'Al-Sultan Restaurant & Cafe');
+  // Industry Defaults mapping (solves "مطعم السلطان في كل مكان"!)
+  const industryDefaults = {
+    restaurant: isRtl ? 'مطعم وكافيه كازابلانكا' : 'Casablanca Restaurant & Cafe',
+    market: isRtl ? 'سوبر ماركت النور ماركت' : 'Al-Noor Supermarket & Retail',
+    clinic: isRtl ? 'عيادات رويال كير التخصصية' : 'Royal Care Medical Clinics',
+    mobile: isRtl ? 'تكنو فون ستور للأجهزة' : 'TechnoPhone Electronics Store',
+    fashion: isRtl ? 'إليجانس فاشون بوتيك' : 'Elegance Fashion Boutique',
+    gym: isRtl ? 'أبطال اللياقة جيم & فيتنس' : 'Heroes Fitness & Gym Club',
+    realestate: isRtl ? 'شركة الأفق للتطوير العقاري' : 'Al-Ofok Real Estate Developments',
+    company: isRtl ? 'المجموعة الهندسية للصناعة والتشغيل' : 'Engineering Enterprise & Industry',
+    maintenance: isRtl ? 'مركز مدير الصيانة المعتمد' : 'Modir Al-Syana Appliance Hub'
+  };
+
   const [activeIndustry, setActiveIndustry] = useState('restaurant');
-  const [activeModal, setActiveModal] = useState(null); // 'pos' | 'restaurant' | 'clinic' | 'receipt'
+  const [businessName, setBusinessName] = useState(industryDefaults.restaurant);
+  const [isCustomName, setIsCustomName] = useState(false);
+
+  // Active Modals: 'pos' | 'restaurant' | 'clinic' | 'receipt' | 'video' | 'website_preview'
+  const [activeModal, setActiveModal] = useState(null);
+  const [previewSite, setPreviewSite] = useState(null);
+  const [previewDevice, setPreviewDevice] = useState('desktop'); // 'desktop' | 'mobile'
 
   // POS Simulator State
   const [cart, setCart] = useState([
@@ -34,66 +53,26 @@ export default function SystemsHub({ lang = 'ar' }) {
   // Clinic Simulator State
   const [patientName, setPatientName] = useState(isRtl ? 'محمد إبراهيم' : 'Mohamed Ibrahim');
   const [selectedDoctor, setSelectedDoctor] = useState(isRtl ? 'د. أحمد حسام (استشاري باطنة)' : 'Dr. Ahmed Hossam (Internal Med)');
-  const [prescriptionPrinted, setPrescriptionPrinted] = useState(false);
+
+  // Handle switching industry tab: updates realistic default name if not manually edited
+  const handleSelectIndustry = (indId) => {
+    setActiveIndustry(indId);
+    if (!isCustomName) {
+      setBusinessName(industryDefaults[indId] || (isRtl ? 'مؤسسة تجارية' : 'Commercial Enterprise'));
+    }
+  };
 
   // Industries Catalog
   const industries = [
-    {
-      id: 'restaurant',
-      label: isRtl ? 'مطعم وكافيه' : 'Restaurant & Cafe',
-      icon: Utensils,
-      color: 'from-amber-500 to-orange-600',
-      badge: isRtl ? 'منيو + ترابيزات + كيتشن' : 'Menu + Tables + KDS'
-    },
-    {
-      id: 'market',
-      label: isRtl ? 'سوبر ماركت ومحلات' : 'Supermarket & Retail',
-      icon: ShoppingCart,
-      color: 'from-emerald-500 to-teal-600',
-      badge: isRtl ? 'كاشير باركود + مخازن' : 'Barcode POS + Inventory'
-    },
-    {
-      id: 'clinic',
-      label: isRtl ? 'عيادة ومجمع طبي' : 'Clinic & Medical',
-      icon: Stethoscope,
-      color: 'from-cyan-500 to-blue-600',
-      badge: isRtl ? 'ملف مريض + روشتة' : 'Patient EMR + Rx'
-    },
-    {
-      id: 'mobile',
-      label: isRtl ? 'محل موبايلات وأجهزة' : 'Mobile & Electronics',
-      icon: Smartphone,
-      color: 'from-blue-600 to-indigo-600',
-      badge: isRtl ? 'سلة تسوق + تقسيط' : 'Shop + Installments'
-    },
-    {
-      id: 'fashion',
-      label: isRtl ? 'محل ملابس وموضة' : 'Fashion Boutique',
-      icon: Shirt,
-      color: 'from-purple-500 to-pink-600',
-      badge: isRtl ? 'مقاسات وألوان + شحن' : 'Variants & Shipping'
-    },
-    {
-      id: 'gym',
-      label: isRtl ? 'جيم ونادي رياضي' : 'Gym & Fitness Club',
-      icon: Dumbbell,
-      color: 'from-lime-500 to-emerald-600',
-      badge: isRtl ? 'اشتراكات + كلاسات' : 'Memberships + Classes'
-    },
-    {
-      id: 'realestate',
-      label: isRtl ? 'عقارات ومشاريع' : 'Real Estate',
-      icon: Building2,
-      color: 'from-amber-600 to-yellow-600',
-      badge: isRtl ? 'وحدات على الخريطة' : 'Map Listings & Leads'
-    },
-    {
-      id: 'company',
-      label: isRtl ? 'شركة أو مصنع' : 'Enterprise & Factory',
-      icon: Laptop,
-      color: 'from-indigo-600 to-violet-700',
-      badge: isRtl ? 'موارد بشرية + مرتبات' : 'HR & Multi-warehouse'
-    }
+    { id: 'restaurant', label: isRtl ? 'مطعم وكافيه' : 'Restaurant & Cafe', icon: Utensils },
+    { id: 'market', label: isRtl ? 'سوبر ماركت ومحلات' : 'Supermarket & POS', icon: ShoppingCart },
+    { id: 'clinic', label: isRtl ? 'عيادة ومجمع طبي' : 'Clinic & Medical', icon: Stethoscope },
+    { id: 'maintenance', label: isRtl ? 'مراكز صيانة وتشغيل' : 'Appliance Repair', icon: Wrench },
+    { id: 'mobile', label: isRtl ? 'محل موبايلات' : 'Mobile & Tech', icon: Smartphone },
+    { id: 'fashion', label: isRtl ? 'محل ملابس وموضة' : 'Fashion Boutique', icon: Shirt },
+    { id: 'gym', label: isRtl ? 'جيم ونادي رياضي' : 'Gym & Fitness', icon: Dumbbell },
+    { id: 'realestate', label: isRtl ? 'عقارات ومشاريع' : 'Real Estate', icon: Building2 },
+    { id: 'company', label: isRtl ? 'شركة أو مصنع' : 'Enterprise', icon: Laptop }
   ];
 
   // Systems Catalog
@@ -184,49 +163,69 @@ export default function SystemsHub({ lang = 'ar' }) {
     }
   ];
 
-  // Ready Websites Catalog
+  // Ready Websites Catalog (Including Modir Al-Syana!)
   const websites = [
     {
+      id: 'modir-syana',
+      title: isRtl ? 'موقع وتطبيق مدير الصيانة المعتمد (جاهز للبيع فورا)' : 'Modir Al-Syana Home Appliance Service (Live)',
+      businessLabel: isRtl ? 'مركز مدير الصيانة المعتمد' : 'Modir Al-Syana Center',
+      desc: isRtl
+        ? 'موقع حقيقي متكامل لخدمات صيانة الأجهزة المنزلية (غسالات، ثلاجات، تكييفات، أفران)، مهيأ بمحركات البحث وتم تنقية أرقام الهواتف ليكون قالباً جاهزاً للتخصيص والبيع الفوري.'
+        : 'Live turnkey portal for home appliances repair with 50+ service pages, SEO structure, ready for instant sale and client rebranding.',
+      badge: isRtl ? '🔥 جاهز للبيع والتسليم 24H' : '🔥 Live Ready for Sale',
+      img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+      demoUrl: 'https://mustafaabdelsalam49-arch.github.io/project-1-/index.html',
+      isLiveAvailable: true
+    },
+    {
+      id: 'site-restaurant',
       title: isRtl ? 'موقع مطعم وكافيه عصري' : 'Modern Restaurant & Cafe Web',
+      businessLabel: isRtl ? 'مطعم وكافيه كازابلانكا' : 'Casablanca Restaurant',
       desc: isRtl ? 'منيو متكامل بالصور والأسعار، طلب أونلاين، وحجز ترابيزة بضغطة زر.' : 'Full digital menu, online takeaway ordering, and table reservations.',
-      badge: isRtl ? 'منيو + حجز' : 'Menu & Booking',
+      badge: isRtl ? 'منيو + حجز ترابيزة' : 'Menu & Booking',
       img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
-      color: 'from-orange-500 to-amber-600'
+      demoUrl: '#',
+      isLiveAvailable: false
     },
     {
+      id: 'site-clinic',
       title: isRtl ? 'موقع عيادة ومجمع طبي' : 'Specialized Clinic & Medical Portal',
+      businessLabel: isRtl ? 'عيادات رويال كير التخصصية' : 'Royal Care Clinic',
       desc: isRtl ? 'استعراض الأطباء والتخصصات، وحجز المواعيد الشاغرة مباشرة بالتقويم.' : 'Physician directories, specialty profiles, and direct calendar appointment booking.',
-      badge: isRtl ? 'حجز كشوفات' : 'Doctor Booking',
+      badge: isRtl ? 'حجز كشوفات وأطباء' : 'Doctor Booking',
       img: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
-      color: 'from-cyan-500 to-blue-600'
+      demoUrl: '#',
+      isLiveAvailable: false
     },
     {
+      id: 'site-realestate',
       title: isRtl ? 'موقع عقارات وتسويق مشاريع' : 'Luxury Real Estate & Listings',
-      desc: isRtl ? 'خريطة تفاعلية للوحدات، فلاتر بالأسعار والمساحات، وطلب معاينة فورية.' : 'Interactive interactive map, pricing filters, and instant inquiry lead forms.',
-      badge: isRtl ? 'عقارات وخريطة' : 'Property Map',
+      businessLabel: isRtl ? 'الأفق للتطوير العقاري' : 'Al-Ofok Real Estate',
+      desc: isRtl ? 'خريطة تفاعلية للوحدات، فلاتر بالأسعار والمساحات، وطلب معاينة فورية.' : 'Interactive property map, pricing filters, and instant inquiry lead forms.',
+      badge: isRtl ? 'عقارات وخريطة تفاعلية' : 'Property Map',
       img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
-      color: 'from-amber-500 to-yellow-600'
+      demoUrl: '#',
+      isLiveAvailable: false
     },
     {
+      id: 'site-gym',
       title: isRtl ? 'موقع جيم ونادي رياضي' : 'Gym & Fitness Center Portal',
+      businessLabel: isRtl ? 'أبطال اللياقة جيم' : 'Heroes Fitness Club',
       desc: isRtl ? 'باقات الاشتراك، جدول الكلاسات الأسبوعي، وحجز حصة تجريبية مجانية.' : 'Membership tiers, weekly trainer class schedules, and trial pass booking.',
       badge: isRtl ? 'اشتراكات وكلاسات' : 'Gym Memberships',
       img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80',
-      color: 'from-lime-500 to-emerald-600'
+      demoUrl: '#',
+      isLiveAvailable: false
     },
     {
+      id: 'site-mobile',
       title: isRtl ? 'متجر إلكتروني لمحل موبايلات' : 'Smart Electronics & Mobile E-Store',
+      businessLabel: isRtl ? 'تكنو فون ستور' : 'TechnoPhone Store',
       desc: isRtl ? 'عروض الهواتف والإكسسوارات، سلة شراء، طلب تقسيط، وخدمات الصيانة.' : 'Smartphones & accessories, cart checkout, installment applications, and repair desk.',
-      badge: isRtl ? 'متجر وتقسيط' : 'E-Store & Credit',
+      badge: isRtl ? 'متجر وتقسيط وصيانة' : 'E-Store & Credit',
       img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80',
-      color: 'from-blue-600 to-indigo-600'
-    },
-    {
-      title: isRtl ? 'متجر أزياء ومحل ملابس' : 'Fashion Boutique & Lookbook',
-      desc: isRtl ? 'عرض المجموعات والمقاسات والألوان، شحن لجميع المناطق، ودفع عند الاستلام.' : 'Lookbook galleries, multi-size variants, cash on delivery, and instant dispatch.',
-      badge: isRtl ? 'أزياء وشحن' : 'Fashion Apparel',
-      img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
-      color: 'from-pink-500 to-purple-600'
+      demoUrl: '#',
+      isLiveAvailable: false
     }
   ];
 
@@ -261,7 +260,7 @@ export default function SystemsHub({ lang = 'ar' }) {
 
   const handleGenerateReceipt = () => {
     setReceiptData({
-      bizName: businessName || (isRtl ? 'مؤسسة تجارية' : 'Commercial Enterprise'),
+      bizName: businessName || (isRtl ? 'سوبر ماركت النور' : 'Al-Noor Retail POS'),
       invNumber: 'INV-' + Math.floor(100000 + Math.random() * 900000),
       date: new Date().toLocaleDateString(isRtl ? 'ar-EG' : 'en-US', {
         year: 'numeric',
@@ -276,6 +275,17 @@ export default function SystemsHub({ lang = 'ar' }) {
       total: cartTotal
     });
     setActiveModal('receipt');
+  };
+
+  // Open live website preview
+  const handleOpenPreview = (site) => {
+    if (site.demoUrl && site.demoUrl.startsWith('http')) {
+      setPreviewSite(site);
+      setActiveModal('website_preview');
+    } else {
+      // Fallback
+      alert(isRtl ? `جاري تجهيز استعراض التصميم المباشر لـ ${site.title}` : `Preparing live preview for ${site.title}`);
+    }
   };
 
   return (
@@ -306,20 +316,33 @@ export default function SystemsHub({ lang = 'ar' }) {
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
             {isRtl
-              ? 'جرّب بنفسك أونلاين: كاشير ومخازن، إدارة مطاعم وكافيهات، عيادات ومراكز طبية، موارد بشرية، ومواقع متكاملة لمختلف المجالات — مبرمجة ومطورة بواسطة عبد السلام (AM Marketing).'
-              : 'Test live interactive demos: Retail POS, Restaurant OS, Medical Clinic ERP, HR & Payroll, and full industry websites — engineered by Abdel Salam (AM Marketing).'}
+              ? 'جرّب بنفسك أونلاين: كاشير ومخازن، إدارة مطاعم وكافيهات، عيادات ومراكز طبية، موقع مدير الصيانة، ومواقع متكاملة لمختلف المجالات — مبرمجة ومطورة بواسطة عبد السلام (AM Marketing).'
+              : 'Test live interactive demos: Retail POS, Restaurant OS, Medical Clinic EMR, Modir Al-Syana Portal, and industry websites — engineered by Abdel Salam (AM Marketing).'}
           </p>
+
+          {/* 🎬 20-Second Video Intro Quick CTA */}
+          <div className="pt-2 flex items-center justify-center gap-3">
+            <button
+              onClick={() => setActiveModal('video')}
+              className="px-5 py-2.5 rounded-full bg-slate-900 border border-amber-500/40 hover:border-amber-400 text-amber-400 hover:text-white hover:bg-slate-800 text-xs sm:text-sm font-black flex items-center gap-2 shadow-lg shadow-amber-500/10 transition-all cursor-pointer group"
+            >
+              <div className="w-6 h-6 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+              </div>
+              <span>{isRtl ? 'فيديو تعريفي سريع (20 ثانية) 🎬' : '20-Sec Quick Video Tour 🎬'}</span>
+            </button>
+          </div>
         </div>
 
-        {/* 🌟 Interactive Personalization Bar (تخصيص العرض باسم العميل) */}
+        {/* 🌟 Interactive Personalization Bar */}
         <div className="max-w-3xl mx-auto p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800/90 to-slate-900 border border-amber-500/30 shadow-2xl shadow-amber-500/5 space-y-3">
           <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-amber-400">
             <span className="flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
-              {isRtl ? 'خصّص العرض التفاعلي باسم نشاطك التجاري الآن:' : 'Personalize the live demo with your business name:'}
+              {isRtl ? 'خصّص اسم التجربة لنشاطك التجاري:' : 'Customize live demo name for your business:'}
             </span>
             <span className="text-[11px] text-slate-400 hidden sm:inline">
-              {isRtl ? 'يتغير في كل الكروت والفواتير لحظياً ⚡' : 'Reflects across all cards & receipts ⚡'}
+              {isRtl ? 'يتغير تلقائياً حسب مجالك أو اكتب ما يناسبك ⚡' : 'Auto-adapts to your field or type custom ⚡'}
             </span>
           </div>
 
@@ -329,8 +352,11 @@ export default function SystemsHub({ lang = 'ar' }) {
               <input
                 type="text"
                 value={businessName}
-                onChange={(e) => setBusinessName(e.target.value)}
-                placeholder={isRtl ? 'اكتب اسم محلك أو عيادتك أو شركتك...' : 'Enter your store, clinic or company name...'}
+                onChange={(e) => {
+                  setBusinessName(e.target.value);
+                  setIsCustomName(true);
+                }}
+                placeholder={isRtl ? 'اكتب اسم محلك أو عيادتك أو نشاطك...' : 'Enter your store, clinic or company name...'}
                 className="w-full pl-4 pr-11 py-2.5 rounded-xl bg-slate-950/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400 transition-colors font-bold"
               />
             </div>
@@ -347,18 +373,18 @@ export default function SystemsHub({ lang = 'ar' }) {
         {/* 🏢 Industry Quick Filters */}
         <div className="space-y-4">
           <p className="text-center text-xs sm:text-sm font-bold text-slate-400">
-            {isRtl ? 'إنت شغّال في إيه؟ اختار مجالك وشوف النظام والموقع المناسب ليك:' : 'Select your industry to see tailored systems and website demos:'}
+            {isRtl ? 'إنت شغّال في إيه؟ اختار مجالك وسيتغير الاسم والأنظمة المناسبة فوراً:' : 'Select your industry to see tailored systems and website demos:'}
           </p>
 
-          <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+          <div className="flex items-center justify-center gap-2 sm:gap-2.5 flex-wrap">
             {industries.map((ind) => {
               const Icon = ind.icon;
               const isActive = activeIndustry === ind.id;
               return (
                 <button
                   key={ind.id}
-                  onClick={() => setActiveIndustry(ind.id)}
-                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  onClick={() => handleSelectIndustry(ind.id)}
+                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                     isActive
                       ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 border border-blue-400 scale-105'
                       : 'bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-slate-700 hover:text-white'
@@ -474,22 +500,22 @@ export default function SystemsHub({ lang = 'ar' }) {
             <div>
               <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-400 animate-ping" />
-                {isRtl ? 'المواقع الإلكترونية الجاهزة للتسليم (Turnkey Websites)' : 'Ready Industry Websites'}
+                {isRtl ? 'المواقع الإلكترونية الجاهزة للتسليم الفوري (Turnkey Ready Websites)' : 'Ready Turnkey Websites for Instant Handover'}
               </h3>
               <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                {isRtl ? 'مواقع فائقة السرعة ومتجاوبة ومربوطة بلوحة تحكم فورية لاستقبال طلبات الزوار' : 'High-speed, responsive websites with instant customer leads dispatch'}
+                {isRtl ? 'مواقع حقيقية ومصممة بأعلى معايير الويب وسرعة التحميل جاهزة للبيع والتخصيص فوراً باسم العميل' : 'Live production websites optimized for SEO and conversion ready for instant rebranding'}
               </p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {websites.map((site, idx) => (
+            {websites.map((site) => (
               <div
-                key={idx}
+                key={site.id}
                 className="rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-slate-700 transition-all hover:shadow-2xl group"
               >
                 <div>
-                  {/* Image with dynamic overlay name */}
+                  {/* Image with realistic industry brand label */}
                   <div className="relative h-44 overflow-hidden bg-slate-950">
                     <img
                       src={site.img}
@@ -500,15 +526,15 @@ export default function SystemsHub({ lang = 'ar' }) {
 
                     {/* Top Badge */}
                     <div className="absolute top-3 left-3">
-                      <span className="px-3 py-1 rounded-full text-[11px] font-black bg-slate-950/80 backdrop-blur-md border border-slate-700 text-amber-400">
+                      <span className="px-3 py-1 rounded-full text-[11px] font-black bg-slate-950/85 backdrop-blur-md border border-slate-700 text-amber-400">
                         {site.badge}
                       </span>
                     </div>
 
-                    {/* Personalized business watermark */}
+                    {/* Realistic Brand Tag on Card (Not forced 'Sultan' everywhere!) */}
                     <div className="absolute bottom-3 right-3 left-3 flex items-center justify-between">
-                      <span className="text-xs font-black text-white drop-shadow-md bg-slate-950/70 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-slate-700/50">
-                        {businessName}
+                      <span className="text-xs font-black text-white drop-shadow-md bg-slate-950/80 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-slate-700/60">
+                        {isCustomName ? businessName : site.businessLabel}
                       </span>
                     </div>
                   </div>
@@ -524,19 +550,43 @@ export default function SystemsHub({ lang = 'ar' }) {
                   </div>
                 </div>
 
-                {/* Footer Action */}
-                <div className="p-5 pt-0">
-                  <a
-                    href={`https://wa.me/201098174992?text=${encodeURIComponent(
-                      `مرحباً يا عبد السلام، أعجبني تصميم (${site.title}) وأود تنفيذه لمشروعي باسم: ${businessName}`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-gradient-to-r hover:from-amber-500 hover:to-amber-600 hover:text-slate-950 text-slate-200 text-xs font-black flex items-center justify-center gap-2 border border-slate-700 hover:border-transparent transition-all"
-                  >
-                    <span>{isRtl ? 'احجز موقعك بهذا التصميم' : 'Claim This Design'}</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                {/* Footer Actions: Live Preview + WhatsApp Order */}
+                <div className="p-5 pt-0 space-y-2">
+                  <div className="flex gap-2">
+                    {site.isLiveAvailable ? (
+                      <button
+                        onClick={() => handleOpenPreview(site)}
+                        className="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-black flex items-center justify-center gap-1.5 cursor-pointer shadow-lg shadow-blue-600/20 transition-all"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>{isRtl ? 'معاينة الموقع لايف 🌐' : 'Live Preview 🌐'}</span>
+                      </button>
+                    ) : (
+                      <a
+                        href={`https://wa.me/201098174992?text=${encodeURIComponent(
+                          `مرحباً يا عبد السلام، أود الاطلاع على ديمو تصميم (${site.title})`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-black flex items-center justify-center gap-1.5 border border-slate-700 transition-all"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>{isRtl ? 'طلب المعاينة' : 'Preview'}</span>
+                      </a>
+                    )}
+
+                    <a
+                      href={`https://wa.me/201098174992?text=${encodeURIComponent(
+                        `مرحباً يا عبد السلام، أود شراء أو حجز (${site.title}) باسم نشاطي: ${isCustomName ? businessName : site.businessLabel}`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="py-2.5 px-3 rounded-xl bg-emerald-600/20 hover:bg-emerald-600 border border-emerald-500/40 text-emerald-300 hover:text-white text-xs font-bold flex items-center justify-center gap-1 transition-all"
+                      title={isRtl ? 'احجز الآن' : 'Claim'}
+                    >
+                      <span>{isRtl ? 'احجز الآن' : 'Claim'}</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
@@ -545,7 +595,199 @@ export default function SystemsHub({ lang = 'ar' }) {
       </div>
 
       {/* ======================================================== */}
-      {/* 🧾 MODAL 1: Interactive POS & Cashier Simulator           */}
+      {/* 🎬 MODAL: 20-Second Video Tour Explainer                  */}
+      {/* ======================================================== */}
+      <AnimatePresence>
+        {activeModal === 'video' && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveModal(null)}
+              className="fixed inset-0 bg-slate-950/85 backdrop-blur-md"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-2xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center">
+                    <Play className="w-4 h-4 fill-current ml-0.5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm sm:text-base font-black text-white">
+                      {isRtl ? 'فيديو تعريفي بالمنظومة السحابية (20 ثانية)' : '20-Sec Turnkey Systems Explainer'}
+                    </h3>
+                    <p className="text-[11px] text-slate-400">AM Marketing • عبد السلام</p>
+                  </div>
+                </div>
+                <button onClick={() => setActiveModal(null)} className="p-1.5 text-slate-400 hover:text-white">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="p-6 space-y-4">
+                <div className="relative rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center border border-slate-800">
+                  <video
+                    src={getAssetUrl('/assets/videos/ai_investment_promo.mp4')}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                  <h4 className="text-xs font-black text-amber-400">
+                    {isRtl ? 'ما الذي تحصل عليه مع كل نظام؟' : 'What is included in every system?'}
+                  </h4>
+                  <ul className="grid sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                    <li className="flex items-center gap-1.5">
+                      <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>{isRtl ? 'تسليم وتركيب خلال 24 ساعة' : '24-hour instant deployment'}</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>{isRtl ? 'يعمل بدون إنترنت أو سحابياً' : 'Works online and 100% offline'}</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>{isRtl ? 'تدريب كامل لك ولفريق عملك' : 'Full onboarding & staff training'}</span>
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>{isRtl ? 'دعم فني وضمان استقرار 100%' : 'Direct support & uptime warranty'}</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <a
+                  href="https://wa.me/201098174992?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%8A%D8%A7%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D8%A7%D9%84%D8%AA%D8%B9%D8%B1%D9%8A%D9%81%D9%8A%20%D9%88%D8%A3%D9%88%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%86%D8%B8%D8%A7%D9%85%20%D9%84%D9%86%D8%B4%D8%A7%D8%B7%D9%8A%20%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  <span>{isRtl ? 'تواصل مع عبد السلام واطلب نظامك الآن 💬' : 'Contact Abdel Salam via WhatsApp 💬'}</span>
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ======================================================== */}
+      {/* 🌐 MODAL: Live Website Iframe Sandbox Preview             */}
+      {/* ======================================================== */}
+      <AnimatePresence>
+        {activeModal === 'website_preview' && previewSite && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveModal(null)}
+              className="fixed inset-0 bg-slate-950/85 backdrop-blur-md"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-5xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col h-[92vh]"
+            >
+              {/* Sandbox Top Bar with Device Toggles */}
+              <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-slate-800 bg-slate-950">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                    <Monitor className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-black text-white">{previewSite.title}</h3>
+                    <p className="text-[10px] text-emerald-400 font-bold">{isRtl ? 'معاينة حية ومباشرة' : 'Live Sandbox Preview'}</p>
+                  </div>
+                </div>
+
+                {/* Device viewport toggle */}
+                <div className="flex items-center gap-2">
+                  <div className="hidden sm:flex items-center gap-1 p-1 bg-slate-900 border border-slate-800 rounded-lg">
+                    <button
+                      onClick={() => setPreviewDevice('desktop')}
+                      className={`px-2.5 py-1 rounded text-xs font-bold transition-all ${
+                        previewDevice === 'desktop' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      {isRtl ? 'لابتوب 💻' : 'Desktop 💻'}
+                    </button>
+                    <button
+                      onClick={() => setPreviewDevice('mobile')}
+                      className={`px-2.5 py-1 rounded text-xs font-bold transition-all ${
+                        previewDevice === 'mobile' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      {isRtl ? 'موبايل 📱' : 'Mobile 📱'}
+                    </button>
+                  </div>
+
+                  <a
+                    href={previewSite.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs font-bold flex items-center gap-1"
+                    title={isRtl ? 'فتح في نافذة كاملة' : 'Open in new tab'}
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+
+                  <button onClick={() => setActiveModal(null)} className="p-2 text-slate-400 hover:text-white">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Iframe Viewport Container */}
+              <div className="flex-1 bg-slate-950 flex items-center justify-center p-2 sm:p-4 overflow-hidden">
+                <div
+                  className={`h-full transition-all duration-300 rounded-xl overflow-hidden border border-slate-800 shadow-2xl bg-white ${
+                    previewDevice === 'mobile' ? 'w-[375px]' : 'w-full'
+                  }`}
+                >
+                  <iframe
+                    src={previewSite.demoUrl}
+                    title={previewSite.title}
+                    className="w-full h-full border-0"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                  />
+                </div>
+              </div>
+
+              {/* Bottom Quick Bar */}
+              <div className="px-6 py-3 border-t border-slate-800 bg-slate-950 flex items-center justify-between">
+                <p className="text-xs text-slate-400">
+                  {isRtl ? 'هذا الموقع جاهز للتسليم ونقل الملكية وإضافة بياناتك فوراً.' : 'Ready for instant deployment and client data transfer.'}
+                </p>
+                <a
+                  href={`https://wa.me/201098174992?text=${encodeURIComponent(
+                    `مرحباً يا عبد السلام، قمت بمعاينة موقع (${previewSite.title}) وأود شراءه وتخصيصه فوراً.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg shadow-emerald-500/20"
+                >
+                  <span>{isRtl ? 'شراء وتخصيص الموقع فوراً عبر واتساب' : 'Claim & Rebrand via WhatsApp'}</span>
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ======================================================== */}
+      {/* 🧾 MODAL: Interactive POS & Cashier Simulator             */}
       {/* ======================================================== */}
       <AnimatePresence>
         {activeModal === 'pos' && (
@@ -564,7 +806,6 @@ export default function SystemsHub({ lang = 'ar' }) {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="relative w-full max-w-3xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden z-10 max-h-[92vh] flex flex-col"
             >
-              {/* Simulator Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center">
@@ -588,9 +829,7 @@ export default function SystemsHub({ lang = 'ar' }) {
                 </button>
               </div>
 
-              {/* Simulator Body */}
               <div className="p-6 overflow-y-auto grid sm:grid-cols-2 gap-6">
-                {/* Left: Quick Product Selector */}
                 <div className="space-y-4">
                   <h4 className="text-xs font-black text-slate-400 uppercase tracking-wider">
                     {isRtl ? 'الأصناف السريعة (اضغط للإضافة):' : 'Quick Menu Items (Click to Add):'}
@@ -618,7 +857,6 @@ export default function SystemsHub({ lang = 'ar' }) {
                   </div>
                 </div>
 
-                {/* Right: Active Order Cart & Invoice */}
                 <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex flex-col justify-between">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between border-b border-slate-800 pb-2">
@@ -659,7 +897,6 @@ export default function SystemsHub({ lang = 'ar' }) {
                     )}
                   </div>
 
-                  {/* Summary & Print Button */}
                   <div className="pt-4 border-t border-slate-800 space-y-2">
                     <div className="flex justify-between text-xs text-slate-400">
                       <span>{isRtl ? 'المجموع الفرعي:' : 'Subtotal:'}</span>
@@ -691,7 +928,7 @@ export default function SystemsHub({ lang = 'ar' }) {
       </AnimatePresence>
 
       {/* ======================================================== */}
-      {/* 🍽️ MODAL 2: Interactive Restaurant Table Floor Plan       */}
+      {/* 🍽️ MODAL: Interactive Restaurant Table Floor Plan         */}
       {/* ======================================================== */}
       <AnimatePresence>
         {activeModal === 'restaurant' && (
@@ -719,7 +956,9 @@ export default function SystemsHub({ lang = 'ar' }) {
                     <h3 className="text-sm sm:text-base font-black text-white">
                       {isRtl ? 'محاكي خريطة الصالة والترابيزات (Restaurant Floor Plan)' : 'Live Restaurant Floor Simulator'}
                     </h3>
-                    <p className="text-[11px] text-amber-400 font-bold">{businessName}</p>
+                    <p className="text-[11px] text-amber-400 font-bold">
+                      {isCustomName ? businessName : industryDefaults.restaurant}
+                    </p>
                   </div>
                 </div>
                 <button onClick={() => setActiveModal(null)} className="p-1.5 text-slate-400 hover:text-white">
@@ -792,7 +1031,7 @@ export default function SystemsHub({ lang = 'ar' }) {
       </AnimatePresence>
 
       {/* ======================================================== */}
-      {/* 🏥 MODAL 3: Interactive Clinic Prescription Generator      */}
+      {/* 🏥 MODAL: Interactive Clinic Prescription Generator       */}
       {/* ======================================================== */}
       <AnimatePresence>
         {activeModal === 'clinic' && (
@@ -820,7 +1059,10 @@ export default function SystemsHub({ lang = 'ar' }) {
                     <h3 className="text-sm sm:text-base font-black text-white">
                       {isRtl ? 'محاكي الروشتة الطبية الذكية' : 'Medical Prescription Generator'}
                     </h3>
-                    <p className="text-[11px] text-amber-400 font-bold">{businessName}</p>
+                    <p className="text-[11px] text-amber-400 font-bold">
+                      {/* Fixed: Uses clinic name, NEVER restaurant! */}
+                      {isCustomName && activeIndustry === 'clinic' ? businessName : industryDefaults.clinic}
+                    </p>
                   </div>
                 </div>
                 <button onClick={() => setActiveModal(null)} className="p-1.5 text-slate-400 hover:text-white">
@@ -849,11 +1091,13 @@ export default function SystemsHub({ lang = 'ar' }) {
                   />
                 </div>
 
-                {/* Simulated Prescription Paper */}
+                {/* Simulated Prescription Paper (Branded with Clinic Name!) */}
                 <div className="p-5 rounded-xl bg-white text-slate-900 space-y-3 shadow-lg border border-slate-200">
                   <div className="border-b border-slate-300 pb-2 flex justify-between items-start">
                     <div>
-                      <h4 className="text-xs font-black text-blue-900">{businessName}</h4>
+                      <h4 className="text-xs font-black text-blue-900">
+                        {isCustomName && activeIndustry === 'clinic' ? businessName : industryDefaults.clinic}
+                      </h4>
                       <p className="text-[10px] text-slate-600">{selectedDoctor}</p>
                     </div>
                     <span className="text-[10px] font-bold text-slate-500">{new Date().toLocaleDateString()}</span>
@@ -889,7 +1133,7 @@ export default function SystemsHub({ lang = 'ar' }) {
       </AnimatePresence>
 
       {/* ======================================================== */}
-      {/* 🖨️ MODAL 4: Realistic Thermal Receipt Popup                */}
+      {/* 🖨️ MODAL: Realistic Thermal Receipt Popup                */}
       {/* ======================================================== */}
       <AnimatePresence>
         {activeModal === 'receipt' && receiptData && (
@@ -908,7 +1152,6 @@ export default function SystemsHub({ lang = 'ar' }) {
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="relative w-full max-w-sm bg-white text-slate-950 rounded-2xl shadow-2xl p-6 z-10 font-mono text-xs space-y-4"
             >
-              {/* Receipt Header */}
               <div className="text-center space-y-1 border-b-2 border-dashed border-slate-300 pb-3">
                 <h3 className="font-black text-base tracking-wider">{receiptData.bizName}</h3>
                 <p className="text-[10px] text-slate-600 font-sans">{isRtl ? 'إيصال دفع إلكتروني ضريبي' : 'Tax Payment Receipt'}</p>
@@ -916,7 +1159,6 @@ export default function SystemsHub({ lang = 'ar' }) {
                 <p className="text-[10px] text-slate-500 font-bold">{receiptData.invNumber}</p>
               </div>
 
-              {/* Items List */}
               <div className="space-y-1.5 border-b-2 border-dashed border-slate-300 pb-3">
                 <div className="flex justify-between font-bold text-[11px] pb-1 border-b border-slate-200">
                   <span>{isRtl ? 'الصنف' : 'Item'}</span>
@@ -930,7 +1172,6 @@ export default function SystemsHub({ lang = 'ar' }) {
                 ))}
               </div>
 
-              {/* Totals */}
               <div className="space-y-1 text-[11px] border-b-2 border-dashed border-slate-300 pb-3">
                 <div className="flex justify-between text-slate-600">
                   <span>{isRtl ? 'المجموع الفرعي:' : 'Subtotal:'}</span>
@@ -946,7 +1187,6 @@ export default function SystemsHub({ lang = 'ar' }) {
                 </div>
               </div>
 
-              {/* QR Barcode Simulation */}
               <div className="text-center pt-1 space-y-1">
                 <div className="inline-block p-2 bg-slate-100 rounded-lg border border-slate-200">
                   <span className="text-xl">🏁 📱 📊</span>
@@ -956,7 +1196,6 @@ export default function SystemsHub({ lang = 'ar' }) {
                 </p>
               </div>
 
-              {/* Actions */}
               <div className="pt-2 flex gap-2 font-sans">
                 <button
                   onClick={() => window.print()}
