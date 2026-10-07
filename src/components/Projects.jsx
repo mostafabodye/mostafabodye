@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Search, ArrowUpRight, Check, Eye, MessageSquare, Phone, Sparkles, ShieldCheck, Zap } from 'lucide-react';
+import { ExternalLink, Search, ArrowUpRight, Check, Eye, MessageSquare, Phone, Sparkles, ShieldCheck, Zap, Play } from 'lucide-react';
 import { projectsData } from '../data/projectsData';
 import ProjectModal from './ProjectModal';
 import { getAssetUrl } from '../utils/assets';
@@ -155,24 +155,52 @@ export default function Projects({ t, lang }) {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center gap-3 pt-2 border-t border-slate-700/40">
+                    <div className="flex items-center gap-2 pt-2 border-t border-slate-700/40">
                       <button
                         onClick={() => setSelectedProject(project)}
-                        className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-800/80 hover:bg-slate-700 border border-slate-700/80 rounded-xl text-slate-200 text-xs font-bold transition-all"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-slate-800/80 hover:bg-slate-700 border border-slate-700/80 rounded-xl text-slate-200 text-xs font-bold transition-all"
                       >
                         <Eye className="w-4 h-4 text-blue-400" />
                         <span>{lang === 'ar' ? 'التفاصيل والنتائج' : 'Details & Metrics'}</span>
                       </button>
 
-                      {project.demoUrl && project.demoUrl !== '#' && (
+                      {project.demoUrl && project.demoUrl.startsWith('http') ? (
                         <a
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl text-white text-xs font-bold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white text-xs font-bold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
                         >
-                          <span>{t.projects.liveDemo}</span>
+                          <span>{lang === 'ar' ? 'الموقع المباشر 🌐' : 'Live Site 🌐'}</span>
                           <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      ) : project.demoUrl === '#systems-hub' ? (
+                        <a
+                          href="#systems-hub"
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl text-slate-950 text-xs font-black transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/25"
+                        >
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>{lang === 'ar' ? 'تحميل الأنظمة ⚡' : 'Systems Hub ⚡'}</span>
+                        </a>
+                      ) : project.video ? (
+                        <button
+                          onClick={() => setSelectedProject(project)}
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-purple-500 to-rose-600 rounded-xl text-white text-xs font-bold transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25"
+                        >
+                          <Play className="w-3.5 h-3.5 fill-current" />
+                          <span>{lang === 'ar' ? 'تشغيل الفيديو 🎬' : 'Watch Video 🎬'}</span>
+                        </button>
+                      ) : (
+                        <a
+                          href={`https://wa.me/201098174992?text=${encodeURIComponent(
+                            `مرحباً عبد السلام، أرغب في استشارة وطلب تنفيذ عمل مماثل لـ: ${project.title?.[lang] || project.title?.ar}`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl text-slate-950 text-xs font-black transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25"
+                        >
+                          <MessageSquare className="w-3.5 h-3.5" />
+                          <span>{lang === 'ar' ? 'طلب عمل مماثل 💬' : 'Order Similar 💬'}</span>
                         </a>
                       )}
                     </div>

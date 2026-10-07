@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, CheckCircle, TrendingUp, AlertCircle, Lightbulb } from 'lucide-react';
+import { X, ExternalLink, CheckCircle, TrendingUp, AlertCircle, Lightbulb, MessageSquare, Sparkles } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 
 export default function ProjectModal({ project, isOpen, onClose, t, lang }) {
@@ -190,15 +190,40 @@ export default function ProjectModal({ project, isOpen, onClose, t, lang }) {
                 {t.projects.lightbox.close}
               </button>
 
-              {project.demoUrl && project.demoUrl !== '#' && (
+              {project.demoUrl && project.demoUrl.startsWith('http') && (
                 <a
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 transition-all flex items-center gap-1.5 shadow-lg shadow-blue-500/25"
+                  className="px-5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 transition-all flex items-center gap-1.5 shadow-lg shadow-blue-500/25"
                 >
-                  <span>{t.projects.liveDemo}</span>
+                  <span>{lang === 'ar' ? 'زيارة الموقع المباشر 🌐' : 'Open Live Site 🌐'}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
+
+              {project.demoUrl === '#systems-hub' && (
+                <a
+                  href="#systems-hub"
+                  onClick={onClose}
+                  className="px-5 py-2 rounded-xl text-xs font-black text-slate-950 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 transition-all flex items-center gap-1.5 shadow-lg shadow-amber-500/25"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>{lang === 'ar' ? 'تجربة وتحميل الأنظمة ⚡' : 'Try & Download ⚡'}</span>
+                </a>
+              )}
+
+              {(!project.demoUrl || !project.demoUrl.startsWith('http')) && project.demoUrl !== '#systems-hub' && (
+                <a
+                  href={`https://wa.me/201098174992?text=${encodeURIComponent(
+                    `مرحباً عبد السلام، أرغب في استشارة وطلب تنفيذ عمل مماثل لـ: ${project.title?.[lang] || project.title?.ar}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 rounded-xl text-xs font-black text-slate-950 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 transition-all flex items-center gap-1.5 shadow-lg shadow-emerald-500/25"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>{lang === 'ar' ? 'طلب تنفيذ عمل مماثل 💬' : 'Order Similar 💬'}</span>
                 </a>
               )}
             </div>

@@ -8,12 +8,12 @@ export const projectsData = [
       en: "AM Cloud Business Systems & Turnkey Web Hub"
     },
     subtitle: {
-      ar: "بناء وتشغيل 6 أنظمة سحابية (كاشير، مطاعم، عيادات، مخازن، HR) مع محاكي ديمو تفاعلي مباشر",
-      en: "Architected 6 turnkey cloud systems (POS, Restaurant, Clinic, Inventory, HR) with live interactive demo sandbox"
+      ar: "بناء وتشغيل 6 أنظمة سحابية ومكتبية (كاشير، مطاعم، عيادات، مخازن، HR) مع محاكي ديمو تفاعلي مباشر",
+      en: "Architected 6 turnkey business systems (POS, Restaurant, Clinic, Inventory, HR) with live interactive sandbox"
     },
     badge: {
-      ar: "منظومة أنظمة سحابية + ديمو حي",
-      en: "Cloud Systems + Live Demo"
+      ar: "أنظمة برمجية جاهزة + ديمو حي",
+      en: "Ready Systems + Live Demo"
     },
     client: {
       ar: "وكالة AM Marketing (عبد السلام)",
@@ -23,8 +23,8 @@ export const projectsData = [
     tags: ["Cloud ERP", "POS كاشير", "إدارة مطاعم", "إدارة عيادات", "مواقع جاهزة", "Interactive Sandbox"],
     gradient: "from-blue-600 via-indigo-600 to-purple-600",
     summary: {
-      ar: "تطوير منظومة سحابية متكاملة لخدمة الأنشطة التجارية والشركات، تشمل 6 أنظمة تشغيلية (نقاط بيع، مطاعم، عيادات، مخازن، موارد بشرية، ولوحة تحكم CMS) بالإضافة إلى 6 مواقع جاهزة للتسليم الفوري مع محاكي تجربة حي يتيح للعملاء اختبار النظام باسم محالهم وللوجو الخاص بهم قبل الشراء.",
-      en: "Engineered a production-ready turnkey cloud ecosystem featuring 6 enterprise modules (POS, Restaurant OS, Medical Clinic EMR, Inventory, HR & Payroll, Master CMS) and 6 responsive industry portals with live in-browser sandboxing and dynamic brand personalization."
+      ar: "تطوير منظومة تشغيلية متكاملة لخدمة الأنشطة التجارية والشركات، تشمل 6 أنظمة متخصصة (نقاط بيع، مطاعم، عيادات، مخازن، موارد بشرية، ولوحة تحكم CMS) بالإضافة إلى برامج Windows Offline تعمل بدون إنترنت مع محاكي تجربة حي باسم وللوجو العميل قبل الشراء.",
+      en: "Engineered a production-ready turnkey cloud ecosystem featuring 6 enterprise modules (POS, Restaurant OS, Medical Clinic EMR, Inventory, HR & Payroll, Master CMS) with live in-browser sandboxing and dynamic brand personalization."
     },
     challenge: {
       ar: "تردد أصحاب الأنشطة التجارية في شراء البرامج والأنظمة قبل تجربتها عملياً وصعوبة إقناعهم بدون ديمو واقعي يحمل هوية نشاطهم.",
@@ -37,7 +37,7 @@ export const projectsData = [
     results: [
       { label: { ar: "أنظمة تشغيلية", en: "Ready Systems" }, value: "+6 أنظمة" },
       { label: { ar: "سرعة التسليم", en: "Deployment Time" }, value: "24 ساعة" },
-      { label: { ar: "تجربة بدون نت أو سحابي", en: "Deployment Mode" }, value: "100% مرن" }
+      { label: { ar: "تشغيل بدون إنترنت", en: "Offline Support" }, value: "100% متاح" }
     ],
     features: {
       ar: [
@@ -85,7 +85,7 @@ export const projectsData = [
       en: "Engineered a high-performance bilingual (Arabic / English) web platform for Al-Majal Al-Amn in Jeddah, specialized in certified fire protection and industrial safety, coupled with technical SEO, Google Tag Manager integration, and targeted Google Ads search campaigns."
     },
     challenge: {
-      ar: "الحاجة لبناء واجهة رقمية احترافية وسريعة تثبت اعتماد المؤسسة لدى الدفاع المدني وتصل للمصانع والشركات الكبرى، في ظل منافسة شرسة في سوق السلامة وإطفاء الحريق بالمملكة.",
+      ar: "الحاجة لبناء واجهة رقمية احترافية وسريعة تثبت اعتماد المؤسسة لدى الدفاع المدني وتصل للمصانع والشركات الكبرى، في ظل منافسة شرسة في سوق السلامة بالمملكة.",
       en: "Needed an authoritative, ultra-fast bilingual platform reflecting official Civil Defense accreditation and reaching industrial enterprises amidst fierce market competition in KSA."
     },
     solution: {
@@ -116,57 +116,169 @@ export const projectsData = [
     isFeatured: true
   },
   {
-    id: "web-realestate",
+    id: "web-modir-syana",
     category: "web",
     title: {
-      ar: "منصة الابتكار والتطوير العقاري الذكية",
-      en: "Smart Real Estate Platform & Dashboard"
+      ar: "موقع وخدمات مدير الصيانة المعتمد (الأجهزة المنزلية)",
+      en: "Certified Home Appliances Maintenance Platform"
     },
     subtitle: {
-      ar: "تطوير واجهة مستخدم فائقة السرعة مع لوحة تحكم للعقارات",
-      en: "Ultra-fast modern real estate platform with dynamic listings & analytics"
+      ar: "منصة ويب متكاملة لخدمات صيانة الغسالات، الثلاجات، الأفران، والتكييفات مع طلب صيانة فوري",
+      en: "Full-service digital platform for home appliance repairs with direct scheduling"
     },
     badge: {
-      ar: "تطوير مواقع (BUILD)",
-      en: "Web Development (BUILD)"
+      ar: "موقع وتطبيق مباشر (BUILD)",
+      en: "Live Platform (BUILD)"
     },
     client: {
-      ar: "منصة التطوير العقاري الحديثة",
-      en: "Modern Real Estate Group"
+      ar: "شبكة مدير الصيانة المعتمد",
+      en: "Certified Maintenance Network"
     },
-    tags: ["Next.js", "React", "Tailwind CSS", "SEO", "Dashboard"],
+    website: "https://mustafaabdelsalam49-arch.github.io/project-1-/index.html",
+    tags: ["تطوير مواقع", "صيانة أجهزة منزلية", "SEO محلي", "حجز فوري", "تطبيق ويب"],
     gradient: "from-cyan-500 to-blue-600",
     summary: {
-      ar: "إعادة هيكلة وتطوير موقع عقاري حديث يتيح للعملاء استعراض الفلل والشقق مع فلاتر ذكية وخريطة تفاعلية وحجز معاينة بضغطة زر.",
-      en: "Engineered a lightning-fast property portal featuring smart filtering, interactive map exploration, and 1-click inspection bookings."
+      ar: "تصميم وبرمجة موقع إلكتروني متكامل لخدمات صيانة الأجهزة المنزلية (غسالات، ثلاجات، ديب فريزر، أفران، تكييفات) مع صفحات متخصصة لكل ماركة عالمية (LG، سامسونج، زانوسي، كريازي) وأقسام للأعطال الشائعة ونموذج اتصال سريع.",
+      en: "Architected a full-featured home appliance maintenance platform with dedicated brand pages, local SEO schema, and instant service dispatch."
     },
     challenge: {
-      ar: "الموقع القديم كان بطيئاً جداً ومعدل الارتداد مرتفع بنسبة 65% مما أضاع آلاف الفرص البيعية.",
-      en: "Legacy platform suffered from high bounce rates (65%) and slow load speeds, leaking high-value leads."
+      ar: "الحاجة إلى منصة سريعة وسهلة الاستخدام تصل للعملاء الذين يبحثون عن صيانة طارئة لأجهزتهم المنزلية في مختلف المحافظات مع تجربة تصفح فورية على الجوال.",
+      en: "Building an intuitive, high-speed portal to capture emergency appliance repair searches across multiple metropolitan sectors."
     },
     solution: {
-      ar: "إعادة بناء الواجهة بـ Next.js وTailwind CSS وتسريع التحميل ليكون أقل من ثانية واحدة مع تجربة مستخدم سلسة 100% على الجوال.",
-      en: "Rebuilt from the ground up using Next.js & Tailwind CSS, cutting load times to sub-second and optimizing for mobile conversion."
+      ar: "تطوير موقع سريع متوافق 100% مع الجوال ومحركات البحث SEO، مع أزرار اتصال مباشرة ونماذج حجز سريعة وأدلة صيانة دورية بدون أي تعقيد.",
+      en: "Engineered mobile-first responsive architecture with localized SEO keyword targeting and friction-free direct booking funnels."
     },
     results: [
-      { label: { ar: "سرعة التحميل", en: "Page Load Speed" }, value: "0.9s" },
-      { label: { ar: "تقييم Google PageSpeed", en: "Google PageSpeed" }, value: "98/100" },
-      { label: { ar: "زيادة طلبات المعاينة", en: "Inspection Inquiries" }, value: "+180%" }
+      { label: { ar: "سرعة التحميل", en: "Load Speed" }, value: "0.8s" },
+      { label: { ar: "طلبات الصيانة", en: "Service Bookings" }, value: "+380" },
+      { label: { ar: "تقييم الأداء", en: "Lighthouse" }, value: "98/100" }
     ],
     features: {
       ar: [
-        "فلاتر بحث عقاري فورية بدون إعادة تحميل",
-        "تصميم متجاوب 100% مع الجوال والتابلت",
-        "تكامل مباشر مع محادثات واتساب للحجز"
+        "أقسام مخصصة لكافة الأجهزة المنزلية والماركات العالمية",
+        "متوافق 100% مع محركات البحث SEO وظهور الكلمات المفتاحية",
+        "نظام حجز صيانة فوري متجاوب مع الهواتف الذكية"
       ],
       en: [
-        "Instant zero-refresh property filtering",
-        "100% fluid mobile & tablet responsiveness",
-        "Direct WhatsApp inspection scheduler"
+        "Dedicated multi-appliance repair catalog",
+        "Technical local SEO architecture",
+        "Instant mobile-first dispatch forms"
       ]
     },
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=80",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    image: "/assets/images/modir_syana_preview.webp",
+    demoUrl: "https://mustafaabdelsalam49-arch.github.io/project-1-/index.html",
+    isFeatured: true
+  },
+  {
+    id: "web-restaurant-app",
+    category: "web",
+    title: {
+      ar: "منصة وتطبيق مطعم وكافيه السلطان (طلب أونلاين ودليفري)",
+      en: "Al-Sultan Restaurant & Cafe Online Ordering Platform"
+    },
+    subtitle: {
+      ar: "تطبيق ويب سحابي متكامل لطلب الوجبات السريعة والمشروبات مع سلة مشتريات وتتبع الطلبات",
+      en: "Turnkey cloud web app for restaurant online ordering with interactive cart & dispatch"
+    },
+    badge: {
+      ar: "تطبيق ويب مباشر (LIVE DEMO)",
+      en: "Live Web App (LIVE DEMO)"
+    },
+    client: {
+      ar: "مطعم وكافيه السلطان الفاخر",
+      en: "Al-Sultan Restaurant & Cafe"
+    },
+    website: "https://marketing-app.runasp.net/",
+    tags: ["Web App", "نظام مطاعم", "طلب طعام أونلاين", "سلة مشتريات", "POS سحابي"],
+    gradient: "from-amber-500 via-orange-600 to-red-600",
+    summary: {
+      ar: "تطبيق ويب تجاري متكامل يتيح لرواد مطعم وكافيه السلطان تصفح قائمة الطعام والمشروبات بالأسعار، وإضافة الوجبات للسلة، واختيار التوصيل أو الاستلام، وإتمام الطلب لحظياً مع لوحة تحكم فورية.",
+      en: "Production-ready restaurant & cafe web app enabling customers to explore live menus, customize orders, add items to cart, and checkout with instant dispatch."
+    },
+    challenge: {
+      ar: "توفير نظام طلب طعام رقمي سريع ومباشر للعميل دون الحاجة لتنزيل تطبيقات ثقيلة من المتاجر مع سهولة إدارة المنيو والطلبات للمطعم.",
+      en: "Delivering a zero-friction instant web app ordering experience without requiring native app store downloads."
+    },
+    solution: {
+      ar: "بناء تطبيق ويب سحابي فائق الخفة والسرعة يعمل على أي هاتف بضغطة زر مع تجربة مستخدم سلسة وعربة تسوق فورية وربط مباشر بإشعارات المطبخ.",
+      en: "Deployed an ultra-lightweight cloud ordering engine with real-time cart state, dynamic pricing, and direct restaurant dispatch."
+    },
+    results: [
+      { label: { ar: "جاهزية النظام", en: "Deployment" }, value: "100% جاهز" },
+      { label: { ar: "سرعة الطلب", en: "Checkout Time" }, value: "< 30 ثانية" },
+      { label: { ar: "التوافق", en: "Compatibility" }, value: "كل الأجهزة" }
+    ],
+    features: {
+      ar: [
+        "منيو طعام ومشروبات تفاعلي مع الصور والأسعار والتصنيفات",
+        "سلة مشتريات ذكية مع خيارات إضافات الوجبات والتوصيل",
+        "تكامل مباشر وسريع يعمل في المتصفح فوراً بدون تحميل"
+      ],
+      en: [
+        "Dynamic menu catalogue with photography & pricing",
+        "Smart cart with localized delivery dispatch",
+        "Zero-friction instant browser checkout"
+      ]
+    },
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80",
+    demoUrl: "https://marketing-app.runasp.net/",
+    isFeatured: true
+  },
+  {
+    id: "gads-winch-network",
+    category: "ads",
+    categories: ["ads", "web"],
+    title: {
+      ar: "شبكة حملات أوناش الإنقاذ السريع وموقع ونش راشد",
+      en: "Winch Emergency Highway Rescue Ads & Portal"
+    },
+    subtitle: {
+      ar: "إعلانات اتصال مباشر Call-Only على جوجل وموقع إلكتروني متكامل لخدمات الإنقاذ 24/7",
+      en: "24/7 real-time Google Call-Only campaign network and emergency road recovery portal"
+    },
+    badge: {
+      ar: "موقع مباشر + إعلانات اتصال",
+      en: "Live Site + Call Ads"
+    },
+    client: {
+      ar: "مؤسسة ونش راشد لإنقاذ السيارات",
+      en: "Winch Rashed Highway Rescue"
+    },
+    website: "https://rashdaldawy9-spec.github.io/winchrashed/",
+    tags: ["موقع مباشر", "Google Call Ads", "ونش إنقاذ", "استهداف لحظي 24/7", "اتصال مباشر"],
+    gradient: "from-red-500 to-amber-500",
+    summary: {
+      ar: "تطوير موقع إلكتروني متكامل لخدمات أوناش الإنقاذ السريع، بالتوازي مع إطلاق وإدارة حملات اتصال مباشر على جوجل لتغطية الحالات الطارئة على كافة المحاور والطرق السريعة.",
+      en: "Architected real-time Google Call-Only ad infrastructure and web presence to capture immediate breakdown distress calls across major highways."
+    },
+    challenge: {
+      ar: "الحاجة لظهور فوري للمستخدم المتعطل على الطريق وتوليد مكالمة خلال ثوانٍ معدودة دون تأخير في بيئة طارئة.",
+      en: "Distressed motorists require instantaneous search dominance and one-tap dialing with zero friction."
+    },
+    solution: {
+      ar: "تصميم موقع خفيف وسريع مع أزرار اتصال طارئة، وحملات Call-Only مع مزايدة ذكية في أوقات الذروة والطرق السريعة.",
+      en: "Designed location-targeted Call-Only ads with automated peak-hour bidding and aggressive negative keyword filtration."
+    },
+    results: [
+      { label: { ar: "مكالمات شهرية", en: "Monthly Calls" }, value: "+580" },
+      { label: { ar: "نسبة الاتصال CTR", en: "Call CTR" }, value: "18.5%" },
+      { label: { ar: "سرعة الاستجابة", en: "Response Velocity" }, value: "لحظية (Instant)" }
+    ],
+    features: {
+      ar: [
+        "موقع متجاوب 100% مع الهواتف الذكية بزر اتصال طارئ",
+        "تغطية جغرافية لكافة المحاور والطرق السريعة",
+        "تشغيل متواصل 24 ساعة بمزايدة ذكية لتحقيق أعلى عائد"
+      ],
+      en: [
+        "Mobile-only direct click-to-call portal & ad banners",
+        "Targeted highway and ring-road corridors",
+        "24/7 smart algorithmic bid optimization"
+      ]
+    },
+    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80",
+    demoUrl: "https://rashdaldawy9-spec.github.io/winchrashed/",
     isFeatured: true
   },
   {
@@ -181,8 +293,8 @@ export const projectsData = [
       en: "Integrated ad strategy and high-ticket lead generation for luxury estates"
     },
     badge: {
-      ar: "إعلانات عقارية - Real Estate",
-      en: "Real Estate Ads"
+      ar: "دراسة حالة إعلانية - Ads",
+      en: "Case Study - Ads"
     },
     client: {
       ar: "ميراج هيلز للتطوير العقاري",
@@ -220,7 +332,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/campaign_mirage_hills_1.png",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: true
   },
   {
@@ -299,7 +411,6 @@ export const projectsData = [
       ar: "استوديو AM Marketing (عبد السلام)",
       en: "AM Marketing Studio (Abdel Salam)"
     },
-    website: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
     tags: ["AI Reels 9:16", "Ken Burns Zoom", "FFmpeg Automation", "60 FPS", "ChatGPT Prompts"],
     gradient: "from-fuchsia-600 via-purple-600 to-indigo-600",
     summary: {
@@ -335,7 +446,7 @@ export const projectsData = [
     },
     image: "/assets/images/am-marketing-poster.jpg",
     video: "/assets/videos/motion_am-marketing-poster.mp4",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: true
   },
   {
@@ -350,8 +461,8 @@ export const projectsData = [
       en: "High-yield tourism and private pilgrimage booking campaign in Saudi Arabia"
     },
     badge: {
-      ar: "سياحة وضيافة - KSA",
-      en: "Tourism & Hospitality"
+      ar: "دراسة حالة إعلانية - Ads",
+      en: "Case Study - Ads"
     },
     client: {
       ar: "شركة راوند السعودية للسياحة",
@@ -389,62 +500,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/campaign_round_ksa_1.jpg",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
-    isFeatured: true
-  },
-  {
-    id: "gads-winch-network",
-    category: "ads",
-    title: {
-      ar: "شبكة حملات أوناش الإنقاذ السريع (Winch Emergency)",
-      en: "Winch Emergency Highway Rescue Ads Network"
-    },
-    subtitle: {
-      ar: "إعلانات اتصال مباشر Call-Only على جوجل لمحاور وطرق الإنقاذ 24/7",
-      en: "24/7 real-time Google Call-Only campaign network for road recovery"
-    },
-    badge: {
-      ar: "حملات اتصال فوري - Call Ads",
-      en: "Instant Call-Only Ads"
-    },
-    client: {
-      ar: "مجموعة أوناش مصر السريعة",
-      en: "Egypt Road Recovery Alliance"
-    },
-    website: "https://winch-enqaz.com/",
-    tags: ["Google Call Ads", "ونش إنقاذ", "استهداف لحظي 24/7", "اتصال مباشر"],
-    gradient: "from-red-500 to-amber-500",
-    summary: {
-      ar: "إطلاق وإدارة حملات اتصال مباشر لأكثر من موقع ونش إنقاذ (winch-enqaz.com, wenshenqazz.com, elsaeedwinch.com) لتغطية الحالات الطارئة على الطرق السريعة.",
-      en: "Architected real-time Google Call-Only ad infrastructure across multiple emergency portals to capture immediate breakdown distress calls."
-    },
-    challenge: {
-      ar: "الحاجة لظهور فوري للمستخدم المتعطل على الطريق وتوليد مكالمة خلال ثوانٍ معدودة دون تأخير.",
-      en: "Distressed motorists require instantaneous search dominance and one-tap dialing with zero friction."
-    },
-    solution: {
-      ar: "تصميم حملات Call-Only مع زر اتصال مباشر ومزايدة ذكية في أوقات الذروة والطرق السريعة مع حظر الكلمات غير المجدية.",
-      en: "Designed location-targeted Call-Only ads with automated peak-hour bidding and aggressive negative keyword filtration."
-    },
-    results: [
-      { label: { ar: "مكالمات شهرية", en: "Monthly Calls" }, value: "+580" },
-      { label: { ar: "نسبة الاتصال CTR", en: "Call CTR" }, value: "18.5%" },
-      { label: { ar: "سرعة الاستجابة", en: "Response Velocity" }, value: "لحظية (Instant)" }
-    ],
-    features: {
-      ar: [
-        "إعلانات تظهر فقط للأجهزة الذكية بزر اتصال",
-        "تغطية جغرافية لكافة المحاور والطرق السريعة",
-        "تشغيل متواصل 24 ساعة بمزايدة ذكية"
-      ],
-      en: [
-        "Mobile-only direct click-to-call banners",
-        "Targeted highway and ring-road corridors",
-        "24/7 smart algorithmic bid optimization"
-      ]
-    },
-    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80",
-    demoUrl: "https://winch-enqaz.com/",
+    demoUrl: null,
     isFeatured: true
   },
   {
@@ -499,7 +555,7 @@ export const projectsData = [
     },
     image: "/assets/images/poster_haduta_1.jpg",
     video: "/assets/videos/haduta-1-branded.mp4",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: true
   },
   {
@@ -514,8 +570,8 @@ export const projectsData = [
       en: "Performance ad campaign for digital pharmacy app & prescription fulfillment"
     },
     badge: {
-      ar: "تطبيقات وتجارة إلكترونية",
-      en: "App Installs & E-Commerce"
+      ar: "دراسة حالة إعلانية - Ads",
+      en: "Case Study - Ads"
     },
     client: {
       ar: "مجموعة صيدليات خلود",
@@ -553,7 +609,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/campaign_kulud_1.png",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: true
   },
   {
@@ -607,7 +663,7 @@ export const projectsData = [
       ]
     },
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: true
   },
   {
@@ -622,8 +678,8 @@ export const projectsData = [
       en: "Brand turnaround strategy and viral direct-response copywriting"
     },
     badge: {
-      ar: "FMCG & Copywriting",
-      en: "FMCG & Copywriting"
+      ar: "دراسة حالة إعلانية - FMCG",
+      en: "Case Study - FMCG"
     },
     client: {
       ar: "سبيرو سباتس (Spiro Spathis)",
@@ -661,7 +717,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/campaign_spiro_spathis_clean.png",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: true
   },
   {
@@ -676,8 +732,8 @@ export const projectsData = [
       en: "Creative video concepts & content calendar for luxury Lebanese dining"
     },
     badge: {
-      ar: "مطاعم وضيافة - F&B",
-      en: "Food & Beverage (F&B)"
+      ar: "دراسة حالة إعلانية - F&B",
+      en: "Case Study - F&B"
     },
     client: {
       ar: "مطعم لبيب اللبناني",
@@ -715,7 +771,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/campaign_labeeb_1.png",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: true
   },
   {
@@ -770,7 +826,7 @@ export const projectsData = [
     },
     image: "/assets/images/poster_haduta_2.jpg",
     video: "/assets/videos/haduta-2-branded.mp4",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: false
   },
   {
@@ -825,7 +881,7 @@ export const projectsData = [
     },
     image: "/assets/images/poster_solo_branding.jpg",
     video: "/assets/videos/solo_branding_promo.mp4",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: true
   },
   {
@@ -880,7 +936,7 @@ export const projectsData = [
     },
     image: "/assets/images/poster_ai_investment.jpg",
     video: "/assets/videos/ai_investment_promo.mp4",
-    demoUrl: "https://mostafabodye.github.io/mostafabodye/portfolio.html",
+    demoUrl: null,
     isFeatured: false
   },
   {
@@ -902,6 +958,7 @@ export const projectsData = [
       ar: "صفحة وقناة: بَلِّغُوا عَنِّي ولو آية",
       en: "Balligho Annii Project"
     },
+    website: "https://www.facebook.com/profile.php?id=61579408292383",
     tags: ["تأملات قرآنية", "شعار ذهبي نقي", "إزالة لوجو 100%", "Full HD"],
     gradient: "from-yellow-500 via-amber-600 to-amber-700",
     summary: {
