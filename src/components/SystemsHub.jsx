@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles, Monitor, Smartphone, CheckCircle, ExternalLink,
   ShoppingCart, Utensils, Stethoscope, Dumbbell, Building2,
   Store, Shirt, Laptop, Printer, Plus, Minus, Trash2, X,
   Search, ShieldCheck, ArrowRight, ArrowLeft, RefreshCw, Eye,
-  Play, Wrench, Flame, HelpCircle
+  Play, Pause, RotateCcw, Wrench, Flame, HelpCircle
 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 
@@ -33,6 +33,18 @@ export default function SystemsHub({ lang = 'ar' }) {
   const [activeModal, setActiveModal] = useState(null);
   const [previewSite, setPreviewSite] = useState(null);
   const [previewDevice, setPreviewDevice] = useState('desktop'); // 'desktop' | 'mobile'
+
+  // 20-Second Interactive Tour State (4 steps x 5s = 20s total)
+  const [tourStep, setTourStep] = useState(0);
+  const [tourPlaying, setTourPlaying] = useState(true);
+
+  useEffect(() => {
+    if (activeModal !== 'video' || !tourPlaying) return;
+    const interval = setInterval(() => {
+      setTourStep((prev) => (prev + 1) % 4);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [activeModal, tourPlaying]);
 
   // POS Simulator State
   const [cart, setCart] = useState([
@@ -288,6 +300,77 @@ export default function SystemsHub({ lang = 'ar' }) {
     }
   };
 
+  // 🎬 20-Second Interactive Systems Tour Stages (4 stages x 5s = 20s total)
+  const tourStages = [
+    {
+      step: 0,
+      time: isRtl ? '00:00 - 00:05 ثوانٍ' : '00:00 - 00:05 sec',
+      badge: isRtl ? 'المحطة 1: الكاشير ونقاط البيع' : 'Stage 1: Retail POS',
+      icon: ShoppingCart,
+      color: 'border-emerald-500/40 text-emerald-400 bg-emerald-500/10',
+      title: isRtl ? 'أنظمة نقاط البيع السريع والكاشير (Cloud POS)' : 'Cloud Cashier & Retail POS',
+      desc: isRtl
+        ? 'بيع بالباركود الفوري، طباعة إيصالات حرارية وضريبية QR، تصفية درج النقدية، وإقفال ورديات بدقة 100% بدون إنترنت أو سحابياً.'
+        : 'Touch barcode billing, thermal QR receipt printing, cash drawer audits, and offline-first cloud sync.',
+      highlights: isRtl
+        ? ['إصدار فاتورة في أقل من ثانيتين', 'متوافق مع كل طابعات الفواتير والباركود', 'تقارير أرباح وخزينة يومية ولحظية']
+        : ['Sub-2-sec invoice generation', 'Universal thermal printer support', 'Daily shift & profit audits'],
+      ctaLabel: isRtl ? 'جرّب الكاشير وطباعة الفاتورة 🖨️' : 'Test Cashier & Receipt 🖨️',
+      action: () => setActiveModal('pos')
+    },
+    {
+      step: 1,
+      time: isRtl ? '00:05 - 00:10 ثوانٍ' : '00:05 - 00:10 sec',
+      badge: isRtl ? 'المحطة 2: المطاعم والكافيهات' : 'Stage 2: Restaurant OS',
+      icon: Utensils,
+      color: 'border-orange-500/40 text-orange-400 bg-orange-500/10',
+      title: isRtl ? 'إدارة الصالة والترابيزات وشاشات المطابخ (KDS)' : 'Restaurant Floor & Kitchen KDS',
+      desc: isRtl
+        ? 'خريطة تفاعلية حية لحالة الطاولات (مشغولة / شاغرة)، شاشة مطبخ فورية لإعداد الوجبات، وربط منيو الـ QR مع الكاشير.'
+        : 'Interactive live table floor plan, Kitchen Display System (KDS), delivery tracking, and QR menu sync.',
+      highlights: isRtl
+        ? ['توزيع طلبات الصالة، التيك أواي والدليفري', 'منع تأخير أوردرات المطبخ بشاشات فورية', 'حساب تلقائي لنسب الخدمة والضريبة']
+        : ['Dine-in, takeaway & dispatch routes', 'Zero-delay kitchen order tickets', 'Automatic service charge & tax calculation'],
+      ctaLabel: isRtl ? 'جرّب خريطة الترابيزات الحية 🍽️' : 'Test Floor Plan 🍽️',
+      action: () => setActiveModal('restaurant')
+    },
+    {
+      step: 2,
+      time: isRtl ? '00:10 - 00:15 ثانية' : '00:10 - 00:15 sec',
+      badge: isRtl ? 'المحطة 3: العيادات والمراكز الطبية' : 'Stage 3: Clinic OS',
+      icon: Stethoscope,
+      color: 'border-cyan-500/40 text-cyan-400 bg-cyan-500/10',
+      title: isRtl ? 'إدارة العيادات والروشتات الإلكترونية' : 'Medical Clinic & Smart Rx System',
+      desc: isRtl
+        ? 'تنظيم جدول مواعيد وحجوزات المرضى، الاحتفاظ بالتاريخ المرضي، وطباعة روشتات طبية مخصصة باسم عيادتك بضغطة زر واحدة.'
+        : 'Automated appointment slots, patient visit history, and instant branded digital prescription generation.',
+      highlights: isRtl
+        ? ['سجل إلكتروني متكامل لكل مريض (EMR)', 'روشتة طبية أنيقة تحمل اسم عيادتك وطبيبك', 'تنظيم طابور الانتظار وحسابات الكشف']
+        : ['Electronic Medical Records (EMR)', 'Clinic branded prescription slips', 'Patient queue & doctor fees ledger'],
+      ctaLabel: isRtl ? 'جرّب كتابة وطباعة روشتة 🏥' : 'Test Prescription 🏥',
+      action: () => setActiveModal('clinic')
+    },
+    {
+      step: 3,
+      time: isRtl ? '00:15 - 00:20 ثانية' : '00:15 - 00:20 sec',
+      badge: isRtl ? 'المحطة 4: مواقع حية جاهزة للتسليم' : 'Stage 4: Turnkey Websites',
+      icon: Wrench,
+      color: 'border-amber-500/40 text-amber-400 bg-amber-500/10',
+      title: isRtl ? 'موقع وتطبيق مدير الصيانة ومواقع الشركات' : 'Turnkey Ready Sites (Modir Al-Syana)',
+      desc: isRtl
+        ? 'مواقع إنترنت وتطبيقات حقيقية مصممة ومبرمجة بالكامل، جاهزة للتسليم والتخصيص خلال 24 ساعة (معاينات فورية متاحة الآن).'
+        : 'Production-ready web portals with SEO architecture, ready for immediate delivery, custom rebranding within 24 hours.',
+      highlights: isRtl
+        ? ['موقع مدير الصيانة المعتمد جاهز للبيع فوراً', 'معاينة مباشرة في المتصفح (موبايل ولابتوب)', 'تسليم كامل مع الاستضافة والدعم والتدريب']
+        : ['Modir Al-Syana appliance site ready for instant sale', 'Live in-browser sandbox preview (Mobile/Desktop)', 'Turnkey hosting, domain setup & training'],
+      ctaLabel: isRtl ? 'عاين موقع مدير الصيانة المباشر 🌐' : 'Preview Modir Al-Syana 🌐',
+      action: () => {
+        const site = websites.find(w => w.id === 'modir-syana');
+        if (site) handleOpenPreview(site);
+      }
+    }
+  ];
+
   return (
     <section id="systems-hub" className="py-24 relative overflow-hidden bg-slate-950/90 border-t border-slate-800/80">
       {/* Background Neon Lighting */}
@@ -329,7 +412,7 @@ export default function SystemsHub({ lang = 'ar' }) {
               <div className="w-6 h-6 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
               </div>
-              <span>{isRtl ? 'فيديو تعريفي سريع (20 ثانية) 🎬' : '20-Sec Quick Video Tour 🎬'}</span>
+              <span>{isRtl ? 'جولة تعريفية بالأنظمة (20 ثانية) 🎬' : '20-Sec Interactive Systems Tour 🎬'}</span>
             </button>
           </div>
         </div>
@@ -595,7 +678,7 @@ export default function SystemsHub({ lang = 'ar' }) {
       </div>
 
       {/* ======================================================== */}
-      {/* 🎬 MODAL: 20-Second Video Tour Explainer                  */}
+      {/* 🎬 MODAL: 20-Second Interactive Systems Showcase Tour     */}
       {/* ======================================================== */}
       <AnimatePresence>
         {activeModal === 'video' && (
@@ -612,68 +695,181 @@ export default function SystemsHub({ lang = 'ar' }) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col"
+              className="relative w-full max-w-3xl bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col"
             >
+              {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center">
-                    <Play className="w-4 h-4 fill-current ml-0.5" />
+                  <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 fill-current" />
                   </div>
                   <div>
                     <h3 className="text-sm sm:text-base font-black text-white">
-                      {isRtl ? 'فيديو تعريفي بالمنظومة السحابية (20 ثانية)' : '20-Sec Turnkey Systems Explainer'}
+                      {isRtl ? 'جولة تعريفية بالمنظومة السحابية (20 ثانية)' : '20-Sec Cloud Systems Live Tour'}
                     </h3>
-                    <p className="text-[11px] text-slate-400">AM Marketing • عبد السلام</p>
+                    <p className="text-[11px] text-amber-400 font-bold">AM Marketing • عبد السلام</p>
                   </div>
                 </div>
-                <button onClick={() => setActiveModal(null)} className="p-1.5 text-slate-400 hover:text-white">
+                <button onClick={() => setActiveModal(null)} className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800">
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="p-6 space-y-4">
-                <div className="relative rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center border border-slate-800">
-                  <video
-                    src={getAssetUrl('/assets/videos/ai_investment_promo.mp4')}
-                    controls
-                    autoPlay
-                    playsInline
-                    className="w-full h-full object-contain"
-                  />
+              {/* 20-Second Progress Indicator Bar */}
+              <div className="w-full bg-slate-950 px-6 pt-3 pb-2 border-b border-slate-800 space-y-2">
+                <div className="flex items-center justify-between text-[11px] font-bold text-slate-400">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                    <span className="text-white">
+                      {isRtl ? `المحطة ${tourStep + 1} من 4: ${tourStages[tourStep].badge}` : `Stage ${tourStep + 1} of 4: ${tourStages[tourStep].badge}`}
+                    </span>
+                  </div>
+                  <span className="font-mono text-amber-400">{tourStages[tourStep].time}</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
-                  <h4 className="text-xs font-black text-amber-400">
-                    {isRtl ? 'ما الذي تحصل عليه مع كل نظام؟' : 'What is included in every system?'}
-                  </h4>
-                  <ul className="grid sm:grid-cols-2 gap-2 text-xs text-slate-300">
-                    <li className="flex items-center gap-1.5">
-                      <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      <span>{isRtl ? 'تسليم وتركيب خلال 24 ساعة' : '24-hour instant deployment'}</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      <span>{isRtl ? 'يعمل بدون إنترنت أو سحابياً' : 'Works online and 100% offline'}</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      <span>{isRtl ? 'تدريب كامل لك ولفريق عملك' : 'Full onboarding & staff training'}</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      <span>{isRtl ? 'دعم فني وضمان استقرار 100%' : 'Direct support & uptime warranty'}</span>
-                    </li>
-                  </ul>
+                {/* 4 Steps timeline pills */}
+                <div className="grid grid-cols-4 gap-2">
+                  {tourStages.map((stg, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        setTourStep(idx);
+                        setTourPlaying(false);
+                      }}
+                      className={`h-2 rounded-full transition-all cursor-pointer ${
+                        tourStep === idx
+                          ? 'bg-amber-400 ring-2 ring-amber-400/30 shadow-lg shadow-amber-400/20'
+                          : tourStep > idx
+                          ? 'bg-emerald-500'
+                          : 'bg-slate-800'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Stage Visual Content */}
+              <div className="p-6 sm:p-8 space-y-6">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={tourStep}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-6"
+                  >
+                    {/* Stage Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-slate-950/90 border border-slate-800">
+                      <div className="flex items-start gap-4">
+                        <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center shrink-0 ${tourStages[tourStep].color}`}>
+                          {React.createElement(tourStages[tourStep].icon, { className: 'w-7 h-7' })}
+                        </div>
+                        <div className="space-y-1">
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-800 border border-slate-700 text-amber-400">
+                            {tourStages[tourStep].badge}
+                          </span>
+                          <h4 className="text-base sm:text-lg font-black text-white">
+                            {tourStages[tourStep].title}
+                          </h4>
+                          <p className="text-xs text-slate-300 leading-relaxed max-w-xl">
+                            {tourStages[tourStep].desc}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Features checklist */}
+                    <div className="grid sm:grid-cols-3 gap-3">
+                      {tourStages[tourStep].highlights.map((h, i) => (
+                        <div key={i} className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 flex items-center gap-2.5 text-xs text-slate-200">
+                          <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                          <span className="font-bold">{h}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Quick Launch CTA for this stage */}
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <button
+                        onClick={() => {
+                          const action = tourStages[tourStep].action;
+                          if (action) action();
+                        }}
+                        className="flex-1 py-3 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 cursor-pointer transition-all"
+                      >
+                        <Sparkles className="w-4 h-4" />
+                        <span>{tourStages[tourStep].ctaLabel}</span>
+                      </button>
+
+                      <a
+                        href="https://wa.me/201098174992?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A7%D9%84%D8%AC%D9%88%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%B9%D8%B1%D9%8A%D9%81%D9%8A%D8%A9%20%D9%88%D8%A3%D9%88%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%86%D8%B8%D8%A7%D9%85%20%D9%84%D9%86%D8%B4%D8%A7%D8%B7%D9%8A"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-3 px-5 rounded-xl bg-slate-950 border border-emerald-500/40 hover:border-emerald-400 text-emerald-400 hover:text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+                      >
+                        <span>{isRtl ? 'طلب النظام عبر واتساب 💬' : 'Order via WhatsApp 💬'}</span>
+                      </a>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Tour Playback Controls & Replay */}
+                <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setTourPlaying(!tourPlaying)}
+                      className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center gap-1.5 cursor-pointer"
+                    >
+                      {tourPlaying ? (
+                        <>
+                          <Pause className="w-3.5 h-3.5 text-amber-400" />
+                          <span>{isRtl ? 'إيقاف مؤقت' : 'Pause'}</span>
+                        </>
+                      ) : (
+                        <>
+                          <Play className="w-3.5 h-3.5 fill-current text-emerald-400" />
+                          <span>{isRtl ? 'تشغيل تلقائي' : 'Auto Play'}</span>
+                        </>
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setTourStep(0);
+                        setTourPlaying(true);
+                      }}
+                      className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5 text-blue-400" />
+                      <span>{isRtl ? 'إعادة من البداية' : 'Restart'}</span>
+                    </button>
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      onClick={() => setTourStep((prev) => (prev > 0 ? prev - 1 : 3))}
+                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 cursor-pointer"
+                      title={isRtl ? 'السابق' : 'Previous'}
+                    >
+                      {isRtl ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
+                    </button>
+                    <button
+                      onClick={() => setTourStep((prev) => (prev < 3 ? prev + 1 : 0))}
+                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 cursor-pointer"
+                      title={isRtl ? 'التالي' : 'Next'}
+                    >
+                      {isRtl ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+                    </button>
+                  </div>
                 </div>
 
-                <a
-                  href="https://wa.me/201098174992?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%8A%D8%A7%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%20%D8%A7%D9%84%D8%AA%D8%B9%D8%B1%D9%8A%D9%81%D9%8A%20%D9%88%D8%A3%D9%88%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%86%D8%B8%D8%A7%D9%85%20%D9%84%D9%86%D8%B4%D8%A7%D8%B7%D9%8A%20%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
-                >
-                  <span>{isRtl ? 'تواصل مع عبد السلام واطلب نظامك الآن 💬' : 'Contact Abdel Salam via WhatsApp 💬'}</span>
-                </a>
+                {/* Developer / Portfolio Note */}
+                <p className="text-[11px] text-center text-slate-400">
+                  {isRtl
+                    ? '💡 المنظومة بالكامل جاهزة ومبرمجة بواسطة عبد السلام (AM Marketing) — تسليم وتركيب ودعم فني متكامل.'
+                    : '💡 All systems are turnkey-engineered by Abdel Salam (AM Marketing) — complete setup, deployment & warranty.'}
+                </p>
               </div>
             </motion.div>
           </div>
