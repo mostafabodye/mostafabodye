@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight, Globe, Phone } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export default function Navbar({ lang, setLang, t }) {
   const [scrolled, setScrolled] = useState(false);
@@ -44,11 +45,11 @@ export default function Navbar({ lang, setLang, t }) {
           </button>
 
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-600 to-blue-600 p-[1.5px] shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-black text-sm text-gradient-gold">
-                AM
-              </div>
-            </div>
+            <img
+              src={getAssetUrl('/assets/images/am_marketing_3d_logo.jpg')}
+              alt="AM Marketing Logo"
+              className="w-10 h-10 rounded-xl object-cover border border-amber-400/50 shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform shrink-0"
+            />
             <div className="hidden sm:flex flex-col">
               <span className="text-sm font-black text-white group-hover:text-blue-400 transition-colors leading-tight">
                 {t.hero.name}

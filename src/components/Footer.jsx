@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github, Facebook, Phone, Heart, ArrowUpRight } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export default function Footer({ t, lang }) {
   return (
@@ -9,11 +10,11 @@ export default function Footer({ t, lang }) {
           {/* Brand & Bio */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-600 to-blue-600 p-[1.5px] shadow-lg shadow-amber-500/20">
-                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-black text-sm text-gradient-gold">
-                  AM
-                </div>
-              </div>
+              <img
+                src={getAssetUrl('/assets/images/am_marketing_3d_logo.jpg')}
+                alt="AM Marketing 3D Logo"
+                className="w-11 h-11 rounded-xl object-cover border border-amber-400/50 shadow-lg shadow-blue-500/20 shrink-0"
+              />
               <div>
                 <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                   {t.footer.brand.name}
