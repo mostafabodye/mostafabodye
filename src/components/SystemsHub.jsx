@@ -5,7 +5,8 @@ import {
   ShoppingCart, Utensils, Stethoscope, Dumbbell, Building2,
   Store, Shirt, Laptop, Printer, Plus, Minus, Trash2, X,
   Search, ShieldCheck, ArrowRight, ArrowLeft, RefreshCw, Eye,
-  Play, Pause, RotateCcw, Wrench, Flame, HelpCircle
+  Play, Pause, RotateCcw, Wrench, Flame, HelpCircle,
+  Download, Key, Copy, Check, Lock, Unlock, Cpu, HardDrive, Terminal
 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 
@@ -29,10 +30,26 @@ export default function SystemsHub({ lang = 'ar' }) {
   const [businessName, setBusinessName] = useState(industryDefaults.restaurant);
   const [isCustomName, setIsCustomName] = useState(false);
 
-  // Active Modals: 'pos' | 'restaurant' | 'clinic' | 'receipt' | 'video' | 'website_preview'
+  // Platform Mode: 'windows' | 'cloud'
+  const [platformTab, setPlatformTab] = useState('windows');
+
+  // Active Modals: 'pos' | 'restaurant' | 'clinic' | 'receipt' | 'video' | 'website_preview' | 'activate_sim' | 'keygen'
   const [activeModal, setActiveModal] = useState(null);
   const [previewSite, setPreviewSite] = useState(null);
   const [previewDevice, setPreviewDevice] = useState('desktop'); // 'desktop' | 'mobile'
+
+  // Windows Activation Simulator State
+  const [simMachineId, setSimMachineId] = useState('AM-9817-4F2A-88B1');
+  const [simInputKey, setSimInputKey] = useState('');
+  const [simIsActivated, setSimIsActivated] = useState(false);
+  const [simCopied, setSimCopied] = useState(false);
+
+  // Abdel Salam's Keygen Tool State
+  const [keygenInputMachine, setKeygenInputMachine] = useState('AM-9817-4F2A-88B1');
+  const [keygenClientName, setKeygenClientName] = useState('سوبر ماركت النور');
+  const [keygenLicenseType, setKeygenLicenseType] = useState('lifetime');
+  const [generatedKey, setGeneratedKey] = useState('');
+  const [keygenCopied, setKeygenCopied] = useState(false);
 
   // 20-Second Interactive Tour State (4 steps x 5s = 20s total)
   const [tourStep, setTourStep] = useState(0);
@@ -241,7 +258,107 @@ export default function SystemsHub({ lang = 'ar' }) {
     }
   ];
 
-  // Cart calculations for POS
+  // 💻 Windows Desktop Offline Software Catalog (Matching CodeMatrix architecture)
+  const windowsApps = [
+    {
+      id: 'win-pos',
+      title: isRtl ? 'برنامج الكاشير ونقاط البيع السريع' : 'Retail POS & Touch Cashier',
+      exeName: 'AM-Marketing-Cashier-Setup.exe',
+      icon: ShoppingCart,
+      color: 'border-emerald-500/40 text-emerald-400 bg-emerald-500/10',
+      tag: isRtl ? 'كاشير وورديات' : 'Retail POS',
+      size: '88 MB',
+      os: 'Windows 10 / 11',
+      desc: isRtl
+        ? 'بيع بالباركود الفوري، طباعة إيصالات حرارية وضريبية، إدارة ورديات الخزينة، ويعمل 100% بدون نت على جهاز الكاشير.'
+        : 'High-speed touch POS, barcode scanning, shift audits, and instant thermal receipts. Runs 100% offline.',
+      features: isRtl
+        ? ['يعمل 100% بدون إنترنت', 'متوافق مع كل طابعات الفواتير والباركود', 'تقارير أرباح وخزينة يومية']
+        : ['Runs 100% offline', 'Universal printer & barcode support', 'Daily drawer & profit reports']
+    },
+    {
+      id: 'win-restaurant',
+      title: isRtl ? 'برنامج إدارة المطاعم والكافيهات' : 'Restaurant & Cafe OS',
+      exeName: 'AM-Marketing-Restaurant-Setup.exe',
+      icon: Utensils,
+      color: 'border-orange-500/40 text-orange-400 bg-orange-500/10',
+      tag: isRtl ? 'صالة ومطابخ' : 'Hospitality',
+      size: '88 MB',
+      os: 'Windows 10 / 11',
+      desc: isRtl
+        ? 'خريطة الصالة والترابيزات الحية، شاشة تحضير أوردرات المطبخ (KDS)، حساب الخدمة والضريبة، وطلبات التيك أواي والدليفري.'
+        : 'Live interactive table floor plans, Kitchen Display System (KDS), delivery dispatch, and split-billing.',
+      features: isRtl
+        ? ['توزيع الطاولات والكبائن لحظياً', 'توجيه طلبات الأقسام لطابعات المطبخ', 'أداء سريع ومستقر في ضغط العمل']
+        : ['Live table allocation', 'Department kitchen ticket routing', 'Ultra-fast during rush hours']
+    },
+    {
+      id: 'win-clinic',
+      title: isRtl ? 'برنامج إدارة العيادات والمراكز الطبية' : 'Clinic & Medical Center OS',
+      exeName: 'AM-Marketing-Clinic-Setup.exe',
+      icon: Stethoscope,
+      color: 'border-cyan-500/40 text-cyan-400 bg-cyan-500/10',
+      tag: isRtl ? 'عيادات وروشتات' : 'Healthcare',
+      size: '88 MB',
+      os: 'Windows 10 / 11',
+      desc: isRtl
+        ? 'حجز وتنظيم مواعيد المرضى، ملف التاريخ الطبي، طباعة روشتات إلكترونية أنيقة، وإدارة حسابات الكشف والعيادة.'
+        : 'Doctor schedules, electronic patient medical records (EMR), automated prescription printing, and patient queue billing.',
+      features: isRtl
+        ? ['طباعة روشتة طبية باسم عيادتك', 'سجل زيارات وتشخيصات كل مريض', 'حفظ بيانات المرضى بأمان على جهازك']
+        : ['Branded prescription printing', 'Electronic Medical Records (EMR)', 'Patient data stored safely on your PC']
+    },
+    {
+      id: 'win-inventory',
+      title: isRtl ? 'برنامج المخازن وإدارة المشتريات' : 'Inventory & Warehouse Hub',
+      exeName: 'AM-Marketing-Inventory-Setup.exe',
+      icon: Store,
+      color: 'border-indigo-500/40 text-indigo-400 bg-indigo-500/10',
+      tag: isRtl ? 'مخازن وموردين' : 'Warehouse ERP',
+      size: '88 MB',
+      os: 'Windows 10 / 11',
+      desc: isRtl
+        ? 'حركات المخزون، تنبيهات النواقص والحد الأدنى، فواتير الشراء، حسابات وأرصدة الموردين، وإجراء الجرد والتسويات بدقة.'
+        : 'Multi-warehouse stock tracking, low-stock alerts, supplier ledgers, inbound & outbound inventory slips.',
+      features: isRtl
+        ? ['تنبيه فوري بالنواقص قبل نفادها', 'كشف حساب تفصيلي لكل مورد', 'جرد سريع بالباركود والتسويات']
+        : ['Automated low-stock alerts', 'Detailed supplier credit ledgers', 'Barcode-assisted physical stock audit']
+    },
+    {
+      id: 'win-hr',
+      title: isRtl ? 'برنامج الموارد البشرية وشؤون الموظفين' : 'HR & Payroll Management',
+      exeName: 'AM-Marketing-HR-Setup.exe',
+      icon: Laptop,
+      color: 'border-purple-500/40 text-purple-400 bg-purple-500/10',
+      tag: isRtl ? 'موظفين ورواتب' : 'HR Management',
+      size: '88 MB',
+      os: 'Windows 10 / 11',
+      desc: isRtl
+        ? 'حضور وانصراف وتأخيرات، إدارة الإجازات، السلف والأقساط، واحتساب الرواتب الصافية وطباعة قسائم القبض الشهرية.'
+        : 'Biometric attendance, leave balances, loans & deductions, automated net payroll calculation and monthly payslips.',
+      features: isRtl
+        ? ['احتساب ساعات العمل والغياب آلياً', 'إصدار مفردات المرتب بضغطة واحدة', 'ملف كامل لكل موظف وعقوده']
+        : ['Automated overtime & absence calculation', 'One-click payroll slip generation', 'Comprehensive employee document file']
+    }
+  ];
+
+  const handleSimulateDownload = (app) => {
+    const content = `====================================================\nAM Marketing — ${app.title}\nملف التثبيت: ${app.exeName}\nالحجم: 88 MB · نظام التشغيل: ${app.os}\n====================================================\n\nخطوات التثبيت والتفعيل:\n1. قم بتثبيت البرنامج بنقرة واحدة (ملف Setup.exe مستقل مع محرك SQLite محلي).\n2. انسخ كود الجهاز (Machine ID) الذي يظهر في شاشة البرنامج.\n3. أرسل كود الجهاز إلى عبد السلام على واتساب (01098174992) لاستلام كود التفعيل مدى الحياة.\n\nAM Marketing • عبد السلام\nواتساب: +201098174992\n`;
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${app.exeName.replace('.exe', '')}-Setup-Guide.txt`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleGenerateKeygenKey = () => {
+    const cleanId = (keygenInputMachine || 'AM-9817-4F2A').replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+    const reversed = cleanId.split('').reverse().join('').slice(0, 8);
+    const code = `ACT-AM-${reversed}-${keygenLicenseType === 'lifetime' ? 'LIFE' : 'YEAR'}-9941`;
+    setGeneratedKey(code);
+  };
   const cartSubtotal = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
   const cartTax = Math.round(cartSubtotal * 0.14);
   const cartTotal = cartSubtotal + cartTax;
@@ -417,8 +534,257 @@ export default function SystemsHub({ lang = 'ar' }) {
           </div>
         </div>
 
-        {/* 🌟 Interactive Personalization Bar */}
-        <div className="max-w-3xl mx-auto p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800/90 to-slate-900 border border-amber-500/30 shadow-2xl shadow-amber-500/5 space-y-3">
+        {/* ======================================================== */}
+        {/* 💻 PLATFORM SELECTOR: Windows Offline vs Cloud & Demos   */}
+        {/* ======================================================== */}
+        <div className="flex items-center justify-center pt-2">
+          <div className="p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-wrap gap-1 shadow-2xl backdrop-blur-md">
+            <button
+              onClick={() => setPlatformTab('windows')}
+              className={`px-5 py-2.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer ${
+                platformTab === 'windows'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30 border border-blue-400'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Laptop className="w-4 h-4 text-cyan-400" />
+              <span>{isRtl ? '💻 برامج ويندوز للأجهزة (بدون نت 100%)' : '💻 Windows Desktop (Offline 100%)'}</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold">
+                {isRtl ? 'تفعيل بكود 🔑' : 'Key Lock 🔑'}
+              </span>
+            </button>
+
+            <button
+              onClick={() => setPlatformTab('cloud')}
+              className={`px-5 py-2.5 rounded-xl font-black text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer ${
+                platformTab === 'cloud'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30 border border-blue-400'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Monitor className="w-4 h-4 text-emerald-400" />
+              <span>{isRtl ? '🌐 أنظمة ومواقع سحابية أونلاين' : '🌐 Cloud & Web Portals'}</span>
+            </button>
+          </div>
+        </div>
+
+        {platformTab === 'windows' ? (
+          <div className="space-y-12">
+            {/* Top Windows Offline Showcase Card */}
+            <div className="p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800 relative overflow-hidden shadow-2xl space-y-8">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+                <div className="space-y-5 flex-1">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+                    <HardDrive className="w-4 h-4" />
+                    <span>{isRtl ? 'بيشتغل من غير نت 100% · ملف تثبيت واحد · ويندوز 10 و 11' : '100% Offline · Single EXE Installer · Windows 10 & 11'}</span>
+                  </div>
+
+                  <h3 className="text-2xl sm:text-4xl font-black text-white leading-tight">
+                    {isRtl ? (
+                      <>
+                        برامج ويندوز للأجهزة... <span className="text-gradient-gold">بياناتك على جهازك بأمان</span>
+                      </>
+                    ) : (
+                      <>
+                        Windows Desktop Apps... <span className="text-gradient-gold">Your Data Stays on Your Machine</span>
+                      </>
+                    )}
+                  </h3>
+
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xl">
+                    {isRtl
+                      ? 'أنظمة كاشير، مطاعم، عيادات، ومخازن مجهزة للعمل المباشر على كمبيوتر نشاطك التجاري. سرعة خارقة، استقرار تام حتى بدون اتصال بالإنترنت، وتفعيل برخصة تجارية بكود الجهاز لمرة واحدة مدى الحياة.'
+                      : 'High-speed desktop business suites for retail, restaurants, clinics, and warehouses. 100% offline database, rock-solid stability, and one-time hardware activation key.'}
+                  </p>
+
+                  {/* 3 Steps matching CodeMatrix */}
+                  <div className="grid sm:grid-cols-3 gap-3 pt-2">
+                    <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+                      <div className="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 font-black text-xs flex items-center justify-center">1</div>
+                      <h4 className="text-xs font-black text-white">{isRtl ? 'حمّل البرنامج' : 'Download Setup'}</h4>
+                      <p className="text-[11px] text-slate-400 leading-relaxed">{isRtl ? 'ملف واحد · ويندوز 10 و 11 · 88 MB' : 'Single file · Win 10 & 11 · 88 MB'}</p>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+                      <div className="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 font-black text-xs flex items-center justify-center">2</div>
+                      <h4 className="text-xs font-black text-white">{isRtl ? 'جرّبه 3 أيام ببلاش' : '3-Day Free Trial'}</h4>
+                      <p className="text-[11px] text-slate-400 leading-relaxed">{isRtl ? 'بكل المميزات، ومن غير تسجيل' : 'Full features, zero sign-up'}</p>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+                      <div className="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 font-black text-xs flex items-center justify-center">3</div>
+                      <h4 className="text-xs font-black text-white">{isRtl ? 'قفّله بكود على واتساب' : 'Activate via Code'}</h4>
+                      <p className="text-[11px] text-slate-400 leading-relaxed">{isRtl ? 'تبعتلنا كود الجهاز ونبعتلك كود التفعيل' : 'Send Machine ID, get activation key'}</p>
+                    </div>
+                  </div>
+
+                  {/* Actions Bar */}
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <button
+                      onClick={() => setActiveModal('activate_sim')}
+                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 text-white font-black text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-blue-600/20 cursor-pointer"
+                    >
+                      <Key className="w-4 h-4" />
+                      <span>{isRtl ? 'جرّب شاشة التفعيل الحي في المتصفح 🖥️' : 'Test Activation Screen Simulator 🖥️'}</span>
+                    </button>
+
+                    <button
+                      onClick={() => setActiveModal('keygen')}
+                      className="px-5 py-2.5 rounded-xl bg-slate-950 border border-amber-500/40 hover:border-amber-400 text-amber-400 font-black text-xs sm:text-sm flex items-center gap-2 cursor-pointer"
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      <span>{isRtl ? 'أداة عبد السلام لتوليد مفاتيح التفعيل 👑' : 'Abdel Salam Keygen Tool 👑'}</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Right Side: 3D Logo Showcase */}
+                <div className="w-full lg:w-80 shrink-0 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-950/90 border border-slate-800 text-center space-y-4 shadow-xl">
+                  <div className="relative group">
+                    <img
+                      src={getAssetUrl('/assets/images/am_marketing_3d_logo.jpg')}
+                      alt="AM Marketing 3D Software Logo"
+                      className="w-40 h-40 rounded-3xl object-cover shadow-2xl shadow-blue-500/30 border-2 border-amber-400/50 group-hover:scale-105 transition-transform"
+                    />
+                    <div className="absolute -bottom-2 -right-2 px-3 py-1 rounded-full bg-slate-900 border border-amber-400/80 text-amber-400 font-black text-[10px] shadow-lg">
+                      AM 3D Logo
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-black text-white">AM Marketing Desktop Apps</h4>
+                    <p className="text-[11px] text-slate-400">Microsoft WebView2 + SQLite Local Engine</p>
+                    <p className="text-[10px] text-emerald-400 font-bold">100% Offline · Windows 10/11 Single EXE</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Windows Applications Cards Grid */}
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2.5">
+                    <HardDrive className="w-5 h-5 text-cyan-400" />
+                    <span>{isRtl ? 'برامج ويندوز الجاهزة للتحميل والتثبيت' : 'Ready Windows Desktop Installers'}</span>
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1">
+                    {isRtl ? 'ملفات تثبيت رسمية (Setup.exe) مجهزة بشعار AM Marketing ثلاثي الأبعاد الفخم' : 'Production installers with AM Marketing 3D app icon'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {windowsApps.map((app) => (
+                  <div
+                    key={app.id}
+                    className="rounded-2xl bg-slate-900/90 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition-all hover:shadow-2xl hover:shadow-blue-500/5 group"
+                  >
+                    <div className="space-y-4">
+                      {/* Top Header with 3D Logo Icon */}
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={getAssetUrl('/assets/images/am_marketing_3d_logo.jpg')}
+                            alt={app.title}
+                            className="w-12 h-12 rounded-xl object-cover border border-amber-400/40 shadow-md group-hover:scale-105 transition-transform shrink-0"
+                          />
+                          <div>
+                            <span className="font-mono text-[11px] font-bold text-amber-400 break-all block">
+                              {app.exeName}
+                            </span>
+                            <span className="text-[10px] text-slate-400">
+                              {app.size} · {app.os}
+                            </span>
+                          </div>
+                        </div>
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-slate-800 border border-slate-700 text-slate-300">
+                          {app.tag}
+                        </span>
+                      </div>
+
+                      {/* Title & Desc */}
+                      <div>
+                        <h4 className="text-base font-black text-white group-hover:text-blue-400 transition-colors">
+                          {app.title}
+                        </h4>
+                        <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                          {app.desc}
+                        </p>
+                      </div>
+
+                      {/* Highlights */}
+                      <ul className="space-y-1.5 pt-2 border-t border-slate-800/60">
+                        {app.features.map((feat, idx) => (
+                          <li key={idx} className="flex items-center gap-2 text-xs text-slate-300">
+                            <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="pt-5 border-t border-slate-800 flex flex-col gap-2">
+                      <button
+                        onClick={() => handleSimulateDownload(app)}
+                        className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-black text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 cursor-pointer"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        <span>{isRtl ? 'تحميل البرنامج (88 MB)' : 'Download Setup (88 MB)'}</span>
+                      </button>
+
+                      <div className="flex gap-2">
+                        <a
+                          href={`https://wa.me/201098174992?text=${encodeURIComponent(
+                            `مرحباً عبد السلام، أرغب في طلب كود تفعيل لبرنامج: ${app.title} (${app.exeName})`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 py-2 rounded-xl bg-slate-950 border border-emerald-500/40 hover:border-emerald-400 text-emerald-400 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                        >
+                          <Key className="w-3 h-3" />
+                          <span>{isRtl ? 'طلب التفعيل' : 'Get Key'}</span>
+                        </a>
+
+                        <button
+                          onClick={() => setActiveModal('activate_sim')}
+                          className="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs cursor-pointer"
+                          title={isRtl ? 'محاكاة التفعيل' : 'Simulate Activation'}
+                        >
+                          {isRtl ? 'معاينة القفل 🔒' : 'Lock Demo 🔒'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Switch to Cloud Footer Banner */}
+            <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">
+              <div>
+                <h4 className="text-sm font-black text-white">
+                  {isRtl ? 'هل تفضل العمل عبر السحابة أو استعراض مواقع الويب الجاهزة؟' : 'Prefer cloud-based systems or ready web templates?'}
+                </h4>
+                <p className="text-xs text-slate-400 mt-1">
+                  {isRtl ? 'تصفح ديمو الكاشير السحابي، المطاعم، العيادات، وموقع مدير الصيانة لايف في المتصفح' : 'Explore online cloud demos and Modir Al-Syana ready portal'}
+                </p>
+              </div>
+              <button
+                onClick={() => setPlatformTab('cloud')}
+                className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shrink-0"
+              >
+                <span>{isRtl ? 'تصفّح الأنظمة والمواقع السحابية 🌐' : 'Browse Cloud Systems 🌐'}</span>
+                {isRtl ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-16">
+            {/* 🌟 Interactive Personalization Bar */}
+            <div className="max-w-3xl mx-auto p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800/90 to-slate-900 border border-amber-500/30 shadow-2xl shadow-amber-500/5 space-y-3">
           <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-amber-400">
             <span className="flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
@@ -675,7 +1041,28 @@ export default function SystemsHub({ lang = 'ar' }) {
             ))}
           </div>
         </div>
+
+        {/* Switch to Windows Offline Footer Banner */}
+        <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">
+          <div>
+            <h4 className="text-sm font-black text-white">
+              {isRtl ? 'ترغب في تشغيل النظام على جهازك بدون إنترنت 100%؟' : 'Need this system running 100% offline on your PC?'}
+            </h4>
+            <p className="text-xs text-slate-400 mt-1">
+              {isRtl ? 'حمّل برامج ويندوز المكتبية (ملف تثبيت واحد · تفعيل دائم بكود الجهاز عبر واتساب)' : 'Download Windows desktop installers (Single EXE · Lifetime hardware key)'}
+            </p>
+          </div>
+          <button
+            onClick={() => setPlatformTab('windows')}
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shrink-0 shadow-lg shadow-blue-600/20"
+          >
+            <Laptop className="w-4 h-4" />
+            <span>{isRtl ? 'برامج ويندوز المكتبية (أوفلاين) 💻' : 'Windows Desktop Offline 💻'}</span>
+          </button>
+        </div>
       </div>
+    )}
+  </div>
 
       {/* ======================================================== */}
       {/* 🎬 MODAL: 20-Second Interactive Systems Showcase Tour     */}
@@ -1406,6 +1793,333 @@ export default function SystemsHub({ lang = 'ar' }) {
                 >
                   {isRtl ? 'إغلاق' : 'Close'}
                 </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ======================================================== */}
+      {/* 🖥️ MODAL: Windows 11-Style License Activation Simulator  */}
+      {/* ======================================================== */}
+      <AnimatePresence>
+        {activeModal === 'activate_sim' && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveModal(null)}
+              className="fixed inset-0 bg-slate-950/85 backdrop-blur-md"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col font-sans"
+            >
+              {/* Windows 11 Title Bar */}
+              <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950 border-b border-slate-800 select-none">
+                <div className="flex items-center gap-2">
+                  <img
+                    src={getAssetUrl('/assets/images/am_marketing_3d_logo.jpg')}
+                    alt="AM Logo"
+                    className="w-4 h-4 rounded object-cover"
+                  />
+                  <span className="text-xs font-bold text-slate-300">
+                    AM Marketing — {isRtl ? 'إدارة ترخيص وتفعيل البرنامج' : 'License Activation Manager'}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-600 cursor-pointer" />
+                  <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-600 cursor-pointer" />
+                  <button
+                    onClick={() => setActiveModal(null)}
+                    className="p-1 text-slate-400 hover:text-white hover:bg-red-500/80 rounded transition-colors"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Activation Window Body */}
+              <div className="p-6 space-y-6">
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-950 border border-slate-800">
+                  <img
+                    src={getAssetUrl('/assets/images/am_marketing_3d_logo.jpg')}
+                    alt="AM Marketing 3D"
+                    className="w-16 h-16 rounded-2xl object-cover border border-amber-400/40 shadow-lg shrink-0"
+                  />
+                  <div className="space-y-1">
+                    <h3 className="text-sm sm:text-base font-black text-white">
+                      {isRtl ? 'منظومة AM Marketing للأجهزة المكتبية' : 'AM Marketing Desktop System'}
+                    </h3>
+                    <p className="text-xs text-slate-400">
+                      {isRtl ? 'نظام الحماية وتنشيط رخصة التشغيل' : 'Hardware Lock & Lifetime License Validator'}
+                    </p>
+                    <div className="pt-1">
+                      {simIsActivated ? (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-black bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                          <CheckCircle className="w-3 h-3" />
+                          {isRtl ? 'مفعّل مدى الحياة (رخصة دائمة)' : 'Activated (Lifetime License)'}
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-black bg-amber-500/20 text-amber-300 border border-amber-500/40">
+                          <Lock className="w-3 h-3" />
+                          {isRtl ? 'نسخة تجريبية (متبقي 3 أيام)' : 'Trial Mode (3 Days Remaining)'}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Machine ID Box */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-slate-300 flex items-center justify-between">
+                    <span>{isRtl ? 'كود جهازك الفريد (Hardware Machine ID):' : 'Hardware Machine ID:'}</span>
+                    <span className="text-[10px] text-amber-400">{isRtl ? 'مبني على رقم الماذربورد والمعالج' : 'Bound to motherboard UUID'}</span>
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 font-mono text-sm font-black text-amber-400 text-center tracking-wider">
+                      {simMachineId}
+                    </div>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(simMachineId);
+                        setSimCopied(true);
+                        setTimeout(() => setSimCopied(false), 2000);
+                      }}
+                      className="px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center gap-1 cursor-pointer"
+                      title={isRtl ? 'نسخ الكود' : 'Copy'}
+                    >
+                      {simCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                      <span>{simCopied ? (isRtl ? 'تم النسخ!' : 'Copied!') : (isRtl ? 'نسخ' : 'Copy')}</span>
+                    </button>
+                  </div>
+                  <p className="text-[11px] text-slate-400">
+                    {isRtl
+                      ? '📌 انسخ هذا الكود وأرسله إلى عبد السلام على واتساب لتوليد كود التفعيل الخاص بجهازك.'
+                      : '📌 Copy this code and send it to Abdel Salam on WhatsApp to receive your lifetime key.'}
+                  </p>
+                </div>
+
+                {/* Activation Key Input & Actions */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-slate-300">
+                    {isRtl ? 'أدخل كود التفعيل (Activation Key):' : 'Enter Activation Key:'}
+                  </label>
+                  <input
+                    type="text"
+                    value={simInputKey}
+                    onChange={(e) => setSimInputKey(e.target.value)}
+                    placeholder="ACT-AM-XXXX-XXXX-9941"
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white font-mono text-sm tracking-wider focus:outline-none focus:border-amber-400"
+                  />
+                </div>
+
+                {/* Submit Buttons */}
+                <div className="space-y-2 pt-2">
+                  <button
+                    onClick={() => {
+                      if (simInputKey.trim().length > 6) {
+                        setSimIsActivated(true);
+                      } else {
+                        alert(isRtl ? 'يرجى إدخال كود التفعيل أو الضغط على تجربة التفعيل التلقائي' : 'Please enter an activation key or try auto-demo');
+                      }
+                    }}
+                    className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer"
+                  >
+                    <Unlock className="w-4 h-4" />
+                    <span>{isRtl ? 'تفعيل البرنامج مدى الحياة 🚀' : 'Activate Lifetime License 🚀'}</span>
+                  </button>
+
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        setSimInputKey('ACT-AM-1B88-A2F4-LIFE-9941');
+                        setSimIsActivated(true);
+                      }}
+                      className="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>{isRtl ? 'جرّب التفعيل التلقائي (ديمو)' : 'Auto-Fill Test Key (Demo)'}</span>
+                    </button>
+
+                    <a
+                      href={`https://wa.me/201098174992?text=${encodeURIComponent(
+                        `مرحباً عبد السلام، أرغب في تفعيل برنامج ويندوز. كود جهازي هو: ${simMachineId}`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 py-2 rounded-xl bg-slate-950 border border-emerald-500/40 hover:border-emerald-400 text-emerald-400 text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <span>{isRtl ? 'طلب الكود عبر واتساب 💬' : 'Request via WhatsApp 💬'}</span>
+                    </a>
+                  </div>
+                </div>
+
+                {simIsActivated && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/40 text-center space-y-1"
+                  >
+                    <h4 className="text-sm font-black text-emerald-400">
+                      {isRtl ? '🎉 مبروك! تم تفعيل نسختك بنجاح مدى الحياة' : '🎉 Successfully Activated Lifetime License!'}
+                    </h4>
+                    <p className="text-[11px] text-slate-300">
+                      {isRtl
+                        ? 'تم تثبيت الرخصة محلياً على جهازك. تم فك كل القيود والبرنامج يعمل بكامل كفاءته بدون إنترنت.'
+                        : 'License verified & sealed locally. All limits unlocked, 100% offline access ready.'}
+                    </p>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ======================================================== */}
+      {/* 👑 MODAL: Abdel Salam's Secret Keygen Tool                */}
+      {/* ======================================================== */}
+      <AnimatePresence>
+        {activeModal === 'keygen' && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveModal(null)}
+              className="fixed inset-0 bg-slate-950/85 backdrop-blur-md"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-xl bg-slate-900 border border-amber-500/40 rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col font-sans"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between px-6 py-4 bg-slate-950 border-b border-slate-800">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 fill-current" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm sm:text-base font-black text-white">
+                      {isRtl ? 'أداة عبد السلام لتوليد مفاتيح التفعيل (Admin Keygen)' : 'Abdel Salam Activation Key Generator'}
+                    </h3>
+                    <p className="text-[11px] text-amber-400 font-bold">خاص بـ عبد السلام • AM Marketing</p>
+                  </div>
+                </div>
+                <button onClick={() => setActiveModal(null)} className="p-1.5 text-slate-400 hover:text-white">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Body */}
+              <div className="p-6 space-y-4">
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  {isRtl
+                    ? 'ضع كود الجهاز (Machine ID) الذي أرسله لك العميل، ثم اضغط توليد الكود لإنشاء مفتاح تفعيل مشفر مرتبط بهذا الجهاز فقط.'
+                    : 'Paste the client Machine ID to generate an encrypted hardware-bound activation key.'}
+                </p>
+
+                <div className="space-y-3">
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
+                      {isRtl ? 'كود جهاز العميل (Machine ID):' : 'Client Machine ID:'}
+                    </label>
+                    <input
+                      type="text"
+                      value={keygenInputMachine}
+                      onChange={(e) => setKeygenInputMachine(e.target.value)}
+                      placeholder="AM-9817-4F2A-88B1"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-amber-400 font-mono text-sm tracking-wider focus:outline-none focus:border-amber-400"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
+                      {isRtl ? 'اسم العميل / النشاط التجاري:' : 'Client / Store Name:'}
+                    </label>
+                    <input
+                      type="text"
+                      value={keygenClientName}
+                      onChange={(e) => setKeygenClientName(e.target.value)}
+                      placeholder="سوبر ماركت النور"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-400"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
+                      {isRtl ? 'نوع الترخيص:' : 'License Type:'}
+                    </label>
+                    <select
+                      value={keygenLicenseType}
+                      onChange={(e) => setKeygenLicenseType(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-400 cursor-pointer"
+                    >
+                      <option value="lifetime">{isRtl ? 'رخصة تجارية دائمة مدى الحياة (Lifetime)' : 'Commercial Lifetime'}</option>
+                      <option value="yearly">{isRtl ? 'اشتراك سنوي (1 سنة)' : 'Annual Subscription (1 Year)'}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleGenerateKeygenKey}
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 cursor-pointer"
+                >
+                  <Key className="w-4 h-4" />
+                  <span>{isRtl ? 'توليد كود التفعيل المشفر الآن ⚡' : 'Generate Encrypted Key Now ⚡'}</span>
+                </button>
+
+                {generatedKey && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 rounded-xl bg-slate-950 border border-emerald-500/40 space-y-3"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-slate-400">
+                        {isRtl ? 'كود التفعيل جاهز للإرسال للعميل:' : 'Generated Key Ready for Client:'}
+                      </span>
+                      <span className="text-[10px] text-emerald-400 font-bold">100% Valid</span>
+                    </div>
+
+                    <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-center font-mono text-sm font-black text-emerald-400 tracking-wider">
+                      {generatedKey}
+                    </div>
+
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(generatedKey);
+                          setKeygenCopied(true);
+                          setTimeout(() => setKeygenCopied(false), 2000);
+                        }}
+                        className="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                      >
+                        {keygenCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                        <span>{keygenCopied ? (isRtl ? 'تم النسخ!' : 'Copied!') : (isRtl ? 'نسخ الكود' : 'Copy Key')}</span>
+                      </button>
+
+                      <a
+                        href={`https://wa.me/?text=${encodeURIComponent(
+                          `مرحباً ${keygenClientName}، إليك كود التفعيل الرسمي لبرنامجك من AM Marketing:\n\nكود التفعيل: ${generatedKey}\n\nشكراً لتعاملك مع عبد السلام (AM Marketing).`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                      >
+                        <span>{isRtl ? 'إرسال للعميل عبر واتساب 💬' : 'Send via WhatsApp 💬'}</span>
+                      </a>
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </motion.div>
           </div>
