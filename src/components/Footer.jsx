@@ -79,13 +79,10 @@ export default function Footer({ t, lang }) {
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
                 <a
-                  href="https://github.com/mostafabodye"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5"
+                  href="#systems-hub"
+                  className="text-slate-400 hover:text-amber-400 transition-colors flex items-center gap-1.5 font-bold"
                 >
-                  <Github className="w-3.5 h-3.5" />
-                  <span>GitHub</span>
+                  <span>⚡ {lang === 'ar' ? 'أنظمة وبرامج ويندوز' : 'Turnkey Systems & Windows'}</span>
                   <ArrowUpRight className="w-3 h-3 text-slate-500" />
                 </a>
               </li>

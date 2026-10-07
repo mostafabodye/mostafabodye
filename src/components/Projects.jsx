@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Search, Github, ArrowUpRight, Check, Eye } from 'lucide-react';
+import { ExternalLink, Search, ArrowUpRight, Check, Eye, MessageSquare, Phone, Sparkles, ShieldCheck, Zap } from 'lucide-react';
 import { projectsData } from '../data/projectsData';
 import ProjectModal from './ProjectModal';
 import { getAssetUrl } from '../utils/assets';
@@ -183,29 +183,77 @@ export default function Projects({ t, lang }) {
           </AnimatePresence>
         </motion.div>
 
-        {/* Want to see more? GitHub Box */}
+        {/* Ready for your own custom project/system? Direct Business CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center py-12 px-6 bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl max-w-3xl mx-auto card-hover"
+          className="text-center py-10 px-6 sm:px-10 bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90 backdrop-blur-md border border-amber-500/30 rounded-3xl max-w-3xl mx-auto shadow-2xl shadow-amber-500/5 space-y-6"
         >
-          <h3 className="text-2xl font-bold mb-3 text-slate-100">
-            {t.projects.viewMore}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>
+              {lang === 'ar' ? 'حلول برمجية وتسويقية مخصصة لنشاطك التجاري' : 'Custom Software & Growth Systems for Your Business'}
+            </span>
+          </div>
+
+          <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+            {lang === 'ar' ? (
+              <>
+                جاهز لتطوير نشاطك أو <span className="text-gradient-gold">طلب نظام مخصص؟</span>
+              </>
+            ) : (
+              <>
+                Ready to Launch or Scale Your <span className="text-gradient-gold">Custom System?</span>
+              </>
+            )}
           </h3>
-          <p className="text-slate-400 text-sm mb-6 max-w-xl mx-auto leading-relaxed">
-            {t.projects.viewMoreDesc}
+
+          <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+            {lang === 'ar'
+              ? 'سواء كنت بحاجة لنظام كاشير ونقاط بيع، إدارة مطاعم أو عيادات، موقع ويب متكامل، أو حملة تسويقية تضاعف مبيعاتك — تواصل مع عبد السلام مباشرة للحصول على استشارة تقنية مجانية وعرض سعر فوري.'
+              : 'Whether you need a POS system, restaurant OS, medical clinic hub, turnkey website, or high-ROI advertising campaign — connect directly with Abdel Salam for a free consultation and instant quote.'}
           </p>
-          <a
-            href="https://github.com/mostafabodye"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl text-white font-bold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105"
-          >
-            <Github className="w-5 h-5" />
-            <span>{t.projects.githubCTA}</span>
-          </a>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <a
+              href={`https://wa.me/201098174992?text=${encodeURIComponent(
+                'مرحباً عبد السلام، أرغب في استشارة تقنية وطلب نظام مخصص لنشاطي التجاري.'
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 rounded-xl text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/20 transition-all hover:scale-105 cursor-pointer"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>{lang === 'ar' ? 'تواصل عبر واتساب واطلب نظامك الآن 💬' : 'Chat on WhatsApp & Order Now 💬'}</span>
+            </a>
+
+            <a
+              href="tel:01098174992"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-950 border border-slate-700 hover:border-amber-400 text-slate-200 hover:text-white rounded-xl font-bold text-sm transition-all cursor-pointer"
+            >
+              <Phone className="w-4 h-4 text-amber-400" />
+              <span>{lang === 'ar' ? 'اتصال مباشر: 01098174992 📞' : 'Call: +20 1098174992 📞'}</span>
+            </a>
+          </div>
+
+          {/* Trust Highlights */}
+          <div className="pt-4 border-t border-slate-800/80 grid grid-cols-3 gap-2 text-[11px] text-slate-400 font-bold">
+            <div className="flex items-center justify-center gap-1.5">
+              <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>{lang === 'ar' ? 'تسليم خلال 24 ساعة' : '24H Delivery'}</span>
+            </div>
+            <div className="flex items-center justify-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>{lang === 'ar' ? 'ضمان ودعم مستمر' : 'Full Warranty'}</span>
+            </div>
+            <div className="flex items-center justify-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+              <span>{lang === 'ar' ? 'تدريب كامل لفريقك' : 'Staff Onboarding'}</span>
+            </div>
+          </div>
         </motion.div>
       </div>
 
