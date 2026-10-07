@@ -840,18 +840,18 @@ export const projectsData = [
       en: "Visual explainer breaking down automated algorithmic trading and fintech"
     },
     badge: {
-      ar: "موشن جرافيك - Fintech AI",
-      en: "Fintech AI Motion"
+      ar: "إنتاج موشن جرافيك للعملاء",
+      en: "Client Motion Production"
     },
     client: {
-      ar: "حلول الاستثمار والتقنية المالية",
-      en: "Fintech Investment Solutions"
+      ar: "مشروع عميل: منصة تقنية مالية واستثمار",
+      en: "Client Project: Fintech AI Platform"
     },
     tags: ["Fintech", "فيديو موشن AI", "استثمار رقمي", "تسويق B2B"],
     gradient: "from-emerald-500 via-teal-600 to-cyan-600",
     summary: {
-      ar: "إنتاج فيديو موشن احترافي يشرح بأسلوب بصري سلس مفاهيم الاستثمار الحديثة وأتمتة التداول وتحليل البيانات بالذكاء الاصطناعي.",
-      en: "Produced a polished fintech motion video demystifying smart trading algorithms and portfolio automation."
+      ar: "نموذج موشن جرافيك أُنتج لصالح أحد عملائنا في قطاع التقنية المالية، يوضح قدرة استوديو AM Marketing على تحويل الأفكار المعقدة إلى فيديو سينمائي تسويقي جذاب ومؤثر.",
+      en: "Commissioned motion graphic video produced for a fintech client, demonstrating AM Marketing Studio's capability in high-impact visual storytelling."
     },
     challenge: {
       ar: "تبسيط المفاهيم المالية المعقدة وجعلها مشوقة وسهلة الفهم للمستثمرين والمبتدئين.",
