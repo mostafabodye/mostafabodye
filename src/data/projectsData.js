@@ -1,5 +1,117 @@
 export const projectsData = [
   {
+    id: "am-systems-hub",
+    category: "web",
+    categories: ["web", "ai"],
+    title: {
+      ar: "منصة برامج الويندوز المكتبية والأنظمة التجارية (AM Windows Systems)",
+      en: "AM Windows Desktop Software & Turnkey Business Systems"
+    },
+    subtitle: {
+      ar: "5 برامج ويندوز تعمل بدون إنترنت (كاشير، مطاعم، عيادات، مخازن، شؤون موظفين) مع نظام تفعيل بكود رسمي لكل مشتري",
+      en: "5 offline Windows desktop applications (POS, Restaurant, Clinic, Inventory, HR) with Hardware ID & Keygen licensing"
+    },
+    badge: {
+      ar: "برامج ويندوز + تفعيل بالكود 💻🔑",
+      en: "Windows Apps + License Key 💻🔑"
+    },
+    client: {
+      ar: "إصدارات وكالة AM Marketing (عبد السلام)",
+      en: "AM Marketing Software Division"
+    },
+    website: "#systems-hub",
+    tags: ["برامج ويندوز Offline", "كاشير POS", "إدارة مطاعم", "إدارة عيادات", "مخازن وحسابات", "تفعيل بسيريال"],
+    gradient: "from-blue-600 via-indigo-600 to-purple-600",
+    summary: {
+      ar: "تطوير منظومة برامج ويندوز مكتبية متكاملة تعمل 100% بدون إنترنت لخدمة المحلات والمطاعم والعيادات والشركات، مزودة بنظام حماية وتفعيل رسمي يربط البرنامج بجهاز المشتري (Machine ID) ويتم تفعيله بكود خاص يرسله عبد السلام للمشتري.",
+      en: "Engineered standalone offline Windows software suite for retail, hospitality, clinics, and warehouses, secured by a cryptographic Hardware Machine ID and activation code system."
+    },
+    challenge: {
+      ar: "حاجة أصحاب الأنشطة التجارية لبرامج سريعة ومستقرة تعمل بدون إنترنت مع حماية حقوق الملكية وتفعيل فوري.",
+      en: "Providing ultra-stable offline desktop operations for commercial businesses with hardware-locked licensing."
+    },
+    solution: {
+      ar: "بناء تطبيقات ويندوز جاهزة للتحميل المباشر مع شاشة تفعيل ذكية وأداة توليد أكواد تفعيل (Keygen) مدى الحياة أو سنوياً.",
+      en: "Built downloadable Windows packages with interactive activation lock screens and instant WhatsApp serial delivery."
+    },
+    results: [
+      { label: { ar: "برامج جاهزة", en: "Desktop Apps" }, value: "5 برامج" },
+      { label: { ar: "التشغيل", en: "Operation" }, value: "100% بدون نت" },
+      { label: { ar: "التفعيل", en: "Activation" }, value: "بكود فوري" }
+    ],
+    features: {
+      ar: [
+        "تحميل مباشر للبرنامج وتجربته قبل الشراء",
+        "تفعيل رسمي بكود خاص مرتبط برقم جهاز المشتري",
+        "يدعم طباعة الفواتير الحرارية والباركود والتقارير"
+      ],
+      en: [
+        "Direct download and interactive live sandbox",
+        "Hardware-locked serial code activation",
+        "Full thermal receipt printing & barcode support"
+      ]
+    },
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
+    demoUrl: "#systems-hub",
+    isFeatured: true
+  },
+  {
+    id: "web-modir-syana",
+    category: "web",
+    categories: ["web", "ads"],
+    title: {
+      ar: "موقع وخدمات مدير الصيانة المعتمد (الأجهزة المنزلية)",
+      en: "Certified Home Appliances Maintenance Platform"
+    },
+    subtitle: {
+      ar: "موقع ويب متكامل لخدمات صيانة الغسالات، الثلاجات، الأفران، والتكييفات مع طلب صيانة فوري ومتوافق مع كافة الأجهزة",
+      en: "Full-service digital platform for home appliance repairs with direct scheduling across all devices"
+    },
+    badge: {
+      ar: "موقع حقيقي لايف (BUILD) 🌐",
+      en: "Live Platform (BUILD) 🌐"
+    },
+    client: {
+      ar: "شبكة مدير الصيانة المعتمد",
+      en: "Certified Maintenance Network"
+    },
+    website: "https://mustafaabdelsalam49-arch.github.io/project-1-/index.html",
+    tags: ["تطوير مواقع", "صيانة أجهزة منزلية", "SEO محلي", "متجاوب مع الموبايل والتابلت", "حجز فوري"],
+    gradient: "from-cyan-500 to-blue-600",
+    summary: {
+      ar: "تصميم وبرمجة موقع إلكتروني متكامل لخدمات صيانة الأجهزة المنزلية مع صفحات متخصصة لكل ماركة عالمية وأقسام للأعطال الشائعة ونموذج اتصال سريع متوافق 100% مع الموبايل والتابلت واللابتوب.",
+      en: "Architected a full-featured home appliance maintenance platform with dedicated brand pages, local SEO schema, and instant service dispatch."
+    },
+    challenge: {
+      ar: "الحاجة إلى موقع سريع وسهل الاستخدام يصل للعملاء الذين يبحثون عن صيانة طارئة لأجهزتهم المنزلية مع تجربة تصفح فورية على الجوال.",
+      en: "Building an intuitive, high-speed portal to capture emergency appliance repair searches across multiple metropolitan sectors."
+    },
+    solution: {
+      ar: "تطوير موقع سريع متوافق 100% مع الجوال ومحركات البحث SEO، مع أزرار اتصال مباشرة ونماذج حجز سريعة.",
+      en: "Engineered mobile-first responsive architecture with localized SEO keyword targeting and friction-free direct booking funnels."
+    },
+    results: [
+      { label: { ar: "سرعة التحميل", en: "Load Speed" }, value: "0.8s" },
+      { label: { ar: "طلبات الصيانة", en: "Service Bookings" }, value: "+380" },
+      { label: { ar: "تقييم الأداء", en: "Lighthouse" }, value: "98/100" }
+    ],
+    features: {
+      ar: [
+        "أقسام مخصصة لكافة الأجهزة المنزلية والماركات العالمية",
+        "متوافق 100% مع الموبايل والتابلت والكمبيوتر",
+        "نظام حجز صيانة فوري واتصال مباشر"
+      ],
+      en: [
+        "Dedicated multi-appliance repair catalog",
+        "100% responsive across mobile, tablet, and PC",
+        "Instant mobile-first dispatch forms"
+      ]
+    },
+    image: "/assets/images/modir_syana_preview.webp",
+    demoUrl: "https://mustafaabdelsalam49-arch.github.io/project-1-/index.html",
+    isFeatured: true
+  },
+  {
     id: "gads-almajal",
     category: "web",
     categories: ["web", "ads"],

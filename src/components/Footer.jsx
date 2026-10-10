@@ -1,10 +1,15 @@
 import React from 'react';
-import { Github, Facebook, Phone, Heart, ArrowUpRight } from 'lucide-react';
+import { Facebook, Heart, ArrowUpRight, Megaphone, Globe, Monitor, Briefcase, UserCheck, Home } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 
-export default function Footer({ t, lang }) {
+export default function Footer({ t, lang, onNavigate }) {
+  const handleNav = (pageId, e) => {
+    if (e) e.preventDefault();
+    if (onNavigate) onNavigate(pageId);
+  };
+
   return (
-    <footer className="relative border-t border-slate-800 bg-slate-950/80 backdrop-blur-md pt-16 pb-12 overflow-hidden">
+    <footer className="relative border-t border-slate-800 bg-slate-950/90 backdrop-blur-md pt-16 pb-12 overflow-hidden">
       <div className="container-max">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Brand & Bio */}
@@ -37,36 +42,71 @@ export default function Footer({ t, lang }) {
             </p>
           </div>
 
-          {/* Navigation Links */}
+          {/* Dedicated Multi-Page Navigation Links */}
           <div>
             <h4 className="text-sm font-bold text-slate-100 mb-4 tracking-wider uppercase">
-              {t.footer.links.navigation}
+              {lang === 'ar' ? 'صفحات الموقع المتخصصة' : 'Dedicated Pages'}
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
-                <a href="#hero" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  {t.footer.links.home}
-                </a>
+                <button
+                  type="button"
+                  onClick={(e) => handleNav('home', e)}
+                  className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 cursor-pointer"
+                >
+                  <Home className="w-3.5 h-3.5 text-blue-400" />
+                  <span>{lang === 'ar' ? 'الصفحة الرئيسية' : 'Home Page'}</span>
+                </button>
               </li>
               <li>
-                <a href="#about" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  {t.footer.links.about}
-                </a>
+                <button
+                  type="button"
+                  onClick={(e) => handleNav('ads', e)}
+                  className="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-2 cursor-pointer font-semibold"
+                >
+                  <Megaphone className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>{lang === 'ar' ? 'إدارة الحملات وشات أدز (كل المنصات)' : 'Ads & Chat Ads Academy'}</span>
+                </button>
               </li>
               <li>
-                <a href="#skills" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  {t.footer.links.skills}
-                </a>
+                <button
+                  type="button"
+                  onClick={(e) => handleNav('web', e)}
+                  className="text-slate-400 hover:text-purple-400 transition-colors flex items-center gap-2 cursor-pointer font-semibold"
+                >
+                  <Globe className="w-3.5 h-3.5 text-purple-400" />
+                  <span>{lang === 'ar' ? 'تطوير المواقع والمتاجر والمنصات التعليمية' : 'Websites, Stores & LMS'}</span>
+                </button>
               </li>
               <li>
-                <a href="#projects" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  {t.footer.links.projects}
-                </a>
+                <button
+                  type="button"
+                  onClick={(e) => handleNav('systems', e)}
+                  className="text-slate-400 hover:text-amber-400 transition-colors flex items-center gap-2 cursor-pointer font-semibold"
+                >
+                  <Monitor className="w-3.5 h-3.5 text-amber-400" />
+                  <span>{lang === 'ar' ? 'برامج الويندوز والتفعيل بالكود' : 'Windows Software & Keygen'}</span>
+                </button>
               </li>
               <li>
-                <a href="#contact" className="text-slate-400 hover:text-blue-400 transition-colors">
-                  {t.footer.links.contact}
-                </a>
+                <button
+                  type="button"
+                  onClick={(e) => handleNav('portfolio', e)}
+                  className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-2 cursor-pointer"
+                >
+                  <Briefcase className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>{lang === 'ar' ? 'معرض الأعمال ودراسات الحالة' : 'Portfolio & Case Studies'}</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={(e) => handleNav('contact', e)}
+                  className="text-slate-400 hover:text-pink-400 transition-colors flex items-center gap-2 cursor-pointer"
+                >
+                  <UserCheck className="w-3.5 h-3.5 text-pink-400" />
+                  <span>{lang === 'ar' ? 'عن الوكالة والتواصل المباشر' : 'About & Contact'}</span>
+                </button>
               </li>
             </ul>
           </div>
@@ -78,13 +118,24 @@ export default function Footer({ t, lang }) {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
-                <a
-                  href="#projects"
-                  className="text-slate-400 hover:text-amber-400 transition-colors flex items-center gap-1.5 font-bold"
+                <button
+                  type="button"
+                  onClick={(e) => handleNav('systems', e)}
+                  className="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1.5 font-bold cursor-pointer"
                 >
-                  <span>🚀 {lang === 'ar' ? 'معرض الأعمال والمشاريع' : 'Client Portfolio'}</span>
+                  <span>💻 {lang === 'ar' ? 'تحميل برامج الويندوز + التفعيل' : 'Windows POS + Keygen'}</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={(e) => handleNav('portfolio', e)}
+                  className="text-slate-300 hover:text-cyan-400 transition-colors flex items-center gap-1.5 font-bold cursor-pointer"
+                >
+                  <span>🚀 {lang === 'ar' ? 'سابقة أعمال الأوناش والمواقع' : 'Client Portfolio'}</span>
                   <ArrowUpRight className="w-3 h-3 text-slate-500" />
-                </a>
+                </button>
               </li>
               <li>
                 <a
@@ -129,16 +180,16 @@ export default function Footer({ t, lang }) {
           <p className="flex items-center gap-1 text-slate-400">
             <span>{lang === 'ar' ? 'صُمّم وبُني بـ' : 'Built with'}</span>
             <Heart className="w-3.5 h-3.5 text-red-500 fill-current inline" />
-            <span>{lang === 'ar' ? 'باستخدام React وNext.js وTailwind CSS' : 'using React, Next.js & Tailwind CSS'}</span>
+            <span>{lang === 'ar' ? 'باستخدام React وNext.js وTailwind CSS — متوافق مع جميع الأجهزة' : 'using React, Next.js & Tailwind CSS'}</span>
           </p>
 
           <div className="flex gap-6">
-            <a href="#" className="hover:text-blue-400 transition-colors">
+            <button type="button" onClick={(e) => handleNav('home', e)} className="hover:text-blue-400 transition-colors">
               {t.footer.legal.privacy}
-            </a>
-            <a href="#" className="hover:text-blue-400 transition-colors">
+            </button>
+            <button type="button" onClick={(e) => handleNav('contact', e)} className="hover:text-blue-400 transition-colors">
               {t.footer.legal.terms}
-            </a>
+            </button>
           </div>
         </div>
       </div>

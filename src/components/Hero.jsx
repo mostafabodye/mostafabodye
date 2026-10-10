@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Sparkles, Send, ShieldCheck, Flame, Cpu } from 'lucide-react';
+import { ArrowUpRight, Sparkles, Send, ShieldCheck, Flame, Cpu, Monitor, Megaphone, Globe } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 
-export default function Hero({ t, lang }) {
+export default function Hero({ t, lang, onNavigate }) {
   const [activeTab, setActiveTab] = useState('projects');
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section id="hero" className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden flex flex-col items-center justify-center">
+    <section id="hero" className="relative pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden flex flex-col items-center justify-center">
       {/* Top Greeting Badge */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -54,24 +47,47 @@ export default function Hero({ t, lang }) {
           </span>
         </h1>
 
-        <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-normal">
+        <p className="text-slate-300 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed font-normal">
           {t.hero.tagline}
         </p>
 
-        {/* 4 Core Pillars Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-5">
-          <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold flex items-center gap-1.5">
-            <Cpu className="w-3.5 h-3.5" /> BUILD • Web Dev
-          </span>
-          <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold flex items-center gap-1.5">
-            <Flame className="w-3.5 h-3.5" /> GROW • Google Ads
-          </span>
-          <span className="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5" /> AI STUDIO • 4K Video
-          </span>
-          <span className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5" /> PROTECT • Security
-          </span>
+        {/* Interactive Core Pillars Pills (Click to open each dedicated page) */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-6">
+          <button
+            type="button"
+            onClick={() => onNavigate && onNavigate('ads')}
+            className="px-3.5 py-1.5 rounded-full bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-300 text-xs font-bold flex items-center gap-1.5 transition cursor-pointer"
+          >
+            <Megaphone className="w-3.5 h-3.5" />
+            <span>{lang === 'ar' ? 'إدارة الحملات + شات أدز' : 'Ads & Chat Ads'}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onNavigate && onNavigate('web')}
+            className="px-3.5 py-1.5 rounded-full bg-blue-500/15 hover:bg-blue-500/25 border border-blue-500/40 text-blue-300 text-xs font-bold flex items-center gap-1.5 transition cursor-pointer"
+          >
+            <Globe className="w-3.5 h-3.5" />
+            <span>{lang === 'ar' ? 'مواقع ومتاجر ومنصات تعليمية' : 'Web, E-Commerce & LMS'}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onNavigate && onNavigate('systems')}
+            className="px-3.5 py-1.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 text-xs font-bold flex items-center gap-1.5 transition cursor-pointer"
+          >
+            <Monitor className="w-3.5 h-3.5" />
+            <span>{lang === 'ar' ? 'برامج ويندوز وتفعيل بالكود' : 'Windows POS & Keygen'}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onNavigate && onNavigate('portfolio')}
+            className="px-3.5 py-1.5 rounded-full bg-purple-500/15 hover:bg-purple-500/25 border border-purple-500/40 text-purple-300 text-xs font-bold flex items-center gap-1.5 transition cursor-pointer"
+          >
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>{lang === 'ar' ? 'سابقة الأعمال ودراسات الحالة' : 'Case Studies'}</span>
+          </button>
         </div>
       </motion.div>
 
@@ -84,7 +100,6 @@ export default function Hero({ t, lang }) {
           className="absolute w-[92vw] max-w-2xl h-[260px] sm:h-[300px] rounded-t-full bottom-0 z-10 overflow-hidden border-t-2 border-x-2 border-slate-700/60 backdrop-blur-sm shadow-[0_-20px_50px_rgba(59,130,246,0.15)]"
           style={{ left: '50%', transform: 'translateX(-50%)' }}
         >
-          {/* Subtle inner grid in arch */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.06)_1px,transparent_1px)] bg-[size:30px_30px] opacity-60" />
         </motion.div>
 
@@ -109,10 +124,8 @@ export default function Hero({ t, lang }) {
               alt={t.hero.altProfile}
               className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
-            {/* Ambient vignette gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
 
-            {/* Bottom mini-badge on photo */}
             <div className="absolute bottom-3 left-3 right-3 text-center px-3 py-1.5 rounded-xl bg-slate-950/85 backdrop-blur-md border border-slate-700/60 text-xs font-bold text-slate-200">
               <span className="text-amber-400">AM Marketing</span> • {t.hero.name}
             </div>
@@ -129,11 +142,11 @@ export default function Hero({ t, lang }) {
           <motion.button
             onClick={() => {
               setActiveTab('projects');
-              scrollToSection('projects');
+              if (onNavigate) onNavigate('portfolio');
             }}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 transition-all duration-300 shadow-md ${
+            className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 transition-all duration-300 shadow-md cursor-pointer ${
               activeTab === 'projects'
                 ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-orange-500/30'
                 : 'text-slate-300 hover:text-white bg-transparent'
@@ -146,11 +159,11 @@ export default function Hero({ t, lang }) {
           <motion.button
             onClick={() => {
               setActiveTab('hire');
-              scrollToSection('contact');
+              if (onNavigate) onNavigate('contact');
             }}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 transition-all duration-300 ${
+            className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 transition-all duration-300 cursor-pointer ${
               activeTab === 'hire'
                 ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-blue-500/30 shadow-md'
                 : 'text-slate-300 hover:text-white bg-transparent'

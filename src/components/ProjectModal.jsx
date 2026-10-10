@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, CheckCircle, TrendingUp, AlertCircle, Lightbulb, MessageSquare, Sparkles } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 
-export default function ProjectModal({ project, isOpen, onClose, t, lang }) {
+export default function ProjectModal({ project, isOpen, onClose, t, lang, onNavigate }) {
   const isRtl = lang === 'ar';
 
   useEffect(() => {
@@ -204,6 +204,18 @@ export default function ProjectModal({ project, isOpen, onClose, t, lang }) {
                   </span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
+              )}
+
+              {project.demoUrl === '#systems-hub' && onNavigate && (
+                <button
+                  onClick={() => {
+                    onClose();
+                    onNavigate('systems');
+                  }}
+                  className="px-5 py-2 rounded-xl text-xs font-black text-slate-950 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 transition-all flex items-center gap-1.5 shadow-lg shadow-amber-500/25"
+                >
+                  <span>{lang === 'ar' ? 'فتح صفحة برامج الويندوز والتفعيل 💻' : 'Open Windows Systems Hub 💻'}</span>
+                </button>
               )}
 
               <a

@@ -5,7 +5,7 @@ import { projectsData } from '../data/projectsData';
 import ProjectModal from './ProjectModal';
 import { getAssetUrl } from '../utils/assets';
 
-export default function Projects({ t, lang }) {
+export default function Projects({ t, lang, onNavigate }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -193,6 +193,17 @@ export default function Projects({ t, lang }) {
                           <Play className="w-3.5 h-3.5 fill-current" />
                           <span>{lang === 'ar' ? 'تشغيل الفيديو 🎬' : 'Watch Video 🎬'}</span>
                         </button>
+                      ) : project.demoUrl === '#systems-hub' ? (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (onNavigate) onNavigate('systems');
+                          }}
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl text-slate-950 text-xs font-black transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25"
+                        >
+                          <span>{lang === 'ar' ? 'فتح منصة البرامج 💻' : 'Open Systems Hub 💻'}</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </button>
                       ) : (
                         <button
                           onClick={(e) => {
@@ -293,6 +304,7 @@ export default function Projects({ t, lang }) {
         onClose={() => setSelectedProject(null)}
         t={t}
         lang={lang}
+        onNavigate={onNavigate}
       />
     </section>
   );
