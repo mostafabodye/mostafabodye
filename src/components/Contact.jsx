@@ -126,18 +126,18 @@ export default function Contact({ t, lang }) {
                 <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors flex-shrink-0" />
               </a>
 
-              {/* Ready Systems & Turnkey Web */}
+              {/* Portfolio & Campaigns Quick Link */}
               <a
-                href="#systems-hub"
+                href="#projects"
                 className="card-base card-hover group flex gap-4 items-center bg-slate-900/60 border-slate-700/60 p-4 transition-all"
               >
                 <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
-                  ⚡
+                  🚀
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-slate-400 text-xs font-semibold">{lang === 'ar' ? 'أنظمة وبرامج جاهزة للتسليم' : 'Turnkey Systems Ready'}</p>
+                  <p className="text-slate-400 text-xs font-semibold">{lang === 'ar' ? 'معرض الأعمال والمشاريع الحية' : 'Portfolio & Live Work'}</p>
                   <p className="text-slate-100 font-bold group-hover:text-amber-400 transition-colors text-sm truncate">
-                    {lang === 'ar' ? 'تسليم وتركيب خلال 24 ساعة' : 'Instant 24H Deployment'}
+                    {lang === 'ar' ? 'استعراض المشاريع والحملات' : 'Explore Client Success'}
                   </p>
                 </div>
                 <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-amber-400 transition-colors flex-shrink-0" />

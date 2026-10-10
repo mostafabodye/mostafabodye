@@ -19,7 +19,6 @@ export default function Navbar({ lang, setLang, t }) {
     { href: '#about', label: t.nav.about },
     { href: '#skills', label: t.nav.skills },
     { href: '#projects', label: t.nav.projects },
-    { href: '#systems-hub', label: lang === 'ar' ? 'أنظمة وويندوز' : 'Systems & Windows', isBadge: true },
     { href: '#experience', label: t.nav.experience },
     { href: '#contact', label: t.nav.contact },
   ];

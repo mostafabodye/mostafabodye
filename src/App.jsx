@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import SystemsHub from './components/SystemsHub';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -41,7 +40,6 @@ export default function App() {
         <About t={t} lang={lang} />
         <Skills t={t} lang={lang} />
         <Projects t={t} lang={lang} />
-        <SystemsHub lang={lang} />
         <Experience t={t} lang={lang} />
         <Contact t={t} lang={lang} />
       </main>

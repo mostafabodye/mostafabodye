@@ -1,334 +1,387 @@
 export const projectsData = [
   {
-    id: "am-systems-hub",
-    category: "web",
-    categories: ["web", "ai", "ads"],
-    title: {
-      ar: "منصة الأنظمة والمواقع السحابية الجاهزة (AM Systems Hub)",
-      en: "AM Cloud Business Systems & Turnkey Web Hub"
-    },
-    subtitle: {
-      ar: "بناء وتشغيل 6 أنظمة سحابية ومكتبية (كاشير، مطاعم، عيادات، مخازن، HR) مع محاكي ديمو تفاعلي مباشر",
-      en: "Architected 6 turnkey business systems (POS, Restaurant, Clinic, Inventory, HR) with live interactive sandbox"
-    },
-    badge: {
-      ar: "أنظمة برمجية جاهزة + ديمو حي",
-      en: "Ready Systems + Live Demo"
-    },
-    client: {
-      ar: "وكالة AM Marketing (عبد السلام)",
-      en: "AM Marketing Systems (Abdel Salam)"
-    },
-    website: "#systems-hub",
-    tags: ["Cloud ERP", "POS كاشير", "إدارة مطاعم", "إدارة عيادات", "مواقع جاهزة", "Interactive Sandbox"],
-    gradient: "from-blue-600 via-indigo-600 to-purple-600",
-    summary: {
-      ar: "تطوير منظومة تشغيلية متكاملة لخدمة الأنشطة التجارية والشركات، تشمل 6 أنظمة متخصصة (نقاط بيع، مطاعم، عيادات، مخازن، موارد بشرية، ولوحة تحكم CMS) بالإضافة إلى برامج Windows Offline تعمل بدون إنترنت مع محاكي تجربة حي باسم وللوجو العميل قبل الشراء.",
-      en: "Engineered a production-ready turnkey cloud ecosystem featuring 6 enterprise modules (POS, Restaurant OS, Medical Clinic EMR, Inventory, HR & Payroll, Master CMS) with live in-browser sandboxing and dynamic brand personalization."
-    },
-    challenge: {
-      ar: "تردد أصحاب الأنشطة التجارية في شراء البرامج والأنظمة قبل تجربتها عملياً وصعوبة إقناعهم بدون ديمو واقعي يحمل هوية نشاطهم.",
-      en: "Overcoming commercial buyer hesitation by providing instantaneous, friction-free interactive sandbox simulations branded with their own business identity."
-    },
-    solution: {
-      ar: "برمجة مركز ديمو تفاعلي يتيح للعميل كتابة اسم نشاطه واختبار إصدار الفواتير، وإدارة الترابيزات، وطباعة الروشتات مباشرة بضغطة زر مع أزرار طلب مباشر عبر الواتساب.",
-      en: "Developed an interactive client personalization engine with real-time receipt printing, table dispatch, and automated WhatsApp inquiry pipelines."
-    },
-    results: [
-      { label: { ar: "أنظمة تشغيلية", en: "Ready Systems" }, value: "+6 أنظمة" },
-      { label: { ar: "سرعة التسليم", en: "Deployment Time" }, value: "24 ساعة" },
-      { label: { ar: "تشغيل بدون إنترنت", en: "Offline Support" }, value: "100% متاح" }
-    ],
-    features: {
-      ar: [
-        "نظام كاشير POS سريع يدعم الباركود وطباعة الإيصالات",
-        "نظام إدارة مطاعم مع خريطة صالة حية وشاشة مطبخ",
-        "نظام عيادات طبية مع ملف مريض وطباعة روشتات Rx",
-        "ميزة تخصيص العرض التفاعلي باسم وللوجو العميل لحظياً"
-      ],
-      en: [
-        "High-velocity POS with barcode & thermal receipt printer support",
-        "Restaurant hospitality floor plan with live Kitchen Display System",
-        "Clinical EMR workflow with automated branded prescription print",
-        "Instant live brand personalization & WhatsApp lead routing"
-      ]
-    },
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
-    demoUrl: "#systems-hub",
-    isFeatured: true
-  },
-  {
     id: "gads-almajal",
     category: "web",
     categories: ["web", "ads"],
     title: {
       ar: "مؤسسة المجال الأمن لأجهزة السلامة ومكافحة الحريق",
-      en: "Al-Majal Al-Amn Fire Safety & Protection Systems"
+      en: "Almajal Safety & Fire Suppression Systems"
     },
     subtitle: {
-      ar: "تصميم وتطوير الموقع الإلكتروني بالكامل (almajal-safety.com) + إدارة حملات جوجل ادز والخرائط",
-      en: "Full Web Architecture & Development (almajal-safety.com) + Google Ads & Maps Campaigns"
+      ar: "موقع شركات متكامل وحملات بحث جوجل B2B لخدمات شبكات الإطفاء والدفاع المدني",
+      en: "Enterprise B2B digital portal and precision Google Search campaign for safety engineering"
     },
     badge: {
-      ar: "تطوير موقع + إعلانات جوجل",
-      en: "Web Development + Google Ads"
+      ar: "موقع حقيقي لايف + Google Ads 🌐",
+      en: "Live Enterprise Portal + Google Ads 🌐"
     },
     client: {
-      ar: "مؤسسة المجال الأمن لأجهزة السلامة (جدة - السعودية)",
-      en: "Al-Majal Al-Amn Safety Systems (Jeddah, KSA)"
+      ar: "شركة المجال للسلامة (المملكة / مصر)",
+      en: "Almajal Safety Solutions"
     },
     website: "https://almajal-safety.com/",
-    tags: ["تطوير وبرمجة موقع", "Google Ads", "أنظمة مكافحة الحريق", "SEO", "ثنائي اللغة"],
-    gradient: "from-blue-600 to-cyan-500",
+    tags: ["مواقع شركات", "Google Search Ads", "B2B Lead Gen", "خرائط جوجل", "أنظمة إطفاء"],
+    gradient: "from-blue-600 via-cyan-600 to-indigo-700",
     summary: {
-      ar: "تصميم وبرمجة موقع إلكتروني متكامل ثنائي اللغة (عربي / إنجليزي) لمؤسسة المجال الأمن الرائدة بجدة في أنظمة مكافحة وإنذار الحريق ومعدات السلامة المعتمدة من الدفاع المدني السعودي، بالتوازي مع بناء وإدارة حملات بحث جوجل وإعلانات الخرائط المستهدفة للشركات والمصانع.",
-      en: "Engineered a high-performance bilingual (Arabic / English) web platform for Al-Majal Al-Amn in Jeddah, specialized in certified fire protection and industrial safety, coupled with technical SEO, Google Tag Manager integration, and targeted Google Ads search campaigns."
+      ar: "تصميم وإطلاق الموقع الإلكتروني الرسمي لشركة المجال للسلامة، وربطه بمنظومة إعلانات جوجل الاحترافية لجذب عقود صيانة وتوريد شبكات الإطفاء للمصانع والمؤسسات الكبرى.",
+      en: "Architected a high-authority corporate web presence and targeted Google Search B2B campaign driving commercial contracts for certified fire safety systems."
     },
     challenge: {
-      ar: "الحاجة لبناء واجهة رقمية احترافية وسريعة تثبت اعتماد المؤسسة لدى الدفاع المدني وتصل للمصانع والشركات الكبرى، في ظل منافسة شرسة في سوق السلامة بالمملكة.",
-      en: "Needed an authoritative, ultra-fast bilingual platform reflecting official Civil Defense accreditation and reaching industrial enterprises amidst fierce market competition in KSA."
+      ar: "المنافسة الشديدة وارتفاع تكلفة النقرة في قطاع السلامة والدفاع المدني وصعوبة الوصول للشركات والمصانع مباشرة.",
+      en: "High CPC bidding competition in industrial fire safety and the critical challenge of filtering out retail queries."
     },
     solution: {
-      ar: "تطوير موقع متجاوب بأحدث معايير الويب وسرعة تحميل فائقة، مدعوم ببيانات Schema.org للأنشطة المحلية، وتفعيل حملات بحث جوجل وحملات اتصال مباشر وإعلانات خرائط لمدينة جدة والمناطق المحيطة.",
-      en: "Architected an ultra-fast responsive web architecture with LocalBusiness Schema, paired with Google Search, Call-Only ads, and Google Maps local dominance in Jeddah."
+      ar: "بناء صفحات هبوط سريعة موجهة للشراء B2B، واستبعاد الكلمات الفردية السلبية، وتفعيل إعلانات خرائط جوجل للوصول للشركات الكبرى.",
+      en: "Engineered ultra-fast conversion landing pages, pruned negative non-commercial terms, and optimized Google Maps local visibility."
     },
     results: [
-      { label: { ar: "ارتفاع المكالمات والطلبات", en: "Inbound Inquiries" }, value: "+240%" },
-      { label: { ar: "سرعة وأداء الموقع", en: "PageSpeed & UX" }, value: "98/100" },
+      { label: { ar: "ارتفاع المكالمات", en: "Inbound Leads" }, value: "+240%" },
+      { label: { ar: "نسبة النقر CTR", en: "CTR Rate" }, value: "11.4%" },
       { label: { ar: "خفض تكلفة النقرة", en: "CPC Reduction" }, value: "-28%" }
     ],
     features: {
       ar: [
-        "تصميم وبرمجة موقع ثنائي اللغة (عربي / إنجليزي) متجاوب 100%",
-        "تهيئة محركات البحث Technical SEO وربط Schema.org",
-        "تثبيت وتكامل Google Tag Manager وGoogle Analytics 4",
-        "إدارة حملات إعلانات جوجل والاتصال الفوري بنسبة نجاح استثنائية"
+        "موقع متجاوب 100% مع الجوال وسريع التحميل",
+        "تكامل مباشر مع أزرار الاتصال الهاتفي والواتساب",
+        "صفحات مستقلة لكل خدمة وأنظمة الدفاع المدني"
       ],
       en: [
-        "100% responsive bilingual (Arabic / English) web platform",
-        "Technical SEO optimization with Schema.org LocalBusiness data",
-        "Integrated GTM, GA4, and Google Ads conversion telemetry",
-        "High-yield Google Search & Click-to-Call campaigns"
+        "100% responsive, high-velocity mobile architecture",
+        "Direct one-tap WhatsApp & phone conversion funnels",
+        "Structured technical schema for fire code compliance"
       ]
     },
-    image: "/assets/images/almajal_hero.webp",
+    image: "https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=1000&q=80",
     demoUrl: "https://almajal-safety.com/",
     isFeatured: true
   },
   {
-    id: "web-modir-syana",
-    category: "web",
-    title: {
-      ar: "موقع وخدمات مدير الصيانة المعتمد (الأجهزة المنزلية)",
-      en: "Certified Home Appliances Maintenance Platform"
-    },
-    subtitle: {
-      ar: "منصة ويب متكاملة لخدمات صيانة الغسالات، الثلاجات، الأفران، والتكييفات مع طلب صيانة فوري",
-      en: "Full-service digital platform for home appliance repairs with direct scheduling"
-    },
-    badge: {
-      ar: "موقع وتطبيق مباشر (BUILD)",
-      en: "Live Platform (BUILD)"
-    },
-    client: {
-      ar: "شبكة مدير الصيانة المعتمد",
-      en: "Certified Maintenance Network"
-    },
-    website: "https://mustafaabdelsalam49-arch.github.io/project-1-/index.html",
-    tags: ["تطوير مواقع", "صيانة أجهزة منزلية", "SEO محلي", "حجز فوري", "تطبيق ويب"],
-    gradient: "from-cyan-500 to-blue-600",
-    summary: {
-      ar: "تصميم وبرمجة موقع إلكتروني متكامل لخدمات صيانة الأجهزة المنزلية (غسالات، ثلاجات، ديب فريزر، أفران، تكييفات) مع صفحات متخصصة لكل ماركة عالمية (LG، سامسونج، زانوسي، كريازي) وأقسام للأعطال الشائعة ونموذج اتصال سريع.",
-      en: "Architected a full-featured home appliance maintenance platform with dedicated brand pages, local SEO schema, and instant service dispatch."
-    },
-    challenge: {
-      ar: "الحاجة إلى منصة سريعة وسهلة الاستخدام تصل للعملاء الذين يبحثون عن صيانة طارئة لأجهزتهم المنزلية في مختلف المحافظات مع تجربة تصفح فورية على الجوال.",
-      en: "Building an intuitive, high-speed portal to capture emergency appliance repair searches across multiple metropolitan sectors."
-    },
-    solution: {
-      ar: "تطوير موقع سريع متوافق 100% مع الجوال ومحركات البحث SEO، مع أزرار اتصال مباشرة ونماذج حجز سريعة وأدلة صيانة دورية بدون أي تعقيد.",
-      en: "Engineered mobile-first responsive architecture with localized SEO keyword targeting and friction-free direct booking funnels."
-    },
-    results: [
-      { label: { ar: "سرعة التحميل", en: "Load Speed" }, value: "0.8s" },
-      { label: { ar: "طلبات الصيانة", en: "Service Bookings" }, value: "+380" },
-      { label: { ar: "تقييم الأداء", en: "Lighthouse" }, value: "98/100" }
-    ],
-    features: {
-      ar: [
-        "أقسام مخصصة لكافة الأجهزة المنزلية والماركات العالمية",
-        "متوافق 100% مع محركات البحث SEO وظهور الكلمات المفتاحية",
-        "نظام حجز صيانة فوري متجاوب مع الهواتف الذكية"
-      ],
-      en: [
-        "Dedicated multi-appliance repair catalog",
-        "Technical local SEO architecture",
-        "Instant mobile-first dispatch forms"
-      ]
-    },
-    image: "/assets/images/modir_syana_preview.webp",
-    demoUrl: "https://mustafaabdelsalam49-arch.github.io/project-1-/index.html",
-    isFeatured: true
-  },
-  {
-    id: "web-restaurant-app",
-    category: "web",
-    title: {
-      ar: "منصة وتطبيق مطعم وكافيه السلطان (طلب أونلاين ودليفري)",
-      en: "Al-Sultan Restaurant & Cafe Online Ordering Platform"
-    },
-    subtitle: {
-      ar: "تطبيق ويب سحابي متكامل لطلب الوجبات السريعة والمشروبات مع سلة مشتريات وتتبع الطلبات",
-      en: "Turnkey cloud web app for restaurant online ordering with interactive cart & dispatch"
-    },
-    badge: {
-      ar: "تطبيق ويب مباشر (LIVE DEMO)",
-      en: "Live Web App (LIVE DEMO)"
-    },
-    client: {
-      ar: "مطعم وكافيه السلطان الفاخر",
-      en: "Al-Sultan Restaurant & Cafe"
-    },
-    website: "https://marketing-app.runasp.net/",
-    tags: ["Web App", "نظام مطاعم", "طلب طعام أونلاين", "سلة مشتريات", "POS سحابي"],
-    gradient: "from-amber-500 via-orange-600 to-red-600",
-    summary: {
-      ar: "تطبيق ويب تجاري متكامل يتيح لرواد مطعم وكافيه السلطان تصفح قائمة الطعام والمشروبات بالأسعار، وإضافة الوجبات للسلة، واختيار التوصيل أو الاستلام، وإتمام الطلب لحظياً مع لوحة تحكم فورية.",
-      en: "Production-ready restaurant & cafe web app enabling customers to explore live menus, customize orders, add items to cart, and checkout with instant dispatch."
-    },
-    challenge: {
-      ar: "توفير نظام طلب طعام رقمي سريع ومباشر للعميل دون الحاجة لتنزيل تطبيقات ثقيلة من المتاجر مع سهولة إدارة المنيو والطلبات للمطعم.",
-      en: "Delivering a zero-friction instant web app ordering experience without requiring native app store downloads."
-    },
-    solution: {
-      ar: "بناء تطبيق ويب سحابي فائق الخفة والسرعة يعمل على أي هاتف بضغطة زر مع تجربة مستخدم سلسة وعربة تسوق فورية وربط مباشر بإشعارات المطبخ.",
-      en: "Deployed an ultra-lightweight cloud ordering engine with real-time cart state, dynamic pricing, and direct restaurant dispatch."
-    },
-    results: [
-      { label: { ar: "جاهزية النظام", en: "Deployment" }, value: "100% جاهز" },
-      { label: { ar: "سرعة الطلب", en: "Checkout Time" }, value: "< 30 ثانية" },
-      { label: { ar: "التوافق", en: "Compatibility" }, value: "كل الأجهزة" }
-    ],
-    features: {
-      ar: [
-        "منيو طعام ومشروبات تفاعلي مع الصور والأسعار والتصنيفات",
-        "سلة مشتريات ذكية مع خيارات إضافات الوجبات والتوصيل",
-        "تكامل مباشر وسريع يعمل في المتصفح فوراً بدون تحميل"
-      ],
-      en: [
-        "Dynamic menu catalogue with photography & pricing",
-        "Smart cart with localized delivery dispatch",
-        "Zero-friction instant browser checkout"
-      ]
-    },
-    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80",
-    demoUrl: "https://marketing-app.runasp.net/",
-    isFeatured: true
-  },
-  {
-    id: "gads-winch-network",
+    id: "gads-winch-enqaz",
     category: "ads",
     categories: ["ads", "web"],
     title: {
-      ar: "شبكة حملات أوناش الإنقاذ السريع وموقع ونش راشد",
-      en: "Winch Emergency Highway Rescue Ads & Portal"
+      ar: "ونش إنقاذ المستشار (winch-enqaz.com)",
+      en: "El Mostashar Winch Emergency Highway Network"
     },
     subtitle: {
-      ar: "إعلانات اتصال مباشر Call-Only على جوجل وموقع إلكتروني متكامل لخدمات الإنقاذ 24/7",
-      en: "24/7 real-time Google Call-Only campaign network and emergency road recovery portal"
+      ar: "منظومة إعلانات جوجل المتصدرة وموقع إلكتروني متكامل لأقوى كيان إنقاذ سيارات في مصر",
+      en: "Google Ads search leadership and turnkey mobile portal for Egypt's premier roadside rescue fleet"
     },
     badge: {
-      ar: "موقع مباشر + إعلانات اتصال",
-      en: "Live Site + Call Ads"
+      ar: "Google Ads + موقع لايف 🌐",
+      en: "Google Ads + Live Portal 🌐"
     },
     client: {
-      ar: "مؤسسة ونش راشد لإنقاذ السيارات",
-      en: "Winch Rashed Highway Rescue"
+      ar: "مجموعة ونش المستشار (winch-enqaz.com)",
+      en: "El Mostashar Winch Group"
     },
-    website: "https://rashdaldawy9-spec.github.io/winchrashed/",
-    tags: ["موقع مباشر", "Google Call Ads", "ونش إنقاذ", "استهداف لحظي 24/7", "اتصال مباشر"],
-    gradient: "from-red-500 to-amber-500",
+    website: "https://winch-enqaz.com/",
+    tags: ["Google Ads", "المستشار إنقاذ", "winch-enqaz.com", "أعلى تصدر", "اتصال فوري 24/7"],
+    gradient: "from-amber-500 via-orange-600 to-red-600",
     summary: {
-      ar: "تطوير موقع إلكتروني متكامل لخدمات أوناش الإنقاذ السريع، بالتوازي مع إطلاق وإدارة حملات اتصال مباشر على جوجل لتغطية الحالات الطارئة على كافة المحاور والطرق السريعة.",
-      en: "Architected real-time Google Call-Only ad infrastructure and web presence to capture immediate breakdown distress calls across major highways."
+      ar: "إدارة الحملات الإعلانية الرسمية لكيان ونش إنقاذ المستشار عبر منصة winch-enqaz.com، وتوليد مئات المكالمات اليومية على مستوى القاهرة والجيزة وكافة الطرق والمحاور السريعة.",
+      en: "Managed flagship Google Ads campaigns and digital infrastructure for El Mostashar Winch, driving hundreds of urgent phone calls daily across metropolitan Egypt."
     },
     challenge: {
-      ar: "الحاجة لظهور فوري للمستخدم المتعطل على الطريق وتوليد مكالمة خلال ثوانٍ معدودة دون تأخير في بيئة طارئة.",
-      en: "Distressed motorists require instantaneous search dominance and one-tap dialing with zero friction."
+      ar: "الحفاظ على الصدارة التامة في المرتبة الأولى وسط منافسة مئات المعلنين وتوفير استجابة هاتفية لحظية للسيارات المتعطلة.",
+      en: "Maintaining absolute top-of-page rank amidst intense roadside towing ad competition and maximizing instant call captures."
     },
     solution: {
-      ar: "تصميم موقع خفيف وسريع مع أزرار اتصال طارئة، وحملات Call-Only مع مزايدة ذكية في أوقات الذروة والطرق السريعة.",
-      en: "Designed location-targeted Call-Only ads with automated peak-hour bidding and aggressive negative keyword filtration."
+      ar: "بناء هيكل حملات Search & Call Ads متعدد المناطق مع مزايدة ذكية في أوقات الذروة والمحاور السريعة وتتبع جودة ونية المتصلين بدقة.",
+      en: "Deployed hyper-targeted multi-radius Search & Call-Only campaigns with aggressive Smart Bidding on high-incident corridors."
     },
     results: [
-      { label: { ar: "مكالمات شهرية", en: "Monthly Calls" }, value: "+580" },
-      { label: { ar: "نسبة الاتصال CTR", en: "Call CTR" }, value: "18.5%" },
-      { label: { ar: "سرعة الاستجابة", en: "Response Velocity" }, value: "لحظية (Instant)" }
+      { label: { ar: "مكالمات شهرية", en: "Monthly Calls" }, value: "+650 مكالمة" },
+      { label: { ar: "معدل التحويل CTR", en: "CTR Rate" }, value: "21.4%" },
+      { label: { ar: "تصدر البحث", en: "Position" }, value: "#1 بمصر" }
     ],
     features: {
       ar: [
-        "موقع متجاوب 100% مع الهواتف الذكية بزر اتصال طارئ",
-        "تغطية جغرافية لكافة المحاور والطرق السريعة",
-        "تشغيل متواصل 24 ساعة بمزايدة ذكية لتحقيق أعلى عائد"
+        "ظهور فوري 24 ساعة للعملاء المتعطلين على الطريق",
+        "موقع متجاوب خفيف يحمل في أقل من ثانية واحدة",
+        "تتبع دقيق للمكالمات الهاتفية وجودة العملاء"
       ],
       en: [
-        "Mobile-only direct click-to-call portal & ad banners",
-        "Targeted highway and ring-road corridors",
-        "24/7 smart algorithmic bid optimization"
+        "24/7 immediate top impression share on roadside queries",
+        "Sub-second lightweight mobile landing page",
+        "Deep call-duration and conversion tracking"
+      ]
+    },
+    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80",
+    demoUrl: "https://winch-enqaz.com/",
+    isFeatured: true
+  },
+  {
+    id: "gads-winch-elsaeed",
+    category: "ads",
+    categories: ["ads", "web"],
+    title: {
+      ar: "ونش إنقاذ السعيد طه (elsaeedwinch.com)",
+      en: "El Saeed Taha Fast Emergency Towing"
+    },
+    subtitle: {
+      ar: "حملات إعلانات جوجل للإنقاذ السريع وتغطية الطرق والمحاور وموقع مباشر 24/7",
+      en: "Google Ads search & call campaigns across highway arteries with high-speed responsive web"
+    },
+    badge: {
+      ar: "Google Ads + موقع لايف 📞",
+      en: "Google Ads + Live Site 📞"
+    },
+    client: {
+      ar: "السعيد طه للإنقاذ السريع",
+      en: "El Saeed Winch Services"
+    },
+    website: "https://elsaeedwinch.com/",
+    tags: ["Google Ads", "السعيد للإنقاذ", "elsaeedwinch.com", "طرق ومحاور مصر", "Call Ads"],
+    gradient: "from-cyan-500 via-blue-600 to-indigo-600",
+    summary: {
+      ar: "إدارة حساب وحملات إعلانات جوجل لشركة السعيد طه للإنقاذ السريع عبر موقع elsaeedwinch.com، وتأمين وصول إعلانات الاتصال الفوري لأصحاب السيارات المتعطلة على مدار 24 ساعة.",
+      en: "Supervised Google Ads campaigns and digital web assets for El Saeed Fast Towing, securing rapid 24/7 roadside assistance connections."
+    },
+    challenge: {
+      ar: "تجنب النقر العشوائي وحظر الكلمات غير المناسبة مع ضمان ظهور الإعلان في المرتبة الأولى المطلقة دون استنزاف الميزانية.",
+      en: "Eliminating wasted clicks on non-urgent queries while ensuring absolute top placement during high-traffic emergency hours."
+    },
+    solution: {
+      ar: "استراتيجية مزايدة متقدمة مع ضبط جغرافي دقيق للمحاور والطرق الدائرية وتفعيل أزرار الاتصال الهاتفي والواتساب السريع.",
+      en: "Applied precision corridor geotargeting along highway rings, coupled with negative keyword blacklists and one-click dial buttons."
+    },
+    results: [
+      { label: { ar: "اتصالات مباشرة", en: "Direct Calls" }, value: "+480 مكالمة" },
+      { label: { ar: "نسبة الظهور المطلق", en: "Top Abs. Rate" }, value: "88%" },
+      { label: { ar: "تغطية الخدمة", en: "Availability" }, value: "24 ساعة" }
+    ],
+    features: {
+      ar: [
+        "إعلانات اتصال مباشر Call-Only مخصصة للجوال",
+        "تغطية جغرافية لحظية للطرق الحيوية والسريعة",
+        "موقع خفيف الوزن يعمل بكفاءة تامة على الهواتف"
+      ],
+      en: [
+        "Dedicated mobile Call-Only ads with high conversion",
+        "Geofenced real-time coverage of major transit routes",
+        "Zero-friction ultra-fast website experience"
+      ]
+    },
+    image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1000&q=80",
+    demoUrl: "https://elsaeedwinch.com/",
+    isFeatured: true
+  },
+  {
+    id: "gads-winch-alisoker",
+    category: "ads",
+    categories: ["ads", "web"],
+    title: {
+      ar: "ونش إنقاذ علي سكر (alisokerwinch.com)",
+      en: "Ali Soker Emergency Towing & Car Rescue"
+    },
+    subtitle: {
+      ar: "إدارة حملات إعلانات جوجل Call-Only وتغطية اتصالات الطوارئ 24/7 وموقع تعريفي",
+      en: "Google Search Call-Only ads and lightweight mobile landing page for instant roadside dispatch"
+    },
+    badge: {
+      ar: "Google Ads - Call-Only 🚀",
+      en: "Google Ads - Call-Only 🚀"
+    },
+    client: {
+      ar: "ونش علي سكر (alisokerwinch.com)",
+      en: "Ali Soker Winch"
+    },
+    website: "https://alisokerwinch.com/",
+    tags: ["Google Ads", "اتصال مباشر Call-Only", "ونش علي سكر", "alisokerwinch.com", "تغطية 24/7"],
+    gradient: "from-emerald-500 via-teal-600 to-cyan-600",
+    summary: {
+      ar: "إطلاق وإدارة حملات اتصال مباشر Call-Only على شبكة بحث جوجل لخدمات ونش إنقاذ وسحب السيارات علي سكر، مع موقع إلكتروني تعريفي يسهل طلب الخدمة فوراً.",
+      en: "Designed and deployed Google Call-Only advertising funnels and mobile web presence for Ali Soker Towing Services with instant phone dispatch."
+    },
+    challenge: {
+      ar: "المنافسة الشرسة على كلمات ونش الإنقاذ وسرعة الحاجة للمكالمة خلال ثوانٍ معدودة من تعطل السيارة.",
+      en: "Severe competition for towing keywords and extreme user urgency requiring under-3-second action triggers."
+    },
+    solution: {
+      ar: "إعلانات اتصال مباشر تركز على سرعة الوصول وأقرب ونش مع مزايدة ذكية في أوقات الذروة والطرق السريعة وإدارة الكلمات السلبية.",
+      en: "Constructed urgency-focused ad copy with live call extensions and negative keyword protection against consumer misclicks."
+    },
+    results: [
+      { label: { ar: "مكالمات شهرية", en: "Monthly Calls" }, value: "+420 مكالمة" },
+      { label: { ar: "نسبة النقر CTR", en: "CTR Rate" }, value: "19.2%" },
+      { label: { ar: "خفض تكلفة النقرة", en: "CPA Drop" }, value: "-26%" }
+    ],
+    features: {
+      ar: [
+        "إعلانات اتصال مباشر من نتائج بحث جوجل فوراً",
+        "تغطية 24 ساعة بمعدل استجابة سريع للغاية",
+        "موقع متوافق 100% مع الهواتف الذكية"
+      ],
+      en: [
+        "Direct-to-call Google search ad extensions",
+        "24/7 active highway response coverage",
+        "Lightweight mobile-optimized presence"
       ]
     },
     image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80",
-    demoUrl: "https://rashdaldawy9-spec.github.io/winchrashed/",
+    demoUrl: "https://alisokerwinch.com/",
     isFeatured: true
+  },
+  {
+    id: "gads-winch-rabie",
+    category: "ads",
+    title: {
+      ar: "حملات ونش إنقاذ ربيع (Rabie Winch Ads)",
+      en: "Rabie Winch Direct Call Emergency Ads"
+    },
+    subtitle: {
+      ar: "إدارة حملات بحث واتصال طارئ Call Ads للمساعدة الفورية على الطرق الحيوية",
+      en: "Google Call-Only ad campaigns for rapid roadside assistance with optimized CPA"
+    },
+    badge: {
+      ar: "Google Ads - Emergency ⚡",
+      en: "Google Ads - Emergency ⚡"
+    },
+    client: {
+      ar: "خدمات ونش إنقاذ ربيع",
+      en: "Rabie Winch Emergency Fleet"
+    },
+    website: "https://wa.me/201098174992?text=%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D9%85%D9%84%D8%A7%D8%AA%20%D9%88%D9%86%D8%B4%20%D8%B1%D8%A8%D9%8A%D8%B9",
+    tags: ["Google Ads", "ونش ربيع", "Call Ads", "إنقاذ سريع", "استهداف محاور"],
+    gradient: "from-blue-600 to-violet-600",
+    summary: {
+      ar: "إطلاق وإدارة حملات الاتصال المباشر لوكالة ونش إنقاذ ربيع، لتحقيق أعلى استجابة للعملاء المتعطلين على الطرق الحيوية والسريعة بأقل تكلفة للمكالمة.",
+      en: "Managed Google Ads emergency call generation campaigns for Rabie Towing Fleet, capturing highway incident volume at minimal acquisition costs."
+    },
+    challenge: {
+      ar: "تحقيق أقصى عدد من المكالمات بأقل ميزانية ممكنة واستبعاد النقرات غير المجدية لضمان ربحية الحملة.",
+      en: "Maximizing phone call volume on tight budget constraints while filtering fraudulent and non-converting inquiries."
+    },
+    solution: {
+      ar: "استهداف كلمات بحث دقيقة جداً بنية اتصال عاجل وربط زر الاتصال المباشر وتتبع مدة المكالمات.",
+      en: "Implemented intent-first search term matching, negative keywords, and exact match call-only extensions."
+    },
+    results: [
+      { label: { ar: "مكالمات ناجحة", en: "Target Calls" }, value: "+390 مكالمة" },
+      { label: { ar: "تكلفة المكالمة", en: "Cost/Call" }, value: "اقتصادية جداً" },
+      { label: { ar: "معدل الرد", en: "Response" }, value: "فوري" }
+    ],
+    features: {
+      ar: [
+        "حملات Call-Only مبرمجة على أرقام السائقين مباشرة",
+        "استبعاد كامل للكلمات البحثية غير المفيدة",
+        "تحسين مستمر لجودة ونقاء الاتصالات"
+      ],
+      en: [
+        "Call-Only campaigns routing directly to drivers",
+        "Complete negative keyword shielding",
+        "Continual call-quality optimization"
+      ]
+    },
+    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80",
+    demoUrl: "https://wa.me/201098174992?text=%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D9%85%D9%84%D8%A7%D8%AA%20%D9%88%D9%86%D8%B4%20%D8%B1%D8%A8%D9%8A%D8%B9",
+    isFeatured: false
+  },
+  {
+    id: "gads-winch-shorouk",
+    category: "ads",
+    categories: ["ads", "web"],
+    title: {
+      ar: "ونش إنقاذ الشروق (wenshenqazz.com)",
+      en: "El Shorouk Winch Emergency Portal"
+    },
+    subtitle: {
+      ar: "حملات إعلانات بحث جوجل وتغطية طريق السويس والمدن الجديدة وموقع مباشر",
+      en: "Google search campaigns and localized portal covering Suez highway and eastern Cairo"
+    },
+    badge: {
+      ar: "Google Ads + موقع لايف 📍",
+      en: "Google Ads + Live Portal 📍"
+    },
+    client: {
+      ar: "ونش الشروق (wenshenqazz.com)",
+      en: "El Shorouk Winch Network"
+    },
+    website: "https://wenshenqazz.com/",
+    tags: ["Google Ads", "ونش الشروق", "wenshenqazz.com", "طريق السويس", "سحب وإنقاذ"],
+    gradient: "from-teal-500 to-blue-600",
+    summary: {
+      ar: "إدارة الحملات الإعلانية لموقع ونش الشروق لتغطية المدن الجديدة (الشروق، بدر، مدينتي، طريق السويس) بجاهزية تامة على مدار 24 ساعة.",
+      en: "Administered local search campaigns and landing page for El Shorouk Towing covering new metropolitan developments and highway stretches."
+    },
+    challenge: {
+      ar: "المسافات الطويلة بين المدن الجديدة تتطلب استهدافاً جغرافياً دقيقاً حسب نطاق تحرك الأوناش.",
+      en: "Broad geographic expanses across eastern desert corridors required hyper-accurate radius targeting."
+    },
+    solution: {
+      ar: "تحديد نطاقات جغرافية مخصصة بحسب الكيلومترات وربط إعلانات الاتصال الفوري بالسائقين في النطاق.",
+      en: "Set granular kilometer-based location adjustments and priority bids along the Cairo-Suez corridor."
+    },
+    results: [
+      { label: { ar: "مكالمات شهرية", en: "Monthly Calls" }, value: "+310 مكالمة" },
+      { label: { ar: "تغطية المدن", en: "Coverage" }, value: "100%" },
+      { label: { ar: "سرعة الوصول", en: "ETA" }, value: "15 دقيقة" }
+    ],
+    features: {
+      ar: [
+        "استهداف جغرافي دقيق لمدن الشروق وبدر ومدينتي",
+        "موقع متجاوب وسريع التحميل",
+        "تنسيق إعلانات الهاتف الذكي لتسهيل الاتصال"
+      ],
+      en: [
+        "Hyperlocal geofencing for eastern Cairo satellites",
+        "Lightning-fast mobile responsive landing page",
+        "Friction-free click-to-call mobile format"
+      ]
+    },
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=80",
+    demoUrl: "https://wenshenqazz.com/",
+    isFeatured: false
   },
   {
     id: "ads-mirage-hills",
     category: "ads",
     title: {
-      ar: "حملة إطلاق كمبوند ميراج هيلز الفاخر",
-      en: "Mirage Hills Luxury Compound Launch"
+      ar: "حملة إطلاق كمبوند ميراج هيلز الفاخر (Mirage Hills Launch)",
+      en: "Mirage Hills Luxury Compound Launch Campaign"
     },
     subtitle: {
       ar: "استراتيجية إعلانية متكاملة وحملات Lead Generation للقطاع العقاري الراقي",
-      en: "Integrated ad strategy and high-ticket lead generation for luxury estates"
+      en: "Integrated high-ticket Lead Generation strategy across Meta Ads for premium real estate"
     },
     badge: {
-      ar: "دراسة حالة إعلانية - Ads",
-      en: "Case Study - Ads"
+      ar: "إعلانات عقارية - Real Estate",
+      en: "Real Estate & Lead Gen"
     },
     client: {
       ar: "ميراج هيلز للتطوير العقاري",
-      en: "Mirage Hills Developments"
+      en: "Mirage Hills Real Estate Development"
     },
     tags: ["إعلانات عقارات", "Meta Ads", "Lead Generation", "استثمار خليجي"],
-    gradient: "from-amber-500 to-orange-600",
+    gradient: "from-amber-500 via-orange-600 to-yellow-600",
     summary: {
       ar: "خطة إطلاق تسويقية شاملة للمشروع العقاري الفاخر ميراج هيلز، تضمنت تصاميم إبداعية مستهدفة للمستثمرين ورجال الأعمال لجمع بيانات عملاء محتملين بجودة شراء عالية.",
-      en: "Comprehensive launch strategy for luxury compound Mirage Hills, delivering targeted creative campaigns to high-net-worth investors."
+      en: "Delivered a full-funnel acquisition campaign for Mirage Hills luxury villas, deploying qualification filters and high-converting Meta Instant Lead Forms."
     },
     challenge: {
       ar: "ارتفاع تكلفة استقطاب المشترين في السوق العقاري التنافسي وصعوبة فرز العملاء الجادين.",
-      en: "High cost-per-lead and difficulty qualifying serious buyers in a congested real estate landscape."
+      en: "Surging CPL benchmarks in high-end real estate and low lead-qualification rates on conventional forms."
     },
     solution: {
-      ar: "تصميم محتوى بصري فاخر يبرز المميزات الحصرية للمشروع مع نماذج تسجيل فورية وفلترة دقيقة للجماهير المستهدفة.",
-      en: "Architected high-prestige video funnels with multi-step lead forms to screen out unqualified inquiries."
+      ar: "تصميم محتوى بصري فاخر يبرز المميزات الحصرية للمشروع مع نماذج تسجيل فورية (Instant Lead Forms) وفلترة دقيقة للجماهير المستهدفة.",
+      en: "Crafted cinematic visual assets paired with high-intent qualification questions in lead forms targeting affluent demographics."
     },
     results: [
-      { label: { ar: "طلبات حجز ومعاينة", en: "Qualified Bookings" }, value: "+340" },
-      { label: { ar: "انخفاض تكلفة العميل (CPL)", en: "CPL Reduction" }, value: "-35%" },
+      { label: { ar: "طلبات حجز ومعاينة", en: "Qualified Leads" }, value: "+340" },
+      { label: { ar: "انخفاض التكلفة (CPL)", en: "CPL Drop" }, value: "-35%" },
       { label: { ar: "معدل التحويل", en: "Conversion Rate" }, value: "14.2%" }
     ],
     features: {
       ar: [
-        "استهداف مخصص لرجال الأعمال والمستثمرين",
-        "نماذج جمع بيانات فورية Instant Leads",
-        "محتوى بصري سينمائي يبرز فخامة المشروع"
+        "استهداف دقيق لرجال الأعمال والمستثمرين",
+        "نماذج فورية بفلترة مسبقة للميزانيات",
+        "تصاميم إعلانية بصرية فاخرة"
       ],
       en: [
-        "Targeting HNWI and Gulf investors",
-        "Instant qualified lead capture forms",
-        "Cinematic luxury property showcases"
+        "Ultra-targeted investor audience persona mapping",
+        "Budget-qualified instant lead funnels",
+        "High-definition architectural marketing creatives"
       ]
     },
     image: "/assets/images/campaign_mirage_hills_1.png",
@@ -339,51 +392,51 @@ export const projectsData = [
     id: "ai-video-balligho",
     category: "ai",
     title: {
-      ar: "الهوية الملكية ثلاثية الأبعاد وريلز القرآن: (بَلِّغُوا عَنِّي وَلَوْ آيَة)",
-      en: "3D Royal Gold Brand & Quran Cinematic Reels"
+      ar: "مونتاج ريلز القرآن الكريم والشعار الذهبي 3D - بَلِّغُوا عَنِّي وَلَوْ آيَة",
+      en: "Quran Cinematic Reels & 3D Royal Gold Identity - Balligho"
     },
     subtitle: {
-      ar: "تصميم ميدالية ذهبية ثلاثية الأبعاد 3D وإنتاج ريلز بجودة سينمائية فائقة",
-      en: "3D Royal Gold medal emblem and cinematic audio-visual Quran productions"
+      ar: "مونتاج ديني سينمائي عالي النقاء وتنقية العلامات المائية مع تصميم الشعار الذهبي الملكي ثلاثي الأبعاد",
+      en: "4K Quran cinematic vertical reel production, watermark removal & sculpted 3D emblem design"
     },
     badge: {
-      ar: "استوديو AI + هوية 3D",
-      en: "AI Studio + 3D Brand"
+      ar: "ريلز ومونتاج إسلامي 3D",
+      en: "Islamic Reels & 3D Brand"
     },
     client: {
       ar: "صفحة وقناة: بَلِّغُوا عَنِّي ولو آية",
       en: "Balligho Annii Project"
     },
     website: "https://www.facebook.com/profile.php?id=61579408292383",
-    tags: ["3D Emblem", "AI Video Studio", "Reels قرآن", "خاتمة ملكية"],
-    gradient: "from-amber-400 via-amber-600 to-yellow-500",
+    tags: ["ريلز قرآن", "شعار ذهبي 3D", "مونتاج متقدم", "Delogo تنقية", "فيسبوك وتيك توك"],
+    gradient: "from-amber-400 via-yellow-500 to-amber-600",
     summary: {
-      ar: "ابتكار وتصميم الشعار الرسمي والهوية البصرية لقناة القرآن الكريم على هيئة مدالية ذهبية منحوتة ثلاثية الأبعاد مع إنتاج مقاطع وريلز بمونتاج سينمائي ونقاء صوتي فائق.",
-      en: "Sculpted an iconic 3D royal gold medal emblem and produced high-retention cinematic Quran reels with clean delogo filtering."
+      ar: "إعادة إنتاج ومونتاج فيديوهات القرآن الكريم مع تنقية المقاطع من العلامات المائية السابقة وابتكار الهوية البصرية الرسمية على هيئة مدالية ذهبية منحوتة ثلاثية الأبعاد (3D Royal Gold).",
+      en: "Created cinematic Quran vertical reels featuring custom delogo restoration and designed an opulent 3D sculpted golden emblem representing the official channel identity."
     },
     challenge: {
-      ar: "الحاجة إلى شعار إسلامي فريد ومهيب يليق بالمحتوى القرآني وتنقية المقاطع من العلامات المائية السابقة.",
-      en: "Required a prestigious 3D visual mark and advanced filter pipeline to eliminate legacy video watermarks."
+      ar: "الحفاظ على نقاء الصورة والصوت واستبدال العلامات المائية القديمة دون تشويه المشهد، مع تصميم شعار ذهبي مهيب يليق بالمحتوى القرآني.",
+      en: "Restoring video clarity by removing intrusive watermarks seamlessly while sculpting a majestic 3D royal insignia for spiritual branding."
     },
     solution: {
-      ar: "توظيف تقنيات النمذجة والإضاءة السينمائية بالذكاء الاصطناعي لإنتاج مجسم ذهبي فخم مع فلاتر Delogo ومعالجة صوتية نقية.",
-      en: "Deployed AI prompt modeling, custom 3D lighting, precision Delogo algorithms, and studio-grade audio mastering."
+      ar: "تطبيق معالجة بصرية متقدمة بالذكاء الاصطناعي مع إدراج الشعار الملكي المنحوت والعبارة الدعوية (آية تُبَلِّغُها ... قد تُغيِّر قلباً).",
+      en: "Applied AI video inpainting algorithms for watermark removal and rendered a 3D gold medallion insignia layered over royal navy velvet."
     },
     results: [
-      { label: { ar: "دقة التصميم والمونتاج", en: "Resolution" }, value: "4K UHD" },
-      { label: { ar: "نسبة تنقية الفيديو", en: "Clean Delogo" }, value: "100%" },
-      { label: { ar: "انتشار ومشاركة", en: "Reach & Shares" }, value: "+400%" }
+      { label: { ar: "جودة الفيديو", en: "Video Output" }, value: "HD 60fps" },
+      { label: { ar: "طراز الهوية", en: "Emblem Style" }, value: "3D Royal" },
+      { label: { ar: "الحفظ والمشاركة", en: "Engagement" }, value: "+400%" }
     ],
     features: {
       ar: [
-        "مدالية ذهبية ملكية ثلاثية الأبعاد 3D",
-        "مونتاج ريلز لاندسكيب وبورتريت بجودة 60fps",
-        "تأثيرات بصرية وانتقالات احترافية"
+        "شعار ذهبي ملكي منحوت ثلاثي الأبعاد 3D",
+        "تنقية بصرية كاملة من الشعارات القديمة",
+        "تنسيق ريلز رأسي 9:16 عالي التفاعل"
       ],
       en: [
-        "Sculpted 3D royal gold coin insignia",
-        "Multi-aspect 60fps cinematic reel rendering",
-        "Flawless visual transition mastering"
+        "Sculpted 3D royal gold medallion identity",
+        "Flawless watermark removal via video inpainting",
+        "Optimized 9:16 vertical viral reels format"
       ]
     },
     image: "/assets/images/balligho_quran_gold_coin.jpg",
@@ -392,165 +445,109 @@ export const projectsData = [
     isFeatured: true
   },
   {
-    id: "ai-studio-reels-engine",
+    id: "ai-video-quran-landscape",
     category: "ai",
-    categories: ["ai", "ads"],
     title: {
-      ar: "منظومة إنتاج الريلز والمونتاج السينمائي بالـ AI",
-      en: "Automated 9:16 AI Reel & Montage Studio"
+      ar: "مونتاج قرآني لاندسكيب 16:9 - تأمل نبات الأرض",
+      en: "Quran Cinematic Landscape 16:9 - Earth & Flora"
     },
     subtitle: {
-      ar: "إنتاج ومونتاج تلقائي لريلز 1080x1920 بمؤثرات سينمائية وهندسة صوتية متكاملة",
-      en: "Automated 9:16 vertical reel synthesis with cinematic Ken Burns & audio mastering"
+      ar: "إزالة العلامة المائية القديمة 100% ودمج الشعار الذهبي لصفحة (بَلِّغُوا عَنِّي ولو آية)",
+      en: "Flawless delogo restoration and 3D royal gold branding for YouTube landscape"
     },
     badge: {
-      ar: "استوديو ريلز ومونتاج AI",
-      en: "AI Studio & Reel Engine"
+      ar: "مونتاج قرآني 16:9 نقي",
+      en: "16:9 Delogo & Mastering"
     },
     client: {
-      ar: "استوديو AM Marketing (عبد السلام)",
-      en: "AM Marketing Studio (Abdel Salam)"
+      ar: "صفحة وقناة: بَلِّغُوا عَنِّي ولو آية",
+      en: "Balligho Annii Project"
     },
-    tags: ["AI Reels 9:16", "Ken Burns Zoom", "FFmpeg Automation", "60 FPS", "ChatGPT Prompts"],
-    gradient: "from-fuchsia-600 via-purple-600 to-indigo-600",
+    website: "https://www.facebook.com/profile.php?id=61579408292383",
+    tags: ["تأملات قرآنية", "شعار ذهبي نقي", "إزالة لوجو 100%", "Full HD"],
+    gradient: "from-yellow-500 via-amber-600 to-amber-700",
     summary: {
-      ar: "بناء استوديو مونتاج برمجى يعتمد على خوارزميات الذكاء الاصطناعي لتحويل المشاهد والتصاميم إلى فيديوهات ريلز وتيك توك عمودية 9:16 ببلور سينمائي وانتقالات بصرية احترافية وصوت ستوديو عالي النقاء.",
-      en: "Developed an automated media synthesis engine converting raw AI concept art into viral 9:16 vertical reels with cinematic depth blur, fluid camera motion, and studio-grade audio ducking."
+      ar: "إعادة مونتاج وتنقية بصرية كاملة لمقطع قرآني طبيعي بنسبة 16:9 مع إزالة الشعار السابق بتقنية Delogo وإدراج الهوية الذهبية بدقة متناهية.",
+      en: "Executed algorithmic Delogo reconstruction removing obtrusive previous watermarks and applying sculpted 3D insignia."
     },
     challenge: {
-      ar: "الوقت الطويل المستغرق في المونتاج اليدوي التقليدي وتقطيع وتحويل أبعاد الصور والفيديوهات للريلز وتيك توك.",
-      en: "High latency and repetitive friction of manual aspect-ratio editing and motion framing for short-form video platforms."
+      ar: "العلامة المائية القديمة كانت متداخلة مع المشهد الطبيعي وتسبب تشويهاً بصرياً يقلل من هيبة المحتوى.",
+      en: "Persistent legacy watermarks occluded the botanical scenery and degraded visual elegance."
     },
     solution: {
-      ar: "برمجة أدوات تشغيل فورية (One-Click) تجمع بين ChatGPT في كتابة السيناريو وFFmpeg في التقطيع والبلور والمونتاج السريع بدقة 1080x1920 وبمعدل 60fps.",
-      en: "Architected a zero-click workflow pairing ChatGPT generative scriptwriting with automated FFmpeg split-screen blur and kinetic zoom."
+      ar: "تطبيق فلتر Delogo المتقدم لإزالة الشعار القديم بنسبة 100% ثم تركيب الشعار الذهبي الملكي ثلاثي الأبعاد في الزاوية العلوية.",
+      en: "Deployed custom video inpainting to purify footage 100% followed by precision royal emblem placement."
     },
     results: [
-      { label: { ar: "سرعة الإخراج", en: "Export Velocity" }, value: "3 ثوانٍ" },
-      { label: { ar: "أبعاد الفيديو", en: "Aspect Ratio" }, value: "9:16 UHD" },
-      { label: { ar: "سلاسة الحركة", en: "Smoothness" }, value: "60 FPS" }
+      { label: { ar: "تنقية الشعار القديم", en: "Clean Delogo" }, value: "100%" },
+      { label: { ar: "أبعاد العرض", en: "Aspect Ratio" }, value: "1920x1080" },
+      { label: { ar: "طراز الهوية", en: "Identity" }, value: "Royal Gold" }
     ],
     features: {
       ar: [
-        "تحويل فوري لأي فيديو أو تصميم إلى ريلز عمودي 9:16",
-        "خلفية بلور سينمائية تمنع ظهور الحواف السوداء المزعجة",
-        "تأثير حركة الكاميرا السينمائية Ken Burns Zoom",
-        "مكتبة برومبتات ذكاء اصطناعي مخصصة للمحتوى الإعلاني"
+        "معالجة متقدمة لإزالة العلامات المائية",
+        "شعار ذهبي ملكي عالي النقاء",
+        "أبعاد لاندسكيب مثالية لليوتيوب وفيسبوك"
       ],
       en: [
-        "Instant landscape-to-9:16 reel transformation pipeline",
-        "Cinematic split-screen blur background elimination",
-        "Dynamic Ken Burns procedural camera zooms",
-        "Tailored AI advertising prompt repository"
+        "Advanced algorithmic watermark elimination",
+        "Sculpted royal gold insignia badge",
+        "Widescreen landscape formatting for YouTube"
       ]
     },
-    image: "/assets/images/am-marketing-poster.jpg",
-    video: "/assets/videos/motion_am-marketing-poster.mp4",
-    demoUrl: null,
-    isFeatured: true
-  },
-  {
-    id: "ads-round-ksa",
-    category: "ads",
-    title: {
-      ar: "حملة راوند السعودية للسياحة والجولات الخاصة",
-      en: "Round KSA Luxury Travel & Tours Campaign"
-    },
-    subtitle: {
-      ar: "حملات استقطاب الزوار والسياح في المدينة المنورة ومناطق المملكة",
-      en: "High-yield tourism and private pilgrimage booking campaign in Saudi Arabia"
-    },
-    badge: {
-      ar: "دراسة حالة إعلانية - Ads",
-      en: "Case Study - Ads"
-    },
-    client: {
-      ar: "شركة راوند السعودية للسياحة",
-      en: "Round KSA Travel"
-    },
-    tags: ["سياحة وسفر", "السعودية KSA", "Meta Ads", "حجوزات واتساب"],
-    gradient: "from-emerald-500 to-teal-600",
-    summary: {
-      ar: "إدارة وإطلاق حملات ترويجية لجولات سياحية حصرية وتجارب فريدة للمعتمرين والزوار في السعودية، مع التركيز على خدمة العملاء السريعة عبر الواتساب.",
-      en: "Managed focused ad campaigns for exclusive sightseeing tours in Madinah and across the Kingdom, with instant WhatsApp conversion."
-    },
-    challenge: {
-      ar: "مواسم العمرة والسياحة المحدودة تتطلب استجابة سريعة وحملات مكثفة خلال فترات زمنية قصيرة.",
-      en: "Tight seasonal windows demanding high-velocity ad scaling and instant customer response."
-    },
-    solution: {
-      ar: "إطلاق حملات تفاعلية عبر انستجرام وتيك توك مع كول تو آكشن مباشر إلى محادثات الواتساب لحجز الجولات فوراً.",
-      en: "Deployed dynamic Reels & TikTok ads linked directly to a WhatsApp business desk with automated responses."
-    },
-    results: [
-      { label: { ar: "حجوزات سياحية", en: "Direct Bookings" }, value: "+620" },
-      { label: { ar: "عائد الإنفاق ROAS", en: "ROAS Return" }, value: "4.8X" },
-      { label: { ar: "تفاعل المتابعين", en: "Engagement Rate" }, value: "+450%" }
-    ],
-    features: {
-      ar: [
-        "استهداف جغرافي دقيق لزوار الحرمين الشريفين",
-        "توجيه مباشر لمحادثات واتساب للحجز الفوري",
-        "تصاميم إعلانية بصرية تعكس فخامة الخدمة"
-      ],
-      en: [
-        "Precision geo-targeting for regional travelers",
-        "Instant WhatsApp direct booking pipeline",
-        "High-end hospitality aesthetic creatives"
-      ]
-    },
-    image: "/assets/images/campaign_round_ksa_1.jpg",
-    demoUrl: null,
-    isFeatured: true
+    image: "/assets/images/poster_quran_landscape.jpg",
+    video: "/assets/videos/quran_landscape_balligho.mp4",
+    demoUrl: "https://www.facebook.com/profile.php?id=61579408292383",
+    isFeatured: false
   },
   {
     id: "ai-video-haduta",
     category: "ai",
     title: {
-      ar: "سلسلة الحكايات المرئية بالذكاء الاصطناعي بدقة 4K",
-      en: "Haduta AI Cinematic 4K Story Series"
+      ar: "سلسلة قصص وروايات مرئية بالذكاء الاصطناعي - الحلقة 1",
+      en: "AI Visual Stories & Legends Series - Episode 1"
     },
     subtitle: {
       ar: "إنتاج بصري سينمائي كامل بالـ AI مع خاتمة هوية AM Marketing الرسمية",
-      en: "Cinematic story synthesis using Runway Gen-3 & Midjourney with branded 4K outro"
+      en: "Full AI cinematic storytelling production featuring official AM Marketing branding outro"
     },
     badge: {
-      ar: "إنتاج سينمائي بالـ AI",
-      en: "Cinematic AI Studio"
+      ar: "مونتاج + خاتمة A&M",
+      en: "AI Production + AM Outro"
     },
     client: {
       ar: "استوديو AM الإبداعي",
       en: "AM Creative Studio"
     },
-    tags: ["Runway Gen-3", "Midjourney", "خاتمة AM الرسمية", "4K Ultra HD"],
-    gradient: "from-purple-600 to-pink-600",
+    tags: ["Runway Gen-3", "Midjourney", "خاتمة AM الرسمية", "صناعة محتوى 4K"],
+    gradient: "from-purple-600 via-pink-600 to-rose-600",
     summary: {
-      ar: "إنتاج حلقات وسلسلة حكايات درامية بصرية فائقة الدقة تم توليد صورها وحركتها بالكامل بالذكاء الاصطناعي مع هندسة صوتية سينمائية وخاتمة الهوية المعتمدة للوكالة.",
-      en: "Produced dramatic cinematic narratives with AI-generated visual continuity, multitrack audio engineering, and custom AM Marketing branding."
+      ar: "إنتاج حلقات وسلسلة حكايات درامية بصرية فائقة الدقة تم توليد صورها وحركتها بالكامل بالذكاء الاصطناعي مع هندسة صوتية سينمائية وخاتمة الهوية المعتمدة للوكالة ورقم التواصل.",
+      en: "Produced a dramatic narrative series with AI-generated scenes, cinematic audio design, and the verified AM Marketing identity outro card."
     },
     challenge: {
-      ar: "صعوبة تصوير مشاهد تاريخية وخيالية بالإنتاج التقليدي دون ميزانيات ضخمة مع الحفاظ على تناسق الشخصيات.",
-      en: "Achieving high-budget historical and fantasy cinematography with strict character consistency on a modern production timeline."
+      ar: "صعوبة تصوير مشاهد تاريخية وخيالية بالإنتاج التقليدي دون ميزانيات ضخمة.",
+      en: "Producing period-accurate historical and fantasy sets without prohibitive physical film crew budgets."
     },
     solution: {
-      ar: "استخدام خوارزميات توليد الفيديو بالذكاء الاصطناعي (Runway Gen-3) ومطابقة الشخصيات والمشاهد وإخراج مونتاج متناسق ممهور بشعار الوكالة.",
-      en: "Leveraged Runway Gen-3 and character-seed modeling, synchronized with cinematic soundscapes and animated branded title cards."
+      ar: "استخدام خوارزميات توليد الفيديو بالذكاء الاصطناعي ومطابقة الشخصيات والمشاهد وإخراج مونتاج متناسق ممهور بشعار الوكالة ورقم التواصل.",
+      en: "Leveraged Midjourney prompt chains and Runway Gen-3 motion control, bound with custom cinematic soundscapes."
     },
     results: [
-      { label: { ar: "دقة العرض", en: "Resolution" }, value: "4K Ultra" },
-      { label: { ar: "توفير الميزانية", en: "Budget Saved" }, value: "85%" },
-      { label: { ar: "سلاسة المونتاج", en: "Frame Rate" }, value: "60 FPS" }
+      { label: { ar: "دقة الفيديو", en: "Resolution" }, value: "4K Ultra" },
+      { label: { ar: "توفير الميزانية", en: "Cost Savings" }, value: "85%" },
+      { label: { ar: "كارت الخاتمة", en: "Outro Card" }, value: "A&M Branded" }
     ],
     features: {
       ar: [
-        "سرد قصصي ومؤثرات خيالية متطورة",
-        "هندسة صوتية محيطية وتوليد أصوات بشرية",
-        "كارت خاتمة مخصص للبراند ورقم التواصل"
+        "توليد مشاهد سينمائية خيالية بدقة 4K",
+        "هندسة صوتية ومؤثرات درامية واقعية",
+        "خاتمة الوكالة الرسمية ورقم التواصل المباشر"
       ],
       en: [
-        "Compelling cinematic narrative sequencing",
-        "Spatial audio mastering and voice dubbing",
-        "Integrated branded outro and lead cards"
+        "Photorealistic 4K cinematic set generation",
+        "Immersive spatial audio & narrative voice design",
+        "Official agency branding outro with contact card"
       ]
     },
     image: "/assets/images/poster_haduta_1.jpg",
@@ -559,269 +556,53 @@ export const projectsData = [
     isFeatured: true
   },
   {
-    id: "ads-kulud-pharmacy",
-    category: "ads",
-    title: {
-      ar: "حملة إطلاق تطبيق صيدليات خلود",
-      en: "Kulud Pharmacy App Launch Campaign"
-    },
-    subtitle: {
-      ar: "حملة إعلانات رقمية لتطبيق توصيل الأدوية ومستحضرات التجميل وصرف التأمين",
-      en: "Performance ad campaign for digital pharmacy app & prescription fulfillment"
-    },
-    badge: {
-      ar: "دراسة حالة إعلانية - Ads",
-      en: "Case Study - Ads"
-    },
-    client: {
-      ar: "مجموعة صيدليات خلود",
-      en: "Kulud Pharmacy Network"
-    },
-    tags: ["إعلانات تطبيقات", "App Installs", "صيدليات ورعاية", "تأمين طبي"],
-    gradient: "from-blue-500 to-indigo-600",
-    summary: {
-      ar: "تخطيط وإطلاق حملات إعلانية متكاملة لزيادة تنزيلات تطبيق صيدليات خلود والترويج لميزة صرف الروشتات الطبية بلمسة واحدة والتوصيل الفوري.",
-      en: "Planned and launched high-conversion mobile app acquisition campaigns highlighting one-tap prescription uploads and 24/7 delivery."
-    },
-    challenge: {
-      ar: "إقناع العملاء بالانتقال من الشراء التقليدي إلى الطلب عبر التطبيق ورفع الوصفات الطبية بسهولة.",
-      en: "Shifting traditional in-store buyers to digital app usage while streamlining medical prescription uploads."
-    },
-    solution: {
-      ar: "تصميم إعلانات بصرية مباشرة تسلط الضوء على سهولة صرف التأمين والتوصيل المجاني مع استهداف دقيق لجمهور العناية والصحة.",
-      en: "Designed benefit-first video creatives spotlighting free insurance delivery, backed by granular health & beauty targeting."
-    },
-    results: [
-      { label: { ar: "تنزيلات التطبيق", en: "Total Installs" }, value: "+15,000" },
-      { label: { ar: "طلبات الروشتات", en: "Prescription Uploads" }, value: "+190%" },
-      { label: { ar: "تكلفة التثبيت CPI", en: "CPI Reduction" }, value: "-32%" }
-    ],
-    features: {
-      ar: [
-        "حملات تنزيل تطبيقات App Installs مخصصة",
-        "فيديوهات توضيحية لسهولة صرف التأمين",
-        "تتبع مسار المستخدم وتثبيت التحليلات"
-      ],
-      en: [
-        "Optimized App Install campaigns on Google & Meta",
-        "Frictionless prescription ordering explainer",
-        "In-app event and conversion telemetry"
-      ]
-    },
-    image: "/assets/images/campaign_kulud_1.png",
-    demoUrl: null,
-    isFeatured: true
-  },
-  {
-    id: "sec-defense",
-    category: "security",
-    title: {
-      ar: "تأمين وحماية منصات التجارة الإلكترونية من الاختراق",
-      en: "E-Commerce Cyber Hardening & WAF Protection"
-    },
-    subtitle: {
-      ar: "فحص ثغرات أمنية (Penetration Testing) وتثبيت جدار حماية سحابي",
-      en: "Penetration testing, SQLi mitigation, and enterprise Cloudflare WAF deployment"
-    },
-    badge: {
-      ar: "أمن سيبراني (PROTECT)",
-      en: "Cybersecurity (PROTECT)"
-    },
-    client: {
-      ar: "منصات ومتاجر إلكترونية",
-      en: "Enterprise E-Commerce Clients"
-    },
-    tags: ["Cloudflare WAF", "فحص ثغرات", "تشفير بيانات", "صد هجمات DDoS"],
-    gradient: "from-emerald-500 to-cyan-600",
-    summary: {
-      ar: "إجراء فحص شامل للمواقع لاكتشاف نقاط الضعف ضد هجمات SQL Injection و DDoS وتأمين بيانات بطاقات الدفع للعملاء.",
-      en: "Comprehensive security audit mitigating SQL injection vulnerabilities, shielding stores against DDoS surges, and safeguarding payment gateways."
-    },
-    challenge: {
-      ar: "تعرض المواقع لمحاولات اختراق متكررة وبطء في السيرفر أدى لتوقف المتجر أثناء الحملات الإعلانية.",
-      en: "Recurring brute-force incursions and severe traffic bottlenecking crashing the checkout during peak ad pushes."
-    },
-    solution: {
-      ar: "سد الثغرات الأمنية الحرجة، تفعيل Cloudflare WAF، وتشفير قواعد البيانات مع مراقبة أمنية على مدار الساعة.",
-      en: "Patched critical endpoints, configured Cloudflare Enterprise WAF rate-limiting, and enabled automated real-time threat neutralization."
-    },
-    results: [
-      { label: { ar: "صد الهجمات الخبيثة", en: "Attacks Neutralized" }, value: "100%" },
-      { label: { ar: "زمن التشغيل Uptime", en: "Store Uptime" }, value: "99.98%" },
-      { label: { ar: "شهادة أمان مطابقة", en: "Security Grade" }, value: "A+ SSL" }
-    ],
-    features: {
-      ar: [
-        "سد ثغرات الحقن وهجمات حجب الخدمة DDoS",
-        "تشفير حركة المرور وحماية بوابات الدفع",
-        "مراقبة استباقية وتنبيهات أمنية فورية"
-      ],
-      en: [
-        "Proactive DDoS & code-injection defense",
-        "Encrypted transit & PCI-compliant payment seals",
-        "24/7 telemetry and automated threat alerts"
-      ]
-    },
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80",
-    demoUrl: null,
-    isFeatured: true
-  },
-  {
-    id: "ads-spiro-spathis",
-    category: "ads",
-    title: {
-      ar: "استراتيجية نمو وتوسع سبيرو سباتس",
-      en: "Spiro Spathis Growth & Brand Strategy"
-    },
-    subtitle: {
-      ar: "دراسة استراتيجية وكتابة محتوى إعلاني لحملة استعادة الصدارة للمشروب الوطني",
-      en: "Brand turnaround strategy and viral direct-response copywriting"
-    },
-    badge: {
-      ar: "دراسة حالة إعلانية - FMCG",
-      en: "Case Study - FMCG"
-    },
-    client: {
-      ar: "سبيرو سباتس (Spiro Spathis)",
-      en: "Spiro Spathis National Beverage"
-    },
-    tags: ["كتابة إعلانية", "استراتيجية براندينج", "سوشيال ميديا", "FMCG"],
-    gradient: "from-purple-500 to-indigo-600",
-    summary: {
-      ar: "إعداد عرض استراتيجي متكامل وصياغة سيناريوهات ونصوص إعلانية احترافية تعتمد على السرد القصصي لربط عراقة المنتج بروح الشباب اليوم (#احنا_بتوع_النهاردة).",
-      en: "Authored an omnichannel marketing framework linking historic Egyptian heritage with contemporary youth pop culture."
-    },
-    challenge: {
-      ar: "الاستفادة من الزخم الجماهيري وتحويله إلى ولاء طويل الأمد للعلامة التجارية أمام المنافسين العالميين.",
-      en: "Converting temporary viral wave momentum into lasting customer loyalty and recurring supermarket velocity."
-    },
-    solution: {
-      ar: "بناء استراتيجية محتوى متعددة المراحل تمزج النوستالجيا بالروح العصرية وابتكار مفاهيم إعلانية قابلة للانتشار العضوي.",
-      en: "Constructed multi-phase storytelling arcs uniting authentic nostalgic resonance with modern high-energy creative concepts."
-    },
-    results: [
-      { label: { ar: "انتشار عضوي وتفاعل", en: "Viral Reach" }, value: "Viral Impact" },
-      { label: { ar: "زيادة الارتباط بالبراند", en: "Brand Affinity" }, value: "+280%" },
-      { label: { ar: "تغطية المحتوى", en: "Strategic Slides" }, value: "36 شريحة" }
-    ],
-    features: {
-      ar: [
-        "سرد قصصي عاطفي يربط الأجيال",
-        "أفكار إعلانية قابلة للتطبيق الفوري",
-        "خطة توزيع محتوى متزامنة عبر المنصات"
-      ],
-      en: [
-        "Intergenerational storytelling strategy",
-        "Actionable digital and billboard creative concepts",
-        "Synchronized multi-channel deployment roadmap"
-      ]
-    },
-    image: "/assets/images/campaign_spiro_spathis_clean.png",
-    demoUrl: null,
-    isFeatured: true
-  },
-  {
-    id: "ads-labeeb-restaurant",
-    category: "ads",
-    title: {
-      ar: "حملة وهوية مطعم لبيب اللبناني",
-      en: "Labeeb Casual Dining Brand & Social Campaign"
-    },
-    subtitle: {
-      ar: "خطة محتوى وأفكار إعلانية سينمائية لقطاع الضيافة والمطاعم الراقية",
-      en: "Creative video concepts & content calendar for luxury Lebanese dining"
-    },
-    badge: {
-      ar: "دراسة حالة إعلانية - F&B",
-      en: "Case Study - F&B"
-    },
-    client: {
-      ar: "مطعم لبيب اللبناني",
-      en: "Labeeb Casual Dining"
-    },
-    tags: ["تسويق مطاعم", "هوية بصرية", "Food Styling", "فيديو وسوشيال"],
-    gradient: "from-amber-500 to-orange-600",
-    summary: {
-      ar: "ابتكار مفاهيم تسويقية وأفكار فيديوهات مبتكرة تعكس الأجواء الفاخرة والأطباق اللبنانية الأصيلة تحت شعار: 'لبيب معك في كل الأوقات'.",
-      en: "Authored 16 dynamic culinary video concepts and social activation campaigns spotlighting authentic Lebanese hospitality."
-    },
-    challenge: {
-      ar: "تميز المطعم في بيئة سوقية مزدحمة بالمنافسين وجذب العائلات والشباب على حد سواء.",
-      en: "Breaking through a saturated casual dining landscape to drive foot traffic and weekend reservations."
-    },
-    solution: {
-      ar: "صياغة أفكار فيديوهات ومزيج حملات ترويجي يجمع بين تجربة المكان وتصوير الأطعمة الجذاب وعروض المناسبات.",
-      en: "Engineered appetite-inducing cinematic food shorts paired with targeted geo-fenced Instagram promos."
-    },
-    results: [
-      { label: { ar: "إقبال الزوار والحجوزات", en: "Dine-in Growth" }, value: "+220%" },
-      { label: { ar: "مشاهدات الفيديوهات", en: "Video Views" }, value: "+1.2M" },
-      { label: { ar: "تفاعل السوشيال ميديا", en: "Engagement Rate" }, value: "+350%" }
-    ],
-    features: {
-      ar: [
-        "16 فكرة سيناريو فيديو ترويجي إبداعي",
-        "تنسيق بصري جذاب للمأكولات Food Styling",
-        "استراتيجية استقطاب العائلات والشباب"
-      ],
-      en: [
-        "16 creative video narrative treatments",
-        "Aesthetic food styling & sensory visuals",
-        "Targeted demographic footfall strategy"
-      ]
-    },
-    image: "/assets/images/campaign_labeeb_1.png",
-    demoUrl: null,
-    isFeatured: true
-  },
-  {
     id: "ai-video-haduta-2",
     category: "ai",
     title: {
-      ar: "حكايات الذكاء الاصطناعي 4K - الحلقة الثانية",
-      en: "Haduta AI Narrative 4K - Episode 2"
+      ar: "سلسلة قصص وروايات مرئية بالذكاء الاصطناعي - الحلقة 2",
+      en: "AI Visual Stories & Legends Series - Episode 2"
     },
     subtitle: {
-      ar: "إخراج سينمائي ومؤثرات خيالية مع كارت خاتمة AM Marketing المعتمد",
-      en: "Cinematic story synthesis with branded AM Marketing 4K outro & contact card"
+      ar: "إخراج سينمائي ومؤثرات خيالية مع كارت خاتمة A&M Marketing المعتمد",
+      en: "Epic continuation of visual storytelling with integrated AM Marketing contact outro"
     },
     badge: {
-      ar: "إنتاج سينمائي AI",
-      en: "Cinematic AI"
+      ar: "4K AI Production + AM Outro",
+      en: "4K AI Production + AM Outro"
     },
     client: {
-      ar: "استوديو AM الإبداعي (عبد السلام)",
-      en: "AM Creative Studio (Abdel Salam)"
+      ar: "استوديو AM الإبداعي",
+      en: "AM Creative Studio"
     },
-    tags: ["Runway Gen-3", "قصص تاريخية AI", "مونتاج 4K", "خاتمة AM الرسمية"],
-    gradient: "from-rose-600 via-pink-600 to-purple-600",
+    tags: ["قصص تاريخية AI", "سينما رقمية", "مونتاج 4K", "هوية بصرية"],
+    gradient: "from-violet-600 via-purple-700 to-indigo-800",
     summary: {
       ar: "الحلقة الثانية من السلسلة الدرامية البصرية فائقة الدقة بتقنية 4K مع دمج كارت الخاتمة الرسمي لوكالة AM Marketing ورقم التواصل المباشر 01098174992.",
-      en: "Sequel cinematic installment utilizing Runway Gen-3 with custom orchestral score and AM Marketing outro card."
+      en: "The second chapter of the AI visual storytelling anthology, refined with enhanced character consistency and calibrated dynamic lighting."
     },
     challenge: {
-      ar: "الحفاظ على تتابع بصري سينمائي متصل وشخصيات ثابتة مع دمج هوية البراند في نهاية الفيديو.",
-      en: "Preserving facial seed continuity across episodic scenes while incorporating branded contact overlays."
+      ar: "الحفاظ على تتابع بصري سينمائي سلس ودمج هوية العلامة التجارية في نهاية الفيديو باحترافية تامة.",
+      en: "Ensuring frame-to-frame temporal coherence and seamless branding card integration without disrupting dramatic immersion."
     },
     solution: {
       ar: "تطبيق مؤثرات انتقال سلسة (Fade-in Outro) لشعار AM ورقم التواصل في ختام الفيديو دون تشويش المشهد الرئيسي.",
-      en: "Deployed AI prompt seed consistency with precision sound mixing and custom brand resolution."
+      en: "Applied precision cinematic transitions, motion-tracked subtitles, and the verified AM Marketing agency badge."
     },
     results: [
       { label: { ar: "دقة العرض", en: "Resolution" }, value: "4K UHD" },
-      { label: { ar: "معدل الإطارات", en: "Frame Rate" }, value: "60 FPS" },
-      { label: { ar: "خاتمة مخصصة", en: "Outro" }, value: "AM Branded" }
+      { label: { ar: "معدل الإطارات", en: "Framerate" }, value: "60 FPS" },
+      { label: { ar: "خاتمة مخصصة", en: "Branding" }, value: "A&M Branded" }
     ],
     features: {
       ar: [
-        "سرد درامي تاريخي عالي الدقة",
-        "تنسيق حركة سينمائية بالكاميرا",
-        "كارت خاتمة ممهور برقم الواتساب"
+        "سرد قصصي درامي متقن ومؤثرات سينمائية",
+        "تكامل تام مع هوية AM ورقم الاتصال الرسمي",
+        "إخراج ومونتاج فائق النقاء"
       ],
       en: [
-        "Episodic narrative visual continuity",
-        "Fluid cinematic camera orchestration",
-        "Branded high-conversion callout outro"
+        "Engaging narrative pacing with dynamic FX",
+        "Full brand harmony with verified WhatsApp CTA",
+        "Pristine multi-track audio master"
       ]
     },
     image: "/assets/images/poster_haduta_2.jpg",
@@ -833,12 +614,12 @@ export const projectsData = [
     id: "ai-video-solo",
     category: "ai",
     title: {
-      ar: "ريلز براند SOLO للأزياء ومنتجات العناية",
-      en: "SOLO Fashion & Grooming Dynamic Reel"
+      ar: "ريلز براند SOLO للأزياء ومنتجات العناية (SOLO Branding Reel)",
+      en: "SOLO Lifestyle Brand Dynamic Social Reel"
     },
     subtitle: {
       ar: "مونتاج فيديو ترويجي ديناميكي سريع مخصص لإعلانات فيسبوك وانستجرام",
-      en: "Fast-paced rhythm-cut commercial reel engineered for Meta ads conversion"
+      en: "High-energy commercial reel tailored for Meta feed engagement and direct conversions"
     },
     badge: {
       ar: "ريلز إعلاني - Social Reel",
@@ -900,8 +681,8 @@ export const projectsData = [
       en: "Client Motion Production"
     },
     client: {
-      ar: "مشروع عميل: منصة تقنية مالية واستثمار",
-      en: "Client Project: Fintech AI Platform"
+      ar: "حلول الاستثمار والتقنية المالية",
+      en: "Fintech Investment Solutions"
     },
     tags: ["Fintech", "فيديو موشن AI", "استثمار رقمي", "تسويق B2B"],
     gradient: "from-emerald-500 via-teal-600 to-cyan-600",
@@ -919,7 +700,7 @@ export const projectsData = [
     },
     results: [
       { label: { ar: "نسبة إكمال المشاهدة", en: "Completion Rate" }, value: "78%" },
-      { label: { ar: "طلبات التسجيل", en: "Sign-up Surge" }, value: "+260%" },
+      { label: { ar: "زيادة التفاعل", en: "Engagement Surge" }, value: "+260%" },
       { label: { ar: "سلاسة التحريك", en: "Frame Velocity" }, value: "60 FPS" }
     ],
     features: {
@@ -940,59 +721,274 @@ export const projectsData = [
     isFeatured: false
   },
   {
-    id: "ai-video-quran-landscape",
-    category: "ai",
+    id: "ads-round-ksa",
+    category: "ads",
     title: {
-      ar: "مونتاج قرآني لاندسكيب 16:9 - تأمل نبات الأرض",
-      en: "Quran Cinematic Landscape 16:9 - Earth & Flora"
+      ar: "حملة راوند السعودية للسياحة والجولات الخاصة (Round KSA Travel)",
+      en: "Round KSA Travel & VIP Tours Campaign"
     },
     subtitle: {
-      ar: "إزالة العلامة المائية القديمة 100% ودمج الشعار الذهبي لصفحة (بَلِّغُوا عَنِّي ولو آية)",
-      en: "Flawless delogo restoration and 3D royal gold branding for YouTube landscape"
+      ar: "حملات استقطاب الزوار والسياح في المدينة المنورة ومناطق المملكة",
+      en: "Omnichannel Meta campaigns targeting pilgrims and domestic visitors for VIP guided excursions"
     },
     badge: {
-      ar: "مونتاج قرآني 16:9 نقي",
-      en: "16:9 Delogo & Mastering"
+      ar: "سياحة وضيافة - KSA Tourism",
+      en: "Tourism & Hospitality"
     },
     client: {
-      ar: "صفحة وقناة: بَلِّغُوا عَنِّي ولو آية",
-      en: "Balligho Annii Project"
+      ar: "شركة راوند السعودية للسياحة",
+      en: "Round KSA Tourism Co."
     },
-    website: "https://www.facebook.com/profile.php?id=61579408292383",
-    tags: ["تأملات قرآنية", "شعار ذهبي نقي", "إزالة لوجو 100%", "Full HD"],
-    gradient: "from-yellow-500 via-amber-600 to-amber-700",
+    tags: ["سياحة وسفر", "السعودية", "Instagram Ads", "حجوزات مباشرة"],
+    gradient: "from-emerald-500 via-teal-600 to-cyan-700",
     summary: {
-      ar: "إعادة مونتاج وتنقية بصرية كاملة لمقطع قرآني طبيعي بنسبة 16:9 مع إزالة الشعار السابق بتقنية Delogo وإدراج الهوية الذهبية بدقة متناهية.",
-      en: "Executed algorithmic Delogo reconstruction removing obtrusive previous watermarks and applying sculpted 3D insignia."
+      ar: "إدارة وإطلاق حملات ترويجية لجولات سياحية حصرية وتجارب فريدة للمعتمرين والزوار في السعودية، مع التركيز على خدمة العملاء السريعة عبر الواتساب.",
+      en: "Spearheaded promotional campaigns for exclusive spiritual and cultural tours across KSA, generating direct WhatsApp booking pipelines."
     },
     challenge: {
-      ar: "العلامة المائية القديمة كانت متداخلة مع المشهد الطبيعي وتسبب تشويهاً بصرياً يقلل من هيبة المحتوى.",
-      en: "Persistent legacy watermarks occluded the botanical scenery and degraded visual elegance."
+      ar: "مواسم العمرة والسياحة المحدودة تتطلب استجابة سريعة وحملات مكثفة خلال فترات زمنية قصيرة.",
+      en: "Short seasonal booking windows requiring swift audience saturation and rapid qualification."
     },
     solution: {
-      ar: "تطبيق فلتر Delogo المتقدم لإزالة الشعار القديم بنسبة 100% ثم تركيب الشعار الذهبي الملكي ثلاثي الأبعاد في الزاوية العلوية.",
-      en: "Deployed custom video inpainting to purify footage 100% followed by precision royal emblem placement."
+      ar: "إطلاق حملات تفاعلية عبر انستجرام وتيك توك مع كول تو آكشن مباشر إلى محادثات الواتساب لحجز الجولات فوراً.",
+      en: "Launched high-converting Instagram story ads routed straight into automated Arabic/English WhatsApp agents."
     },
     results: [
-      { label: { ar: "تنقية الشعار القديم", en: "Clean Delogo" }, value: "100%" },
-      { label: { ar: "أبعاد العرض", en: "Aspect Ratio" }, value: "1920x1080" },
-      { label: { ar: "طراز الهوية", en: "Identity" }, value: "Royal Gold" }
+      { label: { ar: "حجوزات سياحية", en: "Tour Bookings" }, value: "+620" },
+      { label: { ar: "عائد الإنفاق ROAS", en: "ROAS Ratio" }, value: "4.8X" },
+      { label: { ar: "تفاعل المتابعين", en: "Social Reach" }, value: "+450%" }
     ],
     features: {
       ar: [
-        "معالجة متقدمة لإزالة العلامات المائية",
-        "شعار ذهبي ملكي عالي النقاء",
-        "أبعاد لاندسكيب مثالية لليوتيوب وفيسبوك"
+        "استهداف دقيق لزوار الحرمين الشريفين والمعتمرين",
+        "إعلانات موجهة مباشرة لمحادثات الواتساب",
+        "تنسيقات بصرية سينمائية لمعالم المملكة"
       ],
       en: [
-        "Advanced algorithmic watermark elimination",
-        "Sculpted royal gold insignia badge",
-        "Widescreen landscape formatting for YouTube"
+        "Geofenced targeting for Umrah pilgrims & tourists",
+        "Direct-to-chat WhatsApp conversational funnels",
+        "Cinematic video creatives of cultural landmarks"
       ]
     },
-    image: "/assets/images/poster_quran_landscape.jpg",
-    video: "/assets/videos/quran_landscape_balligho.mp4",
-    demoUrl: "https://www.facebook.com/profile.php?id=61579408292383",
+    image: "/assets/images/campaign_round_ksa_1.jpg",
+    demoUrl: null,
+    isFeatured: true
+  },
+  {
+    id: "ads-spiro-spathis",
+    category: "ads",
+    title: {
+      ar: "استراتيجية نمو وتوسع سبيرو سباتس (Spiro Spathis Growth Campaign)",
+      en: "Spiro Spathis Strategic Brand Revival Campaign"
+    },
+    subtitle: {
+      ar: "دراسة استراتيجية وكتابة محتوى إعلاني لحملة استعادة الصدارة للمشروب الوطني",
+      en: "Brand revival pitch deck, narrative copywriting, and social positioning for the historic beverage"
+    },
+    badge: {
+      ar: "FMCG & Copywriting",
+      en: "FMCG & Brand Strategy"
+    },
+    client: {
+      ar: "سبيرو سباتس (Spiro Spathis)",
+      en: "Spiro Spathis Egypt"
+    },
+    tags: ["كتابة إعلانية", "استراتيجية براندينج", "سوشيال ميديا", "FMCG"],
+    gradient: "from-sky-500 via-blue-600 to-indigo-700",
+    summary: {
+      ar: "إعداد عرض استراتيجي متكامل وصياغة سيناريوهات ونصوص إعلانية احترافية تعتمد على السرد القصصي (Storytelling) لربط عراقة المنتج بروح الشباب اليوم (#احنا_بتوع_النهاردة).",
+      en: "Engineered a master brand strategy proposal and storytelling copywriting deck linking generational nostalgia with modern Egyptian youth culture."
+    },
+    challenge: {
+      ar: "الاستفادة من الزخم الجماهيري وتحويله إلى ولاء طويل الأمد للعلامة التجارية أمام المنافسين العالميين.",
+      en: "Converting sudden viral market sentiment into sustainable, long-term brand equity."
+    },
+    solution: {
+      ar: "بناء استراتيجية محتوى متعددة المراحل تمزج النوستالجيا المصرية بالروح العصرية وابتكار مفاهيم إعلانية مبتكرة.",
+      en: "Formulated a multi-phased messaging architecture balancing retro heritage with contemporary humor and social pride."
+    },
+    results: [
+      { label: { ar: "انتشار وتفاعل", en: "Viral Resonance" }, value: "Viral" },
+      { label: { ar: "ارتباط بالبراند", en: "Brand Affinity" }, value: "+280%" },
+      { label: { ar: "شرائح استراتيجية", en: "Strategy Slides" }, value: "36 شريحة" }
+    ],
+    features: {
+      ar: [
+        "سرد قصصي عاطفي يربط الماضي بالحاضر",
+        "نصوص إعلانية مبتكرة موجهة لمنصات السوشيال",
+        "تحليل تنافسي شامل لقطاع المشروبات الغازية"
+      ],
+      en: [
+        "Resonant heritage-to-modernity storytelling",
+        "High-virality social copy scripts",
+        "In-depth beverage industry competitive teardown"
+      ]
+    },
+    image: "/assets/images/campaign_spiro_spathis_clean.png",
+    demoUrl: null,
+    isFeatured: true
+  },
+  {
+    id: "ads-kulud-pharmacy",
+    category: "ads",
+    title: {
+      ar: "حملة تطبيق صيدليات خلود (Kulud Pharmacy App Launch)",
+      en: "Kulud Pharmacy Digital App Acquisition Campaign"
+    },
+    subtitle: {
+      ar: "حملة إعلانات رقمية لتطبيق توصيل الأدوية ومستحضرات التجميل وصرف التأمين",
+      en: "Multi-platform mobile app install and digital pharmacy prescription fulfillment strategy"
+    },
+    badge: {
+      ar: "تطبيقات وتجارة إلكترونية - E-Commerce",
+      en: "E-Commerce & Mobile Apps"
+    },
+    client: {
+      ar: "مجموعة صيدليات خلود",
+      en: "Kulud Pharmacy Group"
+    },
+    tags: ["إعلانات تطبيقات", "صيدليات ورعاية صحية", "App Installs", "تأمين طبي"],
+    gradient: "from-blue-600 via-indigo-600 to-purple-600",
+    summary: {
+      ar: "تخطيط وإطلاق حملات إعلانية متكاملة لزيادة تنزيلات تطبيق صيدليات خلود والترويج لميزة صرف الروشتات الطبية بلمسة واحدة من الجوال والتوصيل الفوري.",
+      en: "Executed mobile install and retention campaigns for Kulud Pharmacy App, spotlighting digital prescription uploads and express delivery."
+    },
+    challenge: {
+      ar: "إقناع العملاء بالانتقال من الشراء التقليدي من الصيدلية إلى الطلب عبر التطبيق وتسهيل رفع الوصفات الطبية.",
+      en: "Overcoming consumer habit friction to transition walk-in retail shoppers into repeat in-app purchasers."
+    },
+    solution: {
+      ar: "تصميم إعلانات بصرية مباشرة تسلط الضوء على سهولة صرف التأمين والتوصيل المجاني مع استهداف دقيق لجمهور العناية والصحة.",
+      en: "Crafted frictionless video hooks emphasizing 1-tap insurance approval and free localized dispatch."
+    },
+    results: [
+      { label: { ar: "تنزيلات التطبيق", en: "App Installs" }, value: "+15,000" },
+      { label: { ar: "طلبات الروشتات", en: "Prescription Surge" }, value: "+190%" },
+      { label: { ar: "تكلفة التثبيت CPI", en: "CPI Reduction" }, value: "-32%" }
+    ],
+    features: {
+      ar: [
+        "إعلانات تنزيل تطبيقات App Installs مخصصة",
+        "استهداف دقيق لجمهور الرعاية الصحية والأمهات",
+        "إبراز ميزة صرف التأمين الطبي الفوري"
+      ],
+      en: [
+        "Dedicated App Install objective campaigns",
+        "Hyper-segmented health & beauty buyer audiences",
+        "Instant medical insurance approval feature highlight"
+      ]
+    },
+    image: "/assets/images/campaign_kulud_1.png",
+    demoUrl: null,
+    isFeatured: true
+  },
+  {
+    id: "ads-labeeb-restaurant",
+    category: "ads",
+    title: {
+      ar: "حملة وهوية مطعم لبيب اللبناني (Labeeb Casual Dining)",
+      en: "Labeeb Casual Dining Narrative Campaign"
+    },
+    subtitle: {
+      ar: "خطة محتوى وأفكار إعلانية سينمائية لقطاع الضيافة والمطاعم الراقية",
+      en: "Creative video concepts and social positioning for high-end Lebanese casual dining"
+    },
+    badge: {
+      ar: "مطاعم وضيافة - F&B",
+      en: "F&B Marketing"
+    },
+    client: {
+      ar: "مطعم لبيب اللبناني",
+      en: "Labeeb Restaurant"
+    },
+    tags: ["تسويق مطاعم", "هوية بصرية", "Food Styling", "فيديو وسوشيال"],
+    gradient: "from-rose-500 via-pink-600 to-red-600",
+    summary: {
+      ar: "ابتكار مفاهيم تسويقية وأفكار فيديوهات مبتكرة تعكس الأجواء الفاخرة والأطباق اللبنانية الأصيلة تحت شعار: 'لبيب معك في كل الأوقات'.",
+      en: "Conceptualized a 16-episode visual hospitality content playbook for Labeeb Lebanese Diner, amplifying appetite appeal and venue reservations."
+    },
+    challenge: {
+      ar: "تميز المطعم في بيئة سوقية مزدحمة بالمنافسين وجذب العائلات والشباب على حد سواء.",
+      en: "Standing out in a saturated culinary dining landscape while driving predictable weekday bookings."
+    },
+    solution: {
+      ar: "صياغة 16 فكرة فيديو ومزيج حملات ترويجي يجمع بين تجربة المكان وتصوير الأطعمة الجذاب وتقديم عروض جاذبة.",
+      en: "Structured sensory food-styling reels, ambience walkthroughs, and targeted weekend reservation promotions."
+    },
+    results: [
+      { label: { ar: "إقبال الزوار والحجوزات", en: "Table Bookings" }, value: "+220%" },
+      { label: { ar: "مشاهدات الفيديو", en: "Video Views" }, value: "+1.2M" },
+      { label: { ar: "تفاعل السوشيال", en: "Social Surge" }, value: "+350%" }
+    ],
+    features: {
+      ar: [
+        "16 فكرة سيناريو فيديو ترويجي إبداعي",
+        "إبراز جمالية المكان والأطباق اللبنانية",
+        "استراتيجية تحفيز الحجوزات المباشرة"
+      ],
+      en: [
+        "16 tailored viral culinary reel scripts",
+        "Sensory macro food-styling visual direction",
+        "Direct reservation call-to-action hooks"
+      ]
+    },
+    image: "/assets/images/campaign_labeeb_1.png",
+    demoUrl: null,
     isFeatured: false
+  },
+  {
+    id: "sec-defense",
+    category: "security",
+    title: {
+      ar: "حماية وتأمين مواقع ومتاجر العملاء من الاختراق (Cyber Security Defense)",
+      en: "Enterprise Web Infrastructure Security & Threat Mitigation"
+    },
+    subtitle: {
+      ar: "فحص ثغرات أمنية (Penetration Testing) وتثبيت جدار حماية سحابي WAF ضد هجمات DDoS",
+      en: "Automated vulnerability scanning, Cloudflare WAF deployment, and DDoS mitigation"
+    },
+    badge: {
+      ar: "أمن سيبراني (PROTECT)",
+      en: "Cyber Defense (PROTECT)"
+    },
+    client: {
+      ar: "مواقع وعملاء وكالة AM Marketing",
+      en: "AM Agency Client Platforms"
+    },
+    website: "https://wa.me/201098174992?text=%D8%A3%D9%88%D8%AF%20%D9%81%D8%AD%D8%B5%20%D9%88%D8%AA%D8%A3%D9%85%D9%8A%D9%86%20%D9%85%D9%88%D9%82%D8%B9%D9%8A%20%D8%B6%D8%AF%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82",
+    tags: ["أمن مواقع", "سد ثغرات", "WAF جدار حماية", "تشفير بيانات", "SSL / TLS"],
+    gradient: "from-red-600 via-rose-700 to-slate-900",
+    summary: {
+      ar: "تنفيذ بروتوكولات حماية متقدمة للمواقع الإلكترونية ومتاجر التجارة الإلكترونية، تشمل فحص الثغرات وسد منافذ SQL Injection و XSS وتفعيل جدار الحماية السحابي Cloudflare WAF.",
+      en: "Deployed enterprise-grade perimeter security protocols including automated vulnerability assessment, SQLi/XSS patching, and managed Cloudflare WAF rule sets."
+    },
+    challenge: {
+      ar: "تعرض المواقع لمحاولات اختراق متكررة وبطء في السيرفر أدى لتوقف الخدمات أثناء الحملات الإعلانية.",
+      en: "High vulnerability of high-traffic commercial sites to malicious bot crawls, DDoS floods, and credential stuffing."
+    },
+    solution: {
+      ar: "سد الثغرات الأمنية الحرجة، تفعيل حماية Cloudflare WAF، وتشفير البيانات مع مراقبة أمنية على مدار الساعة لضمان استقرار المواقع بنسبة 99.98%.",
+      en: "Hardened server configurations, integrated strict CSP/HSTS headers, and provisioned multi-layered edge WAF protection."
+    },
+    results: [
+      { label: { ar: "صد الهجمات الخبيثة", en: "Threats Blocked" }, value: "100%" },
+      { label: { ar: "زمن التشغيل Uptime", en: "System Uptime" }, value: "99.98%" },
+      { label: { ar: "شهادة أمان مطابقة", en: "Security Grade" }, value: "A+ Grade" }
+    ],
+    features: {
+      ar: [
+        "جدار حماية سحابي متطور Cloudflare Enterprise WAF",
+        "فحص ثغرات دوري وتأمين قواعد البيانات",
+        "تأمين كامل لبيانات بطاقات الدفع والعملاء"
+      ],
+      en: [
+        "Advanced Cloudflare edge firewall filtering",
+        "Routine penetration audits & database hardening",
+        "Encrypted customer checkout & credential protection"
+      ]
+    },
+    image: "/assets/images/cyber-command-center.jpg",
+    demoUrl: "https://wa.me/201098174992?text=%D8%A3%D9%88%D8%AF%20%D9%81%D8%AD%D8%B5%20%D9%88%D8%AA%D8%A3%D9%85%D9%8A%D9%86%20%D9%85%D9%88%D9%82%D8%B9%D9%8A%20%D8%B6%D8%AF%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82",
+    isFeatured: true
   }
 ];

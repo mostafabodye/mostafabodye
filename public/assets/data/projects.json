@@ -21,6 +21,111 @@
     "isFeatured": true
   },
   {
+    "id": "gads-winch-enqaz",
+    "category": "ads",
+    "title": "ونش إنقاذ المستشار (winch-enqaz.com)",
+    "subtitle": "منظومة إعلانات جوجل المتصدرة لأقوى كيان إنقاذ سيارات في مصر وموقع لايف",
+    "badge": "Google Ads + موقع لايف 🌐",
+    "client": "مجموعة ونش المستشار (winch-enqaz.com)",
+    "website": "https://winch-enqaz.com/",
+    "tags": ["Google Ads", "المستشار إنقاذ", "winch-enqaz.com", "أعلى تصدر"],
+    "summary": "إدارة الحملات الإعلانية الرسمية لكيان ونش إنقاذ المستشار عبر منصة winch-enqaz.com، وتوليد مئات المكالمات اليومية على مستوى القاهرة والجيزة والمحافظات.",
+    "challenge": "الحفاظ على الصدارة التامة وسط منافسة مئات المعلنين وتوفير أعلى جودة اتصالات ممكنة.",
+    "solution": "بناء هيكل حملات متعدد المناطق مع تخصيص إعلانات اتصال فوري وتتبع جودة ونية العملاء المتعطلين لحظة بلحظة.",
+    "results": [
+      { "label": "مكالمات شهرية", "value": "+650 مكالمة" },
+      { "label": "معدل التحويل CTR", "value": "21.4%" },
+      { "label": "تصدر البحث", "value": "#1 بمصر" }
+    ],
+    "image": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80",
+    "demoUrl": "https://winch-enqaz.com/",
+    "isFeatured": true
+  },
+  {
+    "id": "gads-winch-elsaeed",
+    "category": "ads",
+    "title": "ونش إنقاذ السعيد طه (elsaeedwinch.com)",
+    "subtitle": "حملات إعلانات جوجل للإنقاذ السريع وتغطية الطرق والمحاور الرئيسية وموقع مباشر",
+    "badge": "Google Ads - 24/7 Calls 📞",
+    "client": "السعيد طه للإنقاذ السريع",
+    "website": "https://elsaeedwinch.com/",
+    "tags": ["Google Ads", "السعيد للإنقاذ", "elsaeedwinch.com", "طرق ومحاور مصر"],
+    "summary": "إدارة حساب وحملات إعلانات جوجل لشركة السعيد طه للإنقاذ السريع عبر موقع elsaeedwinch.com، وتأمين وصول إعلانات الاتصال الفوري لأصحاب السيارات المتعطلة على مدار 24 ساعة.",
+    "challenge": "تجنب النقر العشوائي وحظر الكلمات غير المناسبة مع ضمان ظهور الإعلان في المرتبة الأولى المطلقة.",
+    "solution": "استراتيجية مزايدة Maximise Clicks مع ضبط جغرافي دقيق للمحاور والطرق الدائرية وتفعيل أزرار الاتصال الهاتفي السريع.",
+    "results": [
+      { "label": "اتصالات مباشرة", "value": "+480 مكالمة" },
+      { "label": "نسبة الظهور المطلق", "value": "88%" },
+      { "label": "تغطية الخدمة", "value": "24 ساعة" }
+    ],
+    "image": "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1000&q=80",
+    "demoUrl": "https://elsaeedwinch.com/",
+    "isFeatured": true
+  },
+  {
+    "id": "gads-winch-alisoker",
+    "category": "ads",
+    "title": "ونش إنقاذ علي سكر (alisokerwinch.com)",
+    "subtitle": "إدارة حملات إعلانات جوجل Call-Only وتغطية اتصالات الطوارئ 24/7 وموقع تعريفي",
+    "badge": "Google Ads - Call-Only 🚀",
+    "client": "ونش علي سكر (alisokerwinch.com)",
+    "website": "https://alisokerwinch.com/",
+    "tags": ["Google Ads", "اتصال مباشر Call-Only", "ونش علي سكر", "تغطية 24/7"],
+    "summary": "إطلاق وإدارة حملات اتصال مباشر Call-Only على شبكة بحث جوجل لخدمات ونش إنقاذ وسحب السيارات علي سكر، مع استهداف دقيق للمناطق والمحاور وتكلفة نقرة محسنة لتوليد مكالمات فورية.",
+    "challenge": "المنافسة الشرسة على كلمات ونش الإنقاذ وسرعة الحاجة للمكالمة خلال ثوانٍ من تعطل السيارة.",
+    "solution": "إعلانات اتصال مباشر تركز على سرعة الوصول وأقرب ونش مع مزايدة ذكية في أوقات الذروة والطرق السريعة وإدارة الكلمات السلبية.",
+    "results": [
+      { "label": "مكالمات شهرية", "value": "+420 مكالمة" },
+      { "label": "نسبة النقر CTR", "value": "19.2%" },
+      { "label": "خفض تكلفة النقرة", "value": "-26%" }
+    ],
+    "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80",
+    "demoUrl": "https://alisokerwinch.com/",
+    "isFeatured": true
+  },
+  {
+    "id": "gads-winch-rabie",
+    "category": "ads",
+    "title": "حملات ونش إنقاذ ربيع (Rabie Winch Ads)",
+    "subtitle": "إدارة حملات بحث واتصال طارئ Call Ads للمساعدة الفورية على الطرق",
+    "badge": "Google Ads - Emergency ⚡",
+    "client": "خدمات ونش إنقاذ ربيع",
+    "website": "https://wa.me/201098174992?text=%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D9%85%D9%84%D8%A7%D8%AA%20%D9%88%D9%86%D8%B4%20%D8%B1%D8%A8%D9%8A%D8%B9",
+    "tags": ["Google Ads", "ونش ربيع", "Call Ads", "إنقاذ سريع"],
+    "summary": "إطلاق وإدارة حملات الاتصال المباشر لوكالة ونش إنقاذ ربيع، لتحقيق أعلى استجابة للعملاء المتعطلين على الطرق الحيوية والسريعة.",
+    "challenge": "تحقيق أقصى عدد من المكالمات بأقل ميزانية ممكنة واستبعاد النقرات غير المجدية.",
+    "solution": "استهداف كلمات بحث دقيقة جداً بنية اتصال عاجل وربط زر الاتصال المباشر وتتبع مدة المكالمات.",
+    "results": [
+      { "label": "مكالمات ناجحة", "value": "+390 مكالمة" },
+      { "label": "تكلفة المكالمة", "value": "اقتصادية جداً" },
+      { "label": "معدل الرد", "value": "لحظي" }
+    ],
+    "image": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80",
+    "demoUrl": "https://wa.me/201098174992?text=%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D9%85%D9%84%D8%A7%D8%AA%20%D9%88%D9%86%D8%B4%20%D8%B1%D8%A8%D9%8A%D8%B9",
+    "isFeatured": false
+  },
+  {
+    "id": "gads-winch-shorouk",
+    "category": "ads",
+    "title": "ونش إنقاذ الشروق (wenshenqazz.com)",
+    "subtitle": "حملات إعلانات بحث جوجل وتغطية طريق السويس والمحاور الشرقية",
+    "badge": "Google Ads + Local 📍",
+    "client": "ونش الشروق (wenshenqazz.com)",
+    "website": "https://wenshenqazz.com/",
+    "tags": ["Google Ads", "ونش الشروق", "طريق السويس", "wenshenqazz.com"],
+    "summary": "إدارة الحملات الإعلانية لموقع ونش الشروق لتغطية المدن الجديدة (الشروق، بدر، مدينتي، طريق السويس) بجاهزية تامة على مدار 24 ساعة.",
+    "challenge": "المسافات الطويلة بين المدن الجديدة تتطلب استهدافاً جغرافياً دقيقاً حسب نطاق تحرك الأوناش.",
+    "solution": "تحديد نطاقات جغرافية مخصصة بحسب الكيلومترات وربط إعلانات الاتصال الفوري بالسائقين في النطاق.",
+    "results": [
+      { "label": "مكالمات شهرية", "value": "+310 مكالمة" },
+      { "label": "تغطية المدن", "value": "100%" },
+      { "label": "سرعة الوصول", "value": "15 دقيقة" }
+    ],
+    "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=80",
+    "demoUrl": "https://wenshenqazz.com/",
+    "isFeatured": false
+  },
+  {
     "id": "ads-mirage-hills",
     "category": "ads",
     "title": "حملة إطلاق كمبوند ميراج هيلز الفاخر (Mirage Hills Launch)",
@@ -39,6 +144,134 @@
     "image": "assets/images/campaign_mirage_hills_1.png",
     "demoUrl": "#",
     "isFeatured": true
+  },
+  {
+    "id": "ai-video-balligho",
+    "category": "ai",
+    "title": "مونتاج ريلز القرآن الكريم والشعار الذهبي 3D - بَلِّغُوا عَنِّي وَلَوْ آيَة",
+    "subtitle": "مونتاج ديني سينمائي وتنقية العلامات المائية مع تصميم الشعار الملكي ثلاثي الأبعاد",
+    "badge": "ريلز ومونتاج إسلامي 3D",
+    "client": "صفحة وقناة: بَلِّغُوا عَنِّي ولو آية",
+    "website": "https://www.facebook.com/profile.php?id=61579408292383",
+    "tags": ["ريلز قرآن", "شعار ذهبي 3D", "مونتاج متقدم", "فيسبوك وتيك توك"],
+    "summary": "إعادة إنتاج ومونتاج فيديوهات القرآن الكريم مع إزالة الشعارات القديمة ودمج الشعار الذهبي الرسمي للروايات والريلز.",
+    "challenge": "الحفاظ على جودة ونقاء الصوت والصورة واستبدال العلامات المائية بدقة دون التأثير على جمالية المشهد.",
+    "solution": "تنفيذ معالجة بصرية متعددة الطبقات وإضافة الشعار الذهبي المتقن وشارة الصفحة الرسمية لزيادة الانتشار والمتابعين.",
+    "results": [
+      { "label": "جودة الفيديو", "value": "HD 60fps" },
+      { "label": "طراز الهوية", "value": "3D Royal" },
+      { "label": "نسبة الحفظ والمشاركة", "value": "+400%" }
+    ],
+    "video": "/assets/videos/quran_reel_balligho.mp4",
+    "image": "assets/images/balligho_quran_gold_coin.jpg",
+    "demoUrl": "https://www.facebook.com/profile.php?id=61579408292383",
+    "isFeatured": true
+  },
+  {
+    "id": "ai-video-quran-landscape",
+    "category": "ai",
+    "title": "مونتاج قرآني لاندسكيب 16:9 - تأمل نبات الأرض",
+    "subtitle": "إزالة العلامة المائية القديمة 100% ودمج الشعار الذهبي لصفحة (بَلِّغُوا عَنِّي ولو آية)",
+    "badge": "مونتاج يوتيوب نقي تماماً",
+    "client": "صفحة وقناة: بَلِّغُوا عَنِّي ولو آية",
+    "website": "https://www.facebook.com/profile.php?id=61579408292383",
+    "tags": ["تأملات قرآنية", "شعار ذهبي نقي", "إزالة لوجو 100%", "Full HD"],
+    "summary": "إعادة مونتاج وتنقية بصرية كاملة لمقطع قرآني طبيعي بنسبة 16:9 مع إزالة الشعار السابق بتقنية Delogo وإدراج الهوية الذهبية بدقة متناهية.",
+    "challenge": "العلامة المائية القديمة كانت متداخلة مع المشهد الطبيعي وتسبب تشويهاً بصرياً.",
+    "solution": "تطبيق فلتر Delogo المتقدم لإزالة الشعار القديم بنسبة 100% ثم تركيب الشعار الذهبي الملكي ثلاثي الأبعاد في الزاوية العلوية.",
+    "results": [
+      { "label": "تنقية الشعار القديم", "value": "100% Clean" },
+      { "label": "أبعاد الفيديو", "value": "1920x1080 FHD" },
+      { "label": "الهوية البصرية", "value": "Golden Royal" }
+    ],
+    "video": "/assets/videos/quran_landscape_balligho.mp4",
+    "image": "assets/images/poster_quran_landscape.jpg",
+    "demoUrl": "https://www.facebook.com/profile.php?id=61579408292383",
+    "isFeatured": false
+  },
+  {
+    "id": "ai-video-haduta",
+    "category": "ai",
+    "title": "سلسلة قصص وروايات مرئية بالذكاء الاصطناعي - الحلقة 1",
+    "subtitle": "إنتاج بصري سينمائي كامل بالـ AI مع خاتمة هوية AM Marketing الرسمية",
+    "badge": "مونتاج + خاتمة A&M",
+    "client": "استوديو AM الإبداعي",
+    "tags": ["Runway Gen-3", "Midjourney", "خاتمة AM الرسمية", "صناعة محتوى 4K"],
+    "summary": "إنتاج حلقات وسلسلة حكايات درامية بصرية فائقة الدقة تم توليد صورها وحركتها بالكامل بالذكاء الاصطناعي مع هندسة صوتية سينمائية وخاتمة الهوية المعتمدة للوكالة.",
+    "challenge": "صعوبة تصوير مشاهد تاريخية وخيالية بالإنتاج التقليدي دون ميزانيات ضخمة.",
+    "solution": "استخدام خوارزميات توليد الفيديو بالذكاء الاصطناعي ومطابقة الشخصيات والمشاهد وإخراج مونتاج متناسق ممهور بشعار الوكالة ورقم التواصل.",
+    "results": [
+      { "label": "دقة الفيديو", "value": "4K Ultra" },
+      { "label": "توفير الميزانية", "value": "85%" },
+      { "label": "كارت الخاتمة", "value": "A&M Branded" }
+    ],
+    "video": "/assets/videos/haduta-1-branded.mp4",
+    "image": "assets/images/poster_haduta_1.jpg",
+    "demoUrl": "#",
+    "isFeatured": true
+  },
+  {
+    "id": "ai-video-haduta-2",
+    "category": "ai",
+    "title": "سلسلة قصص وروايات مرئية بالذكاء الاصطناعي - الحلقة 2",
+    "subtitle": "إخراج سينمائي ومؤثرات خيالية مع كارت خاتمة A&M Marketing المعتمد",
+    "badge": "4K AI Production + AM Outro",
+    "client": "استوديو AM الإبداعي",
+    "tags": ["قصص تاريخية AI", "سينما رقمية", "مونتاج 4K", "هوية بصرية"],
+    "summary": "الحلقة الثانية من السلسلة الدرامية البصرية فائقة الدقة بتقنية 4K مع دمج كارت الخاتمة الرسمي لوكالة AM Marketing ورقم التواصل المباشر 01098174992.",
+    "challenge": "الحفاظ على تتابع بصري سينمائي سلس ودمج هوية العلامة التجارية في نهاية الفيديو باحترافية تامة.",
+    "solution": "تطبيق مؤثرات انتقال سلسة (Fade-in Outro) لشعار AM ورقم التواصل في ختام الفيديو دون تشويش المشهد الرئيسي.",
+    "results": [
+      { "label": "دقة العرض", "value": "2160x3840 4K" },
+      { "label": "معدل الإطارات", "value": "60 FPS" },
+      { "label": "خاتمة مخصصة", "value": "A&M Branded" }
+    ],
+    "video": "/assets/videos/haduta-2-branded.mp4",
+    "image": "assets/images/poster_haduta_2.jpg",
+    "demoUrl": "#",
+    "isFeatured": false
+  },
+  {
+    "id": "ai-video-solo",
+    "category": "ai",
+    "title": "ريلز براند SOLO للأزياء ومنتجات العناية (SOLO Branding Reel)",
+    "subtitle": "مونتاج فيديو ترويجي ديناميكي سريع مخصص لإعلانات فيسبوك وانستجرام",
+    "badge": "فيديو إعلاني - Social Reel",
+    "client": "براند SOLO للأزياء والعناية",
+    "tags": ["مونتاج ريلز", "أزياء وعناية", "إعلانات انستجرام", "مبيعات أونلاين"],
+    "summary": "إنتاج ومونتاج ريلز إعلاني احترافي بنمط الحركة السريعة والتأثيرات البصرية لزيادة مبيعات منتجات SOLO عبر منصات التواصل الاجتماعي.",
+    "challenge": "جذب انتباه المشاهد في أول 3 ثوانٍ لدفع العميل للنقر على رابط الشراء.",
+    "solution": "استخدام تقنيات المونتاج الإيقاعي مع موسيقى حماسية وإبراز تفاصيل المنتجات بزوايا تصوير عصرية.",
+    "results": [
+      { "label": "معدل التفاعل Hook Rate", "value": "44%" },
+      { "label": "نسبة النقر CTR", "value": "6.8%" },
+      { "label": "جودة العرض", "value": "Full HD 60fps" }
+    ],
+    "video": "/assets/videos/solo_branding_promo.mp4",
+    "image": "assets/images/poster_solo_branding.jpg",
+    "demoUrl": "#",
+    "isFeatured": true
+  },
+  {
+    "id": "ai-video-investment",
+    "category": "ai",
+    "title": "فيديو موشن جرافيك الاستثمار بالذكاء الاصطناعي (AI Investment)",
+    "subtitle": "فيديو تسويقي يشرح حلول الاستثمار الرقمي والتقنيات المالية الذكية",
+    "badge": "موشن جرافيك - Fintech AI",
+    "client": "حلول الاستثمار والتقنية المالية",
+    "tags": ["Fintech", "فيديو موشن AI", "استثمار رقمي", "تسويق B2B"],
+    "summary": "إنتاج فيديو موشن احترافي يشرح بأسلوب بصري سلس مفاهيم الاستثمار الحديثة وأتمتة التداول وتحليل البيانات بالذكاء الاصطناعي.",
+    "challenge": "تبسيط المفاهيم المالية المعقدة وجعلها مشوقة وسهلة الفهم للمستثمرين والمبتدئين.",
+    "solution": "تحريك عناصر بصرية ورسوم بيانية تفاعلية مع مؤثرات صوتية مستقبلية تشد الانتباه وتعزز الثقة.",
+    "results": [
+      { "label": "نسبة إكمال المشاهدة", "value": "78%" },
+      { "label": "زيادة التفاعل", "value": "+260%" },
+      { "label": "سلاسة التحريك", "value": "Ultra Smooth 60fps" }
+    ],
+    "video": "/assets/videos/ai_investment_promo.mp4",
+    "image": "assets/images/poster_ai_investment.jpg",
+    "demoUrl": "#",
+    "isFeatured": false
   },
   {
     "id": "ads-round-ksa",
@@ -121,213 +354,24 @@
     "isFeatured": false
   },
   {
-    "id": "gads-winch-network",
-    "category": "ads",
-    "title": "شبكة حملات أوناش الإنقاذ السريع (Winch Emergency Ads)",
-    "subtitle": "إعلانات اتصال مباشر Call-Only على جوجل لمحاور وطرق الإنقاذ",
-    "badge": "حملات حقيقية - Call Ads",
-    "client": "مجموعة أوناش مصر",
-    "website": "https://winch-enqaz.com/",
-    "tags": ["Google Call Ads", "ونش إنقاذ", "استهداف لحظي 24/7", "مبيعات فورية"],
-    "summary": "إطلاق وإدارة حملات اتصال مباشر لأكثر من موقع ونش إنقاذ (winch-enqaz.com, wenshenqazz.com, elsaeedwinch.com, alisokerwinch.com) لتغطية الحالات الطارئة على الطرق.",
-    "challenge": "الحاجة لظهور فوري للمستخدم المتعطل على الطريق وتوليد مكالمة خلال ثوانٍ معدودة.",
-    "solution": "تصميم حملات Call-Only مع زر اتصال مباشر ومزايدة ذكية في أوقات الذروة والطرق السريعة مع حظر الكلمات غير المجدية.",
-    "results": [
-      { "label": "مكالمات شهرية", "value": "+580 مكالمة" },
-      { "label": "نسبة الاتصال CTR", "value": "18.5%" },
-      { "label": "سرعة الاستجابة", "value": "لحظية" }
-    ],
-    "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80",
-    "demoUrl": "https://winch-enqaz.com/",
-    "isFeatured": true
-  },
-  {
-    "id": "ai-video-haduta",
-    "category": "ai",
-    "title": "سلسلة قصص وروايات مرئية بالذكاء الاصطناعي - الحلقة 1",
-    "subtitle": "إنتاج بصري سينمائي كامل بالـ AI مع خاتمة هوية AM Marketing الرسمية",
-    "badge": "مونتاج + خاتمة A&M",
-    "client": "استوديو AM الإبداعي",
-    "tags": ["Runway Gen-3", "Midjourney", "خاتمة AM الرسمية", "صناعة محتوى 4K"],
-    "summary": "إنتاج حلقات وسلسلة حكايات درامية بصرية فائقة الدقة تم توليد صورها وحركتها بالكامل بالذكاء الاصطناعي مع هندسة صوتية سينمائية وخاتمة الهوية المعتمدة للوكالة.",
-    "challenge": "صعوبة تصوير مشاهد تاريخية وخيالية بالإنتاج التقليدي دون ميزانيات ضخمة.",
-    "solution": "استخدام أقوى خوارزميات توليد الفيديو بالذكاء الاصطناعي ومطابقة الشخصيات والمشاهد وإخراج مونتاج متناسق ممهور بشعار الوكالة ورقم التواصل.",
-    "results": [
-      { "label": "دقة الفيديو", "value": "4K Ultra" },
-      { "label": "توفير الميزانية", "value": "85%" },
-      { "label": "كارت الخاتمة", "value": "A&M Branded" }
-    ],
-    "videoPreview": "assets/videos/haduta-1-branded.mp4",
-    "image": "assets/images/poster_haduta_1.jpg",
-    "demoUrl": "#",
-    "isFeatured": true
-  },
-  {
-    "id": "ai-video-haduta-2",
-    "category": "ai",
-    "title": "سلسلة قصص وروايات مرئية بالذكاء الاصطناعي - الحلقة 2",
-    "subtitle": "إخراج سينمائي ومؤثرات خيالية مع كارت خاتمة A&M Marketing المعتمد",
-    "badge": "4K AI Production + AM Outro",
-    "client": "استوديو AM الإبداعي",
-    "tags": ["قصص تاريخية AI", "سينما رقمية", "مونتاج 4K", "هوية بصرية"],
-    "summary": "الحلقة الثانية من السلسلة الدرامية البصرية فائقة الدقة بتقنية 4K مع دمج كارت الخاتمة الرسمي لوكالة AM Marketing ورقم التواصل المباشر 01098174992.",
-    "challenge": "الحفاظ على تتابع بصري سينمائي سلس ودمج هوية العلامة التجارية في نهاية الفيديو باحترافية تامة.",
-    "solution": "تطبيق مؤثرات انتقال سلسة (Fade-in Outro) لشعار AM ورقم التواصل في ختام الفيديو دون تشويش المشهد الرئيسي.",
-    "results": [
-      { "label": "دقة العرض", "value": "2160x3840 4K" },
-      { "label": "معدل الإطارات", "value": "60 FPS" },
-      { "label": "خاتمة مخصصة", "value": "A&M Branded" }
-    ],
-    "videoPreview": "assets/videos/haduta-2-branded.mp4",
-    "image": "assets/images/poster_haduta_2.jpg",
-    "demoUrl": "#",
-    "isFeatured": false
-  },
-  {
-    "id": "ai-video-solo",
-    "category": "ai",
-    "title": "ريلز براند SOLO للأزياء ومنتجات العناية (SOLO Branding Reel)",
-    "subtitle": "مونتاج فيديو ترويجي ديناميكي سريع مخصص لإعلانات فيسبوك وانستجرام",
-    "badge": "فيديو إعلاني - Social Reel",
-    "client": "براند SOLO للأزياء والعناية",
-    "tags": ["مونتاج ريلز", "أزياء وعناية", "إعلانات انستجرام", "مبيعات أونلاين"],
-    "summary": "إنتاج ومونتاج ريلز إعلاني احترافي بنمط الحركة السريعة والتأثيرات البصرية لزيادة مبيعات منتجات SOLO عبر منصات التواصل الاجتماعي.",
-    "challenge": "جذب انتباه المشاهد في أول 3 ثوانٍ لدفع العميل للنقر على رابط الشراء.",
-    "solution": "استخدام تقنيات المونتاج الإيقاعي مع موسيقى حماسية وإبراز تفاصيل المنتجات بزوايا تصوير عصرية.",
-    "results": [
-      { "label": "معدل التفاعل Hook Rate", "value": "44%" },
-      { "label": "نسبة النقر CTR", "value": "6.8%" },
-      { "label": "جودة العرض", "value": "Full HD 60fps" }
-    ],
-    "videoPreview": "assets/videos/solo_branding_promo.mp4",
-    "image": "assets/images/poster_solo_branding.jpg",
-    "demoUrl": "#",
-    "isFeatured": true
-  },
-  {
-    "id": "ai-video-investment",
-    "category": "ai",
-    "title": "فيديو موشن جرافيك الاستثمار بالذكاء الاصطناعي (AI Investment)",
-    "subtitle": "فيديو تسويقي يشرح حلول الاستثمار الرقمي والتقنيات المالية الذكية",
-    "badge": "موشن جرافيك - Fintech AI",
-    "client": "حلول الاستثمار والتقنية المالية",
-    "tags": ["Fintech", "فيديو موشن AI", "استثمار رقمي", "تسويق B2B"],
-    "summary": "إنتاج فيديو موشن احترافي يشرح بأسلوب بصري سلس مفاهيم الاستثمار الحديثة وأتمتة التداول وتحليل البيانات بالذكاء الاصطناعي.",
-    "challenge": "تبسيط المفاهيم المالية المعقدة وجعلها مشوقة وسهلة الفهم للمستثمرين والمبتدئين.",
-    "solution": "تحريك عناصر بصرية ورسوم بيانية تفاعلية مع مؤثرات صوتية مستقبلية تشد الانتباه وتعزز الثقة.",
-    "results": [
-      { "label": "نسبة إكمال المشاهدة", "value": "78%" },
-      { "label": "طلبات التسجيل بالمنصة", "value": "+260%" },
-      { "label": "سلاسة التحريك", "value": "Ultra Smooth 60fps" }
-    ],
-    "videoPreview": "assets/videos/ai_investment_promo.mp4",
-    "image": "assets/images/poster_ai_investment.jpg",
-    "demoUrl": "#",
-    "isFeatured": false
-  },
-  {
-    "id": "ai-video-quran",
-    "category": "ai",
-    "title": "مونتاج ريلز القرآن الكريم - صفحة (بَلِّغُوا عَنِّي وَلَوْ آيَة)",
-    "subtitle": "مونتاج ديني احترافي مع الشعار الذهبي الرسمي والهوية البصرية",
-    "badge": "ريلز ومونتاج إسلامي",
-    "client": "صفحة بَلِّغُوا عَنِّي ولو آية",
-    "website": "https://www.facebook.com/profile.php?id=61579408292383",
-    "tags": ["ريلز قرآن", "شعار ذهبي", "مونتاج متقدم", "فيسبوك وتيك توك"],
-    "summary": "إعادة إنتاج ومونتاج فيديوهات القرآن الكريم مع إزالة الشعارات القديمة ودمج الشعار الذهبي الرسمي للروايات والريلز.",
-    "challenge": "الحفاظ على جودة ونقاء الصوت والصورة واستبدال العلامات المائية بدقة دون التأثير على جمالية المشهد.",
-    "solution": "تنفيذ معالجة بصرية متعددة الطبقات وإضافة الشعار الذهبي المتقن وشارة الصفحة الرسمية لزيادة الانتشار والمتابعين.",
-    "results": [
-      { "label": "جودة الفيديو", "value": "HD 60fps" },
-      { "label": "انتشار الريلز", "value": "Viral Reach" },
-      { "label": "نسبة الحفظ والمشاركة", "value": "+400%" }
-    ],
-    "videoPreview": "assets/videos/quran_reel_balligho.mp4",
-    "image": "assets/images/poster_quran_reel.jpg",
-    "demoUrl": "https://www.facebook.com/profile.php?id=61579408292383",
-    "isFeatured": true
-  },
-  {
-    "id": "ai-video-quran-landscape",
-    "category": "ai",
-    "title": "مونتاج قرآني لاندسكيب 16:9 - تأمل نبات الأرض",
-    "subtitle": "إزالة العلامة المائية القديمة 100% ودمج الشعار الذهبي لصفحة (بَلِّغُوا عَنِّي ولو آية)",
-    "badge": "مونتاج يوتيوب نقي تماماً",
-    "client": "صفحة بَلِّغُوا عَنِّي ولو آية",
-    "website": "https://www.facebook.com/profile.php?id=61579408292383",
-    "tags": ["تأملات قرآنية", "شعار ذهبي نقي", "إزالة لوجو 100%", "Full HD"],
-    "summary": "إعادة مونتاج وتنقية بصرية كاملة لمقطع قرآني طبيعي بنسبة 16:9 مع إزالة الشعار السابق بتقنية Delogo وإدراج الهوية الذهبية بدقة متناهية.",
-    "challenge": "العلامة المائية القديمة كانت متداخلة مع المشهد الطبيعي وتسبب تشويهاً بصرياً.",
-    "solution": "تطبيق فلتر Delogo المتقدم لإزالة الشعار القديم بنسبة 100% ثم تركيب الشعار الذهبي الملكي ثلاثي الأبعاد في الزاوية العلوية.",
-    "results": [
-      { "label": "تنقية الشعار القديم", "value": "100% Clean" },
-      { "label": "أبعاد الفيديو", "value": "1920x1080 FHD" },
-      { "label": "الهوية البصرية", "value": "Golden Royal" }
-    ],
-    "videoPreview": "assets/videos/quran_landscape_balligho.mp4",
-    "image": "assets/images/poster_quran_landscape.jpg",
-    "demoUrl": "https://www.facebook.com/profile.php?id=61579408292383",
-    "isFeatured": false
-  },
-  {
-    "id": "brand-balligho-identity",
-    "category": "ai",
-    "title": "تصميم الهوية البصرية والشعار الرسمي: (بَلِّغُوا عَنِّي وَلَوْ آيَة)",
-    "subtitle": "مدالية ذهبية ملكية ثلاثية الأبعاد 3D مع شعار: آية تُبَلِّغُها ... قد تُغيِّر قلباً",
-    "badge": "هوية بصرية 3D",
-    "client": "قناة وصفحة بَلِّغُوا عَنِّي ولو آية",
-    "website": "https://www.facebook.com/profile.php?id=61579408292383",
-    "tags": ["تصميم شعار 3D", "هوية بصرية إسلامية", "ذهب ومخمل ملكي", "قناة قرآنية"],
-    "summary": "ابتكار وتصميم الشعار الرسمي والهوية البصرية لقناة القرآن الكريم على هيئة مدالية ذهبية منحوتة ثلاثية الأبعاد مع المصحف الشريف والهلال وزخارف إسلامية دقيقة.",
-    "challenge": "الحاجة إلى شعار إسلامي فريد ومهيب يليق بالمحتوى القرآني ويتميز عن الشعارات التقليدية المسطحة.",
-    "solution": "توظيف تقنيات النمذجة والإضاءة السينمائية بالذكاء الاصطناعي لإنتاج مجسم ذهبي فخم يعلو خلفية مخملية كحلية مع عبارة دعوية مؤثرة.",
-    "results": [
-      { "label": "طراز التصميم", "value": "3D Royal Gold" },
-      { "label": "دقة المخرجات", "value": "Ultra HD" },
-      { "label": "الاستخدام", "value": "فيديوهات وبروفايل" }
-    ],
-    "image": "assets/images/balligho_quran_gold_coin.jpg",
-    "demoUrl": "https://www.facebook.com/profile.php?id=61579408292383",
-    "isFeatured": true
-  },
-  {
-    "id": "web-realestate",
-    "category": "web",
-    "title": "منصة الابتكار والتطوير العقاري (Smart Real Estate)",
-    "subtitle": "تصميم وتطوير واجهة مستخدم فائقة السرعة مع لوحة تحكم للعقارات",
-    "badge": "تطوير مواقع (BUILD)",
-    "client": "مشروع دراسة حالة (Case Study)",
-    "tags": ["تطوير مواقع", "UI/UX", "SEO", "لوحة تحكم"],
-    "summary": "إعادة هيكلة وتطوير موقع عقاري حديث يتيح للعملاء استعراض الفلل والشقق مع فلاتر ذكية وخريطة تفاعلية وحجز معاينة بضغطة زر.",
-    "challenge": "الموقع القديم كان بطيئاً جداً ومعدل ارتداد الزوار مرتفع بنسبة 65% مما أضاع آلاف الفرص البيعية.",
-    "solution": "إعادة بناء الواجهة بتقنيات حديثة متوافقة بنسبة 100% مع الجوال وتسريع التحميل ليكون أقل من ثانية واحدة.",
-    "results": [
-      { "label": "سرعة التحميل", "value": "0.9 ثانية" },
-      { "label": "تقييم Google PageSpeed", "value": "98/100" },
-      { "label": "زيادة طلبات المعاينة", "value": "+180%" }
-    ],
-    "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=80",
-    "demoUrl": "#",
-    "isFeatured": true
-  },
-  {
     "id": "sec-defense",
     "category": "security",
-    "title": "تأمين وحماية منصات التجارة الإلكترونية من الاختراق",
-    "subtitle": "فحص ثغرات أمنية (Penetration Testing) وتثبيت جدار حماية سحابي",
+    "title": "حماية وتأمين مواقع ومتاجر العملاء من الاختراق (Cyber Security)",
+    "subtitle": "فحص ثغرات أمنية (Penetration Testing) وتثبيت جدار حماية سحابي WAF",
     "badge": "أمن سيبراني (PROTECT)",
-    "client": "منصات ومواقع تجارية",
+    "client": "مواقع وعملاء الوكالة",
+    "website": "https://wa.me/201098174992?text=%D8%A3%D9%88%D8%AF%20%D9%81%D8%AD%D8%B5%20%D9%88%D8%AA%D8%A3%D9%85%D9%8A%D9%86%20%D9%85%D9%88%D9%82%D8%B9%D9%8A%20%D8%B6%D8%AF%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82",
     "tags": ["أمن مواقع", "سد ثغرات", "WAF جدار حماية", "تشفير بيانات"],
-    "summary": "إجراء فحص شامل للمواقع لاكتشاف نقاط الضعف ضد هجمات SQL Injection و DDoS وتأمين بيانات بطاقات الدفع للعملاء.",
-    "challenge": "تعرض المواقع لمحاولات اختراق متكررة وبطء في السيرفر أدى لتوقف المتجر أثناء الحملات.",
-    "solution": "سد 5 ثغرات أمنية حرجة، تفعيل Cloudflare WAF، وتشفير قواعد البيانات مع مراقبة أمنية على مدار الساعة.",
+    "summary": "إجراء فحص شامل للمواقع لاكتشاف نقاط الضعف ضد هجمات SQL Injection و DDoS وتأمين بيانات العملاء والدفع الإلكتروني.",
+    "challenge": "تعرض المواقع لمحاولات اختراق متكررة وبطء في السيرفر أدى لتوقف الخدمات أثناء الحملات الإعلانية.",
+    "solution": "سد الثغرات الأمنية الحرجة، تفعيل حماية Cloudflare WAF، وتشفير البيانات مع مراقبة أمنية على مدار الساعة.",
     "results": [
       { "label": "صد الهجمات الخبيثة", "value": "100%" },
       { "label": "زمن التشغيل Uptime", "value": "99.98%" },
       { "label": "شهادة أمان مطابقة", "value": "A+ Grade" }
     ],
-    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80",
-    "demoUrl": "#",
+    "image": "/assets/images/cyber-command-center.jpg",
+    "demoUrl": "https://wa.me/201098174992?text=%D8%A3%D9%88%D8%AF%20%D9%81%D8%AD%D8%B5%20%D9%88%D8%AA%D8%A3%D9%85%D9%8A%D9%86%20%D9%85%D9%88%D9%82%D8%B9%D9%8A%20%D8%B6%D8%AF%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82",
     "isFeatured": true
   }
 ]
