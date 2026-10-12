@@ -51,7 +51,7 @@ export const projectsData = [
         "Full thermal receipt printing & barcode support"
       ]
     },
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
+    image: "/assets/images/studio-mockup.jpg",
     demoUrl: "#systems-hub",
     isFeatured: true
   },
@@ -163,7 +163,7 @@ export const projectsData = [
         "Structured technical schema for fire code compliance"
       ]
     },
-    image: "https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=1000&q=80",
+    image: "/assets/images/almajal_hero.webp",
     demoUrl: "https://almajal-safety.com/",
     isFeatured: true
   },
@@ -219,7 +219,7 @@ export const projectsData = [
         "Deep call-duration and conversion tracking"
       ]
     },
-    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80",
+    image: "/assets/images/winch_mostashar_real.png",
     demoUrl: "https://winch-enqaz.com/",
     isFeatured: true
   },
@@ -275,7 +275,7 @@ export const projectsData = [
         "Zero-friction ultra-fast website experience"
       ]
     },
-    image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1000&q=80",
+    image: "/assets/images/winch_elsaeed_real.png",
     demoUrl: "https://elsaeedwinch.com/",
     isFeatured: true
   },
@@ -331,7 +331,7 @@ export const projectsData = [
         "Lightweight mobile-optimized presence"
       ]
     },
-    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80",
+    image: "/assets/images/winch_alisoker_real.jpg",
     demoUrl: "https://alisokerwinch.com/",
     isFeatured: true
   },
@@ -386,7 +386,7 @@ export const projectsData = [
         "Continual call-quality optimization"
       ]
     },
-    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80",
+    image: "/assets/images/winch_rabie_real.jpg",
     demoUrl: "https://wa.me/201098174992?text=%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D9%85%D9%84%D8%A7%D8%AA%20%D9%88%D9%86%D8%B4%20%D8%B1%D8%A8%D9%8A%D8%B9",
     isFeatured: false
   },
@@ -442,7 +442,7 @@ export const projectsData = [
         "Friction-free click-to-call mobile format"
       ]
     },
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=80",
+    image: "/assets/images/winch_shorouk_real.jpg",
     demoUrl: "https://wenshenqazz.com/",
     isFeatured: false
   },
