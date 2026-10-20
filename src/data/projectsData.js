@@ -1,5 +1,237 @@
 export const projectsData = [
   {
+    id: "interactive-cost-calculator",
+    category: "web",
+    categories: ["web", "ads", "ai"],
+    title: {
+      ar: "حاسبة المقايسات التفاعلية لصيد العملاء (Interactive Cost Calculator)",
+      en: "Interactive Cost Calculator & WhatsApp Lead Magnet"
+    },
+    subtitle: {
+      ar: "أداة تفاعلية حية لشركات التشطيبات والعقارات لحساب التكلفة بمؤشر منزلق واعتماد المقايسة فوراً على واتساب الشركة",
+      en: "Live interactive area slider, dynamic finishing package picker, and instant 1-click WhatsApp quotation router"
+    },
+    badge: {
+      ar: "أداة لايف للتجربة 🧮⚡",
+      en: "Live Interactive Tool 🧮⚡"
+    },
+    client: {
+      ar: "منتجات AM Marketing التفاعلية",
+      en: "AM Marketing Interactive Tools"
+    },
+    website: "calculator.html",
+    tags: ["حاسبة تفاعلية", "تشطيبات وديكور", "صيد عملاء الإعلانات", "واتساب فوري", "مقايسات لحظية", "White-Label"],
+    gradient: "from-amber-500 via-orange-600 to-yellow-500",
+    summary: {
+      ar: "أداة ويب تفاعلية فائقة السرعة تُركب في بايو صفحات الشركات وإعلانات السوشيال ميديا؛ تتيح للعميل تحريك مؤشر المساحة واختيار الباقة والإضافات ومشاهدة السعر ومدة التنفيذ فوراً، وبضغطة زر واحدة تُرسل المقايسة كاملة لواتساب الشركة.",
+      en: "High-converting interactive lead magnet for interior design, finishing, and real estate advertisers that turns passive ad viewers into qualified WhatsApp quotation requests."
+    },
+    challenge: {
+      ar: "ضياع 80% من عملاء الإعلانات الممولة بسبب ردود (التفاصيل إنبوكس) وعدم وجود تسعير فوري وشفاف أمام العميل.",
+      en: "Advertisers lose 80% of ad comments due to slow 'DM for price' responses and lack of instant transparency."
+    },
+    solution: {
+      ar: "بناء حاسبة تكلفة فورية ناعمة الحركة مع صائد عملاء واتساب مدمج يرسل المقايسة كاملة لأرقام مبيعات الشركة دون أي مجهود إضافي.",
+      en: "Engineered a zero-friction cost estimator that sends fully computed specifications directly to sales WhatsApp."
+    },
+    results: [
+      { label: { ar: "تفاعل الزوار", en: "Engagement" }, value: "3.5x" },
+      { label: { ar: "معدل التحويل", en: "Conversion" }, value: "+60%" },
+      { label: { ar: "سرعة الفتح", en: "Load Time" }, value: "0.2s" }
+    ],
+    features: {
+      ar: [
+        "مؤشر مساحة منزلق من 50 إلى 400 متر مع باقات اقتصادية وسوبر لوكس وVIP",
+        "خيارات إضافية لتأسيس سمارت هوم وتصميم 3D وعزل صوتي ومطابخ مودرن",
+        "زر اعتماد مقايسة فوري يفتح واتساب الشركة برسالة تفصيلية مكتوبة تلقائياً",
+        "نافذة تخصيص سريعة (White-Label) لتعديل اسم أي شركة ورقم هاتفها في دقيقة واحدة"
+      ],
+      en: [
+        "Dynamic square meter slider (50-400m²) with 3 finishing tiers",
+        "Add-on checkboxes for Smart Home, 3D design, acoustic insulation, and modern kitchens",
+        "Instant WhatsApp quotation button with pre-filled detailed message",
+        "1-minute white-label customization modal for instant client deployment"
+      ]
+    },
+    image: "/assets/images/studio-mockup.jpg",
+    demoUrl: "calculator.html",
+    isFeatured: true
+  },
+  {
+    id: "nexusbot-ai",
+    category: "ai",
+    categories: ["ai", "ads", "web"],
+    title: {
+      ar: "منظومة NexusBot AI (خدمة عملاء ومبيعات وأتمتة الواتساب 24/7 مع CRM)",
+      en: "NexusBot AI (24/7 Conversational Sales Agent & Live WhatsApp CRM)"
+    },
+    subtitle: {
+      ar: "روبوت محادثة ذكي للعيادات والشركات العقارية والمتاجر، يلتقط بيانات العملاء ويحجز المواعيد ويسجلها في لوحة CRM حية",
+      en: "Automated customer support, appointment scheduling, and lead qualification with live CRM dashboard"
+    },
+    badge: {
+      ar: "بوت مبيعات + CRM لحظي 🤖📊",
+      en: "Sales Bot + Live CRM 🤖📊"
+    },
+    client: {
+      ar: "أنظمة AM Marketing للأتمتة التجارية",
+      en: "AM Marketing B2B Automation"
+    },
+    website: "https://github.com/mostafabodye/mostafabodye",
+    tags: ["أتمتة واتساب", "خدمة عملاء 24/7", "لوحة تحكم CRM", "تأهيل العملاء", "عيادات وعقارات", "FastAPI & SQLite"],
+    gradient: "from-emerald-600 via-teal-600 to-cyan-500",
+    summary: {
+      ar: "منظومة متكاملة لربط محادثات الواتساب بلوحة تحكم CRM حية؛ يفهم البوت استفسارات العميل بالعامية المصرية والخليجية ويلتقط أرقام الهواتف والأسماء تلقائياً ويوجهها لفريق المبيعات فوراً.",
+      en: "Enterprise conversational sales agent with embedded SQLite CRM, automatic phone extraction, and 1-click WhatsApp follow-ups."
+    },
+    challenge: {
+      ar: "فقدان الشركات لأكثر من 50% من استفسارات العملاء خارج ساعات العمل الرسمية وتكلفة توظيف خدمة عملاء ليلية.",
+      en: "Businesses lose 50%+ of inbound leads outside working hours due to delayed response times."
+    },
+    solution: {
+      ar: "تطوير بوت ذكي متصل بقاعدة بيانات ولوحة تحكم حية يومض فيها العميل الجديد فوراً بمجرد كتابة رقمه في الشات.",
+      en: "Built an intelligent sales funnel that captures leads 24/7 and visualizes new prospects instantly on an admin board."
+    },
+    results: [
+      { label: { ar: "زمن الاستجابة", en: "Response Time" }, value: "< 1s" },
+      { label: { ar: "التواجد", en: "Availability" }, value: "24/7" },
+      { label: { ar: "زيادة المبيعات", en: "Conversion" }, value: "+45%" }
+    ],
+    features: {
+      ar: [
+        "محاكي واتساب مطابق للواقع مع واجهة CRM إدارية حية لتتبع الحالات",
+        "التقاط ذكي لأرقام الهواتف والأسماء من سياق الكلام دون نماذج معقدة",
+        "4 نماذج أعمال مجهزة مسبقاً: عيادات أسنان، شركات عقارات، متاجر، ووكالات تسويق",
+        "تصدير كامل لقاعدة بيانات العملاء إلى ملف إكسل CSV بنقرة واحدة"
+      ],
+      en: [
+        "Dual-screen WhatsApp simulator with live CRM dashboard",
+        "Automatic name & phone extraction from natural Arabic/English text",
+        "4 pre-built industry templates: Clinics, Real Estate, E-Commerce, Agencies",
+        "1-click UTF-8 CSV lead database export"
+      ]
+    },
+    image: "/assets/images/studio-mockup.jpg",
+    demoUrl: "https://github.com/mostafabodye/mostafabodye",
+    isFeatured: true
+  },
+  {
+    id: "viralforge-ai",
+    category: "ai",
+    categories: ["ai", "web"],
+    title: {
+      ar: "منصة ViralForge AI (مصنع المحتوى الفيروسي وإعادة التدوير الذكي)",
+      en: "ViralForge AI (Content Repurposing Micro-SaaS Engine)"
+    },
+    subtitle: {
+      ar: "تحويل أي فيديو يوتيوب أو مقال إلى 6 أصول تسويقية (LinkedIn, Twitter Threads, Reels Scripts, SEO Blog, Newsletter) بضغطة زر",
+      en: "Turn 1 YouTube video or article into 6+ viral multi-platform assets in under 10 seconds"
+    },
+    badge: {
+      ar: "Micro-SaaS ذكاء اصطناعي 🔥",
+      en: "AI Micro-SaaS Engine 🔥"
+    },
+    client: {
+      ar: "حلول AM Marketing لصناع المحتوى والشركات",
+      en: "AM Marketing AI Solutions"
+    },
+    website: "https://github.com/mostafabodye/mostafabodye",
+    tags: ["ذكاء اصطناعي", "صناعة محتوى", "LinkedIn Growth", "Twitter Threads", "YouTube Extractor", "FastAPI"],
+    gradient: "from-purple-600 via-indigo-600 to-emerald-500",
+    summary: {
+      ar: "محرك SaaS متطور يعالج الفيديوهات والمقالات ويستخرج التفريغ الصوتي تلقائياً، ثم يعيد صياغته بقوالب تسويقية دقيقة لزيادة الوصول والمبيعات عبر مختلف المنصات.",
+      en: "Production-grade Micro-SaaS that digests long-form video transcripts and generates algorithm-optimized distribution assets across 6 channels."
+    },
+    challenge: {
+      ar: "إهدار الشركات وصناع المحتوى أكثر من 10 ساعات أسبوعياً في التلخيص وإعادة كتابة المحتوى يدوياً لكل منصة.",
+      en: "Creators and B2B marketers spend 10+ hours weekly manually adapting long content for multiple social platforms."
+    },
+    solution: {
+      ar: "بناء محرك أتمتة ذكي مجهز بمحرك محلي مجاني وفوري ويدعم مفاتيح السحاب لتوليد 6 قوالب فيروسية في أقل من 10 ثوانٍ.",
+      en: "Engineered an automated pipeline with local heuristic core and cloud LLMs delivering 6 viral assets in seconds."
+    },
+    results: [
+      { label: { ar: "الوقت الموفر", en: "Time Saved" }, value: "95%" },
+      { label: { ar: "قوالب التوليد", en: "Formats" }, value: "6 منصات" },
+      { label: { ar: "سرعة المعالجة", en: "Speed" }, value: "< 10s" }
+    ],
+    features: {
+      ar: [
+        "استخراج فوري لترجمة وبيانات فيديوهات اليوتيوب تلقائياً",
+        "توليد بوستات لينكدإن احترافية وسلاسل ثريدات تويتر وسكريبتات ريلز",
+        "نسخ فوري وتصدير Markdown بنقرة واحدة وتصميم Dark Mode فخم",
+        "محرك ذكاء اصطناعي فوري لا يتوقف أبداً مع دعم مفاتيح الموديلات السحابية"
+      ],
+      en: [
+        "Instant YouTube transcript extraction",
+        "Algorithm-optimized LinkedIn, Twitter, and short-form video scripts",
+        "1-click copy, markdown export, and high-end responsive dark UI",
+        "Dual-engine architecture with offline zero-cost instant generator"
+      ]
+    },
+    image: "/assets/images/studio-mockup.jpg",
+    demoUrl: "https://github.com/mostafabodye/mostafabodye",
+    isFeatured: true
+  },
+  {
+    id: "leadscout-ai",
+    category: "ai",
+    categories: ["ai", "ads"],
+    title: {
+      ar: "منصة LeadScout AI (تنقيب وسحب بيانات الشركات ومولد رسائل البيع)",
+      en: "LeadScout AI (B2B Prospecting & Cold Outreach Engine)"
+    },
+    subtitle: {
+      ar: "استخراج بيانات الشركات والعيادات في أي مدينة مع تقييم جودة الفرص وتوليد رسائل واتساب بيعية مخصصة بنقرة واحدة",
+      en: "Automated local business scraper, lead scoring, and 1-click tailored WhatsApp pitch generator"
+    },
+    badge: {
+      ar: "محرك صيد العملاء B2B 🎯💼",
+      en: "B2B Lead Scraper 🎯💼"
+    },
+    client: {
+      ar: "أدوات AM Marketing للنمو والمبيعات",
+      en: "AM Marketing Growth Stack"
+    },
+    website: "https://github.com/mostafabodye/mostafabodye",
+    tags: ["سحب داتا B2B", "صيد عملاء محليين", "توليد رسائل بيع", "تصدير Excel", "Google Maps Leads", "أتمتة تسويق"],
+    gradient: "from-sky-500 via-blue-600 to-indigo-700",
+    summary: {
+      ar: "منصة متطورة لتزويد وكالات التسويق والمبيعات بقوائم عملاء مستهدفين مع هواتفهم وعناوينهم، واكتشاف الشركات التي لا تملك موقعاً لبيع الخدمات لها فوراً.",
+      en: "Prospecting intelligence platform that mines business leads, identifies digital vulnerabilities, and scripts high-converting outreach."
+    },
+    challenge: {
+      ar: "صعوبة واستنزاف الوقت في البحث اليدوي عن عملاء جدد ونسخ أرقام الهواتف وصياغة رسائل تواصل مخصصة لكل عميل.",
+      en: "Manual prospecting and cold emailing take dozens of hours with low reply rates."
+    },
+    solution: {
+      ar: "أداة مركزية تبحث في أي مدينة وتصنف العملاء حسب فئات الفرصة (A+, A, B) مع زر فوري لصياغة رسالة واتساب بيعية جاهزة.",
+      en: "Centralized prospecting engine with lead grading and 1-click WhatsApp message generation."
+    },
+    results: [
+      { label: { ar: "دقة الأرقام", en: "Phone Coverage" }, value: "100%" },
+      { label: { ar: "سرعة البحث", en: "Search Speed" }, value: "لحظي" },
+      { label: { ar: "تصدير البيانات", en: "Export" }, value: "Excel/CSV" }
+    ],
+    features: {
+      ar: [
+        "فلترة بالمدينة والتخصص التجاري وحالة وجود موقع إلكتروني",
+        "مولد ذكي لرسائل البيع البارد (Cold Pitch) لخدمات البوتات والمواقع والمحتوى",
+        "تصدير شيت إكسل كامل بترميز UTF-8 مع زر فتح واتساب مباشر",
+        "تحديد نقاط الضعف الرقمية للشركات لاستهدافها في الحملات البيعية"
+      ],
+      en: [
+        "Multi-city and category filters with website status detection",
+        "AI cold pitch generator for bots, websites, and content retainers",
+        "UTF-8 Excel export with direct WhatsApp click-to-chat links",
+        "Digital vulnerability scoring to maximize cold conversion rates"
+      ]
+    },
+    image: "/assets/images/studio-mockup.jpg",
+    demoUrl: "https://github.com/mostafabodye/mostafabodye",
+    isFeatured: true
+  },
+  {
     id: "am-systems-hub",
     category: "web",
     categories: ["web", "ai"],
