@@ -84,6 +84,32 @@ export default function Hero({ t, lang, onNavigate }) {
 
             {/* Direct Multi-Page Navigation Pills */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              {/* Interactive Cost Calculator Feature Banner */}
+              <a
+                href="calculator.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sm:col-span-2 flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-amber-500/25 via-amber-600/20 to-orange-500/15 hover:from-amber-500/35 hover:to-orange-500/25 border-2 border-amber-400/60 text-right transition-all group shadow-xl shadow-amber-500/15 hover:scale-[1.01]"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-400 to-amber-600 text-slate-950 flex items-center justify-center font-black shadow-lg shadow-amber-500/30 shrink-0 text-2xl">
+                    🧮
+                  </div>
+                  <div>
+                    <div className="text-sm sm:text-base font-black text-amber-300 group-hover:text-amber-200 flex items-center gap-2">
+                      <span>{isRtl ? 'حاسبة المقايسات والأسعار التفاعلية (أداة صيد العملاء)' : 'Interactive Cost Calculator (Lead Engine)'}</span>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-500 text-slate-950 animate-pulse">لايف ⚡</span>
+                    </div>
+                    <div className="text-xs text-slate-300 mt-0.5">
+                      {isRtl ? 'احسب مقايستك لحظياً: تشطيبات • أقساط عقارية • عيادات • تسويق' : 'Live cost estimation: Finishing, Real Estate, Clinics & Marketing'}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 text-slate-950 font-black text-xs bg-amber-400 hover:bg-amber-300 px-3.5 py-2 rounded-xl shadow-md shrink-0 transition">
+                  <span>{isRtl ? 'فتح الحاسبة ↗' : 'Open ↗'}</span>
+                  <ArrowUpLeft className="w-4 h-4" />
+                </div>
+              </a>
               <button
                 type="button"
                 onClick={() => onNavigate && onNavigate('ads')}

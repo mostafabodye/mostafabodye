@@ -33,6 +33,14 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
       icon: Home
     },
     {
+      id: 'calculator_page',
+      label: lang === 'ar' ? 'حاسبة المقايسات' : 'Cost Calculator',
+      badge: 'LIVE 🧮',
+      badgeColor: 'bg-amber-500/20 border-amber-500/50 text-amber-300',
+      icon: Calculator,
+      isExternal: 'calculator.html'
+    },
+    {
       id: 'ads',
       label: lang === 'ar' ? 'إدارة الحملات وشات أدز' : 'Ads & Chat Ads',
       badge: lang === 'ar' ? 'أكاديمي' : 'PRO',
@@ -65,7 +73,12 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
     }
   ];
 
-  const handleSelectPage = (pageId) => {
+  const handleSelectPage = (pageId, isExternal) => {
+    if (isExternal) {
+      window.open(isExternal, '_blank');
+      setMobileMenuOpen(false);
+      return;
+    }
     if (onNavigate) {
       onNavigate(pageId);
     }
@@ -123,7 +136,7 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
               <button
                 key={page.id}
                 type="button"
-                onClick={() => handleSelectPage(page.id)}
+                onClick={() => handleSelectPage(page.id, page.isExternal)}
                 className={`transition-all duration-300 relative group font-bold text-xs px-3 py-2 rounded-xl flex items-center gap-1.5 cursor-pointer ${
                   isActive
                     ? 'bg-gradient-to-r from-blue-600/90 to-purple-600/90 text-white shadow-lg shadow-blue-500/25 border border-blue-400/40'
@@ -154,7 +167,7 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
               <button
                 key={page.id}
                 type="button"
-                onClick={() => handleSelectPage(page.id)}
+                onClick={() => handleSelectPage(page.id, page.isExternal)}
                 className={`transition-all font-bold text-[11px] px-2.5 py-1.5 rounded-xl cursor-pointer ${
                   isActive
                     ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
@@ -231,7 +244,7 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
                   <button
                     key={page.id}
                     type="button"
-                    onClick={() => handleSelectPage(page.id)}
+                    onClick={() => handleSelectPage(page.id, page.isExternal)}
                     className={`w-full text-right font-bold text-sm py-3 px-4 rounded-xl border transition-all flex items-center justify-between ${
                       isActive
                         ? 'bg-gradient-to-r from-blue-600/30 to-purple-600/30 border-blue-500/60 text-white'
