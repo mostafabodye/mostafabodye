@@ -170,6 +170,15 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
         {/* Right CTA Button & Quick Phone */}
         <div className="hidden lg:flex items-center gap-2.5 shrink-0">
           <a
+            href="calculator.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-950 text-xs font-black shadow-lg shadow-amber-500/25 hover:scale-105 transition-all"
+            title="فتح حاسبة المقايسات والأسعار التفاعلية"
+          >
+            <span>{lang === 'ar' ? 'حاسبة المقايسات 🧮' : 'Cost Calculator 🧮'}</span>
+          </a>
+          <a
             href="tel:01098174992"
             className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-700/60 bg-slate-900/70 text-amber-400 text-xs font-bold hover:border-amber-400/50 transition-colors"
           >
@@ -243,6 +252,15 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
               })}
 
               <div className="pt-3 flex flex-col gap-2.5">
+                <a
+                  href="calculator.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full text-center py-3 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl text-slate-950 font-black text-sm shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2"
+                >
+                  <span>{lang === 'ar' ? 'تشغيل حاسبة المقايسات الحية 🧮' : 'Open Live Cost Calculator 🧮'}</span>
+                </a>
                 <a
                   href="tel:01098174992"
                   className="w-full text-center py-2.5 rounded-xl bg-slate-900 border border-amber-500/40 text-amber-400 font-bold text-sm flex items-center justify-center gap-2"
