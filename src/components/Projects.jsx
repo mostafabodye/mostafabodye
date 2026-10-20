@@ -167,7 +167,7 @@ export default function Projects({ t, lang, onNavigate }) {
                         <span>{lang === 'ar' ? 'التفاصيل والنتائج' : 'Details & Metrics'}</span>
                       </button>
 
-                      {project.demoUrl && project.demoUrl.startsWith('http') ? (
+                      {project.demoUrl && (project.demoUrl.startsWith('http') || project.demoUrl.includes('.html')) ? (
                         <a
                           href={project.demoUrl}
                           target="_blank"
@@ -176,7 +176,7 @@ export default function Projects({ t, lang, onNavigate }) {
                           className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white text-xs font-bold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
                         >
                           <span>
-                            {project.demoUrl.includes('facebook.com')
+                            {project.demoUrl.includes('calculator') ? (lang === 'ar' ? 'تشغيل الحاسبة الحية 🧮' : 'Live Calculator 🧮') : project.demoUrl.includes('facebook.com')
                               ? (lang === 'ar' ? 'صفحة فيسبوك ↗' : 'Facebook Page ↗')
                               : (lang === 'ar' ? 'الموقع المباشر 🌐' : 'Live Site 🌐')}
                           </span>

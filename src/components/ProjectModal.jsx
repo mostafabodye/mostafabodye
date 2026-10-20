@@ -190,7 +190,7 @@ export default function ProjectModal({ project, isOpen, onClose, t, lang, onNavi
                 {t.projects.lightbox.close}
               </button>
 
-              {project.demoUrl && project.demoUrl.startsWith('http') && (
+              {project.demoUrl && (project.demoUrl.startsWith('http') || project.demoUrl.includes('.html')) && (
                 <a
                   href={project.demoUrl}
                   target="_blank"
@@ -198,7 +198,7 @@ export default function ProjectModal({ project, isOpen, onClose, t, lang, onNavi
                   className="px-5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 transition-all flex items-center gap-1.5 shadow-lg shadow-blue-500/25"
                 >
                   <span>
-                    {project.demoUrl.includes('facebook.com')
+                    {project.demoUrl.includes('calculator') ? (lang === 'ar' ? 'تشغيل الحاسبة الحية 🧮' : 'Open Live Calculator 🧮') : project.demoUrl.includes('facebook.com')
                       ? (lang === 'ar' ? 'مشاهدة الصفحة على فيسبوك ↗' : 'View Facebook Page ↗')
                       : (lang === 'ar' ? 'زيارة الموقع المباشر 🌐' : 'Open Live Site 🌐')}
                   </span>

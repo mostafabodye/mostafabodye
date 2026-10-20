@@ -54,7 +54,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/studio-mockup.jpg",
-    demoUrl: "calculator.html",
+    demoUrl: "https://mostafabodye.github.io/mostafabodye/calculator.html",
     isFeatured: true
   },
   {
@@ -112,7 +112,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/studio-mockup.jpg",
-    demoUrl: "https://github.com/mostafabodye/mostafabodye",
+    demoUrl: "https://github.com/mostafabodye/mostafabodye#nexusbot-ai",
     isFeatured: true
   },
   {
@@ -170,7 +170,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/studio-mockup.jpg",
-    demoUrl: "https://github.com/mostafabodye/mostafabodye",
+    demoUrl: "https://github.com/mostafabodye/mostafabodye#viralforge-ai",
     isFeatured: true
   },
   {
@@ -228,7 +228,7 @@ export const projectsData = [
       ]
     },
     image: "/assets/images/studio-mockup.jpg",
-    demoUrl: "https://github.com/mostafabodye/mostafabodye",
+    demoUrl: "https://github.com/mostafabodye/mostafabodye#leadscout-ai",
     isFeatured: true
   },
   {
