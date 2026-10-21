@@ -10,7 +10,8 @@ import {
   Globe,
   Monitor,
   Briefcase,
-  UserCheck
+  UserCheck,
+  Calculator
 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 
