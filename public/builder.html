@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شطّب شقتك قطعة قطعة | حاسبة تجميعة التشطيبات المتكاملة (Finishing Configurator)</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              400: '#38bdf8',
+              500: '#0284c7',
+              600: '#0369a1'
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #07090e;
+      color: #f8fafc;
+    }
+    .glass-panel {
+      background: rgba(15, 20, 32, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .step-card {
+      transition: all 0.25s ease;
+    }
+    .step-card:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      transform: translateY(-2px);
+    }
+    .step-card.selected {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.07);
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.15);
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #1e293b;
+      border-radius: 4px;
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #f59e0b;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.6);
+      border: 2px solid #ffffff;
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .glow-btn {
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+    }
+    .glow-btn:hover {
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
+    }
+  </style>
+</head>
+<body class="bg-[#07090e] text-slate-100 min-h-screen flex flex-col selection:bg-amber-500 selection:text-white">
+
+  <!-- Ambient Glow -->
+  <div class="fixed top-0 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="fixed bottom-10 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+  <!-- Header Bar -->
+  <header class="border-b border-slate-800/80 bg-[#0d111a]/95 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <a href="./" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-500/20 font-bold text-lg text-slate-950 hover:scale-105 transition" title="العودة للبرتفوليو">
+          <i data-lucide="layers" class="w-5 h-5 text-slate-950"></i>
+        </a>
+        <div>
+          <h1 id="brandNameDisplay" class="text-base sm:text-lg font-black text-white flex items-center gap-1.5">
+            <span>شطّب شقتك قطعة قطعة</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">Configurator</span>
+          </h1>
+          <p id="brandSubtitleDisplay" class="text-[11px] text-slate-400">فصّل خامات ومواصفات شقتك بند بند واعرف التكلفة التقديرية فوراً</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button id="openPricingAdminBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 text-xs font-bold border border-slate-700 transition" title="تعديل أسعار المون والخامات في ثواني">
+          <i data-lucide="settings-2" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">⚙️ تعديل أسعار المون</span>
+        </button>
+
+        <button id="openBrandingBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition" title="تخصيص اسم الشركة والواتساب">
+          <i data-lucide="building" class="w-3.5 h-3.5 text-blue-400"></i>
+          <span class="hidden md:inline">بيانات الشركة</span>
+        </button>
+
+        <a href="./" class="text-xs px-3 py-1.5 rounded-xl bg-blue-600/20 text-blue-300 border border-blue-500/30 hover:bg-blue-600 hover:text-white transition flex items-center gap-1 font-bold">
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">البرتفوليو</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    
+    <!-- Top Hero Section -->
+    <div class="text-center max-w-3xl mx-auto space-y-2 mb-6">
+      <span class="text-xs px-3.5 py-1 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 text-amber-300 font-black">
+        🏗️ منصة تفصيل مواصفات وتشطيب الوحدات السكنية (Interactive Finishing Builder)
+      </span>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+        اختر خامات شقتك بنفسك.. بند بند وماركة بماركة
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-400">
+        بدل الأرقام العشوائية؛ حدد نوع السيراميك، السباكة، الكهرباء، والدهانات.. وشاهد تكلفة كل قطعة ومجموع شقتك فوراً!
+      </p>
+    </div>
+
+    <!-- Quick Presets Bar (تجميعات جاهزة سريعة) -->
+    <div class="glass-panel p-3.5 rounded-2xl border border-slate-800 mb-8 max-w-3xl mx-auto flex flex-wrap items-center justify-between gap-2.5">
+      <div class="flex items-center gap-2 text-xs font-bold text-slate-300 px-1">
+        <i data-lucide="zap" class="w-4 h-4 text-amber-400"></i>
+        <span>تجميعات مجهزة مسبقاً (اختر وابدأ التعديل):</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="applyPreset('economy')" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-slate-200 transition">
+          ⚡ تجميعة اقتصادية
+        </button>
+        <button onclick="applyPreset('super_lux')" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black text-xs shadow-md shadow-amber-500/20 transition">
+          ⭐ سوبر لوكس (الأكثر طلباً)
+        </button>
+        <button onclick="applyPreset('vip')" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-amber-500/40 text-amber-300 font-bold text-xs transition">
+          👑 الترا VIP فندقية
+        </button>
+      </div>
+    </div>
+
+    <!-- Layout: 7 Cols (The Wizard Steps) + 5 Cols (The Live Spec Sheet & WhatsApp) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Column: The 6 Build Categories (7 Cols) -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- Category 1: Unit Size & Specs -->
+        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 font-black text-xs flex items-center justify-center border border-amber-500/30">1</span>
+              <div>
+                <h3 class="text-sm sm:text-base font-bold text-white">بيانات ومساحة الوحدة السكنية</h3>
+                <p class="text-[11px] text-slate-400">تحدد كميات المون والأمتار المطلوبة تلقائياً</p>
+              </div>
+            </div>
+            <div class="text-amber-400 font-black text-base bg-slate-900 px-3 py-1 rounded-xl border border-slate-800">
+              <span id="areaDisplay">120</span> <span class="text-xs font-normal text-slate-400">م²</span>
+            </div>
+          </div>
+
+          <div class="space-y-4 pt-1">
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs text-slate-300 font-semibold">
+                <span>المساحة الإجمالية بالمتر المربع:</span>
+                <span class="text-amber-400 font-bold"><span id="areaRangeText">120</span> متر مسطح</span>
+              </div>
+              <input type="range" id="areaInput" min="50" max="350" step="5" value="120" oninput="updateUnitArea(this.value)">
+              <div class="flex justify-between text-[11px] text-slate-500 font-semibold px-1">
+                <span>50 م² (استوديو)</span>
+                <span>120 م² (متوسط)</span>
+                <span>200 م² (كبير)</span>
+                <span>350 م² (دوبلكس/فيلا)</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-300">عدد الغرف:</span>
+                <select id="roomsInput" onchange="recalculateBuild()" class="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-2.5 py-1 focus:outline-none">
+                  <option value="1">1 غرفة</option>
+                  <option value="2">2 غرفة</option>
+                  <option value="3" selected>3 غرف</option>
+                  <option value="4">4 غرف</option>
+                  <option value="5">5 غرف فأكثر</option>
+                </select>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-300">عدد الحمامات:</span>
+                <select id="bathsInput" onchange="recalculateBuild()" class="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-2.5 py-1 focus:outline-none">
+                  <option value="1">1 حمام</option>
+                  <option value="2" selected>2 حمام (رئيسي + ضيوف)</option>
+                  <option value="3">3 حمامات</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2: Plumbing (السباكة والعزل) -->
+        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+          <div class="flex items-center gap-2.5 border-b border-slate-800/80 pb-3">
+            <span class="w-7 h-7 rounded-xl bg-cyan-500/20 text-cyan-400 font-black text-xs flex items-center justify-center border border-cyan-500/30">2</span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-white">تأسيسات السباكة والأطقم والعزل</h3>
+              <p class="text-[11px] text-slate-400">مواسير التغذية والصرف والعزل الكيميائي المعتمد</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- Plumbing Option 1 -->
+            <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('plumbing', 'standard', this)">
+              <input type="radio" name="plumbing_tier" value="standard" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">تأسيس الشريف المعتمد</span>
+                <span class="text-[11px] text-slate-400 mt-1 block">مواسير الشريف بضمان الشركة + خلاطات وطنية وخلاط تركي.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400">للحمام الواحد:</span>
+                <span class="text-xs font-black text-cyan-400"><span class="price-val" data-key="plumbing_std">14,000</span> ج.م</span>
+              </div>
+            </label>
+
+            <!-- Plumbing Option 2 (Selected by default) -->
+            <label class="step-card selected p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('plumbing', 'super', this)">
+              <input type="radio" name="plumbing_tier" value="super" checked class="sr-only">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-white">سوبر (ديورافيت + الشريف)</span>
+                  <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold">شائع ⭐</span>
+                </div>
+                <span class="text-[11px] text-slate-400 mt-1 block">أطقم ديورافيت/إيديال ستاندرد + خلاطات جواد/ساريكس + عزل كيميائي سيروبلاست.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400">للحمام الواحد:</span>
+                <span class="text-xs font-black text-cyan-400"><span class="price-val" data-key="plumbing_super">21,000</span> ج.م</span>
+              </div>
+            </label>
+
+            <!-- Plumbing Option 3 -->
+            <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('plumbing', 'grohe_vip', this)">
+              <input type="radio" name="plumbing_tier" value="grohe_vip" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">الترا فندقي (جروهي ألماني)</span>
+                <span class="text-[11px] text-slate-400 mt-1 block">حمامات معلقة دفن جروهي Grohe + كابينة شاور زجاج سيكوريت 10 مم وعزل إنسومات.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400">للحمام الواحد:</span>
+                <span class="text-xs font-black text-cyan-400"><span class="price-val" data-key="plumbing_vip">36,000</span> ج.م</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Category 3: Electrical & Smart Home (الكهرباء والإنارة) -->
+        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+          <div class="flex items-center gap-2.5 border-b border-slate-800/80 pb-3">
+            <span class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 font-black text-xs flex items-center justify-center border border-amber-500/30">3</span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-white">تأسيسات الكهرباء والإنارة والداتا</h3>
+              <p class="text-[11px] text-slate-400">سلك السويدي الأصلي بختم الليزر، خراطيم، ومفاتيح فينوس وسانشي</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- Electrical 1 -->
+            <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('electric', 'standard', this)">
+              <input type="radio" name="electric_tier" value="standard" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">اقتصادي (سلك معتمد + فينوس)</span>
+                <span class="text-[11px] text-slate-400 mt-1 block">أسلاك معتمدة + مفاتيح فينوس كلاسيك + لوحة قواطع رئيسية 12 خط.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400">معدل التأسيس:</span>
+                <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="elec_std">120</span> ج.م/م²</span>
+              </div>
+            </label>
+
+            <!-- Electrical 2 (Selected by default) -->
+            <label class="step-card selected p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('electric', 'super', this)">
+              <input type="radio" name="electric_tier" value="super" checked class="sr-only">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-white">سوبر (السويدي الأصلي + سانشي)</span>
+                  <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold">الأكثر طلباً ⭐</span>
+                </div>
+                <span class="text-[11px] text-slate-400 mt-1 block">سلك السويدي الأصلي ليزر + شاسيهات سانشي/فينوس مودرن + خطوط تكيفات منفصلة 4 مم.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400">معدل التأسيس:</span>
+                <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="elec_super">175</span> ج.م/م²</span>
+              </div>
+            </label>
+
+            <!-- Electrical 3 -->
+            <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('electric', 'smart', this)">
+              <input type="radio" name="electric_tier" value="smart" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">سمارت هوم + ساوند سيستم</span>
+                <span class="text-[11px] text-slate-400 mt-1 block">تأسيس سمارت Sonoff/Tuya للتحكم بالموبايل + سماعات سقفية داخلية وشبكة Cat6.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-[11px] text-slate-400">معدل التأسيس:</span>
+                <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="elec_smart">290</span> ج.م/م²</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Category 4: Flooring & Walls (الأرضيات والحوائط) -->
+        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+          <div class="flex items-center gap-2.5 border-b border-slate-800/80 pb-3">
+            <span class="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 font-black text-xs flex items-center justify-center border border-emerald-500/30">4</span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-white">الأرضيات وسيراميك الحوائط والحمامات</h3>
+              <p class="text-[11px] text-slate-400">شامل التوريد والمصنعية والمونة والأسمنت والتشوين</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <!-- Flooring 1 -->
+            <label class="step-card p-3.5 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('flooring', 'cleopatra', this)">
+              <input type="radio" name="flooring_tier" value="cleopatra" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">سيراميك كليوباترا فرز 1</span>
+                <span class="text-[10px] text-slate-400 mt-1 block">أرضيات فرز أول مقاسات 50x50 و 60x60 ليزر كت متناسق.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-emerald-400"><span class="price-val" data-key="floor_cleo">290</span> ج.م/م²</span>
+              </div>
+            </label>
+
+            <!-- Flooring 2 (Selected by default) -->
+            <label class="step-card selected p-3.5 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('flooring', 'gawhara', this)">
+              <input type="radio" name="flooring_tier" value="gawhara" checked class="sr-only">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-white">سيراميك الجوهرة</span>
+                  <span class="text-[9px] px-1 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">فاخر ⭐</span>
+                </div>
+                <span class="text-[10px] text-slate-400 mt-1 block">فرز أول الجوهرة / رويال عالي الصلابة بتصميمات رخامية عصرية.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-emerald-400"><span class="price-val" data-key="floor_gawhara">375</span> ج.م/م²</span>
+              </div>
+            </label>
+
+            <!-- Flooring 3 -->
+            <label class="step-card p-3.5 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('flooring', 'porcelain', this)">
+              <input type="radio" name="flooring_tier" value="porcelain" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">بورسلين إسباني/هندي</span>
+                <span class="text-[10px] text-slate-400 mt-1 block">مقاسات كبيرة 60x120 بتركيب بمادة اللصق والكلبسات الإيطالية.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-emerald-400"><span class="price-val" data-key="floor_porc">680</span> ج.م/م²</span>
+              </div>
+            </label>
+
+            <!-- Flooring 4 -->
+            <label class="step-card p-3.5 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('flooring', 'marble', this)">
+              <input type="radio" name="flooring_tier" value="marble" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">رخام طبيعي مستورد</span>
+                <span class="text-[10px] text-slate-400 mt-1 block">رخام إمبرادور / بريشيا بالصالة مع جلي وتلميع بالكريستال.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-emerald-400"><span class="price-val" data-key="floor_marble">1,150</span> ج.م/م²</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Category 5: Paints & Ceilings (الدهانات والأسقف المعلقة) -->
+        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+          <div class="flex items-center gap-2.5 border-b border-slate-800/80 pb-3">
+            <span class="w-7 h-7 rounded-xl bg-purple-500/20 text-purple-400 font-black text-xs flex items-center justify-center border border-purple-500/30">5</span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-white">الدهانات والجبسوم بورد والأسقف</h3>
+              <p class="text-[11px] text-slate-400">سيلر، 3 سكاكين معجون، وشين تشطيب جوتن أو سايبس، وبيوت نور</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- Paint 1 -->
+            <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('paint', 'sipes', this)">
+              <input type="radio" name="paint_tier" value="sipes" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">دهانات سايبس 777</span>
+                <span class="text-[11px] text-slate-400 mt-1 block">سيلر مائي + معجون دايتون + 2 وش تشطيب سايبس اقتصادي نظيف بدون جبسوم بورد.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-purple-400"><span class="price-val" data-key="paint_sipes">85</span> ج.م/م² مسطح</span>
+              </div>
+            </label>
+
+            <!-- Paint 2 (Selected by default) -->
+            <label class="step-card selected p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('paint', 'joton_gypsum', this)">
+              <input type="radio" name="paint_tier" value="joton_gypsum" checked class="sr-only">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-white">جوتن فينوماستيك + جبسوم بورد</span>
+                  <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-bold">شائع ⭐</span>
+                </div>
+                <span class="text-[11px] text-slate-400 mt-1 block">دهانات جوتن الأصلية قابلة للغسيل + بيوت نور جبسوم بورد كناوف بالريسبشن والطرقات.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-purple-400"><span class="price-val" data-key="paint_joton">145</span> ج.م/م² مسطح</span>
+              </div>
+            </label>
+
+            <!-- Paint 3 -->
+            <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('paint', 'joton_decor', this)">
+              <input type="radio" name="paint_tier" value="joton_decor" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">جوتن ليدي جليز + بديل رخام وخشب</span>
+                <span class="text-[11px] text-slate-400 mt-1 block">أسقف فلات كاملة للشقة + تجاليد جدارية بديل رخام وخشب وبانوهات فيوتك فرنسي.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-purple-400"><span class="price-val" data-key="paint_decor">230</span> ج.م/م² مسطح</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Category 6: Doors & Windows (الأبواب والشبابيك) -->
+        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+          <div class="flex items-center gap-2.5 border-b border-slate-800/80 pb-3">
+            <span class="w-7 h-7 rounded-xl bg-rose-500/20 text-rose-400 font-black text-xs flex items-center justify-center border border-rose-500/30">6</span>
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-white">الأبواب والشبابيك والألوميتال</h3>
+              <p class="text-[11px] text-slate-400">باب شقة مصفح تركي، أبواب غرف داخلية، وشبابيك ألوميتال عازل</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- Doors 1 -->
+            <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('doors', 'basic', this)">
+              <input type="radio" name="doors_tier" value="basic" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">أبواب موسكي جاهزة + ألوميتال اقتصادي</span>
+                <span class="text-[11px] text-slate-400 mt-1 block">أبواب غرف موسكي عادية + شبابيك ألوميتال قطاع صغير سنجل جلاس.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-rose-400"><span class="price-val" data-key="door_basic">24,000</span> ج.م إجمالي</span>
+              </div>
+            </label>
+
+            <!-- Doors 2 (Selected by default) -->
+            <label class="step-card selected p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('doors', 'super_turk', this)">
+              <input type="radio" name="doors_tier" value="super_turk" checked class="sr-only">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-white">مصفح تركي + أرو + ألوميتال PS</span>
+                  <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold">الأكثر طلباً ⭐</span>
+                </div>
+                <span class="text-[11px] text-slate-400 mt-1 block">باب شقة مصفح تركي أصلي وزن 80 كجم + أبواب قشرة أرو جاهزة + شبابيك PS قطاع عريض عازل.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-rose-400"><span class="price-val" data-key="door_super">48,000</span> ج.م إجمالي</span>
+              </div>
+            </label>
+
+            <!-- Doors 3 -->
+            <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between" onclick="selectOption('doors', 'jumbo_vip', this)">
+              <input type="radio" name="doors_tier" value="jumbo_vip" class="sr-only">
+              <div>
+                <span class="text-xs font-bold text-slate-200 block">أبواب ماسيف خشب زان + جامبو دبل</span>
+                <span class="text-[11px] text-slate-400 mt-1 block">أبواب غرف خشب زان دهان استر ملكي + شبابيك ألوميتال جامبو دبل جلاس عاكس عازل للصوت.</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-slate-800">
+                <span class="text-xs font-black text-rose-400"><span class="price-val" data-key="door_vip">78,000</span> ج.م إجمالي</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Live Build Summary Dock & WhatsApp Order (5 Cols) -->
+      <div class="lg:col-span-5 sticky top-20 space-y-4">
+        
+        <div class="glass-panel p-6 rounded-3xl border-2 border-amber-500/40 shadow-2xl relative overflow-hidden">
+          <div class="absolute -top-10 -left-10 w-36 h-36 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+            <div>
+              <span class="text-[11px] font-black text-amber-400 tracking-wider block">كشف حساب التجميعة المباشر</span>
+              <h3 class="text-base font-black text-white">إجمالي المقايسة التقديرية:</h3>
+            </div>
+            <div class="px-2.5 py-1 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-black flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>تسعير بالخامات</span>
+            </div>
+          </div>
+
+          <!-- Total Dynamic Price -->
+          <div class="py-3 px-4 text-center bg-slate-900/90 rounded-2xl border border-slate-800 mb-4">
+            <p class="text-3xl sm:text-4xl font-black text-amber-400 tracking-tight">
+              <span id="grandTotalDisplay">0</span>
+              <span class="text-sm font-normal text-slate-400 currency-tag">ج.م</span>
+            </p>
+            <div class="flex items-center justify-center gap-3 text-[11px] text-slate-400 mt-1.5 font-semibold">
+              <span>متوسط المتر: <strong id="ratePerMeterDisplay" class="text-slate-200">0</strong> ج/م²</span>
+              <span>•</span>
+              <span id="summaryDuration" class="text-amber-400">مدة التنفيذ: 60 - 75 يوم</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Specification Sheet Breakdown -->
+          <div class="space-y-2 text-xs border-b border-slate-800 pb-4 mb-4 max-h-56 overflow-y-auto pr-1">
+            <div class="text-[11px] font-bold text-slate-400">تفقيط بنود الخامات المختارة:</div>
+            
+            <div class="flex justify-between py-1 border-b border-slate-800/50 text-slate-300">
+              <span class="truncate max-w-[200px]" id="spec_plumbing">سباكة: سوبر ديورافيت</span>
+              <span class="font-bold text-white shrink-0" id="cost_plumbing">0 ج.م</span>
+            </div>
+
+            <div class="flex justify-between py-1 border-b border-slate-800/50 text-slate-300">
+              <span class="truncate max-w-[200px]" id="spec_electric">كهرباء: السويدي + سانشي</span>
+              <span class="font-bold text-white shrink-0" id="cost_electric">0 ج.م</span>
+            </div>
+
+            <div class="flex justify-between py-1 border-b border-slate-800/50 text-slate-300">
+              <span class="truncate max-w-[200px]" id="spec_flooring">أرضيات: سيراميك الجوهرة</span>
+              <span class="font-bold text-white shrink-0" id="cost_flooring">0 ج.م</span>
+            </div>
+
+            <div class="flex justify-between py-1 border-b border-slate-800/50 text-slate-300">
+              <span class="truncate max-w-[200px]" id="spec_paint">دهانات: جوتن فينوماستيك</span>
+              <span class="font-bold text-white shrink-0" id="cost_paint">0 ج.م</span>
+            </div>
+
+            <div class="flex justify-between py-1 text-slate-300">
+              <span class="truncate max-w-[200px]" id="spec_doors">أبواب: مصفح تركي + أرو</span>
+              <span class="font-bold text-white shrink-0" id="cost_doors">0 ج.م</span>
+            </div>
+          </div>
+
+          <!-- Lead Form: Name & Phone -->
+          <div class="space-y-3 pt-1">
+            <label class="block text-xs font-bold text-slate-200">
+              بيانات العميل لاعتماد الشيت وحجز المعاينة:
+            </label>
+
+            <div class="space-y-2">
+              <input type="text" id="clientName" placeholder="الاسم الكريم" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-500 transition">
+              <input type="tel" id="clientPhone" placeholder="رقم الهاتف للتواصل (010xxxxxxx)" class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-500 transition" dir="ltr">
+            </div>
+
+            <!-- WhatsApp Action Button -->
+            <button onclick="sendToWhatsApp()" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-black text-sm flex items-center justify-center gap-2 glow-btn transition-all duration-200 mt-2 cursor-pointer">
+              <i data-lucide="message-square" class="w-5 h-5 fill-slate-950"></i>
+              <span>اعتمد هذه التجميعة واطلب المعاينة عبر واتساب</span>
+            </button>
+            <p class="text-[10px] text-center text-slate-400">
+              سيتم إرسال كشف الخامات بالكامل بأسماء الماركات إلى واتساب الشركة فوراً 🔒
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ⚙️ Admin Pricing Control Modal (لوحة تعديل أسعار المون والخامات) -->
+  <div id="pricingAdminModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="glass-panel max-w-2xl w-full rounded-3xl p-6 space-y-4 border border-amber-500/40 shadow-2xl max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div>
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="settings-2" class="w-5 h-5 text-amber-400"></i>
+            <span>لوحة ضبط وتعديل أسعار المون والخامات (خاص بالشركة / المقاول)</span>
+          </h3>
+          <p class="text-[11px] text-slate-400">عدّل أسعار الخامات حسب أسعار شركتك ومصنعياتك واضغط حفظ للتطبيق فوراً</p>
+        </div>
+        <button onclick="closePricingModal()" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Pricing Fields Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سيراميك كليوباترا فرز 1 (ج.م/م²):</label>
+          <input type="number" id="adm_floor_cleo" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سيراميك الجوهرة فرز 1 (ج.م/م²):</label>
+          <input type="number" id="adm_floor_gawhara" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">بورسلين إسباني/هندي (ج.م/م²):</label>
+          <input type="number" id="adm_floor_porc" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">رخام مستورد إمبرادور (ج.م/م²):</label>
+          <input type="number" id="adm_floor_marble" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سباكة الشريف (للحمام الواحد):</label>
+          <input type="number" id="adm_plumbing_std" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-cyan-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سباكة سوبر ديورافيت (للحمام):</label>
+          <input type="number" id="adm_plumbing_super" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-cyan-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سباكة جروهي VIP (للحمام):</label>
+          <input type="number" id="adm_plumbing_vip" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-cyan-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">كهرباء السويدي + سانشي (ج/م²):</label>
+          <input type="number" id="adm_elec_super" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">دهانات جوتن + جبسوم بورد (ج/م² مسطح):</label>
+          <input type="number" id="adm_paint_joton" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-purple-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">أبواب مصفح تركي + أرو + PS (إجمالي):</label>
+          <input type="number" id="adm_door_super" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-rose-400 font-bold">
+        </div>
+
+      </div>
+
+      <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+        <button onclick="resetDefaultPrices()" class="px-3.5 py-2 text-slate-400 hover:text-white text-xs font-semibold">
+          إعادة تعيين للأسعار الافتراضية
+        </button>
+        <button onclick="saveAdminPrices()" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-black shadow-lg shadow-amber-500/20 transition">
+          حفظ وتطبيق فوراً ✓
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- White-Label Branding Modal -->
+  <div id="brandingModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="glass-panel max-w-md w-full rounded-3xl p-6 space-y-4 border border-slate-700 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i data-lucide="building" class="w-4 h-4 text-blue-400"></i>
+          <span>تخصيص بيانات شركة المقاولات (White-Label)</span>
+        </h3>
+        <button onclick="document.getElementById('brandingModal').classList.add('hidden')" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div class="space-y-1">
+          <label class="block font-semibold text-slate-300">اسم الشركة أو المقاول:</label>
+          <input type="text" id="cfgBrandName" value="شطّب شقتك قطعة قطعة" class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-slate-200">
+        </div>
+
+        <div class="space-y-1">
+          <label class="block font-semibold text-slate-300">رقم واتساب المبيعات (يصل عليه الشيت):</label>
+          <input type="text" id="cfgPhone" value="201098174992" class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-slate-200">
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-800 flex justify-end gap-2">
+        <button onclick="saveBrandingConfig()" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-bold transition">
+          حفظ البيانات
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/60 py-5 text-center text-xs text-slate-500 mt-12">
+    <p>منظومة تفصيل وتشطيب الشقق | <span class="text-amber-400 font-bold">AM Marketing</span> • مصطفى عبد السلام • 01098174992</p>
+  </footer>
+
+  <script>
+    // --- 1. DEFAULT BENCHMARK PRICING ENGINE ---
+    const DEFAULT_PRICES = {
+      floor_cleo: 290,
+      floor_gawhara: 375,
+      floor_porc: 680,
+      floor_marble: 1150,
+      
+      plumbing_std: 14000,
+      plumbing_super: 21000,
+      plumbing_vip: 36000,
+      
+      elec_std: 120,
+      elec_super: 175,
+      elec_smart: 290,
+      
+      paint_sipes: 85,
+      paint_joton: 145,
+      paint_decor: 230,
+      
+      door_basic: 24000,
+      door_super: 48000,
+      door_vip: 78000
+    };
+
+    let prices = { ...DEFAULT_PRICES };
+    let savedPrices = localStorage.getItem('cfg_finishing_prices');
+    if (savedPrices) {
+      try { prices = { ...DEFAULT_PRICES, ...JSON.parse(savedPrices) }; } catch(e){}
+    }
+
+    let config = {
+      brandName: localStorage.getItem('cfg_builder_brand') || "شطّب شقتك قطعة قطعة",
+      phone: localStorage.getItem('cfg_builder_phone') || "201098174992"
+    };
+
+    // User's active selections
+    let build = {
+      area: 120,
+      rooms: 3,
+      baths: 2,
+      plumbing: 'super',
+      electric: 'super',
+      flooring: 'gawhara',
+      paint: 'joton_gypsum',
+      doors: 'super_turk'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      applyBranding();
+      renderPriceValuesInUI();
+      recalculateBuild();
+      setupModalListeners();
+    });
+
+    function applyBranding() {
+      document.getElementById('brandNameDisplay').querySelector('span').textContent = config.brandName;
+      document.getElementById('cfgBrandName').value = config.brandName;
+      document.getElementById('cfgPhone').value = config.phone;
+    }
+
+    function renderPriceValuesInUI() {
+      document.querySelectorAll('.price-val').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (prices[key] !== undefined) {
+          el.textContent = Number(prices[key]).toLocaleString('en-US');
+        }
+      });
+    }
+
+    function updateUnitArea(val) {
+      build.area = parseInt(val) || 120;
+      document.getElementById('areaDisplay').textContent = build.area;
+      document.getElementById('areaRangeText').textContent = build.area;
+      recalculateBuild();
+    }
+
+    function selectOption(category, value, cardElement) {
+      build[category] = value;
+      const parent = cardElement.closest('.glass-panel');
+      parent.querySelectorAll('.step-card').forEach(c => c.classList.remove('selected'));
+      cardElement.classList.add('selected');
+      const radio = cardElement.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
+      recalculateBuild();
+    }
+
+    function applyPreset(presetName) {
+      if (presetName === 'economy') {
+        build.plumbing = 'standard';
+        build.electric = 'standard';
+        build.flooring = 'cleopatra';
+        build.paint = 'sipes';
+        build.doors = 'basic';
+      } else if (presetName === 'super_lux') {
+        build.plumbing = 'super';
+        build.electric = 'super';
+        build.flooring = 'gawhara';
+        build.paint = 'joton_gypsum';
+        build.doors = 'super_turk';
+      } else if (presetName === 'vip') {
+        build.plumbing = 'grohe_vip';
+        build.electric = 'smart';
+        build.flooring = 'porcelain';
+        build.paint = 'joton_decor';
+        build.doors = 'jumbo_vip';
+      }
+
+      // Sync UI radio cards
+      ['plumbing', 'electric', 'flooring', 'paint', 'doors'].forEach(cat => {
+        const val = build[cat];
+        const radio = document.querySelector(`input[name="${cat}_tier"][value="${val}"]`);
+        if (radio) {
+          const card = radio.closest('.step-card');
+          if (card) {
+            const parent = card.closest('.glass-panel');
+            parent.querySelectorAll('.step-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            radio.checked = true;
+          }
+        }
+      });
+
+      recalculateBuild();
+    }
+
+    // --- QUANTITY ESTIMATION & TOTAL COMPUTATION ENGINE ---
+    function recalculateBuild() {
+      build.rooms = parseInt(document.getElementById('roomsInput').value) || 3;
+      build.baths = parseInt(document.getElementById('bathsInput').value) || 2;
+
+      const area = build.area;
+      const baths = build.baths;
+
+      // 1. Plumbing Cost = (baths count) * price
+      const plumbingKey = build.plumbing === 'standard' ? 'plumbing_std' : (build.plumbing === 'grohe_vip' ? 'plumbing_vip' : 'plumbing_super');
+      const plumbingCost = baths * prices[plumbingKey];
+      const plumbingNames = { standard: 'الشريف المعتمد', super: 'سوبر ديورافيت + الشريف', grohe_vip: 'جروهي ألماني VIP' };
+
+      // 2. Electrical Cost = area * rate
+      const elecKey = build.electric === 'standard' ? 'elec_std' : (build.electric === 'smart' ? 'elec_smart' : 'elec_super');
+      const electricCost = area * prices[elecKey];
+      const elecNames = { standard: 'سلك معتمد + فينوس', super: 'السويدي الأصلي + سانشي', smart: 'سمارت هوم + ساوند سيستم' };
+
+      // 3. Flooring Cost = area * rate
+      const floorKey = build.flooring === 'cleopatra' ? 'floor_cleo' : (build.flooring === 'porcelain' ? 'floor_porc' : (build.flooring === 'marble' ? 'floor_marble' : 'floor_gawhara'));
+      const flooringCost = area * prices[floorKey];
+      const floorNames = { cleopatra: 'سيراميك كليوباترا فرز 1', gawhara: 'سيراميك الجوهرة فرز 1', porcelain: 'بورسلين إسباني/هندي', marble: 'رخام طبيعي إمبرادور' };
+
+      // 4. Paint Cost = (area * 2.5 walls factor) * rate
+      const paintKey = build.paint === 'sipes' ? 'paint_sipes' : (build.paint === 'joton_decor' ? 'paint_decor' : 'paint_joton');
+      const paintCost = Math.round(area * 2.5 * prices[paintKey]);
+      const paintNames = { sipes: 'سايبس 777 اقتصادي', joton_gypsum: 'جوتن فينوماستيك + جبسوم بورد', joton_decor: 'جوتن ليدي + بديل رخام' };
+
+      // 5. Doors & Windows = Fixed package price adjusted for area
+      const doorKey = build.doors === 'basic' ? 'door_basic' : (build.doors === 'jumbo_vip' ? 'door_vip' : 'door_super');
+      const doorsMultiplier = area > 180 ? 1.3 : (area > 120 ? 1.1 : 1.0);
+      const doorsCost = Math.round(prices[doorKey] * doorsMultiplier);
+      const doorNames = { basic: 'موسكي + ألوميتال اقتصادي', super_turk: 'مصفح تركي + أرو + ألوميتال PS', jumbo_vip: 'زان ماسيف + ألوميتال جامبو' };
+
+      // Total
+      const grandTotal = plumbingCost + electricCost + flooringCost + paintCost + doorsCost;
+      const ratePerMeter = Math.round(grandTotal / area);
+
+      let duration = "60 - 75 يوم عمل";
+      if (area > 200 || grandTotal > 600000) duration = "90 - 110 يوم عمل";
+      else if (area < 90) duration = "45 - 55 يوم عمل";
+
+      // Update UI displays
+      document.getElementById('grandTotalDisplay').textContent = grandTotal.toLocaleString('en-US');
+      document.getElementById('ratePerMeterDisplay').textContent = ratePerMeter.toLocaleString('en-US');
+      document.getElementById('summaryDuration').textContent = `مدة التنفيذ: ${duration}`;
+
+      document.getElementById('spec_plumbing').textContent = `سباكة: ${plumbingNames[build.plumbing]} (${baths} حمام)`;
+      document.getElementById('cost_plumbing').textContent = `${plumbingCost.toLocaleString('en-US')} ج.م`;
+
+      document.getElementById('spec_electric').textContent = `كهرباء: ${elecNames[build.electric]}`;
+      document.getElementById('cost_electric').textContent = `${electricCost.toLocaleString('en-US')} ج.م`;
+
+      document.getElementById('spec_flooring').textContent = `أرضيات: ${floorNames[build.flooring]}`;
+      document.getElementById('cost_flooring').textContent = `${flooringCost.toLocaleString('en-US')} ج.م`;
+
+      document.getElementById('spec_paint').textContent = `دهانات: ${paintNames[build.paint]}`;
+      document.getElementById('cost_paint').textContent = `${paintCost.toLocaleString('en-US')} ج.م`;
+
+      document.getElementById('spec_doors').textContent = `أبواب وشبابيك: ${doorNames[build.doors]}`;
+      document.getElementById('cost_doors').textContent = `${doorsCost.toLocaleString('en-US')} ج.م`;
+
+      return {
+        area, rooms: build.rooms, baths, grandTotal, ratePerMeter, duration,
+        plumbingName: plumbingNames[build.plumbing],
+        elecName: elecNames[build.electric],
+        floorName: floorNames[build.flooring],
+        paintName: paintNames[build.paint],
+        doorName: doorNames[build.doors]
+      };
+    }
+
+    // --- WHATSAPP SPEC SHEET ROUTER ---
+    function sendToWhatsApp() {
+      const summary = recalculateBuild();
+      const name = document.getElementById('clientName').value.trim() || "عميل مهتم";
+      const phone = document.getElementById('clientPhone').value.trim() || "غير مسجل";
+
+      const msg = `مرحباً، طلب مقايسة وتجميعة تشطيب متكاملة 🏗️📋
+-----------------------------------
+👤 اسم العميل: ${name}
+📱 هاتف التواصل: ${phone}
+📐 مساحة الشقة: ${summary.area} م² (${summary.rooms} غرف + ${summary.baths} حمام)
+-----------------------------------
+✨ الخامات والمواصفات المختارة قطعة قطعة:
+1. السباكة: ${summary.plumbingName}
+2. الكهرباء: ${summary.elecName}
+3. الأرضيات: ${summary.floorName}
+4. الدهانات والأسقف: ${summary.paintName}
+5. الأبواب والشبابيك: ${summary.doorName}
+-----------------------------------
+💰 إجمالي التكلفة التقديرية: ${summary.grandTotal.toLocaleString('en-US')} ج.م
+📊 متوسط سعر المتر: ${summary.ratePerMeter.toLocaleString('en-US')} ج/م²
+⏱️ مدة التنفيذ المتوقعة: ${summary.duration}
+-----------------------------------
+أرغب في حجز موعد للمعاينة الهندسية واعتماد هذه المواصفات.`;
+
+      const cleanPhone = config.phone.replace(/[^0-9]/g, '');
+      const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // --- ADMIN PRICING MODAL LOGIC ---
+    function setupModalListeners() {
+      const pModal = document.getElementById('pricingAdminModal');
+      document.getElementById('openPricingAdminBtn').addEventListener('click', () => {
+        // Load current prices into admin inputs
+        for (const [k, v] of Object.entries(prices)) {
+          const inp = document.getElementById(`adm_${k}`);
+          if (inp) inp.value = v;
+        }
+        pModal.classList.remove('hidden');
+      });
+
+      document.getElementById('openBrandingBtn').addEventListener('click', () => {
+        document.getElementById('brandingModal').classList.remove('hidden');
+      });
+    }
+
+    function closePricingModal() {
+      document.getElementById('pricingAdminModal').classList.add('hidden');
+    }
+
+    function saveAdminPrices() {
+      for (const k of Object.keys(DEFAULT_PRICES)) {
+        const inp = document.getElementById(`adm_${k}`);
+        if (inp && inp.value) {
+          prices[k] = parseFloat(inp.value) || DEFAULT_PRICES[k];
+        }
+      }
+      localStorage.setItem('cfg_finishing_prices', JSON.stringify(prices));
+      renderPriceValuesInUI();
+      recalculateBuild();
+      closePricingModal();
+      alert("تم حفظ وتحديث أسعار المون والخامات بنجاح! تم تطبيق الحسابات فوراً ✓");
+    }
+
+    function resetDefaultPrices() {
+      if (confirm("هل ترغب في استرجاع الأسعار الافتراضية للسوق المصري؟")) {
+        prices = { ...DEFAULT_PRICES };
+        localStorage.removeItem('cfg_finishing_prices');
+        renderPriceValuesInUI();
+        recalculateBuild();
+        closePricingModal();
+        alert("تم استرجاع الأسعار الافتراضية بنجاح ✓");
+      }
+    }
+
+    function saveBrandingConfig() {
+      const name = document.getElementById('cfgBrandName').value.trim();
+      const phone = document.getElementById('cfgPhone').value.trim();
+      if (name) config.brandName = name;
+      if (phone) config.phone = phone;
+
+      localStorage.setItem('cfg_builder_brand', config.brandName);
+      localStorage.setItem('cfg_builder_phone', config.phone);
+
+      applyBranding();
+      document.getElementById('brandingModal').classList.add('hidden');
+      alert("تم تحديث بيانات الشركة بنجاح! ✓");
+    }
+  </script>
+</body>
+</html>
