@@ -97,7 +97,7 @@ export default function Hero({ t, lang, onNavigate }) {
                   </div>
                   <div>
                     <div className="text-sm sm:text-base font-black text-amber-300 group-hover:text-amber-200 flex items-center gap-2">
-                      <span>{isRtl ? 'حاسبة المقايسات والأسعار التفاعلية (أداة صيد العملاء)' : 'Interactive Cost Calculator (Lead Engine)'}</span>
+                      <span>{isRtl ? 'حاسبة المقايسات والتسعير الفوري التفاعلي (احسب تكلفتك بنفسك)' : 'Interactive Cost & Instant Quote Calculator'}</span>
                       <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-500 text-slate-950 animate-pulse">لايف ⚡</span>
                     </div>
                     <div className="text-xs text-slate-300 mt-0.5">

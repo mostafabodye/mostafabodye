@@ -20,7 +20,7 @@ export default function FloatingWhatsApp({ lang }) {
     {
       sender: 'bot',
       text: isRtl
-        ? 'أهلاً بك في وكالة AM Marketing! 🚀\nأنا مساعدك الذكي 🤖 تحت أمرك للإجابة على استفساراتك فوراً حول:\n• باقات وأسعار الحملات الإعلانية والشات أدز\n• برمجة المواقع والمتاجر التفاعلية\n• حاسبة المقايسات وصيد العملاء\n• برامج الويندوز المحاسبية وأنظمة الكاشير\n\nكيف يمكنني مساعدتك اليوم؟'
+        ? 'أهلاً بك في وكالة AM Marketing! 🚀\nأنا مساعدك الذكي 🤖 تحت أمرك للإجابة على استفساراتك فوراً حول:\n• باقات وأسعار الحملات الإعلانية والشات أدز\n• برمجة المواقع والمتاجر التفاعلية\n• حاسبة المقايسات والتسعير الفوري\n• برامج الويندوز المحاسبية وأنظمة الكاشير\n\nكيف يمكنني مساعدتك اليوم؟'
         : 'Welcome to AM Marketing! 🚀\nI am your 24/7 AI Smart Assistant 🤖 here to help you with:\n• Ad Campaigns & Chat Ads packages\n• Responsive Websites & E-Commerce\n• Interactive Cost Calculators\n• Offline Windows POS & Keygen Systems\n\nHow can I help you today?',
       time: 'الآن'
     }
@@ -73,7 +73,7 @@ export default function FloatingWhatsApp({ lang }) {
     if (q.includes('حاسب') || q.includes('مقايس') || q.includes('calc') || q.includes('cost')) {
       return {
         text: isArabic
-          ? '🧮 حاسبة المقايسات التفاعلية هي أحدث أدواتنا لصيد العملاء في 4 مجالات كبرى:\n1. تشطيبات وديكور (بالمتر المربع)\n2. أقساط عقارية ومقدمات\n3. عيادات وتجميل وخصومات مجمعة\n4. باقات إدارة السوشيال ميديا\n\nتقدر تجربها لايف بالضغط على الزر أدناه 👇'
+          ? '🧮 حاسبة المقايسات التفاعلية هي أحدث حلولنا لحساب التكلفة التقديرية فوراً في 4 مجالات كبرى:\n1. تشطيبات وديكور (بالمتر المربع)\n2. أقساط عقارية ومقدمات\n3. عيادات وتجميل وخصومات مجمعة\n4. باقات إدارة السوشيال ميديا\n\nتقدر تجربها لايف بالضغط على الزر أدناه 👇'
           : '🧮 Our Interactive Cost Calculator features 4 high-converting verticals: Finishing, Real Estate, Clinics, and Marketing retainers. You can try the live tool directly below 👇',
         link: { url: 'calculator.html', label: isArabic ? 'تشغيل الحاسبة التفاعلية لايف 🧮' : 'Open Live Calculator 🧮' }
       };

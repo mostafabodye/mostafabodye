@@ -4,7 +4,7 @@ export const projectsData = [
     category: "web",
     categories: ["web", "ads", "ai"],
     title: {
-      ar: "حاسبة المقايسات التفاعلية لصيد العملاء (Interactive Cost Calculator)",
+      ar: "حاسبة المقايسات والتسعير التفاعلي الذكي (Interactive Cost Calculator)",
       en: "Interactive Cost Calculator & WhatsApp Lead Magnet"
     },
     subtitle: {
@@ -20,7 +20,7 @@ export const projectsData = [
       en: "AM Marketing Interactive Tools"
     },
     website: "calculator.html",
-    tags: ["حاسبة تفاعلية", "تشطيبات وديكور", "صيد عملاء الإعلانات", "واتساب فوري", "مقايسات لحظية", "White-Label"],
+    tags: ["حاسبة تفاعلية", "تشطيبات وديكور", "تسعير فوري للإعلانات", "واتساب فوري", "مقايسات لحظية", "White-Label"],
     gradient: "from-amber-500 via-orange-600 to-yellow-500",
     summary: {
       ar: "أداة ويب تفاعلية فائقة السرعة تُركب في بايو صفحات الشركات وإعلانات السوشيال ميديا؛ تتيح للعميل تحريك مؤشر المساحة واختيار الباقة والإضافات ومشاهدة السعر ومدة التنفيذ فوراً، وبضغطة زر واحدة تُرسل المقايسة كاملة لواتساب الشركة.",
@@ -31,7 +31,7 @@ export const projectsData = [
       en: "Advertisers lose 80% of ad comments due to slow 'DM for price' responses and lack of instant transparency."
     },
     solution: {
-      ar: "بناء حاسبة تكلفة فورية ناعمة الحركة مع صائد عملاء واتساب مدمج يرسل المقايسة كاملة لأرقام مبيعات الشركة دون أي مجهود إضافي.",
+      ar: "بناء حاسبة تكلفة فورية ناعمة الحركة مع نظام طلب واستفسار واتساب فوري مدمج يرسل المقايسة كاملة لأرقام مبيعات الشركة دون أي مجهود إضافي.",
       en: "Engineered a zero-friction cost estimator that sends fully computed specifications directly to sales WhatsApp."
     },
     results: [
@@ -186,7 +186,7 @@ export const projectsData = [
       en: "Automated local business scraper, lead scoring, and 1-click tailored WhatsApp pitch generator"
     },
     badge: {
-      ar: "محرك صيد العملاء B2B 🎯💼",
+      ar: "محرك استخراج بيانات الشركات B2B 🎯💼",
       en: "B2B Lead Scraper 🎯💼"
     },
     client: {
@@ -194,7 +194,7 @@ export const projectsData = [
       en: "AM Marketing Growth Stack"
     },
     website: "https://github.com/mostafabodye/mostafabodye",
-    tags: ["سحب داتا B2B", "صيد عملاء محليين", "توليد رسائل بيع", "تصدير Excel", "Google Maps Leads", "أتمتة تسويق"],
+    tags: ["سحب داتا B2B", "استهداف شركات محلية", "توليد رسائل بيع", "تصدير Excel", "Google Maps Leads", "أتمتة تسويق"],
     gradient: "from-sky-500 via-blue-600 to-indigo-700",
     summary: {
       ar: "منصة متطورة لتزويد وكالات التسويق والمبيعات بقوائم عملاء مستهدفين مع هواتفهم وعناوينهم، واكتشاف الشركات التي لا تملك موقعاً لبيع الخدمات لها فوراً.",
