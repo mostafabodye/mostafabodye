@@ -35,11 +35,11 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
     },
     {
       id: 'calculator_page',
-      label: lang === 'ar' ? 'حاسبة المقايسات' : 'Cost Calculator',
-      badge: 'LIVE 🧮',
+      label: lang === 'ar' ? 'شطّب شقتك قطعة قطعة' : 'Finishing Builder',
+      badge: 'جديد 🏗️',
       badgeColor: 'bg-amber-500/20 border-amber-500/50 text-amber-300',
       icon: Calculator,
-      isExternal: 'calculator.html'
+      isExternal: 'builder.html'
     },
     {
       id: 'ads',
@@ -184,13 +184,13 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
         {/* Right CTA Button & Quick Phone */}
         <div className="hidden lg:flex items-center gap-2.5 shrink-0">
           <a
-            href="calculator.html"
+            href="builder.html"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-950 text-xs font-black shadow-lg shadow-amber-500/25 hover:scale-105 transition-all"
             title="فتح حاسبة المقايسات والأسعار التفاعلية"
           >
-            <span>{lang === 'ar' ? 'حاسبة المقايسات 🧮' : 'Cost Calculator 🧮'}</span>
+            <span>{lang === 'ar' ? 'شطّب شقتك قطعة قطعة 🏗️' : 'Finishing Builder 🏗️'}</span>
           </a>
           <a
             href="tel:01098174992"
@@ -267,7 +267,7 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
 
               <div className="pt-3 flex flex-col gap-2.5">
                 <a
-                  href="calculator.html"
+                  href="builder.html"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
