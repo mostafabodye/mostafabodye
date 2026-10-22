@@ -583,6 +583,10 @@
             </div>
 
             <!-- WhatsApp Action Button -->
+            <button onclick="printQuotationSheet()" class="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs flex items-center justify-center gap-2 border border-slate-700 transition cursor-pointer mb-2">
+              <i data-lucide="printer" class="w-4 h-4 text-amber-400"></i>
+              <span>طباعة أو حفظ المقايسة كملف PDF رسمي 📄</span>
+            </button>
             <button onclick="sendToWhatsApp()" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-black text-sm flex items-center justify-center gap-2 glow-btn transition-all duration-200 mt-2 cursor-pointer">
               <i data-lucide="message-square" class="w-5 h-5 fill-slate-950"></i>
               <span>اعتمد هذه التجميعة واطلب المعاينة عبر واتساب</span>
@@ -922,6 +926,129 @@
     }
 
     // --- WHATSAPP SPEC SHEET ROUTER ---
+    
+    // --- PRINT / SAVE AS OFFICIAL PDF QUOTATION ---
+    function printQuotationSheet() {
+      const summary = recalculateBuild();
+      const clientName = document.getElementById('clientName').value.trim() || "عميل محترم";
+      const clientPhone = document.getElementById('clientPhone').value.trim() || "غير مسجل";
+      const today = new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="ar" dir="rtl">
+        <head>
+          <meta charset="UTF-8">
+          <title>مقايسة تشطيب رسمية - ${clientName}</title>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+            body { font-family: 'Cairo', sans-serif; color: #1e293b; padding: 30px; margin: 0; background: #fff; }
+            .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #f59e0b; padding-bottom: 15px; margin-bottom: 25px; }
+            .brand { font-size: 22px; font-weight: 900; color: #0f172a; }
+            .brand span { color: #d97706; }
+            .meta { font-size: 12px; color: #64748b; line-height: 1.6; }
+            .title-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 20px; margin-bottom: 25px; }
+            .title-box h2 { margin: 0 0 10px 0; font-size: 18px; color: #0f172a; }
+            .grid-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; font-size: 13px; }
+            .grid-info div strong { color: #0f172a; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+            th { background: #0f172a; color: #fff; text-align: right; padding: 10px 14px; font-size: 13px; border: 1px solid #0f172a; }
+            td { padding: 10px 14px; font-size: 12px; border: 1px solid #e2e8f0; color: #334155; }
+            tr:nth-child(even) { background: #f8fafc; }
+            .total-card { background: #fffbeb; border: 2px solid #fde68a; border-radius: 12px; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+            .total-card .val { font-size: 24px; font-weight: 900; color: #b45309; }
+            .terms { font-size: 11px; color: #64748b; line-height: 1.8; border-top: 1px solid #e2e8f0; padding-top: 15px; }
+            @media print { body { padding: 0; } button { display: none; } }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div>
+              <div class="brand">${config.brandName} <span>• مقايسة رسمية</span></div>
+              <div class="meta">هاتف التواصل والمبيعات: ${config.phone}</div>
+            </div>
+            <div style="text-align: left;">
+              <div class="meta">تاريخ العرض: <strong>${today}</strong></div>
+              <div class="meta">رقم الإسناد: <strong>EST-${Math.floor(100000 + Math.random() * 900000)}</strong></div>
+            </div>
+          </div>
+
+          <div class="title-box">
+            <h2>بيانات العميل ومقايسة الوحدة السكنية</h2>
+            <div class="grid-info">
+              <div>العميل: <strong>${clientName}</strong></div>
+              <div>الهاتف: <strong>${clientPhone}</strong></div>
+              <div>المساحة: <strong>${summary.area} متر مسطح</strong></div>
+              <div>تقسيم الوحدة: <strong>${summary.rooms} غرف + ${summary.baths} حمام</strong></div>
+              <div>مدة التنفيذ المتوقعة: <strong>${summary.duration}</strong></div>
+              <div>حالة المقايسة: <strong>معاينة استرشادية أولية</strong></div>
+            </div>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">بند الأعمال</th>
+                <th style="width: 50%;">المواصفات والماركة المعتمدة</th>
+                <th style="width: 25%;">التكلفة التقديرية</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. تأسيسات السباكة والأطقم</strong></td>
+                <td>${summary.plumbingName} (شامل عزل الأرضيات وتغذية وصرف لـ ${summary.baths} حمام ومطبخ)</td>
+                <td><strong>${document.getElementById('cost_plumbing').textContent}</strong></td>
+              </tr>
+              <tr>
+                <td><strong>2. تأسيسات الكهرباء والإنارة</strong></td>
+                <td>${summary.elecName} (شامل سلك السويدي، خراطيم، شاسيهات ومفاتيح وقواطع رئيسية)</td>
+                <td><strong>${document.getElementById('cost_electric').textContent}</strong></td>
+              </tr>
+              <tr>
+                <td><strong>3. الأرضيات وسيراميك الحوائط</strong></td>
+                <td>${summary.floorName} (شامل توريد وتركيب ومونة وأسمنت وتشوين لكامل المسطح)</td>
+                <td><strong>${document.getElementById('cost_flooring').textContent}</strong></td>
+              </tr>
+              <tr>
+                <td><strong>4. الدهانات والأسقف المعلقة</strong></td>
+                <td>${summary.paintName} (وش سيلر + 3 سكاكين معجون دايتون + وشين تشطيب وبيوت نور)</td>
+                <td><strong>${document.getElementById('cost_paint').textContent}</strong></td>
+              </tr>
+              <tr>
+                <td><strong>5. الأبواب والشبابيك والألوميتال</strong></td>
+                <td>${summary.doorName} (باب شقة مصفح تركي أصلي + أبواب غرف داخلية + ألوميتال عازل)</td>
+                <td><strong>${document.getElementById('cost_doors').textContent}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="total-card">
+            <div>
+              <div style="font-size: 13px; color: #92400e; font-weight: bold;">إجمالي تكلفة المقايسة التقديرية الشاملة:</div>
+              <div style="font-size: 12px; color: #78350f;">متوسط تكلفة المتر المسطح: ${summary.ratePerMeter.toLocaleString('en-US')} ج.م/م²</div>
+            </div>
+            <div class="val">${summary.grandTotal.toLocaleString('en-US')} ج.م</div>
+          </div>
+
+          <div class="terms">
+            <strong>ملاحظات وشروط عامة:</strong>
+            <br>• هذه المقايسة استرشادية مبنية على اختيارات العميل ومساحة الوحدة السكنية.
+            <br>• يتم اعتماد الأسعار النهائية بعد المعاينة الهندسية على الطبيعة واستلام الرسومات التنفيذية.
+            <br>• نظام الدفعات: سداد على دفعات مرحلية مع كل مرحلة تسليم واستلام هندسي.
+          </div>
+
+          <div style="margin-top: 30px; text-align: center;">
+            <button onclick="window.print()" style="padding: 10px 25px; background: #0f172a; color: #fff; border: none; border-radius: 8px; font-family: Cairo; font-weight: bold; cursor: pointer;">
+              طباعة / حفظ كـ PDF 🖨️
+            </button>
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+    }
+
     function sendToWhatsApp() {
       const summary = recalculateBuild();
       const name = document.getElementById('clientName').value.trim() || "عميل مهتم";
