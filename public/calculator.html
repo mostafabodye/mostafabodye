@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حاسبة المقايسات والأسعار التفاعلية الفورية | AM Marketing</title>
+  <title>حاسبة المقايسات والتسعير الذكية المتكاملة | AM Marketing</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -41,10 +41,22 @@
       color: #f8fafc;
     }
     .glass-panel {
-      background: rgba(15, 20, 32, 0.85);
+      background: rgba(15, 20, 32, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .step-card {
+      transition: all 0.2s ease;
+    }
+    .step-card:hover {
+      border-color: rgba(245, 158, 11, 0.45);
+      transform: translateY(-2px);
+    }
+    .step-card.selected {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.08);
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.15);
     }
     input[type="range"] {
       -webkit-appearance: none;
@@ -101,80 +113,68 @@
 
   <!-- Header -->
   <header class="border-b border-slate-800/80 bg-[#0d111a]/95 backdrop-blur-md sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       
       <div class="flex items-center gap-3">
         <a href="./" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-500/20 font-bold text-lg text-slate-950 hover:scale-105 transition" title="العودة للبرتفوليو">
           <i data-lucide="calculator" class="w-5 h-5 text-slate-950"></i>
         </a>
         <div>
-          <h1 id="brandTitle" class="text-base sm:text-lg font-bold text-white flex items-center gap-1.5">
-            <span>وكالة نيو ديزاين للتشطيبات والاستثمار</span>
-            <i data-lucide="badge-check" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+          <h1 id="brandTitle" class="text-base sm:text-lg font-black text-white flex items-center gap-1.5">
+            <span>حاسبة المقايسات والتسعير الذكية</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">v2.5 Pro</span>
           </h1>
-          <p id="brandSubtitle" class="text-[11px] text-slate-400">احسب مقايستك التقديرية فوراً واعتمد العرض عبر الواتساب في دقيقة</p>
+          <p id="brandSubtitle" class="text-[11px] text-slate-400">تجميعة المون قطعة قطعة + تسعير فوري ومقايسة PDF معتمدة</p>
         </div>
       </div>
 
       <div class="flex items-center gap-2">
-        <button id="brandingModalBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition" title="تعديل اسم الشركة ورقم الواتساب وتصدير ملف العميل">
-          <i data-lucide="sliders" class="w-3.5 h-3.5 text-amber-400"></i>
-          <span>تخصيص لعميل جديد (White-Label)</span>
+        <!-- Live Admin Pricing Button -->
+        <button onclick="openPricingModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-xs font-bold border border-amber-500/40 transition shadow-sm" title="تعديل أسعار المون والخامات في ثواني">
+          <i data-lucide="settings-2" class="w-3.5 h-3.5"></i>
+          <span>⚙️ تعديل أسعار المون</span>
         </button>
-        <a href="./" class="text-xs px-3.5 py-1.5 rounded-xl bg-blue-600/30 text-blue-200 border border-blue-500/50 hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5 font-bold shadow-md shadow-blue-500/20" title="الرجوع إلى موقع المعرض والبورتفوليو">
+
+        <button id="brandingModalBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition" title="تخصيص الهوية باسم شركتك أو رقم الواتساب">
+          <i data-lucide="sliders" class="w-3.5 h-3.5 text-blue-400"></i>
+          <span class="hidden md:inline">تخصيص الهوية</span>
+        </button>
+
+        <a href="./" class="text-xs px-3.5 py-1.5 rounded-xl bg-blue-600/30 text-blue-200 border border-blue-500/50 hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5 font-bold shadow-md shadow-blue-500/20" title="العودة لمعرض الأعمال">
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          <span>العودة للبرتفوليو والرئيسية</span>
+          <span class="hidden sm:inline">البرتفوليو</span>
         </a>
       </div>
 
     </div>
   </header>
 
-  <!-- Main Calculator Container -->
-  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+  <!-- Main Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
 
-    <!-- Banner Linking to the New Builder -->
-    <div class="mb-6">
-      <a href="builder.html" class="flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-600/20 border-2 border-amber-500/60 hover:border-amber-400 text-right transition group shadow-xl shadow-amber-500/10">
-        <div class="flex items-center gap-3">
-          <span class="text-3xl">🏗️</span>
-          <div>
-            <div class="text-sm font-black text-amber-300 flex items-center gap-2">
-              <span>جديد: منصة تفصيل وتشطيب الشقة خامة بخامة (زي تجميعات الكمبيوتر)</span>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-500 text-slate-950 animate-pulse">شطّب قطعة قطعة ⚡</span>
-            </div>
-            <p class="text-xs text-slate-300 mt-0.5">اختر بالماركة: سيراميك كليوباترا vs الجوهرة • دهانات جوتن • سلك السويدي • مصفح تركي • مع لوحة تعديل أسعار المون ⚙️</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-1.5 text-slate-950 font-black text-xs bg-amber-400 hover:bg-amber-300 px-4 py-2 rounded-xl shrink-0 transition shadow-md">
-          <span>شطّب شقتك قطعة قطعة 🏗️ ↗</span>
-        </div>
-      </a>
-    </div>
-    
-    <!-- Hero Headline -->
-    <div class="text-center max-w-2xl mx-auto space-y-2 mb-6">
-      <span class="text-xs px-3 py-1 rounded-full bg-amber-950/80 border border-amber-800/80 text-amber-300 font-bold">
-        ✨ حاسبة المقايسات والتسعير الفوري التفاعلي (Multi-Niche Cost Calculator)
+    <!-- Top Headline -->
+    <div class="text-center max-w-3xl mx-auto space-y-2 mb-6">
+      <span class="text-xs px-3.5 py-1 rounded-full bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-500/20 border border-amber-500/40 text-amber-300 font-black">
+        🏗️ نظام تسعير وتجميعات التشطيبات والمشاريع الاحترافي (Smart Quotation Engine)
       </span>
-      <h2 id="mainHeading" class="text-2xl sm:text-3xl font-extrabold text-white">
-        احسب التكلفة والمقايسة التقديرية في ثوانٍ
+      <h2 id="mainHeading" class="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+        اختر خامات ومواصفات شقتك بند بند وماركة بماركة
       </h2>
       <p id="mainDescription" class="text-xs sm:text-sm text-slate-400">
-        بدون انتظار جملة (التفاصيل إنبوكس)؛ حدد متطلباتك بدقة وشاهد التكلفة والجدول الزمني فوراً أمامك!
+        احسب تكلفة السيراميك والبورسلين، السلك والكهرباء، الدهانات، الصحي، والأبواب مع إمكانية تعديل الأسعار وطباعة مقايسة رسمية في ثواني!
       </p>
     </div>
 
-    <!-- Niche Selector Switcher Tabs -->
+    <!-- Main Niche Selector Switcher Tabs -->
     <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
       <button onclick="switchNiche('finishing')" id="tab-finishing" class="niche-btn tab-active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
         <i data-lucide="home" class="w-4 h-4"></i>
-        <span>1. تشطيبات وديكور</span>
+        <span>1. تشطيبات وديكور (تجميعة ومقايسة)</span>
       </button>
 
       <button onclick="switchNiche('realestate')" id="tab-realestate" class="niche-btn tab-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
         <i data-lucide="building-2" class="w-4 h-4"></i>
-        <span>2. أقساط عقارية</span>
+        <span>2. عقارات وأقساط</span>
       </button>
 
       <button onclick="switchNiche('clinic')" id="tab-clinic" class="niche-btn tab-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
@@ -184,7 +184,7 @@
 
       <button onclick="switchNiche('marketing')" id="tab-marketing" class="niche-btn tab-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
         <i data-lucide="megaphone" class="w-4 h-4"></i>
-        <span>4. باقات تسويق وإعلانات</span>
+        <span>4. باقات التسويق الرقمي</span>
       </button>
     </div>
 
@@ -193,19 +193,19 @@
       
       <!-- Left Column: Dynamic Inputs (7 Cols) -->
       <div id="nicheInputsArea" class="lg:col-span-7 space-y-6">
-        <!-- Injected via JavaScript based on active niche -->
+        <!-- Injected dynamically via JavaScript -->
       </div>
 
-      <!-- Right Column: Results & WhatsApp Lead Capture Card (5 Cols) -->
+      <!-- Right Column: Results & Lead Capture Card (5 Cols) -->
       <div class="lg:col-span-5 sticky top-20 space-y-4">
         
-        <div class="glass-panel p-6 rounded-2xl border-2 border-amber-500/40 shadow-2xl relative overflow-hidden">
+        <div class="glass-panel p-6 rounded-3xl border-2 border-amber-500/40 shadow-2xl relative overflow-hidden">
           <div class="absolute -top-12 -left-12 w-32 h-32 bg-amber-500/20 rounded-full blur-2xl pointer-events-none"></div>
 
           <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
             <div>
-              <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">نتيجة الحساب الفوري</span>
-              <h3 id="resultTitle" class="text-base font-bold text-white">إجمالي المقايسة التقديرية:</h3>
+              <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wider block">ملخص المقايسة التقديرية</span>
+              <h3 id="resultTitle" class="text-base font-bold text-white">إجمالي التكلفة المتوقعة:</h3>
             </div>
             <div class="px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold flex items-center gap-1">
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -214,44 +214,52 @@
           </div>
 
           <!-- Total Dynamic Price -->
-          <div class="py-2 text-center bg-slate-900/80 rounded-2xl border border-slate-800 mb-5">
+          <div class="py-3 text-center bg-slate-900/90 rounded-2xl border border-slate-800 mb-4 shadow-inner">
             <p class="text-3xl sm:text-4xl font-black text-amber-400 tracking-tight">
               <span id="totalPriceDisplay">0</span>
               <span class="text-sm font-normal text-slate-400 currency-tag">ج.م</span>
             </p>
-            <p id="totalPriceSubtext" class="text-[11px] text-slate-400 mt-1">شامل كافة المواصفات والبنود المختارة</p>
+            <div id="extraSummaryBadge" class="mt-1 text-xs text-slate-400 flex items-center justify-center gap-2">
+              <span id="summaryDurationText" class="text-amber-300 font-semibold">مدة التنفيذ: 55 - 75 يوم</span>
+            </div>
           </div>
 
-          <!-- Dynamic Breakdown Rows -->
-          <div id="breakdownContainer" class="space-y-2.5 text-xs border-b border-slate-800 pb-4 mb-4">
+          <!-- Dynamic Breakdown Rows / Spec Sheet -->
+          <div id="breakdownContainer" class="space-y-2 text-xs border-b border-slate-800 pb-4 mb-4 max-h-56 overflow-y-auto pr-1">
             <!-- Injected breakdown rows -->
           </div>
 
           <!-- Lead Form: Name & Phone -->
           <div class="space-y-3 pt-1">
             <label class="block text-xs font-bold text-slate-200">
-              بيانات اعتماد المقايسة والتواصل المباشر:
+              بيانات العميل لحفظ وطباعة المقايسة:
             </label>
 
             <div class="space-y-2">
               <div class="relative">
-                <input type="text" id="clientNameInput" placeholder="اكتب اسمك الكريم" class="w-full pl-3 pr-9 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-500 transition">
+                <input type="text" id="clientNameInput" placeholder="اسم العميل الكريم" class="w-full pl-3 pr-9 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-500 transition">
                 <i data-lucide="user" class="w-4 h-4 text-slate-400 absolute right-3 top-3"></i>
               </div>
 
               <div class="relative">
-                <input type="tel" id="clientPhoneInput" placeholder="رقم هاتفك للواتساب (010xxxxxxx)" class="w-full pl-3 pr-9 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-500 transition" dir="ltr">
+                <input type="tel" id="clientPhoneInput" placeholder="رقم هاتف العميل (010xxxxxxx)" class="w-full pl-3 pr-9 py-2.5 bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-500 transition" dir="ltr">
                 <i data-lucide="phone" class="w-4 h-4 text-slate-400 absolute right-3 top-3"></i>
               </div>
             </div>
 
+            <!-- Print PDF Quotation Button (for Finishing) -->
+            <button id="printQuotationBtn" onclick="printQuotationSheet()" class="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs flex items-center justify-center gap-2 border border-slate-700 transition cursor-pointer shadow-sm">
+              <i data-lucide="printer" class="w-4 h-4 text-amber-400"></i>
+              <span>طباعة وتنزيل المقايسة PDF معتمدة 📄</span>
+            </button>
+
             <!-- WhatsApp Action Button -->
-            <button id="sendWhatsappBtn" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-black text-sm flex items-center justify-center gap-2 glow-btn transition-all duration-200 mt-2">
+            <button id="sendWhatsappBtn" onclick="sendLeadToWhatsApp()" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-slate-950 font-black text-sm flex items-center justify-center gap-2 glow-btn transition-all duration-200 mt-2 cursor-pointer">
               <i data-lucide="message-square" class="w-5 h-5 fill-slate-950"></i>
-              <span id="ctaBtnText">اعتمد هذا العرض فوراً عبر واتساب</span>
+              <span id="ctaBtnText">إرسال تفاصيل المقايسة عبر الواتساب</span>
             </button>
             <p class="text-[10px] text-center text-slate-400">
-              سيتم فتح محادثة رسمية مع الشركة فوراً تحتوي على كافة تفاصيل اختيارك 🔒
+              يتم إرسال كافة بنود وماركات التشطيب المختارة مباشرة لرقم الواتساب 📲
             </p>
           </div>
 
@@ -263,13 +271,122 @@
 
   </main>
 
+  <!-- ⚙️ Admin Pricing Control Modal (تعديل أسعار المون والخامات) -->
+  <div id="pricingAdminModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="glass-panel max-w-2xl w-full rounded-3xl p-6 space-y-4 border border-amber-500/40 shadow-2xl max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div>
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="settings-2" class="w-5 h-5 text-amber-400"></i>
+            <span>لوحة تحكم وتعديل أسعار المون والخامات (خاصة بالشركة / المقاول)</span>
+          </h3>
+          <p class="text-[11px] text-slate-400">يمكنك تعديل تسعير المتر أو البند ليتم حساب المقايسة فوراً وفقاً لأسعار السوق اليوم</p>
+        </div>
+        <button onclick="closePricingModal()" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Pricing Fields Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سيراميك كليوباترا فرز 1 (ج.م/م²):</label>
+          <input type="number" id="adm_floor_cleo" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سيراميك الجوهرة فرز 1 (ج.م/م²):</label>
+          <input type="number" id="adm_floor_gawhara" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">بورسلين إسباني/هندي (ج.م/م²):</label>
+          <input type="number" id="adm_floor_porc" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">رخام كرارة وتركي مستورد (ج.م/م²):</label>
+          <input type="number" id="adm_floor_marble" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سباكة الشريف (تأسيس وتشطيب الحمام):</label>
+          <input type="number" id="adm_plumbing_std" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-cyan-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سباكة ديورافيت/إيديال ستاندرد (للحمام):</label>
+          <input type="number" id="adm_plumbing_super" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-cyan-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">أطقم جروهي ألماني دفن VIP (للحمام):</label>
+          <input type="number" id="adm_plumbing_vip" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-cyan-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">سلك السويدي الأصلي + فينوس (ج/م²):</label>
+          <input type="number" id="adm_elec_super" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">كهرباء سمارت هوم متكامل (ج/م²):</label>
+          <input type="number" id="adm_elec_smart" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-amber-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">دهانات سيبس 777 اقتصادية (ج/م² حوائط):</label>
+          <input type="number" id="adm_paint_sipes" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-purple-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">دهانات جوتن فينوماستيك + جبس (ج/م²):</label>
+          <input type="number" id="adm_paint_joton" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-purple-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">دهانات جوتن VIP وبديل رخام (ج/م²):</label>
+          <input type="number" id="adm_paint_decor" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-purple-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">أبواب مصفحة تركي + أبواب غرف + ألوميتال:</label>
+          <input type="number" id="adm_door_super" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-rose-400 font-bold">
+        </div>
+
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
+          <label class="block font-bold text-slate-300">باب إيطالي سمارت + ألوميتال جامبو دبل:</label>
+          <input type="number" id="adm_door_vip" class="w-full p-2 bg-slate-950 border border-slate-700 rounded-lg text-rose-400 font-bold">
+        </div>
+
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+        <button onclick="resetDefaultPrices()" class="text-xs text-rose-400 hover:text-rose-300 underline">
+          استعادة الأسعار الافتراضية
+        </button>
+        <div class="flex gap-2">
+          <button onclick="closePricingModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-bold transition">
+            إلغاء
+          </button>
+          <button onclick="saveAdminPrices()" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-black shadow-lg shadow-amber-500/20 transition">
+            حفظ وتطبيق فوراً ✨
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Customization & Export Modal (White-Label) -->
   <div id="brandingModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
     <div class="glass-panel max-w-lg w-full rounded-2xl p-6 space-y-4 border border-slate-700 shadow-2xl">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <h3 class="text-sm font-bold text-white flex items-center gap-2">
           <i data-lucide="building" class="w-4 h-4 text-amber-400"></i>
-          <span>لوحة تخصيص الأداة لأي شركة (White-Label)</span>
+          <span>تخصيص بيانات شركتك في الآلة الحاسبة</span>
         </h3>
         <button id="closeBrandingBtn" class="text-slate-400 hover:text-white">
           <i data-lucide="x" class="w-5 h-5"></i>
@@ -278,14 +395,14 @@
 
       <div class="space-y-3 text-xs">
         <div class="space-y-1">
-          <label class="block font-semibold text-slate-300">اسم شركة العميل:</label>
-          <input type="text" id="cfgBrandName" value="نيو ديزاين للتشطيبات والديكور" class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-slate-200">
+          <label class="block font-semibold text-slate-300">اسم شركتك أو علامتك التجارية:</label>
+          <input type="text" id="cfgBrandName" value="شطّب شقتك قطعة قطعة" class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-slate-200">
         </div>
 
         <div class="space-y-1">
-          <label class="block font-semibold text-slate-300">رقم واتساب الشركة (تصل عليه المقايسة فوراً):</label>
+          <label class="block font-semibold text-slate-300">رقم هاتف الواتساب (لاستقبال المقايسات):</label>
           <input type="text" id="cfgWhatsappPhone" value="201098174992" placeholder="مثال: 201098174992" class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-slate-200">
-          <p class="text-[10px] text-slate-500">مربوط حالياً برقم عبد السلام: 201098174992. غيره لرقم أي عميل ترغب في بيع الأداة له.</p>
+          <p class="text-[10px] text-slate-500">الرقم المعتمد لمصطفى عبد السلام: 201098174992</p>
         </div>
 
         <div class="grid grid-cols-2 gap-2">
@@ -300,42 +417,81 @@
             </select>
           </div>
           <div class="space-y-1">
-            <label class="block font-semibold text-slate-300">المجال الافتراضي عند الفتح:</label>
+            <label class="block font-semibold text-slate-300">القسم الافتراضي:</label>
             <select id="cfgDefaultNiche" class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-slate-200">
               <option value="finishing">تشطيبات وديكور</option>
-              <option value="realestate">أقساط عقارية</option>
+              <option value="realestate">عقارات وأقساط</option>
               <option value="clinic">عيادات وتجميل</option>
-              <option value="marketing">تسويق وإعلانات</option>
+              <option value="marketing">تسويق رقمي</option>
             </select>
           </div>
         </div>
       </div>
 
-      <div class="pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2">
-        <button id="exportHtmlBtn" class="px-3.5 py-2 bg-blue-600/30 hover:bg-blue-600 text-blue-300 hover:text-white border border-blue-500/40 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
-          <i data-lucide="download" class="w-4 h-4"></i>
-          <span>تحميل كملف HTML مستقل لتسليمه للعميل 📥</span>
+      <div class="pt-3 border-t border-slate-800 flex justify-end gap-2">
+        <button id="saveBrandingBtn" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-bold transition">
+          حفظ التغييرات
         </button>
-
-        <div class="flex gap-2">
-          <button id="saveBrandingBtn" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-bold transition">
-            حفظ وتطبيق فوراً
-          </button>
-        </div>
       </div>
     </div>
   </div>
 
-  <footer class="border-t border-slate-800/60 py-5 text-center text-xs text-slate-500 mt-12">
-    <p>برمجة وتطوير وكالة <span class="text-amber-400 font-bold">AM Marketing</span> | عبد السلام • 01098174992</p>
-    <p class="text-[11px] text-slate-600 mt-1">Interactive Lead Capture Engine • Proprietary Commercial Edition</p>
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/60 py-6 text-center text-xs text-slate-500 mt-12">
+    <p>تطوير وتصميم <span class="text-amber-400 font-bold">مصطفى عبد السلام (AM Marketing)</span> • هاتف وواتساب: <span class="font-bold text-slate-300">01098174992</span></p>
+    <p class="text-[11px] text-slate-600 mt-1">Smart Interactive Finishing Calculator & Lead Generation Engine</p>
   </footer>
 
   <script>
+    // --- 1. DEFAULT PRICING BENCHMARKS ---
+    const DEFAULT_PRICES = {
+      floor_cleo: 290,
+      floor_gawhara: 375,
+      floor_porc: 680,
+      floor_marble: 1150,
+      
+      plumbing_std: 14000,
+      plumbing_super: 21000,
+      plumbing_vip: 36000,
+      
+      elec_std: 120,
+      elec_super: 175,
+      elec_smart: 290,
+      
+      paint_sipes: 85,
+      paint_joton: 145,
+      paint_decor: 230,
+      
+      door_basic: 24000,
+      door_super: 48000,
+      door_vip: 78000
+    };
+
+    let prices = { ...DEFAULT_PRICES };
+    let savedPrices = localStorage.getItem('cfg_finishing_prices');
+    if (savedPrices) {
+      try { prices = { ...DEFAULT_PRICES, ...JSON.parse(savedPrices) }; } catch(e){}
+    }
+
     let activeNiche = 'finishing';
+    let finishingMode = 'configurator'; // 'configurator' (pieces) or 'packages' (quick)
+
+    // User's active selections for finishing
+    let build = {
+      area: 120,
+      rooms: 3,
+      baths: 2,
+      plumbing: 'super',
+      electric: 'super',
+      flooring: 'gawhara',
+      paint: 'joton_gypsum',
+      doors: 'super_turk'
+    };
+
+    let latestSummary = {};
 
     let config = {
-      brandName: localStorage.getItem('calc_brandName') || "نيو ديزاين للتشطيبات والاستثمار",
+      brandName: localStorage.getItem('calc_brandName') || "شطّب شقتك قطعة قطعة",
       companyPhone: localStorage.getItem('calc_companyPhone') || "201098174992",
       currency: localStorage.getItem('calc_currency') || "ج.م",
       defaultNiche: localStorage.getItem('calc_defaultNiche') || "finishing"
@@ -346,6 +502,7 @@
       applyBranding();
       renderActiveNiche();
       setupGlobalListeners();
+      lucide.createIcons();
     });
 
     function applyBranding() {
@@ -369,6 +526,13 @@
       if (activeBtn) {
         activeBtn.className = "niche-btn tab-active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition";
       }
+
+      // Show/hide PDF print button based on finishing
+      const printBtn = document.getElementById('printQuotationBtn');
+      if (printBtn) {
+        printBtn.style.display = (activeNiche === 'finishing') ? 'flex' : 'none';
+      }
+
       renderActiveNiche();
     }
 
@@ -389,119 +553,692 @@
       recalcCurrent();
     }
 
-    // --- NICHE 1: FINISHING ---
+    // --- NICHE 1: FINISHING (PARTS BUILDER + PACKAGES) ---
+    function setFinishingMode(mode) {
+      finishingMode = mode;
+      renderFinishingInputs(document.getElementById('nicheInputsArea'));
+      lucide.createIcons();
+      recalcCurrent();
+    }
+
     function renderFinishingInputs(container) {
-      document.getElementById('mainHeading').textContent = "كم تكلفة تشطيب وحدتك السكنية؟";
-      document.getElementById('mainDescription').textContent = "حدد المساحة، اختر باقة التشطيب والإضافات، وشاهد التكلفة التقديرية ومدة التنفيذ فوراً أمامك!";
-      document.getElementById('resultTitle').textContent = "إجمالي مقايسة التشطيب:";
-      document.getElementById('ctaBtnText').textContent = "اعتمد هذه المقايسة عبر واتساب";
+      document.getElementById('mainHeading').textContent = "اختر خامات شقتك بنفسك.. بند بند وماركة بماركة";
+      document.getElementById('mainDescription').textContent = "احسب تكلفة السيراميك (كليوباترا والجوهرة)، السلك (السويدي الأصلي)، الدهانات (جوتن وسيبس)، السباكة (الشريف وجروهي)، والأبواب في ثواني!";
+      document.getElementById('resultTitle').textContent = "إجمالي تكلفة التشطيب:";
+      document.getElementById('ctaBtnText').textContent = "إرسال تفاصيل التجميعة والمقايسة بالواتساب";
 
-      container.innerHTML = `
-        <!-- Area Slider -->
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
-          <div class="flex items-center justify-between">
+      if (finishingMode === 'configurator') {
+        container.innerHTML = `
+          <!-- Mode Switcher Banner -->
+          <div class="flex items-center justify-between p-3.5 bg-slate-900/90 border border-amber-500/30 rounded-2xl">
             <div class="flex items-center gap-2">
-              <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">1</span>
-              <label class="text-sm font-bold text-slate-200">مساحة الشقة بالمتر المربع:</label>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+              <span class="text-xs font-bold text-amber-300">الوضع المتقدم: تفصيل المون والخامات قطعة قطعة (PC PartPicker)</span>
             </div>
-            <div class="text-amber-400 font-black text-lg bg-slate-900 px-3 py-1 rounded-xl border border-slate-800">
-              <span id="f_areaDisplay">120</span> <span class="text-xs font-normal text-slate-400">م²</span>
-            </div>
+            <button onclick="setFinishingMode('packages')" class="text-xs text-slate-400 hover:text-white underline">
+              التبديل إلى الباقات السريعة
+            </button>
           </div>
-          <div class="space-y-2 pt-1">
-            <input type="range" id="f_areaSlider" min="50" max="400" step="5" value="120" oninput="document.getElementById('f_areaDisplay').textContent = this.value; recalcCurrent();">
-            <div class="flex justify-between text-[11px] text-slate-500 font-semibold px-1">
-              <span>50 م² (استوديو)</span>
-              <span>150 م² (متوسط)</span>
-              <span>250 م² (كبير)</span>
-              <span>400 م² (دوبلكس/فيلا)</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- Package Radio Cards -->
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
-          <div class="flex items-center gap-2">
-            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">2</span>
-            <label class="text-sm font-bold text-slate-200">اختر نوع باقة التشطيب:</label>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-            <label class="f-pkg p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
-              <input type="radio" name="f_package" value="3000" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
-              <span class="text-xs font-bold text-slate-300">باقة اقتصادية</span>
-              <span class="text-base font-extrabold text-amber-400 mt-1">3,000 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/م²</span></span>
-              <p class="text-[10px] text-slate-500 mt-2">دهانات سايبس، سيراميك فرز أول، كهرباء فينوس، وتأسيس صحي معتمد.</p>
-            </label>
-            <label class="f-pkg active border-2 border-amber-500 shadow-lg shadow-amber-500/10 p-4 rounded-xl bg-slate-900 cursor-pointer flex flex-col relative">
-              <span class="absolute -top-2.5 right-3 px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-extrabold text-[9px]">الأكثر طلباً ⭐</span>
-              <input type="radio" name="f_package" value="4500" checked class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
-              <span class="text-xs font-bold text-slate-100">باقة سوبر لوكس</span>
-              <span class="text-base font-extrabold text-amber-400 mt-1">4,500 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/م²</span></span>
-              <p class="text-[10px] text-slate-400 mt-2">بورسلين مستورد، دهانات جوتن، أبواب قشرة أرو، ديكورات جبسوم بورد.</p>
-            </label>
-            <label class="f-pkg p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
-              <input type="radio" name="f_package" value="6500" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
-              <span class="text-xs font-bold text-slate-300">باقة الترا VIP</span>
-              <span class="text-base font-extrabold text-amber-400 mt-1">6,500 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/م²</span></span>
-              <p class="text-[10px] text-slate-500 mt-2">أرضيات رخام إمبرادور، حمامات معلقة جروهي، تجاليد خشب ومواصفات فندقية.</p>
-            </label>
-          </div>
-        </div>
+          <!-- Step 1: Unit Size & Structure -->
+          <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 font-black text-xs flex items-center justify-center border border-amber-500/30">1</span>
+                <div>
+                  <h3 class="text-sm sm:text-base font-bold text-white">مساحة وتفاصيل الشقة</h3>
+                  <p class="text-[11px] text-slate-400">حدد المساحة الصافية وعدد الغرف والحمامات لحساب الكميات بدقة</p>
+                </div>
+              </div>
+              <div class="text-amber-400 font-black text-lg bg-slate-900 px-3.5 py-1 rounded-xl border border-slate-800">
+                <span id="f_areaDisplay">${build.area}</span> <span class="text-xs font-normal text-slate-400">م²</span>
+              </div>
+            </div>
 
-        <!-- Addons -->
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
-          <div class="flex items-center gap-2">
-            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">3</span>
-            <label class="text-sm font-bold text-slate-200">إضافات وتجهيزات اختيارية:</label>
+            <div class="space-y-2 pt-1">
+              <input type="range" id="f_areaSlider" min="50" max="400" step="5" value="${build.area}" oninput="updateUnitArea(this.value)">
+              <div class="flex justify-between text-[11px] text-slate-500 font-semibold px-1">
+                <span>50 م² (استوديو)</span>
+                <span>120 م² (شقة متوسطة)</span>
+                <span>200 م² (شقة كبيرة)</span>
+                <span>400 م² (دوبلكس/فيلا)</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">عدد الغرف:</span>
+                  <span class="text-[10px] text-slate-500">لحساب الأبواب والمفاتيح</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button type="button" onclick="adjustCount('rooms', -1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center">-</button>
+                  <input type="number" id="roomsInput" value="${build.rooms}" min="1" max="8" class="w-10 text-center bg-transparent font-bold text-amber-400 text-sm focus:outline-none" readonly>
+                  <button type="button" onclick="adjustCount('rooms', 1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center">+</button>
+                </div>
+              </div>
+
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">عدد الحمامات:</span>
+                  <span class="text-[10px] text-slate-500">لحساب أطقم السباكة والعزل</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button type="button" onclick="adjustCount('baths', -1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center">-</button>
+                  <input type="number" id="bathsInput" value="${build.baths}" min="1" max="5" class="w-10 text-center bg-transparent font-bold text-amber-400 text-sm focus:outline-none" readonly>
+                  <button type="button" onclick="adjustCount('baths', 1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center">+</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-            <label class="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 cursor-pointer transition">
+
+          <!-- Step 2: Ceramic & Porcelain Flooring -->
+          <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
               <div class="flex items-center gap-2.5">
-                <input type="checkbox" id="f_addon_3d" value="10000" onchange="recalcCurrent();" class="w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-600 focus:ring-0">
-                <span class="text-xs font-semibold text-slate-200">تصميم 3D معماري</span>
+                <span class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 font-black text-xs flex items-center justify-center border border-amber-500/30">2</span>
+                <div>
+                  <h3 class="text-sm sm:text-base font-bold text-white">سيراميك وبورسلين الأرضيات والحوائط</h3>
+                  <p class="text-[11px] text-slate-400">شامل خامات اللصق والأسمنت والمصنعية المتخصصة</p>
+                </div>
               </div>
-              <span class="text-xs font-bold text-amber-400">+10,000 <span class="currency-tag">${config.currency}</span></span>
-            </label>
-            <label class="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 cursor-pointer transition">
-              <div class="flex items-center gap-2.5">
-                <input type="checkbox" id="f_addon_smart" value="25000" onchange="recalcCurrent();" class="w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-600 focus:ring-0">
-                <span class="text-xs font-semibold text-slate-200">تأسيس سمارت هوم</span>
-              </div>
-              <span class="text-xs font-bold text-amber-400">+25,000 <span class="currency-tag">${config.currency}</span></span>
-            </label>
-            <label class="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 cursor-pointer transition">
-              <div class="flex items-center gap-2.5">
-                <input type="checkbox" id="f_addon_acoustic" value="15000" onchange="recalcCurrent();" class="w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-600 focus:ring-0">
-                <span class="text-xs font-semibold text-slate-200">عزل صوت وحرارة</span>
-              </div>
-              <span class="text-xs font-bold text-amber-400">+15,000 <span class="currency-tag">${config.currency}</span></span>
-            </label>
-            <label class="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 cursor-pointer transition">
-              <div class="flex items-center gap-2.5">
-                <input type="checkbox" id="f_addon_kitchen" value="40000" onchange="recalcCurrent();" class="w-4 h-4 rounded text-amber-500 bg-slate-800 border-slate-600 focus:ring-0">
-                <span class="text-xs font-semibold text-slate-200">مطبخ مودرن HPL</span>
-              </div>
-              <span class="text-xs font-bold text-amber-400">+40,000 <span class="currency-tag">${config.currency}</span></span>
-            </label>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-amber-400 border border-amber-500/30 font-bold">بالمتر المربع</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <!-- Cleopatra -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.flooring === 'cleopatra' ? 'selected' : ''}" onclick="selectOption('flooring', 'cleopatra', this)">
+                <input type="radio" name="flooring_tier" value="cleopatra" ${build.flooring === 'cleopatra' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">سيراميك كليوباترا فرز أول</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">للشقة بالكامل وحوائط المطبخ والحمام فرز أول معتمد.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800 flex justify-between items-center">
+                  <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="floor_cleo">${prices.floor_cleo}</span> ج.م/م²</span>
+                  <span class="text-[10px] text-slate-500">اقتصادي ومضمون</span>
+                </div>
+              </label>
+
+              <!-- Gawhara -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.flooring === 'gawhara' ? 'selected' : ''}" onclick="selectOption('flooring', 'gawhara', this)">
+                <input type="radio" name="flooring_tier" value="gawhara" ${build.flooring === 'gawhara' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-white">سيراميك الجوهرة فاخر فرز 1</span>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold">الأكثر طلباً ⭐</span>
+                  </div>
+                  <span class="text-[11px] text-slate-400 mt-1 block">تصاميم ليزر مودرن مقاومة للخدش بأعلى دقة مقاسات.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800 flex justify-between items-center">
+                  <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="floor_gawhara">${prices.floor_gawhara}</span> ج.م/م²</span>
+                  <span class="text-[10px] text-amber-400/80">فاخر سوبر لوكس</span>
+                </div>
+              </label>
+
+              <!-- Porcelain -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.flooring === 'porcelain' ? 'selected' : ''}" onclick="selectOption('flooring', 'porcelain', this)">
+                <input type="radio" name="flooring_tier" value="porcelain" ${build.flooring === 'porcelain' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">بورسلين إسباني / هندي مستورد</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">قطع ليزر كبير 60x120 مع مادة لصق مخصصة بالكامل.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800 flex justify-between items-center">
+                  <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="floor_porc">${prices.floor_porc}</span> ج.م/م²</span>
+                  <span class="text-[10px] text-slate-500">الترا لوكس</span>
+                </div>
+              </label>
+
+              <!-- Marble -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.flooring === 'marble' ? 'selected' : ''}" onclick="selectOption('flooring', 'marble', this)">
+                <input type="radio" name="flooring_tier" value="marble" ${build.flooring === 'marble' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">رخام كرارة وتركي مستورد VIP</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">أرضيات ريسبشن رخام طبيعي مع جلي وتلميع بالكريستال.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800 flex justify-between items-center">
+                  <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="floor_marble">${prices.floor_marble}</span> ج.م/م²</span>
+                  <span class="text-[10px] text-purple-400 font-bold">قصر ملكي VIP</span>
+                </div>
+              </label>
+            </div>
           </div>
-        </div>
-      `;
+
+          <!-- Step 3: Electrical & Smart Home -->
+          <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 font-black text-xs flex items-center justify-center border border-amber-500/30">3</span>
+                <div>
+                  <h3 class="text-sm sm:text-base font-bold text-white">تأسيس وتشطيب الكهرباء</h3>
+                  <p class="text-[11px] text-slate-400">سحب الأسلاك، اللوحات الرئيسية، ومفاتيح الإنارة وتجهيز التكييف</p>
+                </div>
+              </div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-amber-400 border border-amber-500/30 font-bold">معتمد بالفواتير</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Elec 1 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.electric === 'standard' ? 'selected' : ''}" onclick="selectOption('electric', 'standard', this)">
+                <input type="radio" name="electric_tier" value="standard" ${build.electric === 'standard' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">سلك معتمد + فينوس اقتصادي</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">تأسيس خراطيم وسحب سلك + مفاتيح فينوس لايت.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="elec_std">${prices.elec_std}</span> ج.م/م²</span>
+                </div>
+              </label>
+
+              <!-- Elec 2 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.electric === 'super' ? 'selected' : ''}" onclick="selectOption('electric', 'super', this)">
+                <input type="radio" name="electric_tier" value="super" ${build.electric === 'super' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-white">السويدي الأصلي + سانشي</span>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold">الأمان الأول ⚡</span>
+                  </div>
+                  <span class="text-[11px] text-slate-400 mt-1 block">سلك السويدي كابلات أصلي + مفاتيح سانشي/فينوس بضمان مدى الحياة.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="elec_super">${prices.elec_super}</span> ج.م/م²</span>
+                </div>
+              </label>
+
+              <!-- Elec 3 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.electric === 'smart' ? 'selected' : ''}" onclick="selectOption('electric', 'smart', this)">
+                <input type="radio" name="electric_tier" value="smart" ${build.electric === 'smart' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">سمارت هوم + لوحة داتا وصوتيات</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">تحكم ذكي بالموبايل + ساوند سيستم داخلي + تجهيز كاميرات وإنترنت.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-amber-400"><span class="price-val" data-key="elec_smart">${prices.elec_smart}</span> ج.م/م²</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 4: Paints & Gypsum Board -->
+          <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-xl bg-purple-500/20 text-purple-400 font-black text-xs flex items-center justify-center border border-purple-500/30">4</span>
+                <div>
+                  <h3 class="text-sm sm:text-base font-bold text-white">الدهانات والجبسم بورد والديكورات</h3>
+                  <p class="text-[11px] text-slate-400">سيلر، معجون 3 سكينات، بطانات، وفينش قابل للغسيل</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Paint 1 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.paint === 'sipes' ? 'selected' : ''}" onclick="selectOption('paint', 'sipes', this)">
+                <input type="radio" name="paint_tier" value="sipes" ${build.paint === 'sipes' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">دهانات سيبس 777 اقتصادية</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">سيلر وتأسيس معجون + فينش سيبس مطفي أو نصف لمعة.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-purple-400"><span class="price-val" data-key="paint_sipes">${prices.paint_sipes}</span> ج.م/م²</span>
+                </div>
+              </label>
+
+              <!-- Paint 2 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.paint === 'joton_gypsum' ? 'selected' : ''}" onclick="selectOption('paint', 'joton_gypsum', this)">
+                <input type="radio" name="paint_tier" value="joton_gypsum" ${build.paint === 'joton_gypsum' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-white">جوتن فينوماستيك + بيت نور</span>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-bold">جوتن أصلية 🎨</span>
+                  </div>
+                  <span class="text-[11px] text-slate-400 mt-1 block">جوتن فينوماستيك قابل للغسيل + جبسم بورد كناوف بيت نور للريسبشن.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-purple-400"><span class="price-val" data-key="paint_joton">${prices.paint_joton}</span> ج.م/م²</span>
+                </div>
+              </label>
+
+              <!-- Paint 3 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.paint === 'joton_decor' ? 'selected' : ''}" onclick="selectOption('paint', 'joton_decor', this)">
+                <input type="radio" name="paint_tier" value="joton_decor" ${build.paint === 'joton_decor' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">جوتن ليدي + ديكورات بديل رخام</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">فينش فاخر مخملي + بانوهات فيوتك وبديل خشب ورخام ومرايات ليد.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-purple-400"><span class="price-val" data-key="paint_decor">${prices.paint_decor}</span> ج.م/م²</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 5: Plumbing & Sanitation -->
+          <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-xl bg-cyan-500/20 text-cyan-400 font-black text-xs flex items-center justify-center border border-cyan-500/30">5</span>
+                <div>
+                  <h3 class="text-sm sm:text-base font-bold text-white">السباكة والأطقم الصحية والعزل</h3>
+                  <p class="text-[11px] text-slate-400">تأسيس مواسير بضمان معتمد + عزل كيميائي للأرضيات + أطقم وخلاطات</p>
+                </div>
+              </div>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-cyan-400 border border-cyan-500/30 font-bold">لكل حمام ومطبخ</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Plumbing 1 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.plumbing === 'standard' ? 'selected' : ''}" onclick="selectOption('plumbing', 'standard', this)">
+                <input type="radio" name="plumbing_tier" value="standard" ${build.plumbing === 'standard' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">الشريف بولي بروبلين + خلاطات تركي</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">تأسيس وصرف معتمد + قاعدة وحوض صيني وخلاطات ضمان 5 سنوات.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-cyan-400"><span class="price-val" data-key="plumbing_std">${prices.plumbing_std}</span> ج.م/حمام</span>
+                </div>
+              </label>
+
+              <!-- Plumbing 2 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.plumbing === 'super' ? 'selected' : ''}" onclick="selectOption('plumbing', 'super', this)">
+                <input type="radio" name="plumbing_tier" value="super" ${build.plumbing === 'super' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-white">ديورافيت / إيديال ستاندرد</span>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold">ماركات معتمدة 🚿</span>
+                  </div>
+                  <span class="text-[11px] text-slate-400 mt-1 block">أطقم ديورافيت أصلية + كابينة شاور سيكوريت + خلاطات إيديال ضمان 10 سنوات.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-cyan-400"><span class="price-val" data-key="plumbing_super">${prices.plumbing_super}</span> ج.م/حمام</span>
+                </div>
+              </label>
+
+              <!-- Plumbing 3 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.plumbing === 'grohe_vip' ? 'selected' : ''}" onclick="selectOption('plumbing', 'grohe_vip', this)">
+                <input type="radio" name="plumbing_tier" value="grohe_vip" ${build.plumbing === 'grohe_vip' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">جروهي ألماني دفن فاخر VIP</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">شاسيهات معلقة دفن جروهي الأصلية + دش مطري وحوض رخام طبيعي.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-cyan-400"><span class="price-val" data-key="plumbing_vip">${prices.plumbing_vip}</span> ج.م/حمام</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 6: Doors & Windows -->
+          <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-xl bg-rose-500/20 text-rose-400 font-black text-xs flex items-center justify-center border border-rose-500/30">6</span>
+                <div>
+                  <h3 class="text-sm sm:text-base font-bold text-white">الأبواب والشبابيك والألوميتال</h3>
+                  <p class="text-[11px] text-slate-400">باب شقة مصفح أمان + أبواب الغرف + ألوميتال الواجهات والبلكونات</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Doors 1 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.doors === 'basic' ? 'selected' : ''}" onclick="selectOption('doors', 'basic', this)">
+                <input type="radio" name="doors_tier" value="basic" ${build.doors === 'basic' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">أبواب جاهزة + ألوميتال اقتصادي</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">باب شقة صيني ثقيل + أبواب غرف جاهزة + ألوميتال خفيف للمنافذ.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-rose-400"><span class="price-val" data-key="door_basic">${prices.door_basic}</span> ج.م إجمالي البند</span>
+                </div>
+              </label>
+
+              <!-- Doors 2 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.doors === 'super_turk' ? 'selected' : ''}" onclick="selectOption('doors', 'super_turk', this)">
+                <input type="radio" name="doors_tier" value="super_turk" ${build.doors === 'super_turk' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-white">مصفح تركي + أرو + ألوميتال PS</span>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold">الموصى به 🚪</span>
+                  </div>
+                  <span class="text-[11px] text-slate-400 mt-1 block">باب شقة مصفح تركي 80 كجم + أبواب غرف خشب قشرة أرو + ألوميتال PS عازل للصوت.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-rose-400"><span class="price-val" data-key="door_super">${prices.door_super}</span> ج.م إجمالي البند</span>
+                </div>
+              </label>
+
+              <!-- Doors 3 -->
+              <label class="step-card p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex flex-col justify-between ${build.doors === 'jumbo_vip' ? 'selected' : ''}" onclick="selectOption('doors', 'jumbo_vip', this)">
+                <input type="radio" name="doors_tier" value="jumbo_vip" ${build.doors === 'jumbo_vip' ? 'checked' : ''} class="sr-only">
+                <div>
+                  <span class="text-xs font-bold text-slate-200 block">مصفح إيطالي سمارت + ألوميتال جامبو</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">باب ذكي ببصمة وكارت + أبواب خشب طبيعي زان + ألوميتال جامبو دبل عازل تماماً.</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-800">
+                  <span class="text-xs font-black text-rose-400"><span class="price-val" data-key="door_vip">${prices.door_vip}</span> ج.م إجمالي البند</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        `;
+      } else {
+        // Quick packages mode
+        container.innerHTML = `
+          <!-- Mode Switcher Banner -->
+          <div class="flex items-center justify-between p-3.5 bg-slate-900/90 border border-amber-500/30 rounded-2xl">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-400 animate-pulse"></span>
+              <span class="text-xs font-bold text-slate-200">الوضع السريع: باقات تشطيب كاملة جاهزة للمتر</span>
+            </div>
+            <button onclick="setFinishingMode('configurator')" class="text-xs text-amber-400 hover:text-amber-300 font-bold underline">
+              التبديل إلى حاسبة التجميعة (بند بند وماركة بماركة) ✨
+            </button>
+          </div>
+
+          <!-- Area Slider -->
+          <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">1</span>
+                <label class="text-sm font-bold text-slate-200">المساحة الإجمالية للشقة:</label>
+              </div>
+              <div class="text-amber-400 font-black text-lg bg-slate-900 px-3 py-1 rounded-xl border border-slate-800">
+                <span id="pkg_areaDisplay">120</span> <span class="text-xs font-normal text-slate-400">م²</span>
+              </div>
+            </div>
+            <div class="space-y-2 pt-1">
+              <input type="range" id="pkg_areaSlider" min="50" max="400" step="5" value="120" oninput="document.getElementById('pkg_areaDisplay').textContent = this.value; recalcCurrent();">
+              <div class="flex justify-between text-[11px] text-slate-500 font-semibold px-1">
+                <span>50 م²</span>
+                <span>120 م²</span>
+                <span>200 م²</span>
+                <span>400 م²</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package Radio Cards -->
+          <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">2</span>
+              <label class="text-sm font-bold text-slate-200">اختر مستوى وباقة التشطيب:</label>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              <label class="f-pkg p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
+                <input type="radio" name="f_package" value="3200" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
+                <span class="text-xs font-bold text-slate-300">باقة اقتصادي لوكس</span>
+                <span class="text-base font-extrabold text-amber-400 mt-1">3,200 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/م²</span></span>
+                <p class="text-[10px] text-slate-500 mt-2">سيراميك كليوباترا، دهانات سيبس، أسلاك معتمدة، تسليم على المفتاح.</p>
+              </label>
+              <label class="f-pkg active border-2 border-amber-500 shadow-lg shadow-amber-500/10 p-4 rounded-xl bg-slate-900 cursor-pointer flex flex-col relative">
+                <span class="absolute -top-2.5 right-3 px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-extrabold text-[9px]">الأكثر طلباً ⭐</span>
+                <input type="radio" name="f_package" value="4800" checked class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
+                <span class="text-xs font-bold text-slate-100">باقة سوبر لوكس بلس</span>
+                <span class="text-base font-extrabold text-amber-400 mt-1">4,800 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/م²</span></span>
+                <p class="text-[10px] text-slate-400 mt-2">سيراميك الجوهرة، سلك السويدي، دهانات جوتن فينوماستيك، بيت نور جبسم بورد كناوف.</p>
+              </label>
+              <label class="f-pkg p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
+                <input type="radio" name="f_package" value="6900" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
+                <span class="text-xs font-bold text-slate-300">باقة الترا لوكس VIP</span>
+                <span class="text-base font-extrabold text-amber-400 mt-1">6,900 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/م²</span></span>
+                <p class="text-[10px] text-slate-500 mt-2">بورسلين إسباني، أطقم جروهي دفن، دهانات ليدي، بديل رخام وخشب، ألوميتال جامبو عازل.</p>
+              </label>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // --- QUANTITY ADJUSTMENTS ---
+    function updateUnitArea(val) {
+      build.area = parseInt(val) || 120;
+      const el = document.getElementById('f_areaDisplay');
+      if (el) el.textContent = build.area;
+      recalcCurrent();
+    }
+
+    function adjustCount(type, delta) {
+      if (type === 'rooms') {
+        build.rooms = Math.min(8, Math.max(1, build.rooms + delta));
+        const inp = document.getElementById('roomsInput');
+        if (inp) inp.value = build.rooms;
+      } else if (type === 'baths') {
+        build.baths = Math.min(5, Math.max(1, build.baths + delta));
+        const inp = document.getElementById('bathsInput');
+        if (inp) inp.value = build.baths;
+      }
+      recalcCurrent();
+    }
+
+    function selectOption(category, value, cardElement) {
+      build[category] = value;
+      const parent = cardElement.closest('.glass-panel');
+      if (parent) {
+        parent.querySelectorAll('.step-card').forEach(c => c.classList.remove('selected'));
+      }
+      cardElement.classList.add('selected');
+      const radio = cardElement.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
+      recalcCurrent();
+    }
+
+    // --- RECALCULATION ENGINE ---
+    function recalcCurrent() {
+      let total = 0;
+      const breakdownEl = document.getElementById('breakdownContainer');
+      const durationBadge = document.getElementById('summaryDurationText');
+      const printBtn = document.getElementById('printQuotationBtn');
+
+      if (activeNiche === 'finishing') {
+        if (printBtn) printBtn.style.display = 'flex';
+
+        if (finishingMode === 'configurator') {
+          const area = build.area;
+          const baths = build.baths;
+          const rooms = build.rooms;
+
+          // 1. Plumbing
+          const plumbingKey = build.plumbing === 'standard' ? 'plumbing_std' : (build.plumbing === 'grohe_vip' ? 'plumbing_vip' : 'plumbing_super');
+          const plumbingCost = baths * (prices[plumbingKey] || DEFAULT_PRICES[plumbingKey]);
+          const plumbingNames = { standard: 'الشريف بولي + خلاطات تركي', super: 'ديورافيت/إيديال ستاندرد', grohe_vip: 'جروهي ألماني دفن VIP' };
+
+          // 2. Electric
+          const elecKey = build.electric === 'standard' ? 'elec_std' : (build.electric === 'smart' ? 'elec_smart' : 'elec_super');
+          const electricCost = area * (prices[elecKey] || DEFAULT_PRICES[elecKey]);
+          const elecNames = { standard: 'سلك معتمد + فينوس اقتصادي', super: 'السويدي الأصلي + سانشي', smart: 'سمارت هوم + لوحة داتا' };
+
+          // 3. Flooring
+          const floorKey = build.flooring === 'cleopatra' ? 'floor_cleo' : (build.flooring === 'porcelain' ? 'floor_porc' : (build.flooring === 'marble' ? 'floor_marble' : 'floor_gawhara'));
+          const flooringCost = area * (prices[floorKey] || DEFAULT_PRICES[floorKey]);
+          const floorNames = { cleopatra: 'سيراميك كليوباترا فرز 1', gawhara: 'سيراميك الجوهرة فاخر فرز 1', porcelain: 'بورسلين إسباني/هندي مستورد', marble: 'رخام كرارة وتركي مستورد VIP' };
+
+          // 4. Paint & Gypsum
+          const paintKey = build.paint === 'sipes' ? 'paint_sipes' : (build.paint === 'joton_decor' ? 'paint_decor' : 'paint_joton');
+          const paintCost = Math.round(area * 2.5 * (prices[paintKey] || DEFAULT_PRICES[paintKey]));
+          const paintNames = { sipes: 'دهانات سيبس 777 اقتصادية', joton_gypsum: 'جوتن فينوماستيك + بيت نور', joton_decor: 'جوتن ليدي + ديكورات بديل رخام' };
+
+          // 5. Doors & Windows
+          const doorKey = build.doors === 'basic' ? 'door_basic' : (build.doors === 'jumbo_vip' ? 'door_vip' : 'door_super');
+          const doorsMultiplier = area > 180 ? 1.3 : (area > 120 ? 1.1 : 1.0);
+          const doorsCost = Math.round((prices[doorKey] || DEFAULT_PRICES[doorKey]) * doorsMultiplier);
+          const doorNames = { basic: 'أبواب جاهزة + ألوميتال خفيف', super_turk: 'مصفح تركي 80 كجم + أرو + ألوميتال PS', jumbo_vip: 'مصفح إيطالي سمارت + ألوميتال جامبو' };
+
+          total = plumbingCost + electricCost + flooringCost + paintCost + doorsCost;
+          const minDays = Math.max(45, Math.round(area * 0.45));
+          const maxDays = Math.max(60, Math.round(area * 0.65));
+          const durationStr = `${minDays} - ${maxDays} يوم عمل`;
+
+          if (durationBadge) durationBadge.textContent = `مدة التنفيذ التقريبية: ${durationStr}`;
+
+          latestSummary = {
+            niche: 'finishing',
+            mode: 'configurator',
+            area,
+            rooms,
+            baths,
+            duration: durationStr,
+            total,
+            plumbingName: plumbingNames[build.plumbing],
+            plumbingCost,
+            elecName: elecNames[build.electric],
+            electricCost,
+            floorName: floorNames[build.flooring],
+            flooringCost,
+            paintName: paintNames[build.paint],
+            paintCost,
+            doorName: doorNames[build.doors],
+            doorsCost
+          };
+
+          breakdownEl.innerHTML = `
+            <div class="flex justify-between py-1.5 border-b border-slate-800/60 text-slate-300">
+              <span class="truncate max-w-[210px]">1. السباكة: ${plumbingNames[build.plumbing]}</span>
+              <span class="font-bold text-white shrink-0">${plumbingCost.toLocaleString('en-US')} ${config.currency}</span>
+            </div>
+            <div class="flex justify-between py-1.5 border-b border-slate-800/60 text-slate-300">
+              <span class="truncate max-w-[210px]">2. الكهرباء: ${elecNames[build.electric]}</span>
+              <span class="font-bold text-white shrink-0">${electricCost.toLocaleString('en-US')} ${config.currency}</span>
+            </div>
+            <div class="flex justify-between py-1.5 border-b border-slate-800/60 text-slate-300">
+              <span class="truncate max-w-[210px]">3. الأرضيات: ${floorNames[build.flooring]}</span>
+              <span class="font-bold text-white shrink-0">${flooringCost.toLocaleString('en-US')} ${config.currency}</span>
+            </div>
+            <div class="flex justify-between py-1.5 border-b border-slate-800/60 text-slate-300">
+              <span class="truncate max-w-[210px]">4. الدهانات: ${paintNames[build.paint]}</span>
+              <span class="font-bold text-white shrink-0">${paintCost.toLocaleString('en-US')} ${config.currency}</span>
+            </div>
+            <div class="flex justify-between py-1.5 text-slate-300">
+              <span class="truncate max-w-[210px]">5. الأبواب: ${doorNames[build.doors]}</span>
+              <span class="font-bold text-white shrink-0">${doorsCost.toLocaleString('en-US')} ${config.currency}</span>
+            </div>
+          `;
+        } else {
+          // Quick packages mode
+          const area = parseInt(document.getElementById('pkg_areaSlider')?.value) || 120;
+          const pkgRadio = document.querySelector('input[name="f_package"]:checked');
+          const rate = parseInt(pkgRadio ? pkgRadio.value : 4800);
+          total = area * rate;
+          const durationStr = area > 180 ? "75 - 90 يوم عمل" : "45 - 60 يوم عمل";
+          if (durationBadge) durationBadge.textContent = `مدة التنفيذ التقريبية: ${durationStr}`;
+
+          latestSummary = {
+            niche: 'finishing',
+            mode: 'packages',
+            area,
+            rate,
+            total,
+            duration: durationStr
+          };
+
+          breakdownEl.innerHTML = `
+            <div class="flex justify-between py-1 text-slate-300">
+              <span>المساحة المحسوبة:</span>
+              <span class="font-bold text-white">${area} م²</span>
+            </div>
+            <div class="flex justify-between py-1 text-slate-300">
+              <span>سعر المتر المربع:</span>
+              <span class="font-bold text-white">${rate.toLocaleString('en-US')} ${config.currency}</span>
+            </div>
+            <div class="flex justify-between py-1 text-slate-300">
+              <span>إشراف هندسي وضمان:</span>
+              <span class="font-bold text-emerald-400">مجاناً ضمن الباقة</span>
+            </div>
+          `;
+        }
+      } else if (activeNiche === 'realestate') {
+        if (printBtn) printBtn.style.display = 'none';
+        const unitPrice = parseInt(document.getElementById('re_priceSlider')?.value) || 3500000;
+        const downPercent = parseInt(document.querySelector('input[name="re_down"]:checked')?.value || 15);
+        const years = parseInt(document.querySelector('input[name="re_years"]:checked')?.value || 7);
+
+        const downPayment = Math.round(unitPrice * (downPercent / 100));
+        const remaining = unitPrice - downPayment;
+        const monthlyInstallment = Math.round(remaining / (years * 12));
+        const quarterlyInstallment = monthlyInstallment * 3;
+
+        total = monthlyInstallment;
+        if (durationBadge) durationBadge.textContent = `قسط شهري متساوي على ${years} سنوات`;
+
+        latestSummary = { niche: 'realestate', unitPrice, downPercent, downPayment, years, monthlyInstallment, quarterlyInstallment };
+
+        breakdownEl.innerHTML = `
+          <div class="flex justify-between py-1 text-slate-300">
+            <span>سعر الوحدة الإجمالي:</span>
+            <span class="font-bold text-white">${unitPrice.toLocaleString('en-US')} ${config.currency}</span>
+          </div>
+          <div class="flex justify-between py-1 text-slate-300">
+            <span>المقدم المطلوب (${downPercent}%):</span>
+            <span class="font-bold text-amber-400">${downPayment.toLocaleString('en-US')} ${config.currency}</span>
+          </div>
+          <div class="flex justify-between py-1 text-slate-300">
+            <span>القسط الربع سنوي:</span>
+            <span class="font-bold text-white">${quarterlyInstallment.toLocaleString('en-US')} ${config.currency}</span>
+          </div>
+        `;
+      } else if (activeNiche === 'clinic') {
+        if (printBtn) printBtn.style.display = 'none';
+        const baseCost = parseInt(document.querySelector('input[name="cl_service"]:checked')?.value || 3500);
+        let addons = 0;
+        if (document.getElementById('cl_addon_consult')?.checked) addons += 500;
+        if (document.getElementById('cl_addon_session')?.checked) addons += 1200;
+        if (document.getElementById('cl_addon_vip')?.checked) addons += 800;
+
+        total = baseCost + addons;
+        if (durationBadge) durationBadge.textContent = "حجز فوري ومتابعة طبية دورية";
+
+        latestSummary = { niche: 'clinic', total };
+
+        breakdownEl.innerHTML = `
+          <div class="flex justify-between py-1 text-slate-300">
+            <span>تكلفة الإجراء الطبي الأساسي:</span>
+            <span class="font-bold text-white">${baseCost.toLocaleString('en-US')} ${config.currency}</span>
+          </div>
+          <div class="flex justify-between py-1 text-slate-300">
+            <span>الخدمات الإضافية المختارة:</span>
+            <span class="font-bold text-white">${addons.toLocaleString('en-US')} ${config.currency}</span>
+          </div>
+        `;
+      } else if (activeNiche === 'marketing') {
+        if (printBtn) printBtn.style.display = 'none';
+        const baseRetainer = parseInt(document.querySelector('input[name="mkt_tier"]:checked')?.value || 8500);
+        let extra = 0;
+        if (document.getElementById('mkt_addon_funnel')?.checked) extra += 4000;
+        if (document.getElementById('mkt_addon_video')?.checked) extra += 3500;
+        if (document.getElementById('mkt_addon_seo')?.checked) extra += 3000;
+
+        total = baseRetainer + extra;
+        if (durationBadge) durationBadge.textContent = "اشتراك تسويقي شهري متكامل";
+
+        latestSummary = { niche: 'marketing', total };
+
+        breakdownEl.innerHTML = `
+          <div class="flex justify-between py-1 text-slate-300">
+            <span>باقة إدارة الحملات الشهرية:</span>
+            <span class="font-bold text-white">${baseRetainer.toLocaleString('en-US')} ${config.currency}</span>
+          </div>
+          <div class="flex justify-between py-1 text-slate-300">
+            <span>خدمات صناعة المحتوى والإضافات:</span>
+            <span class="font-bold text-white">${extra.toLocaleString('en-US')} ${config.currency}</span>
+          </div>
+        `;
+      }
+
+      document.getElementById('totalPriceDisplay').textContent = total.toLocaleString('en-US');
     }
 
     // --- NICHE 2: REAL ESTATE ---
     function renderRealEstateInputs(container) {
-      document.getElementById('mainHeading').textContent = "حاسبة الأقساط والمقدم العقاري";
-      document.getElementById('mainDescription').textContent = "احسب قسط شقتك أو فيلتك وقيمة المقدم الشهري والسنوي لحظياً وقدم طلب المعاينة للبروكر!";
-      document.getElementById('resultTitle').textContent = "القسط الشهري التقديري:";
-      document.getElementById('ctaBtnText').textContent = "حجز استشارة مع البروكر عبر واتساب";
+      document.getElementById('mainHeading').textContent = "حاسبة التمويل العقاري والأقساط";
+      document.getElementById('mainDescription').textContent = "احسب قيمة المقدم والأقساط الشهرية والربع سنوية لشقتك أو فيلتك في أرقى كمبوندات مصر!";
+      document.getElementById('resultTitle').textContent = "القسط الشهري المتوقع:";
+      document.getElementById('ctaBtnText').textContent = "طلب استشارة عقارية عبر الواتساب";
 
       container.innerHTML = `
-        <!-- Total Unit Price Slider -->
         <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
               <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">1</span>
-              <label class="text-sm font-bold text-slate-200">إجمالي ثمن الوحدة العقارية:</label>
+              <label class="text-sm font-bold text-slate-200">سعر الوحدة الإجمالي:</label>
             </div>
             <div class="text-amber-400 font-black text-lg bg-slate-900 px-3 py-1 rounded-xl border border-slate-800">
               <span id="re_priceDisplay">3,500,000</span> <span class="text-xs font-normal text-slate-400 currency-tag">${config.currency}</span>
@@ -513,16 +1250,15 @@
               <span>1 مليون</span>
               <span>5 مليون</span>
               <span>12 مليون</span>
-              <span>25 مليون (قصر/كمبوند)</span>
+              <span>25 مليون</span>
             </div>
           </div>
         </div>
 
-        <!-- Down Payment % -->
         <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
           <div class="flex items-center gap-2">
             <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">2</span>
-            <label class="text-sm font-bold text-slate-200">نسبة المقدم المدفوع:</label>
+            <label class="text-sm font-bold text-slate-200">نسبة المقدم المطلوب:</label>
           </div>
           <div class="grid grid-cols-4 gap-2.5 pt-1">
             <label class="re-down p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer text-center hover:border-slate-700 transition">
@@ -544,11 +1280,10 @@
           </div>
         </div>
 
-        <!-- Installment Years -->
         <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
           <div class="flex items-center gap-2">
             <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">3</span>
-            <label class="text-sm font-bold text-slate-200">مدة التقسيط والسداد:</label>
+            <label class="text-sm font-bold text-slate-200">مدة التقسيط:</label>
           </div>
           <div class="grid grid-cols-4 gap-2.5 pt-1">
             <label class="re-years p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer text-center hover:border-slate-700 transition">
@@ -572,140 +1307,116 @@
       `;
     }
 
-    // --- NICHE 3: CLINICS & BEAUTY ---
+    // --- NICHE 3: CLINICS ---
     function renderClinicInputs(container) {
-      document.getElementById('mainHeading').textContent = "حاسبة باقات العيادات وجلسات التجميل";
-      document.getElementById('mainDescription').textContent = "اختاري الباقة المناسبة مع عدد الجلسات لحساب الخصم المجمع وتأكيد الحجز الفوري في العيادة!";
-      document.getElementById('resultTitle').textContent = "إجمالي تكلفة الباقة بعد الخصم:";
-      document.getElementById('ctaBtnText').textContent = "تأكيد حجز الموعد بالعيادة عبر واتساب";
+      document.getElementById('mainHeading').textContent = "تسعير خدمات العيادات ومراكز التجميل";
+      document.getElementById('mainDescription').textContent = "احسب تكلفة الجلسات والعمليات مع كشوفات المتابعة الطبية المعتمدة!";
+      document.getElementById('resultTitle').textContent = "التكلفة التقديرية للإجراء:";
+      document.getElementById('ctaBtnText').textContent = "تأكيد موعد الحجز عبر الواتساب";
 
       container.innerHTML = `
-        <!-- Clinic Service Radios -->
         <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
           <div class="flex items-center gap-2">
             <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">1</span>
-            <label class="text-sm font-bold text-slate-200">اختر نوع الإجراء التجميلي:</label>
+            <label class="text-sm font-bold text-slate-200">اختر نوع الخدمة أو الإجراء:</label>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
             <label class="cl-service active border-2 border-amber-500 shadow-lg shadow-amber-500/10 p-4 rounded-xl bg-slate-900 cursor-pointer flex flex-col">
-              <input type="radio" name="cl_service" value="1500" checked class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
-              <span class="text-xs font-bold text-slate-100">إزالة الشعر بالليزر</span>
-              <span class="text-base font-extrabold text-amber-400 mt-1">1,500 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/جلسة</span></span>
-              <p class="text-[10px] text-slate-400 mt-2">أجهزة كانديلا وجنتل ليز برو تبريد ديناميكي.</p>
+              <input type="radio" name="cl_service" value="3500" checked class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
+              <span class="text-xs font-bold text-white">جلسات نضارة وفيلر</span>
+              <span class="text-base font-extrabold text-amber-400 mt-1">3,500 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}</span></span>
+              <p class="text-[10px] text-slate-400 mt-2">خامات سويسرية معتمدة مع متابعة الطبيب المختص.</p>
             </label>
             <label class="cl-service p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
-              <input type="radio" name="cl_service" value="2500" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
-              <span class="text-xs font-bold text-slate-300">تنظيف ونضارة هيدرافاشيل</span>
-              <span class="text-base font-extrabold text-amber-400 mt-1">2,500 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/جلسة</span></span>
-              <p class="text-[10px] text-slate-500 mt-2">تقشير ألماسي، ميزوثيرابي وسيرومات فيتامين C.</p>
+              <input type="radio" name="cl_service" value="8000" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
+              <span class="text-xs font-bold text-slate-300">تجميل الأسنان (هوليوود سمايل)</span>
+              <span class="text-base font-extrabold text-amber-400 mt-1">8,000 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}</span></span>
+              <p class="text-[10px] text-slate-500 mt-2">عدسات إيماكس الألمانية الأصلية بضمان شامل.</p>
             </label>
             <label class="cl-service p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
-              <input type="radio" name="cl_service" value="12000" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
-              <span class="text-xs font-bold text-slate-300">ابتسامة هوليوود وفينير</span>
-              <span class="text-base font-extrabold text-amber-400 mt-1">12,000 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}</span></span>
-              <p class="text-[10px] text-slate-500 mt-2">عدسات إيماكس الألمانية مع ضمان 5 سنوات.</p>
+              <input type="radio" name="cl_service" value="18000" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
+              <span class="text-xs font-bold text-slate-300">نحت وتنسيق القوام</span>
+              <span class="text-base font-extrabold text-amber-400 mt-1">18,000 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}</span></span>
+              <p class="text-[10px] text-slate-500 mt-2">أحدث أجهزة الفيزر والجي بلازما بدون جراحة.</p>
             </label>
           </div>
         </div>
 
-        <!-- Sessions Slider -->
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">2</span>
-              <label class="text-sm font-bold text-slate-200">عدد الجلسات أو المناطق:</label>
-            </div>
-            <div class="text-amber-400 font-black text-lg bg-slate-900 px-3 py-1 rounded-xl border border-slate-800">
-              <span id="cl_sessionsDisplay">4</span> <span class="text-xs font-normal text-slate-400">جلسات</span>
-            </div>
+        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">2</span>
+            <label class="text-sm font-bold text-slate-200">الخدمات التكميلية:</label>
           </div>
-          <div class="space-y-2 pt-1">
-            <input type="range" id="cl_sessionsSlider" min="1" max="8" step="1" value="4" oninput="document.getElementById('cl_sessionsDisplay').textContent = this.value; recalcCurrent();">
-            <div class="flex justify-between text-[11px] text-slate-500 font-semibold px-1">
-              <span>جلسة واحدة (تجربة)</span>
-              <span>4 جلسات (كورس أساسي)</span>
-              <span>8 جلسات (كورس متكامل - خصم 20%)</span>
-            </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <label class="p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex items-center gap-2 hover:border-slate-700 transition">
+              <input type="checkbox" id="cl_addon_consult" class="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0" onchange="recalcCurrent();">
+              <span class="text-xs text-slate-300">كشف استشاري (+500 ج)</span>
+            </label>
+            <label class="p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex items-center gap-2 hover:border-slate-700 transition">
+              <input type="checkbox" id="cl_addon_session" class="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0" onchange="recalcCurrent();">
+              <span class="text-xs text-slate-300">جلسة ترميم (+1,200 ج)</span>
+            </label>
+            <label class="p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex items-center gap-2 hover:border-slate-700 transition">
+              <input type="checkbox" id="cl_addon_vip" class="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0" onchange="recalcCurrent();">
+              <span class="text-xs text-slate-300">غرفة VIP (+800 ج)</span>
+            </label>
           </div>
         </div>
       `;
     }
 
-    // --- NICHE 4: MARKETING AGENCIES ---
+    // --- NICHE 4: MARKETING ---
     function renderMarketingInputs(container) {
-      document.getElementById('mainHeading').textContent = "حاسبة باقات إدارة السوشيال ميديا والإعلانات";
-      document.getElementById('mainDescription').textContent = "اختر عدد التصاميم وفيديوهات الريلز ومستوى إدارة الحملات لحساب تكلفة التعاقد الشهري!";
-      document.getElementById('resultTitle').textContent = "قيمة الباقة التسويقية الشهرية:";
-      document.getElementById('ctaBtnText').textContent = "طلب بدء التعاقد التسويقي عبر واتساب";
+      document.getElementById('mainHeading').textContent = "باقات التسويق الرقمي وتوليد العملاء";
+      document.getElementById('mainDescription').textContent = "احسب ميزانية إعلانات السوشيال ميديا وحملات جوجل مع أحدث استراتيجيات التحويل!";
+      document.getElementById('resultTitle').textContent = "الاستثمار التسويقي المتوقع:";
+      document.getElementById('ctaBtnText').textContent = "حجز استراتيجية تسويقية عبر الواتساب";
 
       container.innerHTML = `
-        <!-- Posts Slider -->
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">1</span>
-              <label class="text-sm font-bold text-slate-200">عدد التصاميم والمنشورات شهرياً:</label>
-            </div>
-            <div class="text-amber-400 font-black text-lg bg-slate-900 px-3 py-1 rounded-xl border border-slate-800">
-              <span id="m_postsDisplay">20</span> <span class="text-xs font-normal text-slate-400">بوست</span>
-            </div>
-          </div>
-          <div class="space-y-2 pt-1">
-            <input type="range" id="m_postsSlider" min="10" max="40" step="2" value="20" oninput="document.getElementById('m_postsDisplay').textContent = this.value; recalcCurrent();">
-            <div class="flex justify-between text-[11px] text-slate-500 font-semibold px-1">
-              <span>10 بوستات</span>
-              <span>20 بوست (المعدل الذهبي)</span>
-              <span>40 بوست (نشر يومي مكثف)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Reels Slider -->
-        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">2</span>
-              <label class="text-sm font-bold text-slate-200">عدد فيديوهات الريلز ومونتاج تيك توك:</label>
-            </div>
-            <div class="text-amber-400 font-black text-lg bg-slate-900 px-3 py-1 rounded-xl border border-slate-800">
-              <span id="m_reelsDisplay">6</span> <span class="text-xs font-normal text-slate-400">فيديوهات</span>
-            </div>
-          </div>
-          <div class="space-y-2 pt-1">
-            <input type="range" id="m_reelsSlider" min="2" max="16" step="2" value="6" oninput="document.getElementById('m_reelsDisplay').textContent = this.value; recalcCurrent();">
-            <div class="flex justify-between text-[11px] text-slate-500 font-semibold px-1">
-              <span>2 فيديو</span>
-              <span>6 ريلز</span>
-              <span>16 ريلز (صناعة محتوى يومية)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Ads Tier Radios -->
         <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
           <div class="flex items-center gap-2">
-            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">3</span>
-            <label class="text-sm font-bold text-slate-200">إدارة الحملات الإعلانية الممولة:</label>
+            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">1</span>
+            <label class="text-sm font-bold text-slate-200">اختر باقة إدارة الحملات:</label>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-            <label class="m-ads p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
-              <input type="radio" name="m_ads" value="2500" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
-              <span class="text-xs font-bold text-slate-300">ميتا فقط (فيسبوك وإنستا)</span>
-              <span class="text-base font-extrabold text-amber-400 mt-1">2,500 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}</span></span>
-              <p class="text-[10px] text-slate-500 mt-2">إعلانات ليدز وتفاعل واستهداف دقيق.</p>
+            <label class="mkt-tier p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
+              <input type="radio" name="mkt_tier" value="5000" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
+              <span class="text-xs font-bold text-slate-300">باقة الانطلاق (Starter)</span>
+              <span class="text-base font-extrabold text-amber-400 mt-1">5,000 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/شهر</span></span>
+              <p class="text-[10px] text-slate-500 mt-2">إدارة حملة إعلانية واحدة مع تصميم 6 بوستات وتتبع النتائج.</p>
             </label>
-            <label class="m-ads active border-2 border-amber-500 shadow-lg shadow-amber-500/10 p-4 rounded-xl bg-slate-900 cursor-pointer flex flex-col relative">
-              <span class="absolute -top-2.5 right-3 px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-extrabold text-[9px]">شائع 🚀</span>
-              <input type="radio" name="m_ads" value="4500" checked class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
-              <span class="text-xs font-bold text-slate-100">ميتا + جوجل سيرش Ads</span>
-              <span class="text-base font-extrabold text-amber-400 mt-1">4,500 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}</span></span>
-              <p class="text-[10px] text-slate-400 mt-2">اقتناص العملاء الباحثين في جوجل مع إعادة الاستهداف.</p>
+            <label class="mkt-tier active border-2 border-amber-500 shadow-lg shadow-amber-500/10 p-4 rounded-xl bg-slate-900 cursor-pointer flex flex-col">
+              <input type="radio" name="mkt_tier" value="8500" checked class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
+              <span class="text-xs font-bold text-white">باقة النمو (Growth Pro)</span>
+              <span class="text-base font-extrabold text-amber-400 mt-1">8,500 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/شهر</span></span>
+              <p class="text-[10px] text-slate-400 mt-2">إدارة إعلانات ميتا وجوجل + قمع بيع متكامل لجمع بيانات المشترين.</p>
             </label>
-            <label class="m-ads p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
-              <input type="radio" name="m_ads" value="7000" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
-              <span class="text-xs font-bold text-slate-300">إدارة شاملة Omnichannel</span>
-              <span class="text-base font-extrabold text-amber-400 mt-1">7,000 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}</span></span>
-              <p class="text-[10px] text-slate-500 mt-2">فيسبوك، إنستا، تيك توك، جوجل، وسناب شات.</p>
+            <label class="mkt-tier p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col">
+              <input type="radio" name="mkt_tier" value="15000" class="sr-only" onchange="updateRadioStyles(); recalcCurrent();">
+              <span class="text-xs font-bold text-slate-300">باقة السيطرة (Enterprise)</span>
+              <span class="text-base font-extrabold text-amber-400 mt-1">15,000 <span class="text-[10px] font-normal text-slate-400 currency-tag">${config.currency}/شهر</span></span>
+              <p class="text-[10px] text-slate-500 mt-2">فريق تسويق كامل: ميديا باينج، موشن جرافيك، وتدريب فريق المبيعات.</p>
+            </label>
+          </div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-slate-800 shadow-xl space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">2</span>
+            <label class="text-sm font-bold text-slate-200">الخدمات الإضافية المتقدمة:</label>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <label class="p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex items-center gap-2 hover:border-slate-700 transition">
+              <input type="checkbox" id="mkt_addon_funnel" class="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0" onchange="recalcCurrent();">
+              <span class="text-xs text-slate-300">تصميم صفحة هبوط (+4,000 ج)</span>
+            </label>
+            <label class="p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex items-center gap-2 hover:border-slate-700 transition">
+              <input type="checkbox" id="mkt_addon_video" class="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0" onchange="recalcCurrent();">
+              <span class="text-xs text-slate-300">فيديو ريلز احترافي (+3,500 ج)</span>
+            </label>
+            <label class="p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer flex items-center gap-2 hover:border-slate-700 transition">
+              <input type="checkbox" id="mkt_addon_seo" class="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-0" onchange="recalcCurrent();">
+              <span class="text-xs text-slate-300">تهيئة محركات البحث (+3,000 ج)</span>
             </label>
           </div>
         </div>
@@ -713,232 +1424,274 @@
     }
 
     function updateRadioStyles() {
-      ['f-pkg', 're-down', 're-years', 'cl-service', 'm-ads'].forEach(cls => {
-        document.querySelectorAll(`.${cls}`).forEach(card => {
-          const radio = card.querySelector('input[type="radio"]');
+      ['f-pkg', 're-down', 're-years', 'cl-service', 'mkt-tier'].forEach(cls => {
+        document.querySelectorAll(`.${cls}`).forEach(label => {
+          const radio = label.querySelector('input[type="radio"]');
           if (radio && radio.checked) {
-            card.classList.add('active', 'border-2', 'border-amber-500', 'shadow-lg', 'shadow-amber-500/10');
-            card.classList.remove('border-slate-800');
-          } else {
-            card.classList.remove('active', 'border-2', 'border-amber-500', 'shadow-lg', 'shadow-amber-500/10');
-            card.classList.add('border-slate-800');
+            label.className = `${cls} active border-2 border-amber-500 shadow-lg shadow-amber-500/10 p-4 rounded-xl bg-slate-900 cursor-pointer flex flex-col transition`;
+          } else if (radio) {
+            label.className = `${cls} p-4 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-slate-700 transition flex flex-col`;
           }
         });
       });
     }
 
-    // --- COMPUTATION ENGINE ---
-    function recalcCurrent() {
-      const breakdown = document.getElementById('breakdownContainer');
-      let total = 0;
-      let summaryText = "";
+    // --- 📄 OFFICIAL PRINTABLE PDF QUOTATION ENGINE ---
+    function printQuotationSheet() {
+      const clientName = document.getElementById('clientNameInput')?.value.trim() || "عميلنا الكريم";
+      const clientPhone = document.getElementById('clientPhoneInput')?.value.trim() || "غير مسجل";
+      const today = new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+      const summary = latestSummary;
 
-      if (activeNiche === 'finishing') {
-        const area = parseInt(document.getElementById('f_areaSlider')?.value) || 120;
-        const pkgRadio = document.querySelector('input[name="f_package"]:checked');
-        const pricePerMeter = parseInt(pkgRadio ? pkgRadio.value : 4500);
-        const baseCost = area * pricePerMeter;
-
-        let addonsCost = 0;
-        const addons = [];
-        if (document.getElementById('f_addon_3d')?.checked) { addonsCost += 10000; addons.push("تصميم 3D"); }
-        if (document.getElementById('f_addon_smart')?.checked) { addonsCost += 25000; addons.push("سمارت هوم"); }
-        if (document.getElementById('f_addon_acoustic')?.checked) { addonsCost += 15000; addons.push("عزل صوت"); }
-        if (document.getElementById('f_addon_kitchen')?.checked) { addonsCost += 40000; addons.push("مطبخ HPL"); }
-
-        total = baseCost + addonsCost;
-        let duration = area > 200 ? "80 - 100 يوم" : "45 - 60 يوم";
-
-        breakdown.innerHTML = `
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>تكلفة التشطيب الأساسية (${area} م²):</span>
-            <span class="font-bold text-white">${baseCost.toLocaleString('en-US')} ${config.currency}</span>
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="ar" dir="rtl">
+        <head>
+          <meta charset="UTF-8">
+          <title>مقايسة تشطيب تفصيلية رسمية - ${clientName}</title>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+            body { font-family: 'Cairo', sans-serif; color: #1e293b; padding: 30px; margin: 0; background: #fff; }
+            .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #f59e0b; padding-bottom: 15px; margin-bottom: 25px; }
+            .brand { font-size: 22px; font-weight: 900; color: #0f172a; }
+            .brand span { color: #d97706; }
+            .meta { font-size: 12px; color: #64748b; line-height: 1.6; }
+            .title-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 20px; margin-bottom: 25px; }
+            .title-box h2 { margin: 0 0 10px 0; font-size: 18px; color: #0f172a; }
+            .grid-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; font-size: 13px; }
+            .grid-info div strong { color: #0f172a; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+            th { background: #0f172a; color: #fff; text-align: right; padding: 10px 14px; font-size: 13px; border: 1px solid #0f172a; }
+            td { padding: 10px 14px; font-size: 12px; border: 1px solid #e2e8f0; color: #334155; }
+            tr:nth-child(even) { background: #f8fafc; }
+            .total-card { background: #fffbeb; border: 2px solid #fde68a; border-radius: 12px; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+            .total-card .val { font-size: 24px; font-weight: 900; color: #b45309; }
+            .terms { font-size: 11px; color: #64748b; line-height: 1.8; border-top: 1px solid #e2e8f0; padding-top: 15px; }
+            @media print { body { padding: 0; } button { display: none; } }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div>
+              <div class="brand">${config.brandName} <span>• مقايسة رسمية</span></div>
+              <div class="meta">هاتف الاستفسار والتعاقدات: ${config.companyPhone}</div>
+            </div>
+            <div style="text-align: left;">
+              <div class="meta">تاريخ المقايسة: <strong>${today}</strong></div>
+              <div class="meta">رقم المرجع: <strong>EST-${Math.floor(100000 + Math.random() * 900000)}</strong></div>
+            </div>
           </div>
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>تكلفة الإضافات المختارة:</span>
-            <span class="font-bold text-white">${addonsCost.toLocaleString('en-US')} ${config.currency}</span>
-          </div>
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>مدة التسليم المتوقعة:</span>
-            <span class="font-bold text-amber-400">${duration}</span>
-          </div>
-        `;
-        document.getElementById('totalPriceSubtext').textContent = `تشطيب كامل لـ ${area} م² بمواصفات الباقة`;
 
-      } else if (activeNiche === 'realestate') {
-        const unitPrice = parseInt(document.getElementById('re_priceSlider')?.value) || 3500000;
-        const downPercent = parseInt(document.querySelector('input[name="re_down"]:checked')?.value || 15);
-        const years = parseInt(document.querySelector('input[name="re_years"]:checked')?.value || 7);
-
-        const downPayment = unitPrice * (downPercent / 100);
-        const remaining = unitPrice - downPayment;
-        const totalMonths = years * 12;
-        const monthlyInstallment = Math.round(remaining / totalMonths);
-        const quarterlyInstallment = monthlyInstallment * 3;
-
-        total = monthlyInstallment; // display monthly installment prominently
-        document.getElementById('totalPriceSubtext').textContent = `قسط شهري متساوي على مدار ${years} سنوات`;
-
-        breakdown.innerHTML = `
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>ثمن الوحدة الإجمالي:</span>
-            <span class="font-bold text-white">${unitPrice.toLocaleString('en-US')} ${config.currency}</span>
+          <div class="title-box">
+            <h2>مقايسة وتوصيف تشطيب وحدة سكنية متكاملة</h2>
+            <div class="grid-info">
+              <div>العميل: <strong>${clientName}</strong></div>
+              <div>الهاتف: <strong>${clientPhone}</strong></div>
+              <div>المساحة: <strong>${summary.area || 120} متر مربع</strong></div>
+              <div>التقسيم: <strong>${summary.rooms || 3} غرف + ${summary.baths || 2} حمام</strong></div>
+              <div>مدة التنفيذ المتوقعة: <strong>${summary.duration || "55 - 75 يوم"}</strong></div>
+              <div>نوع الحساب: <strong>تجميعة بنود وماركات مفصلة</strong></div>
+            </div>
           </div>
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>المقدم المطلوب (${downPercent}%):</span>
-            <span class="font-bold text-amber-400">${downPayment.toLocaleString('en-US')} ${config.currency}</span>
-          </div>
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>القسط ربع السنوي (كل 3 أشهر):</span>
-            <span class="font-bold text-white">${quarterlyInstallment.toLocaleString('en-US')} ${config.currency}</span>
-          </div>
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>فترة السداد:</span>
-            <span class="font-bold text-slate-200">${years} سنوات (${totalMonths} شهر)</span>
-          </div>
-        `;
 
-      } else if (activeNiche === 'clinic') {
-        const serviceRadio = document.querySelector('input[name="cl_service"]:checked');
-        const sessionPrice = parseInt(serviceRadio ? serviceRadio.value : 1500);
-        const sessions = parseInt(document.getElementById('cl_sessionsSlider')?.value || 4);
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">بند التشطيب</th>
+                <th style="width: 50%;">المواصفات والماركات المعتمدة</th>
+                <th style="width: 25%;">التكلفة التقديرية</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. السباكة والصحي والعزل</strong></td>
+                <td>${summary.plumbingName || 'تأسيس معتمد وصحي ديورافيت'} (تأسيس الشريف + عزل مائي كيميائي للأرضيات)</td>
+                <td><strong>${(summary.plumbingCost || 0).toLocaleString('ar-EG')} ج.م</strong></td>
+              </tr>
+              <tr>
+                <td><strong>2. شبكة وتأسيس الكهرباء</strong></td>
+                <td>${summary.elecName || 'السويدي الأصلي + سانشي'} (سلك السويدي معتمد + لوحات رئيسية وتجهيز التكييف)</td>
+                <td><strong>${(summary.electricCost || 0).toLocaleString('ar-EG')} ج.م</strong></td>
+              </tr>
+              <tr>
+                <td><strong>3. الأرضيات والحوائط</strong></td>
+                <td>${summary.floorName || 'سيراميك الجوهرة فرز أول'} (شامل مون اللصق والمصنعية والفرز المعتمد)</td>
+                <td><strong>${(summary.flooringCost || 0).toLocaleString('ar-EG')} ج.م</strong></td>
+              </tr>
+              <tr>
+                <td><strong>4. الدهانات والديكورات</strong></td>
+                <td>${summary.paintName || 'جوتن فينوماستيك'} (سيلر، معجون 3 سكينات، جبسم بورد كناوف بيت نور)</td>
+                <td><strong>${(summary.paintCost || 0).toLocaleString('ar-EG')} ج.م</strong></td>
+              </tr>
+              <tr>
+                <td><strong>5. الأبواب والألوميتال</strong></td>
+                <td>${summary.doorName || 'باب مصفح تركي + أرو'} (باب شقة مصفح تركي أمان + أبواب غرف + ألوميتال)</td>
+                <td><strong>${(summary.doorsCost || 0).toLocaleString('ar-EG')} ج.م</strong></td>
+              </tr>
+            </tbody>
+          </table>
 
-        let subtotal = sessionPrice * sessions;
-        let discountPercent = sessions >= 6 ? 20 : (sessions >= 3 ? 10 : 0);
-        let discountAmount = subtotal * (discountPercent / 100);
-        total = subtotal - discountAmount;
-
-        breakdown.innerHTML = `
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>سعر الجلسة الفردي:</span>
-            <span class="font-bold text-white">${sessionPrice.toLocaleString('en-US')} ${config.currency}</span>
+          <div class="total-card">
+            <div>
+              <div style="font-size: 13px; font-weight: bold; color: #92400e;">إجمالي قيمة المقايسة المبدئية:</div>
+              <div style="font-size: 11px; color: #b45309;">شاملة الخامات والمون والمصنعيات والإشراف الهندسي</div>
+            </div>
+            <div class="val">${(summary.total || 0).toLocaleString('ar-EG')} ج.م</div>
           </div>
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>عدد الجلسات:</span>
-            <span class="font-bold text-white">${sessions} جلسات</span>
-          </div>
-          ${discountPercent > 0 ? `
-          <div class="flex justify-between py-1 text-emerald-400">
-            <span>خصم الباقة المجمعة (${discountPercent}%):</span>
-            <span class="font-bold">-${discountAmount.toLocaleString('en-US')} ${config.currency}</span>
-          </div>` : ''}
-        `;
-        document.getElementById('totalPriceSubtext').textContent = discountPercent > 0 ? `تم تطبيق خصم الباقة المجمعة بنجاح (${discountPercent}%)` : 'شامل الكشف والاستشارة الأولى';
 
-      } else if (activeNiche === 'marketing') {
-        const posts = parseInt(document.getElementById('m_postsSlider')?.value || 20);
-        const reels = parseInt(document.getElementById('m_reelsSlider')?.value || 6);
-        const adsRadio = document.querySelector('input[name="m_ads"]:checked');
-        const adsPrice = parseInt(adsRadio ? adsRadio.value : 4500);
-
-        const contentCost = (posts * 150) + (reels * 400);
-        total = contentCost + adsPrice;
-
-        breakdown.innerHTML = `
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>إنتاج المحتوى والتصاميم (${posts} بوست):</span>
-            <span class="font-bold text-white">${(posts * 150).toLocaleString('en-US')} ${config.currency}</span>
+          <div class="terms">
+            <strong>ملاحظات وشروط عامة:</strong><br>
+            • المقايسة استرشادية بناءً على الأسعار والمواصفات المدخلة، وتعتمد بصورة نهائية بعد إجراء المعاينة الهندسية ورفع المقاسات على الطبيعة.<br>
+            • جميع الخامات مضمونة بفواتير رسمية معتمدة من الشركات المصنعة.<br>
+            • يتم تنفيذ الأعمال بواسطة أطقم مهندسين وفنيين متخصصين تحت إشراف هندسي مستمر لضمان أعلى معايير الجودة والتسليم في الموعد المحدد.
           </div>
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>مونتاج وفيديوهات الريلز (${reels} فيديو):</span>
-            <span class="font-bold text-white">${(reels * 400).toLocaleString('en-US')} ${config.currency}</span>
-          </div>
-          <div class="flex justify-between py-1 text-slate-300">
-            <span>إدارة وتحسين الحملات الإعلانية:</span>
-            <span class="font-bold text-amber-400">${adsPrice.toLocaleString('en-US')} ${config.currency}</span>
-          </div>
-        `;
-        document.getElementById('totalPriceSubtext').textContent = "باقة تسويقية شهرية متكاملة قابلة للتجديد";
-      }
 
-      document.getElementById('totalPriceDisplay').textContent = total.toLocaleString('en-US');
+          <div style="margin-top: 30px; text-align: center;">
+            <button onclick="window.print()" style="padding: 10px 24px; background: #0f172a; color: #fff; font-size: 14px; font-weight: bold; border-radius: 8px; border: none; cursor: pointer; font-family: 'Cairo';">
+              طباعة هذه المقايسة أو حفظها PDF الآن 🖨️
+            </button>
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
     }
 
-    // --- WHATSAPP LEAD CAPTURE ROUTER ---
-    function handleSendWhatsapp() {
-      const clientName = document.getElementById('clientNameInput').value.trim() || "عميل مهتم";
-      const clientPhone = document.getElementById('clientPhoneInput').value.trim() || "غير مسجل";
+    // --- 📲 WHATSAPP LEAD DISPATCH ---
+    function sendLeadToWhatsApp() {
+      const clientName = document.getElementById('clientNameInput')?.value.trim() || "غير مسجل";
+      const clientPhone = document.getElementById('clientPhoneInput')?.value.trim() || "غير مسجل";
       const totalFormatted = document.getElementById('totalPriceDisplay').textContent;
-
       let msg = "";
 
       if (activeNiche === 'finishing') {
-        const area = document.getElementById('f_areaSlider').value;
-        const pkgValue = document.querySelector('input[name="f_package"]:checked').value;
-        const pkgNames = { 3000: "اقتصادية", 4500: "سوبر لوكس", 6500: "الترا VIP" };
-        msg = `مرحباً، طلب مقايسة تشطيب تفاعلية جديدة 🏠
+        const sum = latestSummary;
+        if (finishingMode === 'configurator') {
+          msg = `مرحباً، أود الاستفسار عن مقايسة تشطيب تفصيلية (تجميعة بالماركات):
 -----------------------------------
 👤 اسم العميل: ${clientName}
 📱 رقم الهاتف: ${clientPhone}
-📐 المساحة: ${area} م²
-💎 نوع الباقة: ${pkgNames[pkgValue] || pkgValue}
-💰 إجمالي المقايسة التقديرية: ${totalFormatted} ${config.currency}
+📐 المساحة: ${sum.area || 120} م² (${sum.rooms || 3} غرف + ${sum.baths || 2} حمام)
 -----------------------------------
-أرغب في تأكيد المقايسة وتحديد موعد للمعاينة الهندسية.`;
-
+📋 المواصفات المختارة:
+🚿 السباكة: ${sum.plumbingName} (${(sum.plumbingCost || 0).toLocaleString('en-US')} ${config.currency})
+⚡ الكهرباء: ${sum.elecName} (${(sum.electricCost || 0).toLocaleString('en-US')} ${config.currency})
+🏠 الأرضيات: ${sum.floorName} (${(sum.flooringCost || 0).toLocaleString('en-US')} ${config.currency})
+🎨 الدهانات: ${sum.paintName} (${(sum.paintCost || 0).toLocaleString('en-US')} ${config.currency})
+🚪 الأبواب: ${sum.doorName} (${(sum.doorsCost || 0).toLocaleString('en-US')} ${config.currency})
+-----------------------------------
+💰 إجمالي المقايسة: ${totalFormatted} ${config.currency}
+⏱️ مدة التنفيذ المتوقعة: ${sum.duration}
+-----------------------------------
+برجاء التواصل لتحديد موعد المعاينة الهندسية ورفع المقاسات.`;
+        } else {
+          msg = `مرحباً، أود الاستفسار عن باقة تشطيب شقة:
+-----------------------------------
+👤 اسم العميل: ${clientName}
+📱 الهاتف: ${clientPhone}
+📐 المساحة: ${sum.area} م²
+💰 إجمالي التكلفة التقديرية: ${totalFormatted} ${config.currency}
+-----------------------------------
+برجاء التواصل للمعاينة ورفع المقاسات.`;
+        }
       } else if (activeNiche === 'realestate') {
         const unitPrice = document.getElementById('re_priceSlider').value;
-        const down = document.querySelector('input[name="re_down"]:checked').value;
+        const downPercent = document.querySelector('input[name="re_down"]:checked').value;
         const years = document.querySelector('input[name="re_years"]:checked').value;
-        msg = `مرحباً، استفسار عن حجز وشراء وحدة عقارية 🏢
+        msg = `مرحباً، أريد الاستفسار عن خطة التمويل العقاري:
+-----------------------------------
+👤 العميل: ${clientName}
+📱 الهاتف: ${clientPhone}
+🏢 سعر الوحدة: ${Number(unitPrice).toLocaleString('en-US')} ${config.currency}
+💰 المقدم: ${downPercent}%
+📅 مدة السداد: ${years} سنوات
+💳 القسط الشهري: ${totalFormatted} ${config.currency}
+-----------------------------------
+برجاء تزويدي بالمشاريع المتاحة المطابقة لهذه الميزانية.`;
+      } else if (activeNiche === 'clinic') {
+        msg = `مرحباً، أود تأكيد تفاصيل حجز موعد طبي:
 -----------------------------------
 👤 اسم العميل: ${clientName}
 📱 رقم الهاتف: ${clientPhone}
-💰 ثمن الوحدة: ${parseInt(unitPrice).toLocaleString('en-US')} ${config.currency}
-💵 نسبة المقدم: ${down}%
-⏱️ مدة التقسيط: ${years} سنوات
-📉 القسط الشهري المتوقع: ${totalFormatted} ${config.currency}
+✨ الإجراء الطبي المختار: ${document.querySelector('.cl-service.active span')?.textContent || "إجراء طبي"}
+💰 التكلفة المتوقعة: ${totalFormatted} ${config.currency}
 -----------------------------------
-أرغب في التواصل مع المستشار العقاري لمعاينة المشاريع المتاحة.`;
-
-      } else if (activeNiche === 'clinic') {
-        const sessions = document.getElementById('cl_sessionsSlider').value;
-        msg = `مرحباً، طلب حجز موعد بالعيادة عبر الحاسبة التفاعلية 🩺✨
------------------------------------
-👤 اسم المراجع: ${clientName}
-📱 رقم الهاتف: ${clientPhone}
-💆‍♀️ عدد الجلسات: ${sessions} جلسات
-💰 التكلفة بعد الخصم المجمع: ${totalFormatted} ${config.currency}
------------------------------------
-أرغب في تثبيت الحجز وتحديد أقرب موعد متاح.`;
-
+برجاء تأكيد الموعد المناسب في أقرب وقت.`;
       } else if (activeNiche === 'marketing') {
-        const posts = document.getElementById('m_postsSlider').value;
-        const reels = document.getElementById('m_reelsSlider').value;
-        msg = `مرحباً، طلب تعاقد تسويقي شهري لشركتنا 🚀📊
+        msg = `مرحباً، أرغب في حجز باقة تسويقية لشركتي:
 -----------------------------------
-👤 اسم المسؤول: ${clientName}
-📱 رقم التواصل: ${clientPhone}
-📌 عدد البوستات: ${posts} بوست شهرياً
-🎬 عدد فيديوهات الريلز: ${reels} ريلز
-💰 قيمة الباقة الشهرية التقديرية: ${totalFormatted} ${config.currency}
+👤 اسم العميل: ${clientName}
+📱 الهاتف: ${clientPhone}
+📢 باقة التسويق المختارة: ${document.querySelector('.mkt-tier.active span')?.textContent || "باقة تسويق"}
+💰 الاستثمار الشهري: ${totalFormatted} ${config.currency}
 -----------------------------------
-أرغب في بدء خطة العمل ومناقشة تفاصيل التعاقد.`;
+برجاء إرسال تفاصيل خطة العمل وخطوات البدء.`;
       }
 
       const cleanPhone = config.companyPhone.replace(/[^0-9]/g, '');
-      const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(msg)}`;
-      window.open(waUrl, '_blank');
+      const encodedMsg = encodeURIComponent(msg);
+      window.open(`https://wa.me/${cleanPhone}?text=${encodedMsg}`, '_blank');
     }
 
-    // --- SETUP GLOBAL LISTENERS ---
-    function setupGlobalListeners() {
-      document.getElementById('sendWhatsappBtn').addEventListener('click', handleSendWhatsapp);
+    // --- ⚙️ ADMIN PRICING MODAL LOGIC ---
+    function openPricingModal() {
+      for (const [k, v] of Object.entries(prices)) {
+        const inp = document.getElementById(`adm_${k}`);
+        if (inp) inp.value = v;
+      }
+      document.getElementById('pricingAdminModal').classList.remove('hidden');
+    }
 
-      const modal = document.getElementById('brandingModal');
-      document.getElementById('brandingModalBtn').addEventListener('click', () => modal.classList.remove('hidden'));
-      document.getElementById('closeBrandingBtn').addEventListener('click', () => modal.classList.add('hidden'));
+    function closePricingModal() {
+      document.getElementById('pricingAdminModal').classList.add('hidden');
+    }
+
+    function saveAdminPrices() {
+      for (const k of Object.keys(DEFAULT_PRICES)) {
+        const inp = document.getElementById(`adm_${k}`);
+        if (inp && inp.value) {
+          prices[k] = parseFloat(inp.value) || DEFAULT_PRICES[k];
+        }
+      }
+      localStorage.setItem('cfg_finishing_prices', JSON.stringify(prices));
+      closePricingModal();
+
+      // Update UI cards
+      document.querySelectorAll('.price-val').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (prices[key] !== undefined) {
+          el.textContent = Number(prices[key]).toLocaleString('en-US');
+        }
+      });
+
+      recalcCurrent();
+      alert('تم حفظ وتطبيق أسعار المون الجديدة بنجاح! تم تحديث المقايسة فوراً.');
+    }
+
+    function resetDefaultPrices() {
+      if (confirm('هل أنت متأكد من استعادة أسعار السوق الافتراضية؟')) {
+        prices = { ...DEFAULT_PRICES };
+        localStorage.removeItem('cfg_finishing_prices');
+        for (const [k, v] of Object.entries(prices)) {
+          const inp = document.getElementById(`adm_${k}`);
+          if (inp) inp.value = v;
+        }
+        saveAdminPrices();
+      }
+    }
+
+    // --- WHITE-LABEL BRANDING LISTENERS ---
+    function setupGlobalListeners() {
+      const bModal = document.getElementById('brandingModal');
+      document.getElementById('brandingModalBtn').addEventListener('click', () => bModal.classList.remove('hidden'));
+      document.getElementById('closeBrandingBtn').addEventListener('click', () => bModal.classList.add('hidden'));
 
       document.getElementById('saveBrandingBtn').addEventListener('click', () => {
-        const name = document.getElementById('cfgBrandName').value.trim();
-        const phone = document.getElementById('cfgWhatsappPhone').value.trim();
-        const curr = document.getElementById('cfgCurrency').value;
-        const defNiche = document.getElementById('cfgDefaultNiche').value;
-
-        if (name) config.brandName = name;
-        if (phone) config.companyPhone = phone;
-        if (curr) config.currency = curr;
-        if (defNiche) config.defaultNiche = defNiche;
+        config.brandName = document.getElementById('cfgBrandName').value.trim() || "شطّب شقتك قطعة قطعة";
+        config.companyPhone = document.getElementById('cfgWhatsappPhone').value.trim() || "201098174992";
+        config.currency = document.getElementById('cfgCurrency').value;
+        config.defaultNiche = document.getElementById('cfgDefaultNiche').value;
 
         localStorage.setItem('calc_brandName', config.brandName);
         localStorage.setItem('calc_companyPhone', config.companyPhone);
@@ -946,23 +1699,9 @@
         localStorage.setItem('calc_defaultNiche', config.defaultNiche);
 
         applyBranding();
-        switchNiche(config.defaultNiche);
-        modal.classList.add('hidden');
-        alert("تم حفظ وتحديث بيانات الشركة بنجاح! ✓");
-      });
-
-      // Export Standalone HTML file for client delivery
-      document.getElementById('exportHtmlBtn').addEventListener('click', () => {
-        const sourceHtml = document.documentElement.outerHTML;
-        const blob = new Blob([sourceHtml], { type: 'text/html;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${config.brandName.replace(/\s+/g, '_')}_calculator.html`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        bModal.classList.add('hidden');
+        recalcCurrent();
+        alert('تم حفظ إعدادات الهوية بنجاح!');
       });
     }
   </script>
