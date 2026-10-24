@@ -124,7 +124,7 @@
             <span>حاسبة المقايسات والتسعير الذكية</span>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">v2.5 Pro</span>
           </h1>
-          <p id="brandSubtitle" class="text-[11px] text-slate-400">تجميعة المون قطعة قطعة + تسعير فوري ومقايسة PDF معتمدة</p>
+          <p id="brandSubtitle" class="text-[11px] text-slate-400">تفصيل المون والخامات بالماركات + تسعير فوري ومقايسة PDF معتمدة</p>
         </div>
       </div>
 
@@ -155,7 +155,7 @@
     <!-- Top Headline -->
     <div class="text-center max-w-3xl mx-auto space-y-2 mb-6">
       <span class="text-xs px-3.5 py-1 rounded-full bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-500/20 border border-amber-500/40 text-amber-300 font-black">
-        🏗️ نظام تسعير وتجميعات التشطيبات والمشاريع الاحترافي (Smart Quotation Engine)
+        🏗️ نظام تسعير ومقايسات التشطيبات والمشاريع الاحترافي (Smart Quotation Engine)
       </span>
       <h2 id="mainHeading" class="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
         اختر خامات ومواصفات شقتك بند بند وماركة بماركة
@@ -169,7 +169,7 @@
     <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
       <button onclick="switchNiche('finishing')" id="tab-finishing" class="niche-btn tab-active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
         <i data-lucide="home" class="w-4 h-4"></i>
-        <span>1. تشطيبات وديكور (تجميعة ومقايسة)</span>
+        <span>1. تشطيبات وديكور (مقايسة تفصيلية بالماركات)</span>
       </button>
 
       <button onclick="switchNiche('realestate')" id="tab-realestate" class="niche-btn tab-inactive px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
@@ -396,7 +396,7 @@
       <div class="space-y-3 text-xs">
         <div class="space-y-1">
           <label class="block font-semibold text-slate-300">اسم شركتك أو علامتك التجارية:</label>
-          <input type="text" id="cfgBrandName" value="شطّب شقتك قطعة قطعة" class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-slate-200">
+          <input type="text" id="cfgBrandName" value="شطّب شقتك بند بند وماركة بماركة" class="w-full p-2.5 bg-slate-900 border border-slate-700 rounded-xl text-slate-200">
         </div>
 
         <div class="space-y-1">
@@ -491,7 +491,7 @@
     let latestSummary = {};
 
     let config = {
-      brandName: localStorage.getItem('calc_brandName') || "شطّب شقتك قطعة قطعة",
+      brandName: localStorage.getItem('calc_brandName') || "شطّب شقتك بند بند وماركة بماركة",
       companyPhone: localStorage.getItem('calc_companyPhone') || "201098174992",
       currency: localStorage.getItem('calc_currency') || "ج.م",
       defaultNiche: localStorage.getItem('calc_defaultNiche') || "finishing"
@@ -565,7 +565,7 @@
       document.getElementById('mainHeading').textContent = "اختر خامات شقتك بنفسك.. بند بند وماركة بماركة";
       document.getElementById('mainDescription').textContent = "احسب تكلفة السيراميك (كليوباترا والجوهرة)، السلك (السويدي الأصلي)، الدهانات (جوتن وسيبس)، السباكة (الشريف وجروهي)، والأبواب في ثواني!";
       document.getElementById('resultTitle').textContent = "إجمالي تكلفة التشطيب:";
-      document.getElementById('ctaBtnText').textContent = "إرسال تفاصيل التجميعة والمقايسة بالواتساب";
+      document.getElementById('ctaBtnText').textContent = "إرسال تفاصيل المقايسة والمواصفات بالواتساب";
 
       if (finishingMode === 'configurator') {
         container.innerHTML = `
@@ -573,7 +573,7 @@
           <div class="flex items-center justify-between p-3.5 bg-slate-900/90 border border-amber-500/30 rounded-2xl">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
-              <span class="text-xs font-bold text-amber-300">الوضع المتقدم: تفصيل المون والخامات قطعة قطعة (PC PartPicker)</span>
+              <span class="text-xs font-bold text-amber-300">الوضع المتقدم: تفصيل المون والخامات بند بند وماركة بماركة </span>
             </div>
             <button onclick="setFinishingMode('packages')" class="text-xs text-slate-400 hover:text-white underline">
               التبديل إلى الباقات السريعة
@@ -931,7 +931,7 @@
               <span class="text-xs font-bold text-slate-200">الوضع السريع: باقات تشطيب كاملة جاهزة للمتر</span>
             </div>
             <button onclick="setFinishingMode('configurator')" class="text-xs text-amber-400 hover:text-amber-300 font-bold underline">
-              التبديل إلى حاسبة التجميعة (بند بند وماركة بماركة) ✨
+              التبديل إلى تفصيل المواصفات (بند بند وماركة بماركة) ✨
             </button>
           </div>
 
@@ -1491,7 +1491,7 @@
               <div>المساحة: <strong>${summary.area || 120} متر مربع</strong></div>
               <div>التقسيم: <strong>${summary.rooms || 3} غرف + ${summary.baths || 2} حمام</strong></div>
               <div>مدة التنفيذ المتوقعة: <strong>${summary.duration || "55 - 75 يوم"}</strong></div>
-              <div>نوع الحساب: <strong>تجميعة بنود وماركات مفصلة</strong></div>
+              <div>نوع الحساب: <strong>مقايسة هندسية تفصيلية بالماركات</strong></div>
             </div>
           </div>
 
@@ -1568,7 +1568,7 @@
       if (activeNiche === 'finishing') {
         const sum = latestSummary;
         if (finishingMode === 'configurator') {
-          msg = `مرحباً، أود الاستفسار عن مقايسة تشطيب تفصيلية (تجميعة بالماركات):
+          msg = `مرحباً، أود الاستفسار عن مقايسة تشطيب تفصيلية (مواصفات وماركات معتمدة):
 -----------------------------------
 👤 اسم العميل: ${clientName}
 📱 رقم الهاتف: ${clientPhone}
@@ -1688,7 +1688,7 @@
       document.getElementById('closeBrandingBtn').addEventListener('click', () => bModal.classList.add('hidden'));
 
       document.getElementById('saveBrandingBtn').addEventListener('click', () => {
-        config.brandName = document.getElementById('cfgBrandName').value.trim() || "شطّب شقتك قطعة قطعة";
+        config.brandName = document.getElementById('cfgBrandName').value.trim() || "شطّب شقتك بند بند وماركة بماركة";
         config.companyPhone = document.getElementById('cfgWhatsappPhone').value.trim() || "201098174992";
         config.currency = document.getElementById('cfgCurrency').value;
         config.defaultNiche = document.getElementById('cfgDefaultNiche').value;
