@@ -1138,5 +1138,291 @@
       alert("تم تحديث بيانات الشركة بنجاح! ✓");
     }
   </script>
+  <!-- ========================================== -->
+  <!-- 🤖 FLOATING SMART AI ASSISTANT WIDGET (v3.5) -->
+  <!-- ========================================== -->
+  <div id="floatingAiAssistant" class="fixed bottom-6 left-6 z-50 flex flex-col items-end">
+    <!-- Chat Modal Window -->
+    <div id="aiChatWindow" class="mb-4 w-[360px] sm:w-[410px] max-w-[92vw] h-[530px] max-h-[82vh] bg-slate-950/95 backdrop-blur-2xl border-2 border-emerald-500/50 rounded-3xl shadow-2xl shadow-emerald-500/20 flex flex-col overflow-hidden hidden">
+      <!-- Top Header -->
+      <div class="px-4 py-3 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="relative">
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-slate-950 shadow-md">
+              <i data-lucide="bot" class="w-6 h-6 stroke-[2.5]"></i>
+            </div>
+            <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 border-2 border-slate-950 rounded-full animate-pulse"></span>
+          </div>
+          <div>
+            <h4 class="text-sm font-black text-white flex items-center gap-1.5">
+              <span>مساعد AM Marketing الذكي</span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-mono font-bold">v3.5 Pro ⚡</span>
+            </h4>
+            <p class="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>متصل الآن 24/7 • إجابات فورية ذكية</span>
+            </p>
+          </div>
+        </div>
+        <button onclick="toggleAiChat()" class="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition cursor-pointer" title="إغلاق المحادثة">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Quick Action Pills -->
+      <div class="px-3 py-2 bg-slate-900/70 border-b border-slate-800/80 overflow-x-auto no-scrollbar flex gap-1.5 shrink-0">
+        <button onclick="handleBotQuery('بكام عمل موقع أو متجر')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700/60 hover:border-emerald-500/40 text-[11px] font-bold whitespace-nowrap transition cursor-pointer">💰 باقات وأسعار المواقع</button>
+        <button onclick="handleBotQuery('يخلص في كام وقت ومدة التسليم')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700/60 hover:border-emerald-500/40 text-[11px] font-bold whitespace-nowrap transition cursor-pointer">⏱️ مدة ووقت التسليم</button>
+        <button onclick="handleBotQuery('أسعار باقات الإعلانات والتسويق')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700/60 hover:border-emerald-500/40 text-[11px] font-bold whitespace-nowrap transition cursor-pointer">📢 باقات الحملات الإعلانية</button>
+        <button onclick="handleBotQuery('برامج الكاشير والأنظمة بكام')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700/60 hover:border-emerald-500/40 text-[11px] font-bold whitespace-nowrap transition cursor-pointer">💻 برامج الكاشير والمحاسبة</button>
+        <button onclick="handleBotQuery('حاسبة مقايسات وتفصيل التشطيب')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700/60 hover:border-emerald-500/40 text-[11px] font-bold whitespace-nowrap transition cursor-pointer">🧮 حاسبة مقايسات الشقق</button>
+        <button onclick="handleBotQuery('طرق الدفع ونظام السداد')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700/60 hover:border-emerald-500/40 text-[11px] font-bold whitespace-nowrap transition cursor-pointer">💳 طرق الدفع والتقسيط</button>
+        <button onclick="handleBotQuery('تفاصيل الضمان والدعم الفني')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700/60 hover:border-emerald-500/40 text-[11px] font-bold whitespace-nowrap transition cursor-pointer">🛡️ الضمان والدعم الفني</button>
+        <button onclick="handleBotQuery('تواصل مباشر مع عبد السلام')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-slate-300 hover:text-emerald-300 border border-slate-700/60 hover:border-emerald-500/40 text-[11px] font-bold whitespace-nowrap transition cursor-pointer">📞 التواصل مع عبد السلام</button>
+      </div>
+
+      <!-- Messages Feed Container -->
+      <div id="aiChatFeed" class="flex-1 overflow-y-auto p-4 space-y-3.5 text-xs text-slate-200">
+        <div class="flex flex-col items-start">
+          <div class="max-w-[88%] rounded-2xl p-3.5 shadow-md leading-relaxed whitespace-pre-line bg-slate-900 border border-slate-800 text-slate-200 rounded-bl-none">
+أهلاً بك في وكالة AM Marketing! 🚀
+أنا مساعدك الذكي 🤖 تحت أمرك للإجابة الفورية والشاملة على كافة استفساراتك حول:
+
+• 🌐 برمجة وتطوير المواقع والمتاجر الإلكترونية
+• ⏱️ مواعيد ومدد تسليم المشاريع بدقة
+• 📢 باقات وأسعار الحملات الإعلانية والشات أدز
+• 💻 برامج الويندوز المحاسبية وأنظمة الكاشير مدى الحياة
+• 🧮 حاسبة مقايسات وتشطيب الشقق بالماركات المعتمدة
+• 💳 طرق الدفع والتقسيط والضمانات
+
+كيف يمكنني مساعدتك اليوم؟
+          </div>
+          <span class="text-[9px] text-slate-500 px-1 mt-1">الآن</span>
+        </div>
+      </div>
+
+      <!-- Typing Indicator -->
+      <div id="aiBotTyping" class="px-4 py-1.5 hidden">
+        <div class="flex items-center gap-1.5 text-slate-400 text-xs bg-slate-900/80 px-3 py-1.5 rounded-xl w-fit border border-slate-800">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce [animation-delay:0.2s]"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-bounce [animation-delay:0.4s]"></span>
+          <span class="text-[10px] text-slate-400 mr-1">المساعد الذكي يكتب...</span>
+        </div>
+      </div>
+
+      <!-- Input & Send Form -->
+      <form id="aiChatForm" onsubmit="event.preventDefault(); submitBotInput();" class="p-3 bg-slate-900/90 border-t border-slate-800 flex items-center gap-2 shrink-0">
+        <input type="text" id="aiChatInput" placeholder="اكتب سؤالك أو استفسارك هنا..." class="flex-1 bg-slate-950 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 transition">
+        <button type="submit" class="w-9 h-9 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center font-bold shadow-lg shadow-emerald-500/20 transition cursor-pointer" title="إرسال">
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </form>
+
+      <!-- Quick WhatsApp Handoff Footer -->
+      <div class="px-3 py-2 bg-slate-950 border-t border-slate-900 flex items-center justify-between text-[11px]">
+        <span class="text-slate-500">تحويل للمبيعات مباشرة:</span>
+        <a href="https://wa.me/201098174992?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%8A%D8%A7%20%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83%20%D9%85%D8%A8%D8%A7%D8%B4%D8%B1%D8%A9" target="_blank" rel="noopener noreferrer" class="text-emerald-400 font-bold hover:underline flex items-center gap-1">
+          <span>واتساب 01098174992</span>
+          <i data-lucide="phone" class="w-3 h-3"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Floating Main Launcher Button -->
+    <button onclick="toggleAiChat()" class="relative group flex items-center gap-2.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-green-600 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black px-4 py-3 rounded-full shadow-2xl shadow-emerald-500/40 border-2 border-emerald-300 transition-all cursor-pointer hover:scale-105 active:scale-95">
+      <div class="relative">
+        <i data-lucide="bot" class="w-6 h-6 stroke-[2.5]"></i>
+        <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-amber-400 rounded-full animate-ping"></span>
+      </div>
+      <div class="flex flex-col text-right leading-tight">
+        <span class="text-xs font-black">المساعد الذكي</span>
+        <span class="text-[10px] font-bold text-slate-900/80">اسأل واستفسر فوراً 💬</span>
+      </div>
+    </button>
+  </div>
+
+  <script>
+    function toggleAiChat() {
+      const modal = document.getElementById("aiChatWindow");
+      if (modal) {
+        modal.classList.toggle("hidden");
+        if (!modal.classList.contains("hidden")) {
+          const feed = document.getElementById("aiChatFeed");
+          if (feed) feed.scrollTop = feed.scrollHeight;
+          if (window.lucide) lucide.createIcons();
+        }
+      }
+    }
+
+    function handleBotQuery(queryText) {
+      if (!queryText) return;
+      appendUserMsg(queryText);
+      showTypingIndicator(true);
+
+      setTimeout(() => {
+        const replyObj = computeBotKnowledgeReply(queryText);
+        appendBotMsg(replyObj.text, replyObj.link);
+        showTypingIndicator(false);
+      }, 500);
+    }
+
+    function submitBotInput() {
+      const inp = document.getElementById("aiChatInput");
+      if (!inp) return;
+      const val = inp.value.trim();
+      if (!val) return;
+      inp.value = "";
+      handleBotQuery(val);
+    }
+
+    function appendUserMsg(txt) {
+      const feed = document.getElementById("aiChatFeed");
+      if (!feed) return;
+      const div = document.createElement("div");
+      div.className = "flex flex-col items-end";
+      div.innerHTML = `<div class=\"max-w-[88%] rounded-2xl p-3.5 shadow-md leading-relaxed whitespace-pre-line bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-br-none\"><p>${escapeHtml(txt)}</p></div><span class=\"text-[9px] text-slate-500 px-1 mt-1\">الآن</span>`;
+      feed.appendChild(div);
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    function appendBotMsg(txt, link) {
+      const feed = document.getElementById("aiChatFeed");
+      if (!feed) return;
+      const div = document.createElement("div");
+      div.className = "flex flex-col items-start";
+      let linkHtml = "";
+      if (link && link.url) {
+        const target = link.url.startsWith("http") || link.url.endsWith(".html") ? "_blank" : "_self";
+        linkHtml = `<div class=\"mt-2.5 pt-2 border-t border-slate-800\"><a href=\"${link.url}\" target=\"${target}\" class=\"inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-[11px] shadow-md transition\"><span>${escapeHtml(link.label || "متابعة")}</span><i data-lucide=\"arrow-up-left\" class=\"w-3.5 h-3.5\"></i></a></div>`;
+      }
+      div.innerHTML = `<div class=\"max-w-[88%] rounded-2xl p-3.5 shadow-md leading-relaxed whitespace-pre-line bg-slate-900 border border-slate-800 text-slate-200 rounded-bl-none\"><p>${escapeHtml(txt)}</p>${linkHtml}</div><span class=\"text-[9px] text-slate-500 px-1 mt-1\">الآن</span>`;
+      feed.appendChild(div);
+      feed.scrollTop = feed.scrollHeight;
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function showTypingIndicator(show) {
+      const el = document.getElementById("aiBotTyping");
+      if (el) {
+        if (show) el.classList.remove("hidden");
+        else el.classList.add("hidden");
+      }
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    function normalizeArText(txt) {
+      return txt.toLowerCase().replace(/[أإآ]/g, "ا").replace(/[ة]/g, "ه").replace(/[ى]/g, "ي").replace(/[ئؤ]/g, "ء").replace(/[\u064B-\u065F]/g, "").trim();
+    }
+
+    function computeBotKnowledgeReply(query) {
+      const q = normalizeArText(query);
+      const isAskingPOS = q.includes("كاشير") || q.includes("ويندوز") || q.includes("برنامج") || q.includes("برامج") || q.includes("سيستم") || q.includes("pos") || q.includes("keygen") || q.includes("محاسب");
+      const isAskingFinishing = q.includes("تشطيب") || q.includes("تشطب") || q.includes("شطب") || q.includes("مقايس") || q.includes("شقه") || q.includes("ديكور") || q.includes("سيراميك") || q.includes("دهان") || q.includes("سباك") || q.includes("رخام") || q.includes("بورسلين") || q.includes("finishing");
+      const isAskingWeb = q.includes("موقع") || q.includes("متجر") || q.includes("سايت") || q.includes("ويب") || q.includes("منص") || q.includes("لاندنج") || q.includes("برمج") || q.includes("مبرمج") || q.includes("store") || q.includes("web") || q.includes("site") || q.includes("landing");
+      const isAskingAds = q.includes("اعلان") || q.includes("حمل") || q.includes("تسويق") || q.includes("سوشيال") || q.includes("فيسبوك") || q.includes("انستجرام") || q.includes("شات اد") || q.includes("سناب") || q.includes("تيك توك") || q.includes("ممول") || q.includes("ليد") || q.includes("ads") || q.includes("marketing");
+
+      const isAskingPrice = q.includes("بكام") || q.includes("بكم") || q.includes("سعر") || q.includes("اسعار") || q.includes("تكلف") || q.includes("فلوس") || q.includes("كام") || q.includes("ميزاني") || q.includes("price") || q.includes("cost") || q.includes("how much");
+      const isAskingTime = q.includes("يخلص") || q.includes("تخلص") || q.includes("وقت") || q.includes("مده") || q.includes("مدة") || q.includes("ايام") || q.includes("يوم") || q.includes("سريع") || q.includes("تسليم") || q.includes("استلام") || q.includes("استلم") || q.includes("تستلم") || q.includes("ميعاد") || q.includes("مواعيد") || q.includes("اد ايه") || q.includes("قد ايه") || q.includes("امتى") || q.includes("متى") || q.includes("time") || q.includes("duration") || q.includes("days") || q.includes("how long");
+
+      const isCash = (q.includes(" كاش") || q.startsWith("كاش")) && !q.includes("كاشير");
+      const isAskingPayment = q.includes("دفع") || q.includes("سداد") || q.includes("تقسيط") || q.includes("اقساط") || q.includes("قسط") || q.includes("فودافون") || q.includes("انستاباي") || isCash || q.includes("بنك") || q.includes("تحويل") || q.includes("عربون") || q.includes("payment") || q.includes("installment");
+      const isAskingWarranty = q.includes("ضمان") || q.includes("دعم") || q.includes("صيان") || q.includes("عطل") || q.includes("مشكل") || q.includes("باك اب") || q.includes("نسخ") || q.includes("تعديل") || q.includes("warranty") || q.includes("support");
+      const isAskingPortfolio = q.includes("سابق") || q.includes("اعمال") || q.includes("شغل") || q.includes("نماذج") || q.includes("مشاريع") || q.includes("معرض") || q.includes("portfolio") || q.includes("sample");
+      const isAskingLocation = q.includes("مكان") || q.includes("مقر") || q.includes("عنوان") || q.includes("فين") || q.includes("اقابلك") || q.includes("اجي") || q.includes("مقابل") || q.includes("location") || q.includes("office") || q.includes("address");
+      const isAskingHosting = q.includes("استضاف") || q.includes("دومين") || q.includes("سيرفر") || q.includes("ايميل") || q.includes("hosting") || q.includes("domain");
+      const isAskingContact = q.includes("عبد السلام") || q.includes("تواصل") || q.includes("واتس") || q.includes("رقم") || q.includes("اتصل") || q.includes("فون") || q.includes("موبايل") || q.includes("call") || q.includes("phone") || q.includes("contact");
+      const isAskingServices = q.includes("خدمات") || q.includes("خدمه") || q.includes("بتعملو") || q.includes("بتعملوا") || q.includes("شغالين") || q.includes("مجال") || q.includes("بقدم") || q.includes("بتقدم") || q.includes("كتالوج") || q.includes("services");
+      const isAskingDiscount = q.includes("خصم") || q.includes("عروض") || q.includes("عرض") || q.includes("تخفيض") || q.includes("ديسكونت") || q.includes("discount") || q.includes("offer");
+      const isAskingStart = q.includes("ابدا") || q.includes("بدا") || q.includes("خطوات") || q.includes("اتعاقد") || q.includes("تعاقد") || q.includes("اشتغل معاك") || q.includes("how to start");
+      const isAskingOwner = q.includes("مين انت") || q.includes("مين حضرتك") || q.includes("مين مصطفي") || q.includes("مين عبد السلام") || q.includes("مين صاحب") || q.includes("نبذه") || q.includes("عنك") || q.includes("عنكم") || q.includes("who are you") || q.includes("about");
+      const isGreeting = q.includes("سلام") || q.includes("ازيك") || q.includes("مرحبا") || q.includes("اهلا") || q.includes("صباح") || q.includes("مساء") || q.includes("عامل ايه") || q.includes("hello") || q.includes("hi") || q.includes("hey");
+
+      // 1. Delivery Timeline
+      if (isAskingTime) {
+        if (isAskingWeb) {
+          return { text: "⏱️ مدة تنفيذ وتسليم المواقع والمتاجر الإلكترونية:\n\n• 🚀 صفحات الهبوط السريعة: من 3 إلى 5 أيام عمل فقط!\n• 🏢 المواقع التعريفية للشركات: من 5 إلى 7 أيام عمل.\n• 🛒 المتاجر الإلكترونية المتكاملة: من 7 إلى 12 يوم عمل (شاملة ربط الدفع الإلكتروني والشحن).\n• 🎓 المنصات التعليمية: من 15 إلى 25 يوم عمل.\n\n✅ بنلتزم بالموعد في العقد بنسبة 100% مع ضمان التسليم بدون أي تأخير!", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أود الاستفسار عن مدة تسليم موقعي وبدء العمل"), label: "تحديد موعد استلام موقعك عبر واتساب 💬" } };
+        }
+        if (isAskingAds) {
+          return { text: "⏱️ موعد إطلاق الحملات الإعلانية والشات أدز:\n\n• ⚡ إطلاق وتفعيل الإعلانات خلال 24 إلى 48 ساعة فقط من استلام التفاصيل والتصميمات!\n• 🤖 تشغيل روبوت الشات أدز فوراً لإغلاق المبيعات.", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أرغب في إطلاق حملة إعلانية سريعة"), label: "إطلاق حملتك الإعلانية الآن 💬" } };
+        }
+        if (isAskingPOS) {
+          return { text: "⏱️ تسليم وتثبيت برامج الكاشير والمحاسبة:\n\n• ⚡ تسليم فوري وتثبيت وتوليد السيريال والأكواد للأجهزة خلال 24 ساعة فقط!", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أود تثبيت وتفعيل برنامج الكاشير فوراً"), label: "طلب برنامج الكاشير فوراً 💻" } };
+        }
+        return { text: "⏱️ مواعيد ومدد تسليم المشاريع في AM Marketing:\n\n• 🚀 صفحات الهبوط (Landing Pages): من 3 إلى 5 أيام عمل فقط!\n• 🛒 المتاجر الإلكترونية المتكاملة: من 7 إلى 12 يوم عمل.\n• 🏢 المواقع التعريفية للشركات: من 5 إلى 7 أيام عمل.\n• 📢 إطلاق الحملات الإعلانية والشات أدز: تفعيل خلال 24 إلى 48 ساعة فقط!\n• 💻 برامج الكاشير والمحاسبة: تسليم وتثبيت فوري خلال 24 ساعة!\n• 🏗️ تشطيب الشقق والوحدات: من 45 إلى 75 يوم عمل حسب المساحة.\n\nجميع المواعيد بنلتزم بيها تعاقدياً بنسبة 100%!", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أرغب في تحديد موعد البدء ومدة تسليم مشروعي"), label: "تحديد موعد البدء عبر واتساب 💬" } };
+      }
+
+      // 2. Website Pricing (بكام عملا موقع)
+      if (isAskingWeb) {
+        return { text: "🌐 باقات وأسعار تصميم وبرمجة المواقع والمتاجر الإلكترونية:\n\n1️⃣ صفحة هبوط تسويقية سريعة (High-Converting Landing Page):\n   • تبدأ من 2,500 إلى 3,900 ج.م (مثالية للإعلانات، سريعة جداً مع نموذج حجز وزر واتساب وتتبع بيكسل).\n\n2️⃣ موقع تعريفي متكامل لشركة أو عيادة:\n   • تبدأ من 4,500 إلى 6,500 ج.م (متعدد الصفحات، معرض أعمال، وتهيئة محركات البحث SEO).\n\n3️⃣ متجر إلكتروني احترافي متكامل:\n   • تبدأ من 6,500 إلى 9,500 ج.م (لوحة تحكم عربية سهلة، ربط دفع فيزا وفودافون كاش، وربط الشحن الأوتوماتيكي).\n\n4️⃣ منصات تعليمية وأنظمة ويب خاصة:\n   • تبدأ من 12,000 ج.م حسب حجم الميزات وحماية الفيديوهات.\n\n🎁 جميع الباقات تشمل: استضافة سحابية فائقة السرعة + دومين رسمي مجاناً + دعم فني وصيانة مجانية لمدة 6 أشهر!", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أود الاستفسار عن باقات وأسعار المواقع واختيار الأنسب لي"), label: "طلب عرض سعر لموقعك عبر واتساب 💬" } };
+      }
+
+      // 3. Ad Campaigns Pricing
+      if (isAskingAds) {
+        return { text: "📢 باقات إدارة الحملات الإعلانية والتسويق الرقمي:\n\n• 🟢 باقة الانطلاق (Starter) - 5,000 ج/شهر:\n  حملة إعلانية واحدة (Meta فيسبوك وإنستجرام) + 6 تصميمات احترافية + تتبع الرسائل.\n\n• ⭐ باقة النمو والمبيعات (Growth Pro) - 8,500 ج/شهر [الأكثر طلباً]:\n  إعلانات ممولة Meta & Google + قمع مبيعات (Funnel) + روبوت شات أدز لفلترة الزبائن وإغلاق البيع فوراً.\n\n• 👑 باقة السيطرة والتوسع (Enterprise) - 15,000 ج/شهر:\n  فريق تسويق كامل: إدارة إعلانات Meta وGoogle وTikTok وSnapchat + فيديوهات ريلز وموشن + تقارير أسبوعية!", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أود حجز باقة إعلانية لتكبير مبيعات مشروعي"), label: "حجز باقة إعلانية عبر واتساب 💬" } };
+      }
+
+      // 4. POS Software Pricing
+      if (isAskingPOS) {
+        return { text: "💻 أسعار وتفاصيل برامج الويندوز والمحاسبة (AM Systems):\n\n✅ ميزة حصرية كبرى: البرنامج ملكك مدى الحياة بضمان دائم، بدون أي اشتراكات شهرية أو سنوية!\n\n• 🛒 برنامج الكاشير للمحلات والسوبرماركت: يبدأ من 2,500 ج.م.\n• 🍽️ برنامج إدارة المطاعم والكافيهات: يبدأ من 3,000 ج.م.\n• 🏥 برنامج إدارة العيادات والمراكز الطبية: يبدأ من 3,500 ج.م.\n• 📦 برنامج إدارة المخازن والمبيعات: يبدأ من 2,900 ج.م.\n\n🔒 مدمج مع البرامج نظام أمان برقم بصمة الجهاز (Hardware ID) وكود تفعيل رسمي Serial Keygen.", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أرغب في الاستفسار عن برامج الكاشير والأنظمة المحاسبية"), label: "طلب برنامج الكاشير عبر واتساب 💬" } };
+      }
+
+      // 5. Finishing Pricing
+      if (isAskingFinishing) {
+        return { text: "🏗️ أسعار ومقايسات تشطيب الشقق والديكور بالماركات المعتمدة:\n\n• 🔹 تشطيب اقتصادي: حوالي 3,200 ج.م / م² (سيراميك كليوباترا، دهانات سيبس، أسلاك معتمدة).\n• 🔹 سوبر لوكس بلس [الأكثر طلباً]: حوالي 4,800 ج.م / م² (سيراميك الجوهرة، سلك السويدي، جوتن فينوماستيك، بيت نور جبسم بورد كناوف).\n• 🔹 الترا لوكس VIP: حوالي 6,900 ج.م / م² (بورسلين إسباني، أطقم جروهي دفن، دهانات ليدي، بديل رخام وخشب، ألوميتال جامبو عازل).\n\n📏 بنقدملك معاينة هندسية ورفع مقاسات وتحديد التكلفة الدقيقة لشقتك داخل القاهرة والجيزة!", link: { url: "calculator.html", label: "فتح حاسبة مقايسة الشقق فوراً 🧮" } };
+      }
+
+      // 6. Warranty
+      if (isAskingWarranty) {
+        return { text: "🛡️ الضمان والدعم الفني وخدمات ما بعد التسليم:\n\n• 🔒 ضمان برمجي كامل لمدة عام كامل ضد أي أخطاء برمجية مع إصلاحها فوراً بدون أي تكلفة إضافية.\n• 🛠️ دعم فني وصيانة مجانية لمدة 3 إلى 6 أشهر تشمل التحديثات والتعديلات البسيطة.\n• 💾 نسخ احتياطي تلقائي (Auto Cloud Backup) يومي وأسبوعي لحماية بياناتك ومبيعاتك من أي فقدان.\n• 📹 تدريب مسجل بالفيديو لشرح كيفية إدارة لوحة التحكم بنفسك وبكل سهولة من الموبايل أو الكمبيوتر!", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أود الاستفسار عن تفاصيل الضمان والدعم الفني لمشروعي"), label: "التحدث مع الدعم الفني عبر واتساب 💬" } };
+      }
+
+      // 7. Payment Methods
+      if (isAskingPayment) {
+        return { text: "💳 طرق الدفع ونظام السداد في AM Marketing:\n\n• 🤝 نظام الدفعات للمواقع والمشاريع البرمجية:\n  - 50% دفعة أولى عند التعاقد والبدء في التنفيذ.\n  - 25% بعد مراجعة النسخة التجريبية الأولى واعتماد التعديلات.\n  - 25% المتبقية عند التسليم النهائي وتفعيل النطاق الرسمي.\n\n• 📲 وسائل التحويل المعتمدة:\n  - إنستاباي (InstaPay) فوري.\n  - فودافون كاش / أورنج كاش / اتصالات كاش.\n  - تحويل بنكي رسمي (CIB / QNB / البنك الأهلي).\n  - أو كاش عند المقابلة المباشرة وتوقيع العقد في القاهرة والجيزة.", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أود الاستفسار عن نظام الدفع وبدء المشروع"), label: "تأكيد طريقة السداد عبر واتساب 💬" } };
+      }
+
+      // 8. General Price
+      if (isAskingPrice) {
+        return { text: "💰 أسعار خدمات AM Marketing باختصار:\n\n1. 🌐 المواقع والمتاجر: تبدأ من 2,500 ج.م لصفحات الهبوط وحتى 9,500 ج.م للمتاجر المتكاملة.\n2. 📢 باقات الإعلانات والتسويق: 5,000 ج (انطلاق) / 8,500 ج (نمو وشات أدز) / 15,000 ج (سيطرة).\n3. 💻 برامج الكاشير والمحاسبة: تبدأ من 2,500 ج.م ترخيص مدى الحياة بدون اشتراكات.\n4. 🏗️ تشطيب الشقق والمقاولات: يبدأ من 3,200 ج/م² حتى 6,900 ج/م² بالماركات المعتمدة.\n\nأخبرني بنوع الخدمة التي تود معرفة تفاصيلها بدقة وسأساعدك فوراً!", link: { url: "calculator.html", label: "استخدم حاسبة التسعير التفاعلية 🧮" } };
+      }
+
+      // 9. Services
+      if (isAskingServices) {
+        return { text: "🚀 خدمات وحلول AM Marketing المتكاملة:\n\n1️⃣ 🌐 برمجة وتطوير المواقع والمتاجر التفاعلية.\n2️⃣ 📢 إدارة الحملات الإعلانية الممولة وبوتات الشات أدز.\n3️⃣ 💻 أنظمة الويندوز والكاشير والمحاسبة بدون اشتراكات.\n4️⃣ 🧮 حاسبة مقايسات وتشطيب الشقق والديكور بالماركات المعتمدة.\n\nعن أي خدمة تود معرفة تفاصيلها الآن؟", link: { url: "https://wa.me/201098174992", label: "استفسر مباشرة عبر واتساب 💬" } };
+      }
+
+      // 10. Discount
+      if (isAskingDiscount) {
+        return { text: "🎁 العروض والخصومات الحالية في AM Marketing:\n\n• 🏷️ خصم فوري 15% على برمجة المواقع والمتاجر الإلكترونية عند التعاقد خلال هذا الأسبوع.\n• 🌐 دومين رسمي (.com) + استضافة سريعة مشفرة بـ SSL مجاناً بالكامل للسنة الأولى.\n• ⭐ خصم خاص يصل إلى 25% عند دمج خدمة تصميم الموقع مع باقة إدارة الحملات الإعلانية!", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أرغب في الاستفادة من خصم الـ 15% وعروض الباقات لمشروعي"), label: "تثبيت الخصم عبر واتساب 💬" } };
+      }
+
+      // 11. How to start
+      if (isAskingStart) {
+        return { text: "🚀 خطوات البدء والتعاقد مع AM Marketing بسيطة وسريعة:\n\n1️⃣ بنتفق هاتفياً أو عبر واتساب على تفاصيل مشروعك ونوع الباقة الأنسب لك.\n2️⃣ بنرسل لك تفاصيل التعاقد وفاتورة رسمية لتأكيد الدفعة الأولى (50%).\n3️⃣ بنبدأ العمل فوراً وبنشاركك نسخة تجريبية لايف للمعاينة وإبداء أي ملاحظات وتعديلات.\n4️⃣ بعد اعتمادك، بنسلمك كافة بيانات الاستضافة والدومين ولوحة التحكم مع فيديو شرح تدريبي كامل لك ولطاقمك!", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أنا جاهز لبدء المشروع وأود بدء الخطوات الرسمية"), label: "البدء في المشروع فوراً عبر واتساب 💬" } };
+      }
+
+      // 12. About Owner
+      if (isAskingOwner) {
+        return { text: "👤 نبذة عن مصطفى عبد السلام ووكالة AM Marketing:\n\n• 💼 مصطفى عبد السلام: مطوّر ويب متكامل (Full-Stack)، خبير نمو رقمي وإعلانات ممولة، وصانع أنظمة وأتمتة بالذكاء الاصطناعي.\n• 🚀 مؤسس وكالة AM Marketing للحلول البرمجية والتسويقية، بخبرة عملية في قيادة حملات إعلانية وتطوير منصات برمجية وأنظمة كاشير في مصر ودول الخليج العربي.\n• 🎯 شعارنا دائماً: دقة في التسليم، احترافية في الكود، ونتائج بيعية ملموسة تعود عليك بأعلى عائد استثماري (ROAS)!", link: { url: "https://wa.me/201098174992", label: "تواصل مع مصطفى عبد السلام 💬" } };
+      }
+
+      // 13. Direct Contact
+      if (isAskingContact) {
+        return { text: "📞 التواصل المباشر مع مصطفى عبد السلام:\n\n• 📱 هاتف وواتساب: 01098174992 (+201098174992)\n• 🕒 المواعيد: متاح للرد على استفساراتكم وحجز الجلسات الاستشارية والمشاريع على مدار الساعة.", link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent("مرحباً عبد السلام، أود التحدث معك مباشرة بخصوص مشروع جديد"), label: "فتح شات واتساب مع عبد السلام الآن 💬" } };
+      }
+
+      // 14. Greetings
+      if (isGreeting) {
+        return { text: "أهلاً وسهلاً بك! 👋 سعيد جداً بتواصلك معي.\nأنا المساعد الذكي لوكالة AM Marketing (بإشراف مصطفى عبد السلام).\n\nأنا هنا للإجابة فوراً وبدقة على كافة أسئلتك حول:\n• 🌐 أسعار وباقات المواقع والمتاجر الإلكترونية\n• ⏱️ مواعيد ومدد تسليم المشاريع بدقة\n• 📢 باقات الحملات الإعلانية والشات أدز\n• 💻 برامج الكاشير والمحاسبة بدون أي اشتراكات\n• 🧮 حاسبة مقايسات الشقق والتشطيبات\n• 💳 طرق الدفع والتقسيط والضمانات\n\nتفضل بسؤالك أو استفسارك وسأجيبك في ثوانٍ! 😊", link: { url: "https://wa.me/201098174992", label: "محادثة عبد السلام مباشرة عبر واتساب 🟢" } };
+      }
+
+      // Default smart fallback
+      return { text: `أهلاً بك يا فندم! بخصوص سؤالك عن "${query}":\n\nأنا جاهز للإجابة الفورية والشاملة على استفسارك. يمكنك إخباري بمزيد من التفاصيل، أو اختيار أحد الأقسام التالية لمعرفة كافة التفاصيل فوراً:\n\n1️⃣ 🌐 أسعار ومدد تسليم المواقع والمتاجر (من 2,500 ج.م وتسليم 3-5 أيام).\n2️⃣ ⏱️ مواعيد التسليم لجميع الخدمات البرمجية والإعلانية.\n3️⃣ 📢 باقات الحملات الإعلانية الممولة والشات أدز.\n4️⃣ 💻 برامج الكاشير والأنظمة المحاسبية للويندوز ترخيص دائم.\n5️⃣ 💳 طرق الدفع والتقسيط وشهادات الضمان.\n\nأو يمكنك التحدث مباشرة مع مصطفى عبد السلام هاتفياً أو عبر الواتساب بضغطة زر واحدة 👇`, link: { url: "https://wa.me/201098174992?text=" + encodeURIComponent(`مرحباً عبد السلام، استفسار عبر البوت: ${query}`), label: "متابعة الاستفسار عبر واتساب 💬" } };
+    }
+  </script>
 </body>
 </html>
