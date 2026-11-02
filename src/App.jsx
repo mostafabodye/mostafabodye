@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import StoryVideoSection from './components/StoryVideoSection';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -148,6 +149,9 @@ export default function App() {
         {currentPage === 'home' && (
           <>
             <Hero t={t} lang={lang} onNavigate={handleNavigate} />
+
+            {/* Founder Story Video Section: Meet Abdel Salam */}
+            <StoryVideoSection lang={lang} onNavigate={handleNavigate} />
 
             {/* Dedicated Multi-Page Academic & Enterprise Portals Showcase */}
             <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
