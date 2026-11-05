@@ -55,7 +55,7 @@ export default function GrowthPipeline({ lang = 'ar' }) {
       num: '05',
       title: isRtl ? 'التوسع ومضاعفة الأرباح والـ ROAS' : 'Scale & Revenue Maximization',
       desc: isRtl
-        ? 'ضخ الميزانية في الحملات الرابحة فقط، استبعاد الهدر، ومضاعفة حجم المبيعات الصافية للبيزنس بأعلى كفاءة واستقرار.'
+        ? 'ضخ الميزانية في الحملات الرابحة فقط، استبعاد الهدر، ومضاعفة حجم المبيعات الصافية لنشاطك التجاري بأعلى كفاءة واستقرار.'
         : 'Aggressive scaling of winning ad sets, eliminating waste, and maximizing net profitability and ROAS.',
       icon: TrendingUp,
       color: 'from-amber-400 to-yellow-500'
@@ -84,7 +84,7 @@ export default function GrowthPipeline({ lang = 'ar' }) {
         >
           {isRtl ? (
             <>
-              مسار علمي محكم لنقل بيزنسك إلى{' '}
+              مسار علمي محكم لنقل مشروعك ونشاطك التجاري إلى{' '}
               <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-emerald-400 bg-clip-text text-transparent">
                 مستوى الاستقرار والنمو
               </span>

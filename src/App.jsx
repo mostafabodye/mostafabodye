@@ -81,7 +81,7 @@ export default function App() {
     web: lang === 'ar' ? 'هندسة وتطوير المواقع والمتاجر الإلكترونية والمنصات التعليمية' : 'Websites, E-Commerce & LMS Platforms',
     systems: lang === 'ar' ? 'منصة برامج الويندوز والأنظمة المحاسبية + التفعيل بالكود' : 'Windows POS/ERP Software & Keygen Activation',
     portfolio: lang === 'ar' ? 'سابقة الأعمال ودراسات الحالة' : 'Portfolio & Case Studies',
-    contact: lang === 'ar' ? 'عن الوكالة والتواصل المباشر' : 'About & Contact'
+    contact: lang === 'ar' ? 'اعرف مين هو شريكك الرقمي عبد السلام • عن الوكالة والتواصل' : 'Meet Your Digital Partner Abdel Salam • About & Contact'
   };
 
   return (
@@ -351,7 +351,6 @@ export default function App() {
               </div>
             </section>
 
-            <About t={t} lang={lang} />
             <Skills t={t} lang={lang} />
             <Projects t={t} lang={lang} onNavigate={handleNavigate} />
             <Contact t={t} lang={lang} />

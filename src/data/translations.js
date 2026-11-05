@@ -45,9 +45,9 @@ export const translations = {
         conversion: "هندسة التحويل وتجربة المستخدم CRO"
       },
       stats: {
-        projects: "مشروع ومنصة مكتملة",
-        campaigns: "حملة إعلانية ناجحة",
-        technologies: "تقنية وأداة أتقنها"
+        projects: "براند وشركة ناجحة",
+        campaigns: "أعلى عائد إعلاني (ROAS)",
+        technologies: "سنوات خبرة في هندسة النمو"
       },
       quickFacts: {
         title: "بطاقة تعريفية سريعة",

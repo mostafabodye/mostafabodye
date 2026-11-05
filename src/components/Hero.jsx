@@ -274,16 +274,16 @@ export default function Hero({ t, lang, onNavigate }) {
                 {/* 3 Executive Metrics Strip */}
                 <div className="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-slate-800 text-center">
                   <div className="bg-slate-950/80 rounded-xl p-2 border border-slate-800/80">
-                    <div className="text-sm sm:text-base font-black text-amber-400">+50</div>
-                    <div className="text-[10px] text-slate-400 font-semibold">موقع وحملة ناجحة</div>
+                    <div className="text-sm sm:text-base font-black text-amber-400">+207</div>
+                    <div className="text-[10px] text-slate-400 font-semibold">{isRtl ? 'براند وشركة ناجحة' : 'Successful Brands'}</div>
                   </div>
                   <div className="bg-slate-950/80 rounded-xl p-2 border border-slate-800/80">
-                    <div className="text-sm sm:text-base font-black text-cyan-400">100%</div>
-                    <div className="text-[10px] text-slate-400 font-semibold">توافق كل الأجهزة</div>
+                    <div className="text-sm sm:text-base font-black text-cyan-400">18.7x</div>
+                    <div className="text-[10px] text-slate-400 font-semibold">{isRtl ? 'أعلى عائد ROAS' : 'Peak ROAS'}</div>
                   </div>
                   <div className="bg-slate-950/80 rounded-xl p-2 border border-slate-800/80">
-                    <div className="text-sm sm:text-base font-black text-emerald-400">24/7</div>
-                    <div className="text-[10px] text-slate-400 font-semibold">دعم فني وتفعيل</div>
+                    <div className="text-sm sm:text-base font-black text-emerald-400">+6</div>
+                    <div className="text-[10px] text-slate-400 font-semibold">{isRtl ? 'سنوات خبرة موثقة' : 'Years Experience'}</div>
                   </div>
                 </div>
               </div>

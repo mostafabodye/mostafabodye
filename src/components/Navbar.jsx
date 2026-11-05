@@ -69,7 +69,7 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
     },
     {
       id: 'contact',
-      label: lang === 'ar' ? 'عن الوكالة والتواصل' : 'About & Contact',
+      label: lang === 'ar' ? 'شريكك الرقمي والتواصل' : 'About & Contact',
       icon: UserCheck
     }
   ];

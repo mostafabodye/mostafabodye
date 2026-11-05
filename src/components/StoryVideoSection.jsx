@@ -41,7 +41,7 @@ export default function StoryVideoSection({ lang = 'ar', onNavigate }) {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/15 to-cyan-500/15 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-black mb-4 shadow-lg shadow-amber-500/10"
         >
           <Sparkles size={15} className="text-amber-400 animate-pulse" />
-          <span>{isRtl ? 'حكاية البراند والمؤسس • قصة النمو' : 'Founder & Brand Story • Growth Journey'}</span>
+          <span>{isRtl ? 'شريكك الرقمي • قصة المنظومة والنمو' : 'Your Digital Partner • The Growth Story'}</span>
         </motion.div>
 
         <motion.h2
@@ -53,16 +53,16 @@ export default function StoryVideoSection({ lang = 'ar', onNavigate }) {
         >
           {isRtl ? (
             <>
-              اتعرف عليّا —{' '}
+              اعرف مين هو شريكك الرقمي —{' '}
               <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">
-                مين عبد السلام؟
+                عبد السلام
               </span>
             </>
           ) : (
             <>
-              Meet The Architect —{' '}
+              Meet Your Digital Partner —{' '}
               <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-orange-500 bg-clip-text text-transparent">
-                Who's Abdel Salam?
+                Abdel Salam
               </span>
             </>
           )}
@@ -140,7 +140,7 @@ export default function StoryVideoSection({ lang = 'ar', onNavigate }) {
           </h3>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
             {isRtl
-              ? 'البيزنس لا يحتاج مصاريف إعلانات أكثر.. بل يحتاج منظومة أذكى تحافظ على كل زائر وتحوله لصفقة.'
+              ? 'مشروعك ونشاطك التجاري لا يحتاج مصاريف إعلانات أكثر.. بل يحتاج منظومة أذكى تحافظ على كل زائر وتحوله لصفقة.'
               : 'Businesses do not need more ad spending; they need smarter engines that convert every lead.'}
           </p>
         </div>

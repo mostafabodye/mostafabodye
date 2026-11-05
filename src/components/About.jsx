@@ -79,17 +79,17 @@ export default function About({ t, lang }) {
             {/* 3 Stats Cards */}
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
               <div className="card-base card-hover text-center p-4">
-                <p className="text-2xl sm:text-3xl font-extrabold gradient-text mb-1">+25</p>
+                <p className="text-2xl sm:text-3xl font-extrabold gradient-text mb-1">+207</p>
                 <p className="text-slate-400 text-xs font-medium">{t.about.stats.projects}</p>
               </div>
 
               <div className="card-base card-hover text-center p-4">
-                <p className="text-2xl sm:text-3xl font-extrabold gradient-text mb-1">+15</p>
+                <p className="text-2xl sm:text-3xl font-extrabold gradient-text mb-1">18.7x</p>
                 <p className="text-slate-400 text-xs font-medium">{t.about.stats.campaigns}</p>
               </div>
 
               <div className="card-base card-hover text-center p-4">
-                <p className="text-2xl sm:text-3xl font-extrabold gradient-text mb-1">+20</p>
+                <p className="text-2xl sm:text-3xl font-extrabold gradient-text mb-1">+6</p>
                 <p className="text-slate-400 text-xs font-medium">{t.about.stats.technologies}</p>
               </div>
             </div>

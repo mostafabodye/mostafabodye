@@ -163,7 +163,7 @@ export default function MarketsShowcase({ lang = 'ar', onNavigate }) {
           className="text-slate-300 text-sm sm:text-base leading-relaxed"
         >
           {isRtl
-            ? 'لا ندير إعلانات عشوائية.. بل نفهم بدقة سلوك المستهلك وقوة الشراء في كل سوق: من متطلبات البيزنس في الرياض وجدة، إلى النخب في دبي وأبوظبي، وحتى المنافسة الحامية في القاهرة والمحافظات.'
+            ? 'لا ندير إعلانات عشوائية.. بل نفهم بدقة سلوك المستهلك وقوة الشراء في كل سوق: من متطلبات الشركات والأنشطة التجارية في الرياض وجدة، إلى النخب في دبي وأبوظبي، وحتى المنافسة الحامية في القاهرة والمحافظات.'
             : 'We understand consumer behavior, purchasing power, and platform nuances in each key market: KSA, Egypt, and the UAE.'}
         </motion.p>
 
