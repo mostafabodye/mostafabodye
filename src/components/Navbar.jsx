@@ -11,7 +11,8 @@ import {
   Monitor,
   Briefcase,
   UserCheck,
-  Calculator
+  Calculator,
+  Sparkles
 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assets';
 
@@ -32,6 +33,13 @@ export default function Navbar({ lang, setLang, t, currentPage = 'home', onNavig
       id: 'home',
       label: lang === 'ar' ? 'الرئيسية' : 'Home',
       icon: Home
+    },
+    {
+      id: 'interactive-systems',
+      label: lang === 'ar' ? 'أنظمة حية تفاعلية' : 'Interactive Lab',
+      badge: 'جديد ⚡',
+      badgeColor: 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300',
+      icon: Sparkles
     },
     {
       id: 'calculator_page',

@@ -84,6 +84,32 @@ export default function Hero({ t, lang, onNavigate }) {
 
             {/* Direct Multi-Page Navigation Pills */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              {/* Interactive Super Systems Banner */}
+              <button
+                type="button"
+                onClick={() => onNavigate && onNavigate('interactive-systems')}
+                className="sm:col-span-2 flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-emerald-500/25 via-teal-600/20 to-cyan-500/15 hover:from-emerald-500/35 hover:to-cyan-500/25 border-2 border-emerald-400/60 text-right transition-all group shadow-xl shadow-emerald-500/15 hover:scale-[1.01] cursor-pointer"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-400 to-teal-600 text-slate-950 flex items-center justify-center font-black shadow-lg shadow-emerald-500/30 shrink-0 text-2xl">
+                    ⚡
+                  </div>
+                  <div>
+                    <div className="text-sm sm:text-base font-black text-emerald-300 group-hover:text-emerald-200 flex items-center gap-2">
+                      <span>{isRtl ? 'المختبر التفاعلي الحي: حاسبة العيادات • الكاشير • وحضور الـ HR' : 'Live Interactive Lab: Clinic OS, POS & HR Biometrics'}</span>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-500 text-slate-950 animate-pulse">جرّب بنفسك لايف 🧮</span>
+                    </div>
+                    <div className="text-xs text-slate-300 mt-0.5">
+                      {isRtl ? 'احسب أرباح عيادتك، امسح الباركود بصوت الكاشير، وسجّل حضور الموظفين بالبصمة الحيوية' : 'Calculate clinic ROI, scan supermarket barcodes with audio, and clock in staff'}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 text-slate-950 font-black text-xs bg-emerald-400 hover:bg-emerald-300 px-3.5 py-2 rounded-xl shadow-md shrink-0 transition">
+                  <span>{isRtl ? 'اختبار حي 👇' : 'Test Live 👇'}</span>
+                  <ArrowUpLeft className="w-4 h-4" />
+                </div>
+              </button>
+
               {/* Custom Finishing Builder Feature Banner */}
               <a
                 href="builder.html"

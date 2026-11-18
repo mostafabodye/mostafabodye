@@ -1,7 +1,298 @@
 export const projectsData = [
   {
+    id: "onash-masr-dispatch-network",
+    category: "winch",
+    categories: ["winch", "web", "systems", "ads"],
+    title: {
+      ar: "منصة أوناش مصر الموحدة (RescueDispatch Network / Onash Masr)",
+      en: "Onash Masr Nationwide Emergency Dispatch Platform"
+    },
+    subtitle: {
+      ar: "أول شبكة إنقاذ سيارات وطوارئ طرق موحدة في مصر تربط 350+ ونش فلات بد وهيدروليك مع تتبع GPS مباشر وعمولة أوتوماتيكية",
+      en: "Unified road rescue & dispatch network connecting 350+ tow trucks across Egypt with live GPS routing and automated dispatch"
+    },
+    badge: {
+      ar: "شبكة 350+ ونش إنقاذ 🚗",
+      en: "350+ Live Winch Fleet 🚗"
+    },
+    client: {
+      ar: "منصة أوناش مصر للإنقاذ السريع (جمهورية مصر العربية 🇪🇬)",
+      en: "RescueDispatch Towing Network (Egypt 🇪🇬)"
+    },
+    website: "https://winchmagdyelharby.com/",
+    tags: ["Dispatch System", "GPS Live Tracking", "350+ أوناش", "50 EGP Commission", "Auto Routing", "طوارئ الطرق"],
+    gradient: "from-amber-500 via-orange-600 to-red-600",
+    summary: {
+      ar: "منصة وطنية متكاملة لإدارة وتوزيع أوردرات إنقاذ السيارات في كافة محافظات مصر، تحتسب المسافة والعمولة أوتوماتيكياً وتربط العميل بأقرب ونش خلال ثوانٍ مع تتبع اللوكيشن وإشعارات واتساب فورية.",
+      en: "Nationwide towing dispatch ecosystem connecting breakdown drivers with nearest verified winches, calculating dynamic pricing and 50 EGP dispatch commission in real-time."
+    },
+    challenge: {
+      ar: "تشتت سائقي الأوناش في مصر وعشوائية التسعير وغياب منصة موحدة تضمن جودة الخدمة وسرعة الوصول وقت الحوادث والأعطال.",
+      en: "Fragmented towing fleets, arbitrary roadside pricing, and lack of verified dispatch response times."
+    },
+    solution: {
+      ar: "هندسة منصة ديسباتش مركزية متوافقة مع الجوال تتيح للعميل طلب ونش بضغطة زر وتوزيع الأوردر على أقرب سائق عبر شبكة واتساب وبوابات الاتصال المباشر.",
+      en: "Engineered a centralized mobile-first dispatch architecture matching emergency requests to closest drivers via automated routing."
+    },
+    results: [
+      { label: { ar: "الأوناش المسجلة", en: "Registered Winches" }, value: "+350 ونش" },
+      { label: { ar: "متوسط وقت الوصول", en: "Avg ETA" }, value: "10 دقائق" },
+      { label: { ar: "المكالمات الشهرية", en: "Monthly Calls" }, value: "+1,400" }
+    ],
+    features: {
+      ar: [
+        "توجيه آلي ذكي يربط العميل المعطل بأقرب ونش متاح بناءً على الـ GPS",
+        "حاسبة مسافة وتكلفة رحلة الإنقاذ مع توثيق عمولة المنصة (50 ج.م)",
+        "نظام إشعارات فوري عبر WhatsApp Bot ولوحة تحكم متجاوبة للسائقين",
+        "تغطية كاملة لمحاور القاهرة والجيزة، طريق السويس، الدائري، وإسكندرية الصحراوي"
+      ],
+      en: [
+        "Automated GPS-based dispatch routing to closest verified winch",
+        "Dynamic distance & fare calculation with automated 50 EGP platform commission",
+        "Real-time WhatsApp Bot dispatch alerts and mobile driver portal",
+        "100% coverage across Cairo, Giza, Suez Road, Ring Road, and Desert Highway"
+      ]
+    },
+    image: "/assets/images/winch_elsaeed_real.png",
+    demoUrl: "https://winchmagdyelharby.com/",
+    isFeatured: true
+  },
+  {
+    id: "sanad-legal-civil-platform",
+    category: "legal",
+    categories: ["legal", "web", "systems"],
+    title: {
+      ar: "منصة سَنَد للتكنولوجيا القانونية والخدمات العامة (Sanad LegalTech)",
+      en: "Sanad LegalTech & Civil Status Verification Hub"
+    },
+    subtitle: {
+      ar: "منظومة إلكترونية متكاملة لمكاتب المحاماة والاستشارات: صانع العقود الذكي، حجز الاستشارات الفورية، وتتبع المحررات الرسمية والتوكيلات",
+      en: "Full-stack legal tech platform: automated contract drafting, live lawyer booking, and legal representation tracking"
+    },
+    badge: {
+      ar: "منصة قانونية معتمدة ⚖️",
+      en: "Enterprise LegalTech ⚖️"
+    },
+    client: {
+      ar: "مجموعة سَنَد للاستشارات القانونية والتحكيم (مصر 🇪🇬)",
+      en: "Sanad Legal Group & Arbitration (Egypt 🇪🇬)"
+    },
+    website: "https://sanad-legal.eg/",
+    tags: ["LegalTech", "صانع العقود الذكي", "استشارات فورية", "توكيلات إلكترونية", "InstaPay Gate", "قانون مصري"],
+    gradient: "from-indigo-600 via-blue-700 to-sky-500",
+    summary: {
+      ar: "تطوير منصة تكنولوجيا قانونية رائدة (LegalTech) تتيح صياغة العقود المدنية والتجارية أوتوماتيكياً، حجز جلسات الاستشارة المباشرة مع محامين مقيدين بالنقابة، ومتابعة قضايا وتوكيلات الشركات والأفراد بأعلى معايير التشفير والسرية.",
+      en: "Pioneering LegalTech platform automating civil contract generation, verified lawyer consult booking, and encrypted case representation tracking."
+    },
+    challenge: {
+      ar: "صعوبة وصول المواطنين والشركات الناشئة لخدمات صياغة العقود الموثوقة وارتفاع تكلفة الاستشارات التقليدية وغياب الشفافية في تتبع الإجراءات القانونية.",
+      en: "High barrier to entry for standardized legal contract drafting and lack of verified transparent remote legal consultation."
+    },
+    solution: {
+      ar: "بناء بوابة قانونية ذكية متكاملة بمحرك عقود تفاعلي يولد مستندات قانونية محكمة، مع نظام حجز استشارات صوتية ومرئية ودفع إلكتروني فوري عبر إنستاباي وفودافون كاش.",
+      en: "Engineered an intelligent legal portal with automated contract generator and integrated digital payment gateways."
+    },
+    results: [
+      { label: { ar: "العقود المنجزة", en: "Drafted Contracts" }, value: "+4,800" },
+      { label: { ar: "دقة الصياغة", en: "Legal Accuracy" }, value: "99.8%" },
+      { label: { ar: "زمن حجز الاستشارة", en: "Booking Speed" }, value: "30 ثانية" }
+    ],
+    features: {
+      ar: [
+        "محرك صياغة عقود ذكي يغطي عقود البيع، الإيجار الجديد، العمل، والشراكات التجارية",
+        "بوابة حجز جلسات استشارية فورية عبر واتساب ومكالمات مشفرة مع مستشارين معتمدين",
+        "لوحة تتبع للمستندات والتوكيلات الرسمية بنظام كود تتبع مشفر للعميل",
+        "ربط بوابات الدفع الإلكتروني (InstaPay, Vodafone Cash, Fawry, Visa/Mastercard)"
+      ],
+      en: [
+        "Smart contract generation engine for sales, leases, employment, and NDAs",
+        "Instant consultation booking with bar-certified attorneys via encrypted channels",
+        "Secure document tracking portal with unique client verification codes",
+        "Integrated payment gateways (InstaPay, Vodafone Cash, Fawry, Cards)"
+      ]
+    },
+    image: "/assets/images/cyber-command-center.jpg",
+    demoUrl: "https://sanad-legal.eg/",
+    isFeatured: true
+  },
+  {
+    id: "ecom-oud-andalus",
+    category: "ecommerce",
+    categories: ["ecommerce", "web", "ads"],
+    title: {
+      ar: "براند عود الأندلس | متجر العطور الفاخرة الخليجي (Salla & Shopify)",
+      en: "Oud Al-Andalus | Luxury Fragrance E-Commerce Hub"
+    },
+    subtitle: {
+      ar: "متجر إلكتروني فاخر لتجارة العطور والعود الطبيعي مع حملات Meta و TikTok حققت 4.8 مليون ريال مبيعات في الرياض وجدة ودبي",
+      en: "High-end luxury fragrance store integrated with TikTok & Meta ads generating 4.8M SAR revenue across KSA & UAE"
+    },
+    badge: {
+      ar: "متجر سلة وشوبيفاي VIP 🛍️",
+      en: "Luxury E-Commerce VIP 🛍️"
+    },
+    client: {
+      ar: "مجموعة عود الأندلس للتجارة (الرياض 🇸🇦 - دبي 🇦🇪)",
+      en: "Oud Al-Andalus Fragrances (KSA 🇸🇦 - UAE 🇦🇪)"
+    },
+    website: "https://oud-andalus.sa/",
+    tags: ["سلة وShopify", "متاجر خليجية", "حملات تيك توك", "4.8M SAR", "عطور فاخرة", "شحن أرامكس"],
+    gradient: "from-amber-600 via-yellow-600 to-stone-800",
+    summary: {
+      ar: "تصميم متجر إلكتروني استثنائي وسريع جداً على منصة سلة وشوبيفاي مع إطلاق وإدارة حملات إعلانات الأداء (Performance Marketing) التي حققت مبيعات قياسية وعائد إعلاني 6.2x ROAS في مواسم الأعياد ويوم التأسيس.",
+      en: "High-converting luxury e-commerce storefront with integrated TikTok & Meta dynamic catalog campaigns delivering 6.2x ROAS across the Gulf."
+    },
+    challenge: {
+      ar: "المنافسة الشرسة في سوق العطور الخليجي وارتفاع تكلفة اكتساب العميل (CAC) في الرياض وجدة.",
+      en: "Saturated Gulf fragrance market and escalating customer acquisition costs."
+    },
+    solution: {
+      ar: "بناء تجربة مستخدم ملكية مع فيديو UGC واستهداف VIP مع بوابات دفع تابي وتمارا والدفع عند الاستلام.",
+      en: "Developed an ultra-premium storefront with Tabby/Tamara BNPL and high-intent UGC creative funnels."
+    },
+    results: [
+      { label: { ar: "إجمالي المبيعات", en: "Gross Revenue" }, value: "4.8M ر.س" },
+      { label: { ar: "عائد الإعلانات", en: "ROAS" }, value: "6.2x" },
+      { label: { ar: "سرعة المتجر", en: "Store Speed" }, value: "0.8s" }
+    ],
+    features: {
+      ar: [
+        "تصميم واجهة متجر ملكية متوافقة بالكامل مع تجربة الشراء من الجوال في ثوانٍ",
+        "ربط بوابات الدفع بالتقسيط (Tabby & Tamara) والدفع بـ Apple Pay و Mada",
+        "ربط تيك توك بكسل وفيسبوك بكسل المتقدم بنظام Conversions API (CAPI)",
+        "لوحة تحكم ذكية لإدارة المخزون والشحن السريع عبر سمسا وأرامكس"
+      ],
+      en: [
+        "Royal mobile-optimized UI designed for instant 1-click checkout",
+        "Seamless integration with Apple Pay, Mada, Tabby, and Tamara",
+        "Server-side Conversions API (CAPI) on TikTok & Meta Ads",
+        "Automated inventory management & fulfillment with SMSA and Aramex"
+      ]
+    },
+    image: "/assets/images/am-marketing-poster.jpg",
+    demoUrl: "https://oud-andalus.sa/",
+    isFeatured: true
+  },
+  {
+    id: "web-albayt-ellam3",
+    category: "corporate",
+    categories: ["corporate", "web", "ads"],
+    title: {
+      ar: "شركة البيت اللامع بحفر الباطن (albayt-ellam3.com) | خدمات الصيانة والتنظيف",
+      en: "Al Bayt El Lam3 | Cleaning & Maintenance Services Platform"
+    },
+    subtitle: {
+      ar: "منصة متكاملة لخدمات تنظيف الفلل والمجالس وعزل الخزانات ومكافحة الحشرات بالمنطقة الشرقية وحفر الباطن بالسعودية",
+      en: "Comprehensive home services platform covering villa cleaning, water tank insulation, and pest control in Hafar Al-Batin KSA"
+    },
+    badge: {
+      ar: "خدمات السعودية 🇸🇦",
+      en: "KSA Home Services 🇸🇦"
+    },
+    client: {
+      ar: "شركة البيت اللامع للخدمات المنزلية (المملكة العربية السعودية 🇸🇦)",
+      en: "Al Bayt El Lam3 Services (KSA 🇸🇦)"
+    },
+    website: "https://albayt-ellam3.com/",
+    tags: ["السعودية", "حفر الباطن", "تنظيف منازل", "مكافحة حشرات", "عزل خزانات", "Google Ads KSA"],
+    gradient: "from-teal-600 via-emerald-600 to-cyan-500",
+    summary: {
+      ar: "تطوير وضبط شامل لمنظومة خدمات المنازل بحفر الباطن بالسعودية، مع تهيئة السيو المحلي وأزرار الاتصال المباشر وربط الإعلانات بمعدل استجابة فوري للمكالمات وحجوزات الواتساب.",
+      en: "End-to-end digital transformation for Saudi home maintenance company with localized SEO and high-converting click-to-call Google Ads campaigns."
+    },
+    challenge: {
+      ar: "شراسة المنافسة في قطاع الخدمات المنزلية بالسعودية والحاجة لسرعة استجابة هاتفية فورية دون تأخير.",
+      en: "High CPC bidding in Saudi cleaning market requiring optimized mobile conversion speed."
+    },
+    solution: {
+      ar: "تحسين سرعة الصفحات، تهيئة سكيما الخدمات المحلية، وتركيب أزرار اتصال عائمة تفتح مكالمة فورية برقم الجوال السعودي.",
+      en: "Re-engineered mobile layout with floating click-to-call Saudi number and localized schema."
+    },
+    results: [
+      { label: { ar: "مكالمات الحجز", en: "Booking Calls" }, value: "+850 مكالمة" },
+      { label: { ar: "نسبة التحويل", en: "Conv Rate" }, value: "18.4%" },
+      { label: { ar: "زمن التحميل", en: "Load Time" }, value: "0.9s" }
+    ],
+    features: {
+      ar: [
+        "صفحات هبوط متخصصة لكل خدمة (تنظيف منازل، مكافحة حشرات، غسيل خزانات)",
+        "أزرار اتصال واتساب وجوال عائمة ثابتة في شاشة الموبايل",
+        "تهيئة سكيما الأنشطة المحلية (LocalBusiness Schema) لحفر الباطن",
+        "تتبع دقيق للمكالمات والتحويلات الإعلانية على Google Ads"
+      ],
+      en: [
+        "Dedicated landing pages per service line (villas, pest control, tanks)",
+        "Sticky floating call & WhatsApp buttons for instant mobile contact",
+        "LocalBusiness Schema tailored for Hafar Al-Batin region",
+        "Call & lead conversion tracking integrated with Google Ads"
+      ]
+    },
+    image: "/assets/images/almajal_hero.webp",
+    demoUrl: "https://albayt-ellam3.com/",
+    isFeatured: true
+  },
+
+  {
+    id: "gads-winch-magdy-elharby",
+    category: "winch",
+    categories: ["ads", "web", "ai"],
+    title: {
+      ar: "ونش مجدي الحربي (winchmagdyelharby.com) | 35 صفحة سيو + Google Ads",
+      en: "Winch Magdy El Harby | 35 Programmatic SEO Pages & Google Ads"
+    },
+    subtitle: {
+      ar: "منظومة سيو برمجي كاملة لـ 35 مدينة وطريق سريع مع تتبع اتصالات Google Ads (AW-18536608469) و GTM",
+      en: "Full Programmatic SEO engine across 35 routes/cities with Google Ads conversion tags & GTM live"
+    },
+    badge: {
+      ar: "35 صفحة لايف + Google Ads 🚨",
+      en: "35 Live Pages + Google Ads 🚨"
+    },
+    client: {
+      ar: "ونش مجدي الحربي لإنقاذ السيارات",
+      en: "Winch Magdy El Harby Network"
+    },
+    website: "https://winchmagdyelharby.com/",
+    tags: ["Google Ads", "Programmatic SEO", "35 صفحة سيو", "GTM Tagging", "طريق السويس", "التجمع والشروق", "اتصال فوري"],
+    gradient: "from-red-600 via-rose-600 to-amber-500",
+    summary: {
+      ar: "بناء وإطلاق منظومة سيو هجومية لـ 35 صفحة مقالات وهبوط مخصصة لكل مخرج وطريق سريع في القاهرة الكبرى (طريق السويس، الدائري، الأوسطي، الشروق، مدينتي، بدر، التجمع، العاصمة الإدارية) مع ربط أوتوماتيكي لتتبع اتصالات وإعلانات جوجل وتحويلات الواتساب.",
+      en: "Engineered and deployed a programmatic SEO machine with 35 localized emergency landing pages, sitemap indexing, and end-to-end Google Ads & GTM conversion tracking."
+    },
+    challenge: {
+      ar: "المنافسة الشديدة في مزادات إعلانات الأوناش على جوجل تستنزف الميزانية، وتتطلب صفحات هبوط فائقة السرعة مع جودة إعلان (Quality Score) مرتفعة وتتبع اتصالات لحظي.",
+      en: "Hyper-competitive towing ad auctions bleed budget without dedicated high-speed landing pages and real-time call tracking."
+    },
+    solution: {
+      ar: "توليد 35 صفحة هبوط سيو مخصصة بمحتوى محلي غني وتمرير علامات تتبع Google Ads و GTM تلقائياً على كل زر اتصال وزر واتساب مع فهرسة كاملة للسايت ماب.",
+      en: "Deployed 35 hyper-targeted landing pages with click-to-call conversion tracking and automated sitemap expansion."
+    },
+    results: [
+      { label: { ar: "صفحات السيو المنشورة", en: "SEO Pages" }, value: "35 URL" },
+      { label: { ar: "سرعة وقت الوصول", en: "ETA" }, value: "10 min" },
+      { label: { ar: "تتبع التحويلات", en: "Tracking" }, value: "100% GTM" }
+    ],
+    features: {
+      ar: [
+        "35 صفحة سيو محلية تغطي كافة مدن ومخارج شرق وغرب القاهرة وطرق السويس والإسماعيلية",
+        "ربط كود Google Ads الرسمي (AW-18536608469) وعلامة تتبع التحويل (Q10wCNH77qkdENXl-IZF)",
+        "حاوية Google Tag Manager مخصصة (GTM-TG3Q2NT3) لرصد كل نقرة اتصال ومحادثة واتساب",
+        "سايت ماب مفهرس بالكامل https://winchmagdyelharby.com/sitemap.xml (كود 200 OK)"
+      ],
+      en: [
+        "35 localized SEO landing pages covering every Cairo highway and exit",
+        "Google Ads conversion tag (AW-18536608469) directly integrated",
+        "Custom Google Tag Manager container (GTM-TG3Q2NT3) for real-time call attribution",
+        "Live validated sitemap with HTTP 200 OK status"
+      ]
+    },
+    image: "/assets/images/winch_shorouk_real.jpg",
+    demoUrl: "https://winchmagdyelharby.com/",
+    isFeatured: true
+  },
+  {
     id: "interactive-cost-calculator",
-    category: "web",
+    category: "systems",
     categories: ["web", "ads", "ai"],
     title: {
       ar: "حاسبة المقايسات والتسعير التفاعلي الذكي (Interactive Cost Calculator)",
@@ -345,7 +636,7 @@ export const projectsData = [
   },
   {
     id: "gads-almajal",
-    category: "web",
+    category: "corporate",
     categories: ["web", "ads"],
     title: {
       ar: "مؤسسة المجال الأمن لأجهزة السلامة ومكافحة الحريق",
@@ -401,7 +692,7 @@ export const projectsData = [
   },
   {
     id: "gads-winch-enqaz",
-    category: "ads",
+    category: "winch",
     categories: ["ads", "web"],
     title: {
       ar: "ونش إنقاذ المستشار (winch-enqaz.com)",
@@ -457,7 +748,7 @@ export const projectsData = [
   },
   {
     id: "gads-winch-elsaeed",
-    category: "ads",
+    category: "winch",
     categories: ["ads", "web"],
     title: {
       ar: "ونش إنقاذ السعيد طه (elsaeedwinch.com)",
@@ -513,7 +804,7 @@ export const projectsData = [
   },
   {
     id: "gads-winch-alisoker",
-    category: "ads",
+    category: "winch",
     categories: ["ads", "web"],
     title: {
       ar: "ونش إنقاذ علي سكر (alisokerwinch.com)",
@@ -569,7 +860,7 @@ export const projectsData = [
   },
   {
     id: "gads-winch-rabie",
-    category: "ads",
+    category: "winch",
     title: {
       ar: "حملات ونش إنقاذ ربيع (Rabie Winch Ads)",
       en: "Rabie Winch Direct Call Emergency Ads"
@@ -624,7 +915,7 @@ export const projectsData = [
   },
   {
     id: "gads-winch-shorouk",
-    category: "ads",
+    category: "winch",
     categories: ["ads", "web"],
     title: {
       ar: "ونش إنقاذ الشروق (wenshenqazz.com)",
@@ -680,7 +971,7 @@ export const projectsData = [
   },
   {
     id: "ads-mirage-hills",
-    category: "ads",
+    category: "corporate",
     title: {
       ar: "حملة إطلاق كمبوند ميراج هيلز الفاخر (Mirage Hills Launch)",
       en: "Mirage Hills Luxury Compound Launch Campaign"
@@ -1066,7 +1357,7 @@ export const projectsData = [
   },
   {
     id: "ads-round-ksa",
-    category: "ads",
+    category: "corporate",
     title: {
       ar: "حملة راوند السعودية للسياحة والجولات الخاصة (Round KSA Travel)",
       en: "Round KSA Travel & VIP Tours Campaign"
@@ -1174,7 +1465,7 @@ export const projectsData = [
   },
   {
     id: "ads-kulud-pharmacy",
-    category: "ads",
+    category: "medical",
     title: {
       ar: "حملة تطبيق صيدليات خلود (Kulud Pharmacy App Launch)",
       en: "Kulud Pharmacy Digital App Acquisition Campaign"
@@ -1228,7 +1519,7 @@ export const projectsData = [
   },
   {
     id: "ads-labeeb-restaurant",
-    category: "ads",
+    category: "ecommerce",
     title: {
       ar: "حملة وهوية مطعم لبيب اللبناني (Labeeb Casual Dining)",
       en: "Labeeb Casual Dining Narrative Campaign"

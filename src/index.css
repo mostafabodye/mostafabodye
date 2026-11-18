@@ -111,3 +111,79 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #3b82f6;
 }
+
+/* ==========================================================================
+   Apple iMac / Studio Display Interactive Showcase Monitor Mockup
+   ========================================================================== */
+.mac-monitor-frame {
+  position: relative;
+  border: 10px solid #111827;
+  border-bottom-width: 26px;
+  border-radius: 14px;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 25px 50px -12px rgba(0, 0, 0, 0.8),
+    0 0 30px -5px rgba(59, 130, 246, 0.15);
+  background-color: #030712;
+  overflow: hidden;
+  height: 350px;
+  box-sizing: border-box;
+}
+
+/* Camera Lens Dot */
+.mac-monitor-frame::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+  border-radius: 50%;
+  z-index: 35;
+  pointer-events: none;
+}
+
+/* Stand Neck (Aluminum) */
+.mac-stand-neck {
+  width: 110px;
+  height: 26px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  clip-path: polygon(18% 0%, 82% 0%, 100% 100%, 0% 100%);
+}
+
+/* Stand Base (Aluminum) */
+.mac-stand-base {
+  width: 180px;
+  height: 7px;
+  margin: 0 auto 12px auto;
+  background: linear-gradient(90deg, #475569 0%, #94a3b8 50%, #475569 100%);
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Screen Content & Smooth Auto-Scroll */
+.mac-screen-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #090d16;
+}
+
+.mac-screen-content img {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  transform: translateY(0);
+  transition: transform 5.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.mac-screen-content:hover img {
+  transform: translateY(calc(-100% + 350px));
+}
+

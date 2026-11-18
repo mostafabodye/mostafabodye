@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Search, ArrowUpRight, Check, Eye, MessageSquare, Phone, Sparkles, ShieldCheck, Zap, Play } from 'lucide-react';
+import { 
+  ExternalLink, 
+  Search, 
+  ArrowUpRight, 
+  Check, 
+  Eye, 
+  MessageSquare, 
+  Phone, 
+  Sparkles, 
+  ShieldCheck, 
+  Zap, 
+  Play, 
+  Globe, 
+  FileText, 
+  MousePointer, 
+  TrendingUp,
+  Award
+} from 'lucide-react';
 import { projectsData } from '../data/projectsData';
 import ProjectModal from './ProjectModal';
 import { getAssetUrl } from '../utils/assets';
@@ -10,11 +27,15 @@ export default function Projects({ t, lang, onNavigate }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const filters = [
-    { id: 'all', label: t.projects.all },
-    { id: 'web', label: t.projects.filterWeb },
-    { id: 'ads', label: t.projects.filterAds },
-    { id: 'ai', label: t.projects.filterAi },
-    { id: 'security', label: t.projects.filterSecurity },
+    { id: 'all', label: t.projects?.all || (lang === 'ar' ? 'جميع الأعمال' : 'All Projects') },
+    { id: 'winch', label: t.projects?.filterWinch || (lang === 'ar' ? '🚗 أوناش وسيارات' : '🚗 Winch & Fleet') },
+    { id: 'legal', label: t.projects?.filterLegal || (lang === 'ar' ? '⚖️ منصات قانونية وسند' : '⚖️ LegalTech & Sanad') },
+    { id: 'ecommerce', label: t.projects?.filterEcommerce || (lang === 'ar' ? '🛒 متاجر وبراندات' : '🛒 E-Commerce & Stores') },
+    { id: 'medical', label: t.projects?.filterMedical || (lang === 'ar' ? '🏥 عيادات ومستشفيات' : '🏥 Medical & Clinics') },
+    { id: 'corporate', label: t.projects?.filterCorporate || (lang === 'ar' ? '🏢 شركات ومقاولات B2B' : '🏢 Corporate & B2B') },
+    { id: 'systems', label: t.projects?.filterSystems || (lang === 'ar' ? '💻 أنظمة تفاعلية (SaaS)' : '💻 Interactive SaaS') },
+    { id: 'ads', label: t.projects?.filterAds || (lang === 'ar' ? '📈 إعلانات ممولة موثقة' : '📈 Paid Ads & Growth') },
+    { id: 'ai', label: t.projects?.filterAi || (lang === 'ar' ? '🎬 استوديو الذكاء الاصطناعي' : '🎬 AI Studio') },
   ];
 
   const filteredProjects = activeFilter === 'all'
@@ -22,43 +43,69 @@ export default function Projects({ t, lang, onNavigate }) {
     : projectsData.filter((p) => p.category === activeFilter || p.categories?.includes(activeFilter));
 
   return (
-    <section id="projects" className="py-20 relative">
-      <div className="container-max">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Background Glow Accents */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-blue-600/10 via-amber-500/10 to-purple-600/10 blur-[130px] pointer-events-none rounded-full" />
+      
+      <div className="container-max relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs sm:text-sm font-bold">
+            <Award className="w-4 h-4 text-amber-400" />
+            <span>{lang === 'ar' ? 'معرض المشاريع والمنصات الكبرى 🏆' : 'Enterprise Projects & Live Platforms 🏆'}</span>
+          </div>
+
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="section-title"
+            className="section-title text-3xl sm:text-5xl font-black text-white"
           >
-            <span className="gradient-text">{t.projects.title}</span>
+            <span className="gradient-text">{t.projects?.title || (lang === 'ar' ? 'معرض الأعمال والمنصات التفاعلية' : 'Interactive Portfolio & Projects')}</span>
           </motion.h2>
-          <p className="section-subtitle max-w-2xl mx-auto">{t.projects.subtitle}</p>
+
+          <p className="section-subtitle max-w-3xl mx-auto text-slate-300 text-sm sm:text-base leading-relaxed">
+            {t.projects?.subtitle || (lang === 'ar' 
+              ? 'نماذج حية مختارة تغطي كبرى قطاعات البيزنس في مصر والشرق الأوسط بأنظمة برمجية وحملات إعلانية معتمدة' 
+              : 'Handcrafted production platforms and multi-channel growth systems deployed across Egypt and the MENA region')}
+          </p>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
-          {filters.map((f) => (
-            <button
-              key={f.id}
-              onClick={() => setActiveFilter(f.id)}
-              className={`px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 ${
-                activeFilter === f.id
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/30 scale-105'
-                  : 'glass text-slate-300 hover:text-white hover:border-slate-600'
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 mb-14">
+          {filters.map((f) => {
+            const count = f.id === 'all'
+              ? projectsData.length
+              : projectsData.filter((p) => p.category === f.id || p.categories?.includes(f.id)).length;
+
+            return (
+              <button
+                key={f.id}
+                onClick={() => setActiveFilter(f.id)}
+                className={`group px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+                  activeFilter === f.id
+                    ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg shadow-blue-500/30 scale-105 border border-blue-400/50'
+                    : 'glass text-slate-300 hover:text-white hover:border-slate-600 hover:bg-slate-800/60'
+                }`}
+              >
+                <span>{f.label}</span>
+                <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono transition-colors ${
+                  activeFilter === f.id
+                    ? 'bg-white/25 text-white'
+                    : 'bg-slate-800 text-slate-400 group-hover:text-slate-200'
+                }`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Projects 2-Column Grid */}
         <motion.div
           layout
-          className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-16"
+          className="grid md:grid-cols-2 gap-8 sm:gap-10 mb-20"
         >
           <AnimatePresence>
             {filteredProjects.map((project) => {
@@ -66,66 +113,113 @@ export default function Projects({ t, lang, onNavigate }) {
               const subtitle = project.subtitle[lang] || project.subtitle.en;
               const summary = project.summary[lang] || project.summary.en;
               const features = project.features?.[lang] || project.features?.en || [];
+              const cleanUrl = project.website 
+                ? project.website.replace(/^https?:\/\//, '').replace(/\/$/, '')
+                : (project.demoUrl && project.demoUrl.startsWith('http') 
+                    ? project.demoUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') 
+                    : `${project.id}.am-agency.eg`);
 
               return (
                 <motion.div
                   layout
                   key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="group bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 flex flex-col h-full shadow-lg hover:shadow-2xl hover:shadow-blue-500/10"
+                  className="group bg-slate-900/70 backdrop-blur-md border border-slate-700/60 rounded-3xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 flex flex-col h-full shadow-2xl hover:shadow-blue-500/10"
                 >
-                  {/* Top Image Box */}
-                  <div
-                    onClick={() => setSelectedProject(project)}
-                    className="relative h-52 sm:h-60 overflow-hidden cursor-pointer bg-slate-950"
-                  >
-                    {/* Dynamic Gradient Tint Overlay */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 group-hover:opacity-35 transition-opacity duration-300 z-10`}
-                    />
+                  {/* Apple iMac Desktop Mockup Frame */}
+                  <div className="relative pt-3 px-3 sm:pt-4 sm:px-4 bg-slate-950/80 border-b border-slate-800/80">
+                    <div 
+                      className="mac-monitor-frame relative group/screen cursor-pointer"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      {/* Top Mac Window Bar */}
+                      <div className="absolute top-0 left-0 right-0 h-6 bg-slate-900/95 border-b border-slate-800/90 flex items-center px-3 z-30 justify-between select-none pointer-events-none">
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                          <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                        </div>
+                        <div className="text-[10px] text-slate-400 font-mono truncate max-w-[200px] bg-slate-950/80 px-2.5 py-0.5 rounded border border-slate-800 text-center">
+                          {cleanUrl}
+                        </div>
+                        <div className="w-6" />
+                      </div>
 
-                    {/* Image with zoom */}
-                    <img
-                      src={getAssetUrl(project.image)}
-                      alt={title}
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80';
-                      }}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+                      {/* Screen Viewport with smooth auto-scroll on hover */}
+                      <div className="mac-screen-content pt-6">
+                        <img
+                          src={getAssetUrl(project.image)}
+                          alt={title}
+                          loading="lazy"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80';
+                          }}
+                          className="w-full h-auto object-cover object-top"
+                        />
 
-                    {/* Badge on corner */}
-                    <div className="absolute top-3 left-3 z-20">
-                      <span className="px-3 py-1 rounded-full text-[11px] font-extrabold bg-slate-950/85 backdrop-blur-md border border-slate-700/80 text-amber-400">
-                        {project.badge?.[lang] || project.badge?.en}
-                      </span>
-                    </div>
+                        {/* Top Hover Tip Banner */}
+                        <div className="absolute top-8 inset-x-0 flex justify-center opacity-0 group-hover/screen:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                          <span className="px-3 py-1 bg-slate-950/90 text-sky-400 text-[11px] font-semibold rounded-full border border-sky-500/40 shadow-xl backdrop-blur-sm flex items-center gap-1.5">
+                            <MousePointer className="w-3.5 h-3.5 animate-bounce" />
+                            <span>{t.projects?.hoverTip || (lang === 'ar' ? 'حرّك الماوس للتمرير التلقائي الكامل' : 'Hover to auto-scroll full page')}</span>
+                          </span>
+                        </div>
 
-                    {/* Search preview hover icon */}
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                      <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40 shadow-xl group-hover:scale-110 transition-transform">
-                        <Search className="w-5 h-5 text-white" />
+                        {/* Floating Badge on Screen */}
+                        <div className="absolute bottom-3 right-3 z-20 pointer-events-none">
+                          <span className="px-3 py-1 rounded-full text-[11px] font-extrabold bg-slate-950/90 backdrop-blur-md border border-slate-700/80 text-amber-400 shadow-xl">
+                            {project.badge?.[lang] || project.badge?.en}
+                          </span>
+                        </div>
                       </div>
                     </div>
+
+                    {/* iMac Aluminum Stand Neck & Base */}
+                    <div className="mac-stand-neck" />
+                    <div className="mac-stand-base" />
                   </div>
 
                   {/* Card Content Body */}
-                  <div className="p-6 flex flex-col flex-grow">
+                  <div className="p-6 sm:p-7 flex flex-col flex-grow">
+                    {/* Client & Country Badge */}
+                    {project.client && (
+                      <div className="flex items-center gap-2 mb-2.5 text-xs font-semibold text-slate-400">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                        </span>
+                        <span className="truncate">{project.client[lang] || project.client.en}</span>
+                      </div>
+                    )}
+
+                    {/* Project Title */}
                     <h3
                       onClick={() => setSelectedProject(project)}
-                      className="text-lg sm:text-xl font-bold mb-2 text-slate-100 group-hover:text-blue-400 transition-colors cursor-pointer"
+                      className="text-lg sm:text-xl font-black mb-2 text-slate-100 group-hover:text-blue-400 transition-colors cursor-pointer leading-snug"
                     >
                       {title}
                     </h3>
 
-                    <p className="text-slate-400 text-xs sm:text-sm mb-4 leading-relaxed flex-grow line-clamp-3">
-                      {summary}
+                    {/* Subtitle / Summary */}
+                    <p className="text-slate-400 text-xs sm:text-sm mb-4 leading-relaxed line-clamp-3">
+                      {summary || subtitle}
                     </p>
+
+                    {/* Metrics / Results Chips */}
+                    {project.results && project.results.length > 0 && (
+                      <div className="grid grid-cols-3 gap-2 p-3 mb-4 bg-slate-950/70 border border-slate-800/80 rounded-2xl">
+                        {project.results.map((res, i) => (
+                          <div key={i} className="text-center px-1">
+                            <div className="text-xs sm:text-sm font-black text-amber-400">{res.value}</div>
+                            <div className="text-[10px] text-slate-400 truncate mt-0.5">{res.label[lang] || res.label.en}</div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Features Badges */}
                     {features.length > 0 && (
@@ -133,54 +227,58 @@ export default function Projects({ t, lang, onNavigate }) {
                         {features.slice(0, 3).map((feat, idx) => (
                           <span
                             key={idx}
-                            className="px-2.5 py-1 bg-slate-700/40 rounded-md text-[11px] text-slate-300 border border-slate-600/40 flex items-center gap-1"
+                            className="px-2.5 py-1 bg-slate-800/60 rounded-lg text-[11px] text-slate-300 border border-slate-700/60 flex items-center gap-1.5"
                           >
                             <Check className="w-3 h-3 text-emerald-400 flex-shrink-0" />
-                            <span>{feat}</span>
+                            <span className="truncate max-w-[200px]">{feat}</span>
                           </span>
                         ))}
                       </div>
                     )}
 
                     {/* Tech Stack Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-6">
                       {project.tags.map((tag, idx) => (
                         <span
                           key={idx}
-                          className="px-2.5 py-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full text-[11px] text-slate-300 border border-slate-700/60 font-medium"
+                          className="px-2.5 py-0.5 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-md text-[10px] sm:text-[11px] text-slate-300 border border-slate-700/50 font-medium"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                      {/* Action Buttons */}
-                    <div className="flex items-center gap-2 pt-2 border-t border-slate-700/40">
+                    {/* Dual Action Buttons */}
+                    <div className="flex items-center gap-2.5 pt-4 border-t border-slate-800/80 mt-auto">
+                      {/* Button 1: Case Study */}
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedProject(project);
                         }}
-                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-slate-800/80 hover:bg-slate-700 border border-slate-700/80 rounded-xl text-slate-200 text-xs font-bold transition-all"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 bg-slate-800/90 hover:bg-slate-700 border border-slate-700 rounded-xl text-slate-200 text-xs font-bold transition-all hover:scale-[1.02] cursor-pointer"
                       >
-                        <Eye className="w-4 h-4 text-blue-400" />
-                        <span>{lang === 'ar' ? 'التفاصيل والنتائج' : 'Details & Metrics'}</span>
+                        <FileText className="w-4 h-4 text-blue-400" />
+                        <span>{t.projects?.caseStudy || (lang === 'ar' ? 'دراسة الحالة والأرقام' : 'Case Study & Details')}</span>
                       </button>
 
+                      {/* Button 2: Live Link / System */}
                       {project.demoUrl && (project.demoUrl.startsWith('http') || project.demoUrl.includes('.html')) ? (
                         <a
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white text-xs font-bold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 rounded-xl text-white text-xs font-bold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-[1.02] cursor-pointer"
                         >
+                          <Globe className="w-3.5 h-3.5" />
                           <span>
-                            {project.demoUrl.includes('calculator') ? (lang === 'ar' ? 'تشغيل الحاسبة الحية 🧮' : 'Live Calculator 🧮') : project.demoUrl.includes('facebook.com')
-                              ? (lang === 'ar' ? 'صفحة فيسبوك ↗' : 'Facebook Page ↗')
-                              : (lang === 'ar' ? 'الموقع المباشر 🌐' : 'Live Site 🌐')}
+                            {project.demoUrl.includes('calculator') 
+                              ? (lang === 'ar' ? 'الحاسبة الحية 🧮' : 'Calculator 🧮')
+                              : project.demoUrl.includes('facebook.com')
+                                ? (lang === 'ar' ? 'صفحة فيسبوك ↗' : 'Facebook Page ↗')
+                                : (t.projects?.visitSite || (lang === 'ar' ? 'زيارة الموقع لايف ↗' : 'Live Website ↗'))}
                           </span>
-                          <ExternalLink className="w-3.5 h-3.5" />
                         </a>
                       ) : project.video ? (
                         <button
@@ -188,7 +286,7 @@ export default function Projects({ t, lang, onNavigate }) {
                             e.stopPropagation();
                             setSelectedProject(project);
                           }}
-                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-purple-500 to-rose-600 rounded-xl text-white text-xs font-bold transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25"
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 bg-gradient-to-r from-purple-600 to-rose-600 rounded-xl text-white text-xs font-bold transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:scale-[1.02] cursor-pointer"
                         >
                           <Play className="w-3.5 h-3.5 fill-current" />
                           <span>{lang === 'ar' ? 'تشغيل الفيديو 🎬' : 'Watch Video 🎬'}</span>
@@ -199,7 +297,7 @@ export default function Projects({ t, lang, onNavigate }) {
                             e.stopPropagation();
                             if (onNavigate) onNavigate('systems');
                           }}
-                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl text-slate-950 text-xs font-black transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25"
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl text-slate-950 text-xs font-black transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 hover:scale-[1.02] cursor-pointer"
                         >
                           <span>{lang === 'ar' ? 'فتح منصة البرامج 💻' : 'Open Systems Hub 💻'}</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />
@@ -210,9 +308,10 @@ export default function Projects({ t, lang, onNavigate }) {
                             e.stopPropagation();
                             setSelectedProject(project);
                           }}
-                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl text-slate-950 text-xs font-black transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/25"
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl text-slate-950 text-xs font-black transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/25 hover:scale-[1.02] cursor-pointer"
                         >
-                          <span>{lang === 'ar' ? 'نتائج الحملة 📊' : 'Campaign Results 📊'}</span>
+                          <TrendingUp className="w-3.5 h-3.5" />
+                          <span>{lang === 'ar' ? 'نتائج الحملة 📊' : 'Campaign Stats 📊'}</span>
                         </button>
                       )}
                     </div>
@@ -229,9 +328,9 @@ export default function Projects({ t, lang, onNavigate }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center py-10 px-6 sm:px-10 bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90 backdrop-blur-md border border-amber-500/30 rounded-3xl max-w-3xl mx-auto shadow-2xl shadow-amber-500/5 space-y-6"
+          className="text-center py-12 px-6 sm:px-12 bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-slate-900/90 backdrop-blur-md border border-amber-500/30 rounded-3xl max-w-3xl mx-auto shadow-2xl shadow-amber-500/5 space-y-6"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
             <Sparkles className="w-3.5 h-3.5" />
             <span>
               {lang === 'ar' ? 'حلول برمجية وتسويقية مخصصة لنشاطك التجاري' : 'Custom Software & Growth Systems for Your Business'}
