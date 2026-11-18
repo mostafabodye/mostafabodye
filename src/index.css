@@ -187,3 +187,108 @@
   transform: translateY(calc(-100% + 350px));
 }
 
+
+
+/* ==========================================================================
+   Abdallah-Style Ultra-Realistic Apple iMac Monitor & Full Webpage Hover Scroll
+   ========================================================================== */
+.website-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.website-monitor {
+  border: 10px solid #1a1e29;
+  border-bottom: 24px solid #1a1e29;
+  border-radius: 12px;
+  background-color: #0b0f19;
+  box-shadow: 
+    0 0 0 2px rgba(255, 255, 255, 0.08),
+    0 16px 36px rgba(0, 0, 0, 0.55);
+  width: 100%;
+  height: 185px;
+  display: block;
+  overflow: hidden;
+  position: relative !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.website-card:hover .website-monitor {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 0 0 2px rgba(168, 85, 247, 0.6),
+    0 20px 45px rgba(168, 85, 247, 0.25);
+}
+
+/* Apple Camera Lens Dot */
+.website-monitor::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  z-index: 20;
+  box-shadow: 0 0 6px #38bdf8;
+  pointer-events: none;
+}
+
+/* Aluminum Stand Neck */
+.website-stand-neck {
+  width: 85px;
+  height: 24px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #64748b 0%, #334155 100%);
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  pointer-events: none;
+}
+
+/* Aluminum Stand Base */
+.website-stand-base {
+  width: 140px;
+  height: 7px;
+  margin: 0 auto 12px auto;
+  background: linear-gradient(90deg, #64748b 0%, #e2e8f0 50%, #64748b 100%);
+  border-radius: 4px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+/* Full-Page Background Smooth Scroll on Hover (4.5s) */
+.website-screen-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 0%;
+  transition: background-position 4.5s ease-in-out;
+  cursor: pointer;
+  position: relative;
+}
+
+.website-monitor:hover .website-screen-bg {
+  background-position: 50% 100%;
+}
+
+/* Smoke Glow Text Effect for Brand Titles */
+.smoke-glow-purple {
+  font-weight: 700;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.website-card:hover .smoke-glow-purple {
+  color: #c084fc;
+  text-shadow: 
+    0 0 10px rgba(192, 132, 252, 0.7),
+    0 0 20px rgba(168, 85, 247, 0.5),
+    0 0 40px rgba(147, 51, 234, 0.4);
+}
