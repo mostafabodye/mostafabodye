@@ -224,6 +224,50 @@ export default function Projects({ t, lang = 'ar' }) {
               <span>{isRtl ? 'اتصال مباشر: 01098174992 📞' : 'Direct Call: +20 1098174992 📞'}</span>
             </a>
           </div>
+
+          {/* Strategic Contextual SEO Internal Linking Hub */}
+          <div className="pt-8 border-t border-slate-800/80 mt-8 text-center">
+            <p className="text-xs font-bold text-slate-400 mb-4 tracking-wide">
+              {isRtl ? '🔗 شبكة خدمات وحلول النمو الرقمي المتكاملة:' : '🔗 Integrated Digital Growth & Platform Services:'}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="#page-ads"
+                className="px-4 py-2 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-blue-500/50 text-slate-300 hover:text-blue-300 text-xs font-bold transition-all shadow-sm flex items-center gap-1.5"
+                title="خبير إعلانات جوجل وتوسيع المبيعات"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                <span>{isRtl ? 'إدارة حملات إعلانات جوجل (Google Ads)' : 'Google Ads Management'}</span>
+              </a>
+
+              <a
+                href="#page-web"
+                className="px-4 py-2 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 text-slate-300 hover:text-emerald-300 text-xs font-bold transition-all shadow-sm flex items-center gap-1.5"
+                title="تطوير متاجر إلكترونية ومنصات ويب متكاملة"
+              >
+                <Globe className="w-3.5 h-3.5 text-emerald-400" />
+                <span>{isRtl ? 'تطوير منصات ومتاجر إلكترونية احترافية' : 'Full-Stack Web & Stores'}</span>
+              </a>
+
+              <a
+                href="#page-systems"
+                className="px-4 py-2 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-purple-500/50 text-slate-300 hover:text-purple-300 text-xs font-bold transition-all shadow-sm flex items-center gap-1.5"
+                title="أنظمة الذكاء الاصطناعي وأتمتة الأعمال"
+              >
+                <Cpu className="w-3.5 h-3.5 text-purple-400" />
+                <span>{isRtl ? 'أنظمة وحلول الذكاء الاصطناعي للأعمال' : 'AI Systems & Automation'}</span>
+              </a>
+
+              <a
+                href="#page-contact"
+                className="px-4 py-2 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-amber-500/50 text-slate-300 hover:text-amber-300 text-xs font-bold transition-all shadow-sm flex items-center gap-1.5"
+                title="طلب استشارة سيو ونمو المبيعات"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
+                <span>{isRtl ? 'حجز استشارة سيو ونمو رقمي' : 'Free SEO & Growth Consultation'}</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
