@@ -292,3 +292,212 @@
     0 0 20px rgba(168, 85, 247, 0.5),
     0 0 40px rgba(147, 51, 234, 0.4);
 }
+
+
+/* ==========================================================================
+   Cinematic 3D Hero, Opposing Marquee Columns & Mechanical Typing Hands
+   ========================================================================== */
+
+/* Floating Code & Tech Badges Drift Keyframes */
+@keyframes floatUpDrift {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.75;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Opposing Vertical Scrolling Marquee Columns */
+@keyframes marqueeScrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes marqueeScrollDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.marquee-strip {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.marquee-strip.strip-up {
+  animation: marqueeScrollUp 32s linear infinite;
+}
+
+.marquee-strip.strip-down {
+  animation: marqueeScrollDown 32s linear infinite;
+}
+
+.marquee-strip.paused {
+  animation-play-state: paused !important;
+}
+
+.project-thumb-card:hover {
+  transform: scale(1.04) translateY(-2px);
+  z-index: 30;
+}
+
+/* 3D Perspective Keyboard Surface */
+.keyboard-perspective-box {
+  perspective: 800px;
+  position: relative;
+}
+
+.mini-keyboard-surface {
+  width: 100%;
+  max-width: 380px;
+  background: linear-gradient(145deg, #181830, #0f0f22);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-radius: 12px;
+  padding: 10px 8px 14px 8px;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(124, 58, 237, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: rotateX(22deg) rotateY(-3deg);
+  position: relative;
+}
+
+.kb-row {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  margin-bottom: 3px;
+}
+
+.kb-key {
+  min-width: 22px;
+  height: 20px;
+  background: linear-gradient(180deg, #252545 0%, #171730 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 2.5px solid rgba(0, 0, 0, 0.6);
+  border-radius: 3.5px;
+  font-family: monospace;
+  font-size: 7.5px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: all 0.1s ease;
+}
+
+.kb-key.kb-space {
+  min-width: 140px;
+}
+
+.kb-key.key-active {
+  background: linear-gradient(180deg, #9333ea 0%, #6366f1 100%);
+  color: #ffffff;
+  border-bottom-width: 1px;
+  transform: translateY(2px);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
+}
+
+/* Hands Above Keyboard */
+.keyboard-hands-container {
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.keyboard-hand {
+  position: relative;
+  width: 90px;
+  height: 48px;
+}
+
+.hand-palm {
+  position: absolute;
+  bottom: 0;
+  left: 14px;
+  width: 62px;
+  height: 24px;
+  background: linear-gradient(180deg, #d4956a 0%, #a86c44 100%);
+  border-radius: 6px 6px 12px 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.finger-segment {
+  position: absolute;
+  width: 9px;
+  background: linear-gradient(180deg, #e4a77d 0%, #cb8c60 100%);
+  border-radius: 4px 4px 2px 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transform-origin: bottom center;
+}
+
+/* Finger tap animations */
+@keyframes fingerTapMove {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-5px);
+  }
+}
+
+.hand-left .f-pinky  { left: 14px; bottom: 18px; height: 26px; animation: fingerTapMove 0.8s ease-in-out infinite 0.1s; }
+.hand-left .f-ring   { left: 26px; bottom: 18px; height: 32px; animation: fingerTapMove 0.8s ease-in-out infinite 0.25s; }
+.hand-left .f-middle { left: 38px; bottom: 18px; height: 34px; animation: fingerTapMove 0.8s ease-in-out infinite 0.05s; }
+.hand-left .f-index  { left: 50px; bottom: 18px; height: 28px; animation: fingerTapMove 0.8s ease-in-out infinite 0.35s; }
+
+.hand-right .f-index  { left: 16px; bottom: 18px; height: 28px; animation: fingerTapMove 0.8s ease-in-out infinite 0.15s; }
+.hand-right .f-middle { left: 28px; bottom: 18px; height: 34px; animation: fingerTapMove 0.8s ease-in-out infinite 0.3s; }
+.hand-right .f-ring   { left: 40px; bottom: 18px; height: 32px; animation: fingerTapMove 0.8s ease-in-out infinite 0.08s; }
+.hand-right .f-pinky  { left: 52px; bottom: 18px; height: 26px; animation: fingerTapMove 0.8s ease-in-out infinite 0.22s; }
+
+.finger-thumb-left {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  width: 10px;
+  height: 18px;
+  background: linear-gradient(180deg, #e4a77d 0%, #cb8c60 100%);
+  border-radius: 6px;
+  transform: rotate(30deg);
+  animation: fingerTapMove 1.4s ease-in-out infinite;
+}
+
+.finger-thumb-right {
+  position: absolute;
+  right: 14px;
+  bottom: 4px;
+  width: 10px;
+  height: 18px;
+  background: linear-gradient(180deg, #e4a77d 0%, #cb8c60 100%);
+  border-radius: 6px;
+  transform: rotate(-30deg);
+  animation: fingerTapMove 1.4s ease-in-out infinite;
+}
+
+/* Desk 3D Scene */
+.desk-3d-scene {
+  perspective: 1200px;
+}
